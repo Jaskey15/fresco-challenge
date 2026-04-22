@@ -1,0 +1,12 @@
+.git
+.venv
+__pycache__
+*.pyc
+.pytest_cache
+.superpowers
+docs
+frontend
+out
+samples
+tests
+.env*
