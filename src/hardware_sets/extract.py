@@ -17,13 +17,14 @@ you can see, the set number, description, the first and last line numbers the
 set occupies, and the components with their fields (qty, description, catalog
 number, manufacturer, finish, notes).
 
-Known manufacturer vocabulary (these are legitimate mfr values; extend as
-needed but prefer these canonical forms when a match is obvious):
-IVE/IVES, VON/Von Duprin, SCH/SCHLAGE/Schlage, LCN, NGP, ZER/Zero,
-PEM/Pemko, ROC/Rockwood, GLY/Glynn-Johnson, HAG/Hager, ADA/Adams Rite,
-TRI/Trimco/BBW, ABH, MED/Medeco, SEN/Sentronic, ASS/Assa Abloy,
-SCE/Securitron, BLU/Blumcraft, CRL/C.R. Laurence, KNX/Knox, RIX/Rixson,
-NOR/Norton.
+Known manufacturers (common shortcodes in parentheses):
+IVES (IVE), Von Duprin (VON, VND), Schlage (SCH), LCN, NGP, Zero (ZER),
+Pemko (PEM), Rockwood (ROC), Glynn-Johnson (GLY, GJ), Hager (HAG),
+Adams Rite (ADA), Trimco (TRI, BBW), ABH, Medeco (MED), Sentronic (SEN),
+Assa Abloy (ASS), Securitron (SCE), Blumcraft (BLU), C.R. Laurence (CRL),
+Knox (KNX), Rixson (RIX), Norton (NOR).
+When the PDF uses a shortcode, emit the shortcode as-is — never join
+alternatives with a slash.
 
 Known finish vocabulary:
 BHMA three-digit codes 600-695 (notably 613, 626, 630, 652, 689),
