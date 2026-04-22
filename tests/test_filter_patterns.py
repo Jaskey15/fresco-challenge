@@ -54,3 +54,19 @@ def test_heuristic_does_not_fire_on_narrative():
     assert not _heuristic_start(
         "The hardware sets specified in this section shall comply with the project requirements."
     )
+
+
+def test_qty_ea_row_pattern_matches_real_table_rows():
+    from hardware_sets.filter import _QTY_EA_ROW_RE
+    assert _QTY_EA_ROW_RE.search("1        EA     CONT. HINGE")
+    assert _QTY_EA_ROW_RE.search(" 3 EA HINGE 5BB1")
+    assert _QTY_EA_ROW_RE.search("4        EA-R   ACTUATOR, TOUCH")
+
+
+def test_qty_ea_row_pattern_rejects_prose():
+    from hardware_sets.filter import _QTY_EA_ROW_RE
+    # Prose that talks about door hardware schedules — no numeric EA rows
+    assert not _QTY_EA_ROW_RE.search(
+        "Door Hardware Schedule: Prepared by the Architectural Hardware Consultant."
+    )
+    assert not _QTY_EA_ROW_RE.search("Refer to Door and Frame Schedule on Drawings.")
