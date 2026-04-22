@@ -129,11 +129,9 @@ EMIT_HARDWARE_SETS_TOOL: dict = {
     },
 }
 
-import json
 import logging
-from dataclasses import asdict
 
-from anthropic import Anthropic, APIStatusError
+from anthropic import Anthropic
 
 from hardware_sets.layout import render_for_prompt
 from hardware_sets.types import (
@@ -152,7 +150,7 @@ class ExtractionError(RuntimeError):
 
 
 DEFAULT_MODEL = "claude-sonnet-4-6"
-MAX_TOKENS = 32000
+MAX_TOKENS = 64000
 
 
 def _build_user_content(region: ScheduleRegion, layouts: list[PageLayout]) -> str:
@@ -163,38 +161,89 @@ def _build_user_content(region: ScheduleRegion, layouts: list[PageLayout]) -> st
     return header + "\n\n".join(render_for_prompt(lay) for lay in layouts)
 
 
+def _normalize_line_range(
+    raw: list[int] | tuple[int, int],
+    *,
+    context: str,
+) -> tuple[int, int]:
+    """Return (first, last). Swap if reversed, logging a warning."""
+    first, last = int(raw[0]), int(raw[1])
+    if first > last:
+        log.warning("%s: line_range reversed (%d, %d); swapped", context, first, last)
+        return (last, first)
+    return (first, last)
+
+
 def _coerce_sets(tool_input: dict) -> list[HardwareSet]:
-    """Convert the tool-use JSON into HardwareSet dataclasses."""
-    out: list[HardwareSet] = []
-    for s in tool_input.get("sets", []):
-        loc = SetLocation(page=s["location"]["page"],
-                         line_range=tuple(s["location"]["line_range"]))  # type: ignore[arg-type]
-        cont = [
-            SetLocation(page=c["page"], line_range=tuple(c["line_range"]))  # type: ignore[arg-type]
-            for c in s.get("continued_on", [])
-        ]
-        components = [
-            Component(
-                qty=c.get("qty"),
-                description=c.get("description"),
-                catalog_number=c.get("catalog_number"),
-                mfr=c.get("mfr"),
-                finish=c.get("finish"),
-                notes=c.get("notes"),
+    """Convert tool-use JSON into HardwareSets, auto-fixing fixable invariant
+    violations and logging the rest. Structural/schema errors become
+    ExtractionError so the caller's retry path triggers."""
+    try:
+        raw_sets = tool_input.get("sets", [])
+        out: list[HardwareSet] = []
+        for s in raw_sets:
+            set_number = s["set_number"]
+            page = s["location"]["page"]
+            ctx = f"set {set_number!r} (page {page})"
+
+            loc = SetLocation(
+                page=page,
+                line_range=_normalize_line_range(s["location"]["line_range"], context=ctx),
             )
-            for c in s.get("components", [])
-        ]
-        out.append(
-            HardwareSet(
-                set_number=s["set_number"],
-                description=s.get("description"),
-                location=loc,
-                continued_on=cont,
-                is_not_used=bool(s.get("is_not_used", False)),
-                components=components,
+            cont = [
+                SetLocation(
+                    page=c["page"],
+                    line_range=_normalize_line_range(
+                        c["line_range"], context=f"{ctx} continued_on[{i}]"
+                    ),
+                )
+                for i, c in enumerate(s.get("continued_on", []))
+            ]
+            components = [
+                Component(
+                    qty=c.get("qty"),
+                    description=c.get("description"),
+                    catalog_number=c.get("catalog_number"),
+                    mfr=c.get("mfr"),
+                    finish=c.get("finish"),
+                    notes=c.get("notes"),
+                )
+                for c in s.get("components", [])
+            ]
+            is_not_used = bool(s.get("is_not_used", False))
+
+            if is_not_used and components:
+                log.warning(
+                    "%s: is_not_used=true but %d components present; keeping both as emitted",
+                    ctx, len(components),
+                )
+            if not set_number.strip():
+                log.warning("%s: empty set_number; keeping as emitted", ctx)
+
+            out.append(
+                HardwareSet(
+                    set_number=set_number,
+                    description=s.get("description"),
+                    location=loc,
+                    continued_on=cont,
+                    is_not_used=is_not_used,
+                    components=components,
+                )
             )
-        )
+    except (KeyError, TypeError, ValueError) as e:
+        raise ExtractionError(f"tool_use payload malformed: {e}") from e
+
+    _warn_duplicate_set_numbers(out)
     return out
+
+
+def _warn_duplicate_set_numbers(sets: list[HardwareSet]) -> None:
+    seen: dict[str, int] = {}
+    for s in sets:
+        seen[s.set_number] = seen.get(s.set_number, 0) + 1
+    for number, count in seen.items():
+        if count > 1:
+            log.warning("duplicate set_number %r appears %d times", number, count)
 
 
 def _call_model(
@@ -229,47 +278,16 @@ def _call_model(
     ) as stream:
         resp = stream.get_final_message()
 
+    if resp.stop_reason == "max_tokens":
+        log.warning(
+            "extract: hit max_tokens cap (%d); output likely truncated",
+            MAX_TOKENS,
+        )
+
     for block in resp.content:
         if block.type == "tool_use" and block.name == EMIT_HARDWARE_SETS_TOOL["name"]:
-            try:
-                return _coerce_sets(block.input)
-            except (KeyError, TypeError, ValueError) as e:
-                raise ExtractionError(f"tool_use payload malformed: {e}") from e
+            return _coerce_sets(block.input)
     raise ExtractionError("model did not call emit_hardware_sets")
-
-
-TOKEN_CHUNK_THRESHOLD = 80_000
-CHUNK_PAGES = 20
-CHUNK_OVERLAP = 2
-
-
-def _estimated_tokens(user_content: str) -> int:
-    # Cheap char-based estimate; Anthropic exposes real token counting but
-    # the char heuristic is precise enough at our scale (~4 chars/token).
-    return len(user_content) // 4
-
-
-def _chunk_layouts(layouts: list[PageLayout]) -> list[list[PageLayout]]:
-    """Break `layouts` into 20-page windows with 2-page overlap."""
-    if len(layouts) <= CHUNK_PAGES:
-        return [layouts]
-    chunks: list[list[PageLayout]] = []
-    step = CHUNK_PAGES - CHUNK_OVERLAP
-    for i in range(0, len(layouts), step):
-        chunks.append(layouts[i:i + CHUNK_PAGES])
-        if i + CHUNK_PAGES >= len(layouts):
-            break
-    return chunks
-
-
-def _dedup_sets(sets: list[HardwareSet]) -> list[HardwareSet]:
-    """Drop duplicates (same set_number + first_page) introduced by overlap."""
-    seen: dict[tuple[str, int], HardwareSet] = {}
-    for s in sets:
-        key = (s.set_number, s.location.page)
-        if key not in seen:
-            seen[key] = s
-    return list(seen.values())
 
 
 def extract_sets(
@@ -282,18 +300,9 @@ def extract_sets(
     if client is None:
         client = Anthropic()
 
-    combined = _build_user_content(region, layouts)
-    if _estimated_tokens(combined) <= TOKEN_CHUNK_THRESHOLD:
-        batches = [layouts]
-    else:
-        batches = _chunk_layouts(layouts)
-
-    collected: list[HardwareSet] = []
-    for batch in batches:
-        user_content = _build_user_content(region, batch)
-        try:
-            collected.extend(_call_model(client, model, user_content))
-        except ExtractionError as e:
-            log.warning("extract_sets: batch retry after %s", e)
-            collected.extend(_call_model(client, model, user_content, retry_note=str(e)))
-    return _dedup_sets(collected)
+    user_content = _build_user_content(region, layouts)
+    try:
+        return _call_model(client, model, user_content)
+    except ExtractionError as e:
+        log.warning("extract_sets: retry after %s", e)
+        return _call_model(client, model, user_content, retry_note=str(e))
