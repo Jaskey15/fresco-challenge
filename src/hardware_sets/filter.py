@@ -40,7 +40,6 @@ CSI_HEADER_RE = re.compile(r"SECTION\s+(\d{2})\s*[-\s]?\s*(\d{2})\s*[-\s]?\s*(\d
 _QTY_HDR_RE = re.compile(r"\bQTY\b|\bQUANTITY\b", re.I)
 _EA_RE = re.compile(r"\bEA\b", re.I)
 _SET_TOKEN_RE = re.compile(r"^\s*SET\b", re.I | re.M)
-# A known-mfr or known-finish code presence is checked against vocab.
 
 # Tabular content guards: distinguish real schedule pages from narrative prose.
 _TABULAR_ROW_RE = re.compile(r"\b\d+\s+(?:EA(?:-[A-Z])?|Ea\.|Set|Pr)\b", re.I | re.M)
@@ -97,21 +96,15 @@ def _match_start(text: str) -> tuple[str | None, bool]:
 
 
 def _heuristic_start(text: str) -> bool:
-    """Spec §4.1 fallback: 3+ of (bare SET, QTY/EA column, known mfr/finish code)."""
-    from hardware_sets.vocab import GLOBAL_MFR_VOCAB, GLOBAL_FINISH_VOCAB
-
+    """Fallback: 2+ of (SET token, QTY/EA keyword, quantity-line density)."""
     signals = 0
     if _SET_TOKEN_RE.search(text):
         signals += 1
     if _QTY_HDR_RE.search(text) or _EA_RE.search(text):
         signals += 1
-    # Tokenize uppercase words and look for vocab hits
-    tokens = {t.upper() for t in re.findall(r"[A-Za-z0-9]{2,}", text)}
-    if tokens & GLOBAL_MFR_VOCAB:
+    if len(_QTY_LEADING_LINE.findall(text)) >= 8:
         signals += 1
-    if tokens & GLOBAL_FINISH_VOCAB:
-        signals += 1
-    return signals >= 3
+    return signals >= 2
 
 
 def find_schedule_regions(pdf_path: Path) -> list[ScheduleRegion]:

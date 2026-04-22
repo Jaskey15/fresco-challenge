@@ -95,17 +95,24 @@ def test_current_section():
     assert _current_section("hello world") is None
 
 
-def test_heuristic_fallback_fires_on_three_signals():
-    # bare SET token, QTY column, known mfr (SCH)
-    text = "SET 1\n\nQTY  DESCRIPTION  MFR\n 1   Hinge        SCH"
+def test_heuristic_fallback_fires_on_structural_signals():
+    text = "SET 1\n\nQTY  DESCRIPTION\n 1  Hinge\n 2  Closer\n 1  Lockset"
+    assert _heuristic_start(text)
+
+
+def test_heuristic_fires_on_set_and_qty_lines():
+    text = "SET 1\n1 Hinge\n2 Closer\n1 Lockset\n3 Strike\n1 Bolt\n2 Stop\n1 Sweep\n1 Threshold"
     assert _heuristic_start(text)
 
 
 def test_heuristic_does_not_fire_on_narrative():
-    # Narrative paragraph with no SET/QTY/vocab signals
     assert not _heuristic_start(
         "The hardware sets specified in this section shall comply with the project requirements."
     )
+
+
+def test_heuristic_does_not_fire_on_single_signal():
+    assert not _heuristic_start("QTY  DESCRIPTION  MFR\nSome narrative text follows.")
 
 
 def test_tabular_content_matches_real_schedule_rows():
