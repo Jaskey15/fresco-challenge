@@ -1,7 +1,21 @@
+// frontend/src/App.tsx
+import { useExtraction } from "./hooks/useExtraction";
+import UploadView from "./components/UploadView";
+import ProcessingView from "./components/ProcessingView";
+import ResultsView from "./components/ResultsView";
+
 export default function App() {
-  return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-      <h1 className="text-2xl font-bold text-gray-800">Hardware Sets Extractor</h1>
-    </div>
-  );
+  const { startUpload, startSample, progress, result, error, isLoading, reset } =
+    useExtraction();
+
+  // View state derived from hook state
+  if (result) {
+    return <ResultsView result={result} onReset={reset} />;
+  }
+
+  if (isLoading || error) {
+    return <ProcessingView progress={progress} error={error} onReset={reset} />;
+  }
+
+  return <UploadView onFileSelect={startUpload} onSampleSelect={startSample} />;
 }
