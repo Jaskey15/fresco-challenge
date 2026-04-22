@@ -113,3 +113,133 @@ EMIT_HARDWARE_SETS_TOOL: dict = {
         "required": ["sets"],
     },
 }
+
+import json
+import logging
+from dataclasses import asdict
+
+from anthropic import Anthropic, APIStatusError
+
+from hardware_sets.layout import render_for_prompt
+from hardware_sets.types import (
+    Component,
+    HardwareSet,
+    PageLayout,
+    ScheduleRegion,
+    SetLocation,
+)
+
+log = logging.getLogger(__name__)
+
+
+class ExtractionError(RuntimeError):
+    """LLM returned something we couldn't parse even after a retry."""
+
+
+DEFAULT_MODEL = "claude-sonnet-4-6"
+MAX_TOKENS = 8000
+
+
+def _build_user_content(region: ScheduleRegion, layouts: list[PageLayout]) -> str:
+    header = (
+        f"Schedule region: pages {region.start_page}-{region.end_page} "
+        f"(entered via {region.start_marker}).\n\n"
+    )
+    return header + "\n\n".join(render_for_prompt(lay) for lay in layouts)
+
+
+def _coerce_sets(tool_input: dict) -> list[HardwareSet]:
+    """Convert the tool-use JSON into HardwareSet dataclasses."""
+    out: list[HardwareSet] = []
+    for s in tool_input.get("sets", []):
+        loc = SetLocation(page=s["location"]["page"],
+                         line_range=tuple(s["location"]["line_range"]))  # type: ignore[arg-type]
+        cont = [
+            SetLocation(page=c["page"], line_range=tuple(c["line_range"]))  # type: ignore[arg-type]
+            for c in s.get("continued_on", [])
+        ]
+        components = [
+            Component(
+                qty=c.get("qty"),
+                description=c.get("description"),
+                catalog_number=c.get("catalog_number"),
+                mfr=c.get("mfr"),
+                finish=c.get("finish"),
+                notes=c.get("notes"),
+            )
+            for c in s.get("components", [])
+        ]
+        out.append(
+            HardwareSet(
+                set_number=s["set_number"],
+                description=s.get("description"),
+                location=loc,
+                continued_on=cont,
+                is_not_used=bool(s.get("is_not_used", False)),
+                components=components,
+            )
+        )
+    return out
+
+
+def _call_model(
+    client: Anthropic,
+    model: str,
+    user_content: str,
+    retry_note: str | None = None,
+) -> list[HardwareSet]:
+    system_blocks = [
+        {
+            "type": "text",
+            "text": SYSTEM_PROMPT,
+            "cache_control": {"type": "ephemeral"},
+        }
+    ]
+    user_blocks: list[dict] = [{"type": "text", "text": user_content}]
+    if retry_note:
+        user_blocks.append({
+            "type": "text",
+            "text": f"\nNOTE: your previous response failed validation: {retry_note}. "
+                    f"Re-emit correctly.",
+        })
+
+    resp = client.messages.create(
+        model=model,
+        max_tokens=MAX_TOKENS,
+        system=system_blocks,
+        tools=[EMIT_HARDWARE_SETS_TOOL],
+        tool_choice={"type": "tool", "name": EMIT_HARDWARE_SETS_TOOL["name"]},
+        messages=[{"role": "user", "content": user_blocks}],
+    )
+
+    for block in resp.content:
+        if block.type == "tool_use" and block.name == EMIT_HARDWARE_SETS_TOOL["name"]:
+            try:
+                return _coerce_sets(block.input)
+            except (KeyError, TypeError, ValueError) as e:
+                raise ExtractionError(f"tool_use payload malformed: {e}") from e
+    raise ExtractionError("model did not call emit_hardware_sets")
+
+
+def extract_sets(
+    region: ScheduleRegion,
+    layouts: list[PageLayout],
+    *,
+    model: str = DEFAULT_MODEL,
+    client: Anthropic | None = None,
+) -> list[HardwareSet]:
+    """Extract every hardware set from `region` (see spec §4.3)."""
+    if client is None:
+        client = Anthropic()
+
+    user_content = _build_user_content(region, layouts)
+
+    try:
+        return _call_model(client, model, user_content)
+    except ExtractionError as e:
+        log.warning("extract_sets: first attempt failed (%s); retrying once", e)
+        try:
+            return _call_model(client, model, user_content, retry_note=str(e))
+        except ExtractionError:
+            raise
+    # APIStatusError and other SDK errors bubble up to the caller (cli exits 3).
