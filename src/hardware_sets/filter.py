@@ -35,6 +35,11 @@ _EA_RE = re.compile(r"\bEA\b", re.I)
 _SET_TOKEN_RE = re.compile(r"^\s*SET\b", re.I | re.M)
 # A known-mfr or known-finish code presence is checked against vocab.
 
+# Tabular schedule row anchor: "N EA ..." (e.g., "1 EA HINGE", "3 EA-R ACTUATOR").
+# Presence of at least one is the strongest single signal that a page holds
+# real table rows rather than prose that mentions "door hardware schedule".
+_QTY_EA_ROW_RE = re.compile(r"\b\d+\s+EA(?:-[A-Z])?\b", re.I | re.M)
+
 
 def _page_text(pdf_path: Path, page: int) -> str:
     """Return `pdftotext -layout` output for 1-indexed `page`."""
@@ -105,7 +110,14 @@ def find_schedule_regions(pdf_path: Path) -> list[ScheduleRegion]:
         page_section = _current_section(text)
 
         if not in_region:
-            name = _match_start(text) or ("heuristic" if _heuristic_start(text) else None)
+            name = _match_start(text)
+            # A named pattern match in narrative prose (submittal sections, cross-
+            # references) produces costly false regions. Require a tabular row
+            # anchor on the same page before entering.
+            if name and not _QTY_EA_ROW_RE.search(text):
+                name = None
+            if not name and _heuristic_start(text):
+                name = "heuristic"
             if name:
                 in_region = True
                 start_page = page
@@ -125,6 +137,8 @@ def find_schedule_regions(pdf_path: Path) -> list[ScheduleRegion]:
             in_region = False
             # The current page could itself start a new region
             name = _match_start(text)
+            if name and not _QTY_EA_ROW_RE.search(text):
+                name = None
             if name:
                 in_region = True
                 start_page = page
