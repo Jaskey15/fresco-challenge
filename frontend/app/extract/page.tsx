@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { BlueprintChrome } from "../components/BlueprintChrome";
 import { StreamLog, type StreamLine } from "../components/StreamLog";
 import { streamExtract } from "@/lib/sse";
+import { loadSnapshot, saveSnapshot } from "@/lib/storage";
 import type { Correction, EditableField, HardwareSet, SseEvent } from "@/lib/types";
 import { SetCard } from "../components/SetCard";
 import { EvidencePane } from "../components/EvidencePane";
@@ -35,6 +36,7 @@ export default function ExtractPage() {
   const [deletedSets, setDeletedSets] = useState<Set<string>>(new Set());
   const [applied, setApplied] = useState<Record<number, HardwareSet>>({});
   const [tab, setTab] = useState<"pdf" | "text">("pdf");
+  const [pdfHash, setPdfHash] = useState<string>("");
   const startedRef = useRef(false);
 
   const appendLog = useCallback((text: string, kind: StreamLine["kind"] = "info") => {
@@ -165,7 +167,17 @@ export default function ExtractPage() {
       return;
     }
     const pending = JSON.parse(raw) as PendingPdf;
+    setPdfHash(pending.hash);
     sessionStorage.removeItem("pending_pdf");
+
+    // Restore prior edits for this exact PDF, if any
+    const prior = loadSnapshot(pending.hash);
+    if (prior) {
+      setCorrections(prior.corrections);
+      setDeletedSets(new Set(prior.deletedSets));
+      setApplied(prior.applied);
+    }
+
     const file = base64ToFile(pending.base64, pending.name);
 
     streamExtract(API_URL, file, handleEvent).catch((e) => {
@@ -174,6 +186,17 @@ export default function ExtractPage() {
       setErrorMessage(String(e));
     });
   }, [handleEvent, router, appendLog]);
+
+  // Persist on every edit
+  useEffect(() => {
+    if (!pdfHash) return;
+    saveSnapshot(pdfHash, {
+      corrections,
+      deletedSets: [...deletedSets],
+      applied,
+      updatedAt: Date.now(),
+    });
+  }, [pdfHash, corrections, deletedSets, applied]);
 
   return (
     <BlueprintChrome title="02" rev="A" sheet="1·1">
