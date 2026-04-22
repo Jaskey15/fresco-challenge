@@ -13,9 +13,36 @@ interface Props {
 export default function ResultsView({ result, onReset }: Props) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const [edits, setEdits] = useState<Record<number, Record<number, Record<string, string>>>>({});
 
   const sets = result.hardware_sets;
   const activeSet = sets[activeIndex];
+
+  const editCount = Object.values(edits[activeIndex] ?? {}).reduce(
+    (sum, fields) => sum + Object.keys(fields).length,
+    0,
+  );
+
+  const handleCellEdit = (compIndex: number, field: string, value: string) => {
+    setEdits((prev) => ({
+      ...prev,
+      [activeIndex]: {
+        ...prev[activeIndex],
+        [compIndex]: {
+          ...(prev[activeIndex]?.[compIndex] ?? {}),
+          [field]: value,
+        },
+      },
+    }));
+  };
+
+  const handleReset = () => {
+    setEdits((prev) => {
+      const next = { ...prev };
+      delete next[activeIndex];
+      return next;
+    });
+  };
 
   if (sets.length === 0) {
     return (
@@ -74,7 +101,13 @@ export default function ResultsView({ result, onReset }: Props) {
           onToggleCollapse={() => setSidebarCollapsed((c) => !c)}
         />
         <SourcePanel set={activeSet} pageLayouts={result.page_layouts} />
-        <DetailTable set={activeSet} />
+        <DetailTable
+          set={activeSet}
+          edits={edits[activeIndex] ?? {}}
+          editCount={editCount}
+          onCellEdit={handleCellEdit}
+          onReset={handleReset}
+        />
       </div>
     </div>
   );
