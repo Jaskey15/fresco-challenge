@@ -8,3 +8,5 @@ out/_summary.txt
 *.egg-info/
 dist/
 build/
+.env.local
+.env
