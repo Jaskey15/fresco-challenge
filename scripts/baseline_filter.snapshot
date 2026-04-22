@@ -3,16 +3,15 @@ Shubie_Center_08.pdf: 1 regions
 valor_acres_door_hardware.pdf: 1 regions
   7-18  group_or_set  END OF SECTION
 roselle_public_library_08.pdf: 1 regions
-  15-17  heuristic  END OF SECTION
+  15-17  door_hardware_schedule  END OF SECTION
 81-85_bridgeport.pdf: 1 regions
   3-49  hardware_schedule_head  eof
 SJC_Div_08.pdf: 1 regions
   161-198  hw_number  END OF SECTION
 jc_ryan_2.pdf: 1 regions
-  24-46  heuristic  END OF SECTION
-morris_bank_08.pdf: 2 regions
-  27-33  heuristic  END OF SECTION
-  40-110  heuristic  new_section
+  24-46  set_label  END OF SECTION
+morris_bank_08.pdf: 1 regions
+  53-110  hardware_sets_colon  new_section
 star_hardware_08.pdf: 2 regions
   25-26  group_or_set  END OF SECTION
   53-113  group_or_set  END OF SECTION
