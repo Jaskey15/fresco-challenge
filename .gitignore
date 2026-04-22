@@ -11,3 +11,6 @@ build/
 .env.local
 .env
 .superpowers/
+frontend/node_modules/
+frontend/.next/
+frontend/out/
