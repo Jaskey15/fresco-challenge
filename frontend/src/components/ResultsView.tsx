@@ -4,6 +4,7 @@ import type { ExtractionResult } from "../types";
 import SetSidebar from "./SetSidebar";
 import SourcePanel from "./SourcePanel";
 import DetailTable from "./DetailTable";
+import JsonViewer from "./JsonViewer";
 
 interface Props {
   result: ExtractionResult;
@@ -14,6 +15,7 @@ export default function ResultsView({ result, onReset }: Props) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [edits, setEdits] = useState<Record<number, Record<number, Record<string, string>>>>({});
+  const [showJson, setShowJson] = useState(false);
 
   const sets = result.hardware_sets;
   const activeSet = sets[activeIndex];
@@ -42,6 +44,35 @@ export default function ResultsView({ result, onReset }: Props) {
       delete next[activeIndex];
       return next;
     });
+  };
+
+  const handleDownload = () => {
+    const editedSets = result.hardware_sets.map((set, setIdx) => {
+      const setEdits = edits[setIdx];
+      if (!setEdits) return set;
+      return {
+        ...set,
+        components: set.components.map((comp, compIdx) => {
+          const compEdits = setEdits[compIdx];
+          if (!compEdits) return comp;
+          return { ...comp, ...compEdits };
+        }),
+      };
+    });
+
+    const output = {
+      source_pdf: result.source_pdf,
+      hardware_sets: editedSets,
+      diagnostics: result.diagnostics,
+    };
+
+    const blob = new Blob([JSON.stringify(output, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = result.source_pdf.replace(/\.pdf$/i, "_hardware_sets.json");
+    a.click();
+    URL.revokeObjectURL(url);
   };
 
   if (sets.length === 0) {
@@ -84,10 +115,28 @@ export default function ResultsView({ result, onReset }: Props) {
             ✓ {sets.length} sets extracted
           </span>
         </div>
-        <div className="text-xs text-gray-400">
-          {result.diagnostics.pages_with_sets} pages ·{" "}
-          {result.diagnostics.llm_calls} LLM call
-          {result.diagnostics.llm_calls !== 1 ? "s" : ""}
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => setShowJson((s) => !s)}
+            className={`text-xs px-2 py-1 rounded border ${
+              showJson
+                ? "bg-blue-50 border-blue-300 text-blue-700"
+                : "border-gray-200 text-gray-500 hover:border-gray-300"
+            }`}
+          >
+            {showJson ? "Hide JSON" : "Show JSON"}
+          </button>
+          <button
+            onClick={handleDownload}
+            className="text-xs px-2 py-1 rounded border border-gray-200 text-gray-500 hover:border-gray-300"
+          >
+            ⬇ Download JSON
+          </button>
+          <span className="text-xs text-gray-400 ml-2">
+            {result.diagnostics.pages_with_sets} pages ·{" "}
+            {result.diagnostics.llm_calls} LLM call
+            {result.diagnostics.llm_calls !== 1 ? "s" : ""}
+          </span>
         </div>
       </div>
 
@@ -101,13 +150,18 @@ export default function ResultsView({ result, onReset }: Props) {
           onToggleCollapse={() => setSidebarCollapsed((c) => !c)}
         />
         <SourcePanel set={activeSet} pageLayouts={result.page_layouts} />
-        <DetailTable
-          set={activeSet}
-          edits={edits[activeIndex] ?? {}}
-          editCount={editCount}
-          onCellEdit={handleCellEdit}
-          onReset={handleReset}
-        />
+        <div className="flex-[1.6] min-w-0 flex flex-col">
+          <DetailTable
+            set={activeSet}
+            edits={edits[activeIndex] ?? {}}
+            editCount={editCount}
+            onCellEdit={handleCellEdit}
+            onReset={handleReset}
+          />
+          {showJson && (
+            <JsonViewer set={activeSet} edits={edits[activeIndex] ?? {}} />
+          )}
+        </div>
       </div>
     </div>
   );
