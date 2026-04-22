@@ -1,0 +1,14 @@
+# .dockerignore
+.git
+.claude
+.superpowers
+__pycache__
+*.egg-info
+node_modules
+frontend/node_modules
+frontend/.next
+out/
+logs/
+docs/
+*.pyc
+.env
