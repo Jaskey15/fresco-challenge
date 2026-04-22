@@ -5,7 +5,8 @@ import { useRouter } from "next/navigation";
 import { BlueprintChrome } from "../components/BlueprintChrome";
 import { StreamLog, type StreamLine } from "../components/StreamLog";
 import { streamExtract } from "@/lib/sse";
-import type { HardwareSet, SseEvent } from "@/lib/types";
+import type { Correction, EditableField, HardwareSet, SseEvent } from "@/lib/types";
+import { SetCard } from "../components/SetCard";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
 
@@ -28,10 +29,87 @@ export default function ExtractPage() {
   const [errorCode, setErrorCode] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [done, setDone] = useState(false);
+  const [corrections, setCorrections] = useState<Correction[]>([]);
+  const [deletedSets, setDeletedSets] = useState<Set<string>>(new Set());
+  const [applied, setApplied] = useState<Record<number, HardwareSet>>({});
   const startedRef = useRef(false);
 
   const appendLog = useCallback((text: string, kind: StreamLine["kind"] = "info") => {
     setLog((l) => [...l, { t: Date.now(), text, kind }]);
+  }, []);
+
+  const editField = useCallback(
+    (setNumber: string, componentIndex: number, field: EditableField, value: string | number | null) => {
+      const setIdx = sets.findIndex((s) => s.set_number === setNumber);
+      if (setIdx < 0) return;
+      const current = applied[setIdx] ?? sets[setIdx];
+      const before = current.components[componentIndex]?.[field] ?? null;
+      if (before === value) return;
+
+      const nextComponents = current.components.map((c, i) =>
+        i === componentIndex ? { ...c, [field]: value } : c,
+      );
+      const nextSet = { ...current, components: nextComponents };
+      setApplied((prev) => ({ ...prev, [setIdx]: nextSet }));
+      setCorrections((prev) => [
+        ...prev,
+        { type: "field", set_number: setNumber, component_index: componentIndex, field, before, after: value },
+      ]);
+    },
+    [applied, sets],
+  );
+
+  const addComponent = useCallback(
+    (setNumber: string) => {
+      const setIdx = sets.findIndex((s) => s.set_number === setNumber);
+      if (setIdx < 0) return;
+      const current = applied[setIdx] ?? sets[setIdx];
+      const newComp = {
+        qty: null,
+        description: null,
+        catalog_number: null,
+        mfr: null,
+        finish: null,
+        notes: null,
+        confidence: {},
+      };
+      const nextSet = { ...current, components: [...current.components, newComp] };
+      setApplied((prev) => ({ ...prev, [setIdx]: nextSet }));
+      setCorrections((prev) => [
+        ...prev,
+        { type: "add_component", set_number: setNumber, component_index: nextSet.components.length - 1 },
+      ]);
+    },
+    [applied, sets],
+  );
+
+  const removeComponent = useCallback(
+    (setNumber: string, componentIndex: number) => {
+      const setIdx = sets.findIndex((s) => s.set_number === setNumber);
+      if (setIdx < 0) return;
+      const current = applied[setIdx] ?? sets[setIdx];
+      const nextComponents = current.components.filter((_, i) => i !== componentIndex);
+      const nextSet = { ...current, components: nextComponents };
+      setApplied((prev) => ({ ...prev, [setIdx]: nextSet }));
+      setCorrections((prev) => [
+        ...prev,
+        { type: "remove_component", set_number: setNumber, component_index: componentIndex },
+      ]);
+    },
+    [applied, sets],
+  );
+
+  const toggleDeleteSet = useCallback((setNumber: string) => {
+    setDeletedSets((prev) => {
+      const next = new Set(prev);
+      if (next.has(setNumber)) {
+        next.delete(setNumber);
+      } else {
+        next.add(setNumber);
+      }
+      return next;
+    });
+    setCorrections((prev) => [...prev, { type: "delete_set", set_number: setNumber }]);
   }, []);
 
   const handleEvent = useCallback(
@@ -123,11 +201,17 @@ export default function ExtractPage() {
             </aside>
 
             <section className="overflow-y-auto border border-cyan-dim rounded-sm bg-paper2/40 p-4">
-              {/* SetCard lands in Task 17 */}
               {sets[selected] ? (
-                <pre className="font-mono text-[11px] whitespace-pre-wrap">
-                  {JSON.stringify(sets[selected], null, 2)}
-                </pre>
+                <SetCard
+                  set={applied[selected] ?? sets[selected]}
+                  isDeleted={deletedSets.has(sets[selected].set_number)}
+                  onEditField={(ci, field, value) =>
+                    editField(sets[selected].set_number, ci, field, value)
+                  }
+                  onAddComponent={() => addComponent(sets[selected].set_number)}
+                  onRemoveComponent={(ci) => removeComponent(sets[selected].set_number, ci)}
+                  onDeleteSet={() => toggleDeleteSet(sets[selected].set_number)}
+                />
               ) : (
                 <div className="text-[11px] text-ink-dim font-mono">select a set</div>
               )}
