@@ -274,6 +274,7 @@ def _call_model(
     with client.messages.stream(
         model=model,
         max_tokens=MAX_TOKENS,
+        temperature=0,
         system=system_blocks,
         tools=[EMIT_HARDWARE_SETS_TOOL],
         tool_choice={"type": "tool", "name": EMIT_HARDWARE_SETS_TOOL["name"]},
