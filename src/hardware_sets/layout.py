@@ -7,11 +7,16 @@ human (or the LLM) can count lines in the rendered text and match
 
 from __future__ import annotations
 
+import logging
 import subprocess
 from pathlib import Path
 from typing import Iterable
 
+import pdfplumber
+
 from hardware_sets.types import BBox, NumberedLine, PageLayout
+
+log = logging.getLogger(__name__)
 
 
 def cluster_words_into_lines(
@@ -52,7 +57,14 @@ def cluster_words_into_lines(
 
 
 def extract_layout(pdf_path: Path, page_num: int) -> PageLayout:
-    """Return a PageLayout for 1-indexed `page_num` of `pdf_path`."""
+    """Return a PageLayout for 1-indexed `page_num` of `pdf_path`.
+
+    Text comes from `pdftotext -layout` (the format the LLM sees and cites).
+    Per-line bboxes are derived from pdfplumber word clustering and attached
+    to each NumberedLine in order. If the two tools disagree on line count,
+    bboxes are left `None` on that page — the UI degrades to "scroll to line,
+    no highlight".
+    """
     result = subprocess.run(
         ["pdftotext", "-layout", "-f", str(page_num), "-l", str(page_num), str(pdf_path), "-"],
         capture_output=True, text=True, check=False,
@@ -67,7 +79,34 @@ def extract_layout(pdf_path: Path, page_num: int) -> PageLayout:
         lines.append(NumberedLine(number=counter, text=raw_line.rstrip()))
         counter += 1
 
-    return PageLayout(page_number=page_num, lines=lines)
+    page_w, page_h = 0.0, 0.0
+    line_bboxes: list[BBox] = []
+    try:
+        with pdfplumber.open(str(pdf_path)) as pdf:
+            if 1 <= page_num <= len(pdf.pages):
+                page = pdf.pages[page_num - 1]
+                page_w = float(page.width)
+                page_h = float(page.height)
+                words = page.extract_words(use_text_flow=False, keep_blank_chars=False)
+                line_bboxes = cluster_words_into_lines(words, y_tol=3.0)
+    except Exception as e:
+        log.debug("pdfplumber bbox extraction failed for page %d: %s", page_num, e)
+
+    if line_bboxes and len(line_bboxes) == len(lines):
+        for nl, bb in zip(lines, line_bboxes):
+            nl.bbox = bb
+    elif line_bboxes:
+        log.debug(
+            "page %d: line count mismatch (pdftotext=%d, pdfplumber=%d); bboxes skipped",
+            page_num, len(lines), len(line_bboxes),
+        )
+
+    return PageLayout(
+        page_number=page_num,
+        lines=lines,
+        page_width=page_w,
+        page_height=page_h,
+    )
 
 
 def render_for_prompt(layout: PageLayout) -> str:
