@@ -19,18 +19,18 @@ from hardware_sets.types import ScheduleRegion
 # Patterns. Named so that `ScheduleRegion.start_marker` is debuggable.
 # -----------------------------------------------------------------------------
 
-START_PATTERNS: list[tuple[str, re.Pattern[str]]] = [
-    # Schedule section headers (high confidence)
-    ("door_hardware_schedule", re.compile(r"DOOR\s+HARDWARE\s+SCHEDULE", re.I)),
-    ("hardware_sets_colon",    re.compile(r"\bHardware\s+Sets\s*:", re.I)),
-    ("schedule_section_3dot",  re.compile(r"^\s*3\.\d+\s+(?:HARDWARE\s+)?SCHEDULE", re.I | re.M)),
-    ("hardware_schedule_head", re.compile(r"(?:^|\n)\s*Hardware\s+Schedule\s*$", re.I | re.M)),
-    # First set/group markers
-    ("group_or_set",    re.compile(r"Hardware\s+(?:Group|Set)(?:/Set)?\s*(?:No\.?|#)\s*\S+", re.I)),
-    ("hw_number",       re.compile(r"\bHW\s+\d+", re.I)),
-    ("set_label",       re.compile(r"\bSet[:\s]+(?:EX-?)?\d", re.I)),
-    ("set_hash",        re.compile(r"\bSet\s+#\s*\S+", re.I)),
-    ("heading_number",  re.compile(r"\bHeading\s+#\s*\d+", re.I)),
+START_PATTERNS: list[tuple[str, re.Pattern[str], bool]] = [
+    # Low confidence — section headers that repeat on every page; require tabular guard
+    ("door_hardware_schedule", re.compile(r"DOOR\s+HARDWARE\s+SCHEDULE", re.I), True),
+    ("hardware_sets_colon",    re.compile(r"\bHardware\s+Sets\s*:", re.I), True),
+    ("schedule_section_3dot",  re.compile(r"^\s*3\.\d+\s+(?:HARDWARE\s+)?SCHEDULE", re.I | re.M), True),
+    ("hardware_schedule_head", re.compile(r"(?:^|\n)\s*Hardware\s+Schedule\s*$", re.I | re.M), True),
+    # High confidence — specific set/group markers; bypass tabular guard
+    ("group_or_set",    re.compile(r"Hardware\s+(?:Group|Set)(?:/Set)?\s*(?:No\.?|#)\s*\S+", re.I), False),
+    ("hw_number",       re.compile(r"\bHW\s+\d+", re.I), False),
+    ("set_label",       re.compile(r"\bSet[:\s]+(?:EX-?)?\d", re.I), False),
+    ("set_hash",        re.compile(r"\bSet\s+#\s*\S+", re.I), False),
+    ("heading_number",  re.compile(r"\bHeading\s+#\s*\d+", re.I), False),
 ]
 
 END_OF_SECTION_RE = re.compile(r"END\s+OF\s+SECTION", re.I)
@@ -74,12 +74,12 @@ def _current_section(text: str) -> str | None:
     return f"{m.group(1)}{m.group(2)}{m.group(3)}"
 
 
-def _match_start(text: str) -> str | None:
-    """Return the name of the first matching START_PATTERNS entry, else None."""
-    for name, pat in START_PATTERNS:
+def _match_start(text: str) -> tuple[str | None, bool]:
+    """Return (name, needs_guard) for the first matching pattern, else (None, False)."""
+    for name, pat, needs_guard in START_PATTERNS:
         if pat.search(text):
-            return name
-    return None
+            return name, needs_guard
+    return None, False
 
 
 def _heuristic_start(text: str) -> bool:
@@ -122,8 +122,8 @@ def find_schedule_regions(pdf_path: Path) -> list[ScheduleRegion]:
         page_section = _current_section(text)
 
         if not in_region:
-            name = _match_start(text)
-            if name and not _has_tabular_content(text):
+            name, needs_guard = _match_start(text)
+            if name and needs_guard and not _has_tabular_content(text):
                 name = None
             if not name and _heuristic_start(text):
                 name = "heuristic"
@@ -145,8 +145,8 @@ def find_schedule_regions(pdf_path: Path) -> list[ScheduleRegion]:
             regions.append(ScheduleRegion(start_page, page - 1, start_marker, "new_section"))
             in_region = False
             # The current page could itself start a new region
-            name = _match_start(text)
-            if name and not _has_tabular_content(text):
+            name, needs_guard = _match_start(text)
+            if name and needs_guard and not _has_tabular_content(text):
                 name = None
             if name:
                 in_region = True
