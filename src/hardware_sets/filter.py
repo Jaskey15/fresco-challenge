@@ -20,10 +20,17 @@ from hardware_sets.types import ScheduleRegion
 # -----------------------------------------------------------------------------
 
 START_PATTERNS: list[tuple[str, re.Pattern[str]]] = [
+    # Schedule section headers (high confidence)
     ("door_hardware_schedule", re.compile(r"DOOR\s+HARDWARE\s+SCHEDULE", re.I)),
-    ("hardware_sets_colon",    re.compile(r"\bD\.\s*Hardware\s+Sets:", re.I)),
-    ("schedule_section_3dot",  re.compile(r"^\s*3\.\d+\s+SCHEDULE", re.I | re.M)),
-    ("group_1",                re.compile(r"Hardware\s+(?:Group|Set)(?:/Set)?\s*(?:No\.?|#)?\s*0*1\b", re.I)),
+    ("hardware_sets_colon",    re.compile(r"\bHardware\s+Sets\s*:", re.I)),
+    ("schedule_section_3dot",  re.compile(r"^\s*3\.\d+\s+(?:HARDWARE\s+)?SCHEDULE", re.I | re.M)),
+    ("hardware_schedule_head", re.compile(r"(?:^|\n)\s*Hardware\s+Schedule\s*$", re.I | re.M)),
+    # First set/group markers
+    ("group_or_set",    re.compile(r"Hardware\s+(?:Group|Set)(?:/Set)?\s*(?:No\.?|#)\s*\S+", re.I)),
+    ("hw_number",       re.compile(r"\bHW\s+\d+", re.I)),
+    ("set_label",       re.compile(r"\bSet[:\s]+(?:EX-?)?\d", re.I)),
+    ("set_hash",        re.compile(r"\bSet\s+#\s*\S+", re.I)),
+    ("heading_number",  re.compile(r"\bHeading\s+#\s*\d+", re.I)),
 ]
 
 END_OF_SECTION_RE = re.compile(r"END\s+OF\s+SECTION", re.I)
@@ -35,10 +42,15 @@ _EA_RE = re.compile(r"\bEA\b", re.I)
 _SET_TOKEN_RE = re.compile(r"^\s*SET\b", re.I | re.M)
 # A known-mfr or known-finish code presence is checked against vocab.
 
-# Tabular schedule row anchor: "N EA ..." (e.g., "1 EA HINGE", "3 EA-R ACTUATOR").
-# Presence of at least one is the strongest single signal that a page holds
-# real table rows rather than prose that mentions "door hardware schedule".
-_QTY_EA_ROW_RE = re.compile(r"\b\d+\s+EA(?:-[A-Z])?\b", re.I | re.M)
+# Tabular content guards: distinguish real schedule pages from narrative prose.
+_TABULAR_ROW_RE = re.compile(r"\b\d+\s+(?:EA(?:-[A-Z])?|Ea\.|Set|Pr)\b", re.I | re.M)
+_BARE_QTY_LINE = re.compile(r"^\s+\d+\s+\w", re.M)
+
+
+def _has_tabular_content(text: str) -> bool:
+    if _TABULAR_ROW_RE.search(text):
+        return True
+    return len(_BARE_QTY_LINE.findall(text)) >= 3
 
 
 def _page_text(pdf_path: Path, page: int) -> str:
@@ -111,10 +123,7 @@ def find_schedule_regions(pdf_path: Path) -> list[ScheduleRegion]:
 
         if not in_region:
             name = _match_start(text)
-            # A named pattern match in narrative prose (submittal sections, cross-
-            # references) produces costly false regions. Require a tabular row
-            # anchor on the same page before entering.
-            if name and not _QTY_EA_ROW_RE.search(text):
+            if name and not _has_tabular_content(text):
                 name = None
             if not name and _heuristic_start(text):
                 name = "heuristic"
@@ -137,7 +146,7 @@ def find_schedule_regions(pdf_path: Path) -> list[ScheduleRegion]:
             in_region = False
             # The current page could itself start a new region
             name = _match_start(text)
-            if name and not _QTY_EA_ROW_RE.search(text):
+            if name and not _has_tabular_content(text):
                 name = None
             if name:
                 in_region = True

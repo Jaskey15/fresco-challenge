@@ -17,16 +17,42 @@ def test_start_door_hardware_schedule():
 
 
 def test_start_hardware_sets_colon():
+    assert _match_start("E. Hardware Sets:") == "hardware_sets_colon"
     assert _match_start("D. Hardware Sets:") == "hardware_sets_colon"
 
 
 def test_start_schedule_section_3dot():
     assert _match_start("   3.01 SCHEDULE") == "schedule_section_3dot"
+    assert _match_start("  3.07 HARDWARE SCHEDULE") == "schedule_section_3dot"
 
 
-def test_start_group_1():
-    assert _match_start("Hardware Group No. 01") == "group_1"
-    assert _match_start("Hardware Set #1") == "group_1"
+def test_start_hardware_schedule_head():
+    assert _match_start("\nHardware Schedule\n") == "hardware_schedule_head"
+
+
+def test_start_group_or_set():
+    assert _match_start("Hardware Group No. 01") == "group_or_set"
+    assert _match_start("Hardware Set #1") == "group_or_set"
+    assert _match_start("Hardware Group/Set #103") == "group_or_set"
+
+
+def test_start_hw_number():
+    assert _match_start("HW 01  Interior Single Bedroom") == "hw_number"
+
+
+def test_start_set_label():
+    assert _match_start("Set: EX-1.0") == "set_label"
+    assert _match_start("Set: 1.0") == "set_label"
+
+
+def test_start_set_hash():
+    assert _match_start("Set #101") == "set_hash"
+    assert _match_start("Set #SR38CL") == "set_hash"
+
+
+def test_start_heading_number():
+    assert _match_start("Heading #1") == "heading_number"
+    assert _match_start("Heading #4") == "heading_number"
 
 
 def test_start_no_match_on_narrative():
@@ -56,17 +82,20 @@ def test_heuristic_does_not_fire_on_narrative():
     )
 
 
-def test_qty_ea_row_pattern_matches_real_table_rows():
-    from hardware_sets.filter import _QTY_EA_ROW_RE
-    assert _QTY_EA_ROW_RE.search("1        EA     CONT. HINGE")
-    assert _QTY_EA_ROW_RE.search(" 3 EA HINGE 5BB1")
-    assert _QTY_EA_ROW_RE.search("4        EA-R   ACTUATOR, TOUCH")
+def test_tabular_content_matches_real_schedule_rows():
+    from hardware_sets.filter import _has_tabular_content
+    assert _has_tabular_content("1        EA     CONT. HINGE")
+    assert _has_tabular_content(" 3 EA HINGE 5BB1")
+    assert _has_tabular_content("4        EA-R   ACTUATOR, TOUCH")
+    assert _has_tabular_content("1 Ea.  Lockset  L9070")
+    assert _has_tabular_content("1 Set  Continuous Hinge  AC500")
+    # Bare quantity lines (3+) without unit labels
+    assert _has_tabular_content("  3   Standard Hinge\n  1   Lockset\n  1   Wall Door Stop")
 
 
-def test_qty_ea_row_pattern_rejects_prose():
-    from hardware_sets.filter import _QTY_EA_ROW_RE
-    # Prose that talks about door hardware schedules — no numeric EA rows
-    assert not _QTY_EA_ROW_RE.search(
+def test_tabular_content_rejects_prose():
+    from hardware_sets.filter import _has_tabular_content
+    assert not _has_tabular_content(
         "Door Hardware Schedule: Prepared by the Architectural Hardware Consultant."
     )
-    assert not _QTY_EA_ROW_RE.search("Refer to Door and Frame Schedule on Drawings.")
+    assert not _has_tabular_content("Refer to Door and Frame Schedule on Drawings.")
