@@ -11,6 +11,7 @@ import { SetCard } from "../components/SetCard";
 import { EvidencePane } from "../components/EvidencePane";
 import { EvidenceTextTab } from "../components/EvidenceTextTab";
 import { ExportMenu } from "../components/ExportMenu";
+import { ErrorPanel } from "../components/ErrorPanel";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
 
@@ -199,6 +200,16 @@ export default function ExtractPage() {
     });
   }, [pdfHash, corrections, deletedSets, applied]);
 
+  const fullReplaceCodes = new Set(["scanned_pdf", "no_schedule", "parse_error"]);
+
+  if (errorCode && fullReplaceCodes.has(errorCode)) {
+    return (
+      <BlueprintChrome title="02" rev="A" sheet="1·1">
+        <ErrorPanel code={errorCode} message={errorMessage ?? ""} />
+      </BlueprintChrome>
+    );
+  }
+
   return (
     <BlueprintChrome title="02" rev="A" sheet="1·1">
       <div className="flex items-center justify-between px-6 pt-4">
@@ -213,6 +224,11 @@ export default function ExtractPage() {
           corrections={corrections}
         />
       </div>
+        {errorCode === "api_error" && (
+          <div className="px-6 pt-2">
+            <ErrorPanel code={errorCode} message={errorMessage ?? ""} />
+          </div>
+        )}
       <div className="min-h-[calc(100vh-4rem)] grid grid-cols-1 md:grid-cols-[60%_40%] gap-4 px-6 py-10">
         {/* left: sets + log */}
         <div className="flex flex-col gap-4 min-h-0">
