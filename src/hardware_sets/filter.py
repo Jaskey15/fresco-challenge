@@ -45,12 +45,26 @@ _SET_TOKEN_RE = re.compile(r"^\s*SET\b", re.I | re.M)
 # Tabular content guards: distinguish real schedule pages from narrative prose.
 _TABULAR_ROW_RE = re.compile(r"\b\d+\s+(?:EA(?:-[A-Z])?|Ea\.|Set|Pr)\b", re.I | re.M)
 _BARE_QTY_LINE = re.compile(r"^\s+\d+\s+\w", re.M)
+_QTY_LEADING_LINE = re.compile(r"^\s*\d+\s+[A-Z]", re.M)
+_DASH_QTY = re.compile(r"(?:^|\s)--\s+\w", re.M)
+_HW_COMPONENT_RE = re.compile(
+    r"\d+.*(?:HINGE|CLOSER|LOCKSET|STRIKE|BOLT|THRESHOLD|GASKETING|SWEEP|CYLINDER|STOP|PANIC|EXIT\s+DEVICE)",
+    re.I,
+)
 
 
 def _has_tabular_content(text: str) -> bool:
     if _TABULAR_ROW_RE.search(text):
         return True
-    return len(_BARE_QTY_LINE.findall(text)) >= 3
+    if len(_BARE_QTY_LINE.findall(text)) >= 3:
+        return True
+    if len(_QTY_LEADING_LINE.findall(text)) >= 3:
+        return True
+    if _DASH_QTY.search(text) and _QTY_LEADING_LINE.search(text):
+        return True
+    if len(_HW_COMPONENT_RE.findall(text)) >= 12:
+        return True
+    return False
 
 
 def _page_text(pdf_path: Path, page: int) -> str:
