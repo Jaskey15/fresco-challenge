@@ -35,6 +35,21 @@ not individual tokens. A column mostly containing MK/LCN/SCH is a manufacturer
 column; one with US26D/630/BSP is a finish column. Codes like "PE" (Pemko vs
 Painted Enamel) and "NO" (Norton vs the word "No.") follow column context.
 
+Layout patterns you will encounter:
+- Labeled list: a heading like "Hardware Group No. 01", "SET 1", or
+  "Hardware Set #5" introduces each set, followed by a small table of its
+  components. The set ends before the next heading.
+- Bordered tabular schedule: one large table with columns like
+  SET / HARDWARE TYPE / MANUFACTURER / QTY / FINISH / NOTES. The SET column
+  is only populated on the FIRST row of each set (e.g., "1.1", "2.3"); the
+  rows that follow with the same set leave the SET column blank or place a
+  door-type tag in it like "SINGLE DOOR", "CURTAINWALL", "INTR EGRESS",
+  "EXTR ENTR". Group every row up to the next numeric SET value into the
+  same set. The set_number is the literal numeric value (e.g., "1.1"). The
+  door-type tags collected from those continuation rows form the set's
+  description (join them with " / "). Each row whose HARDWARE TYPE column
+  is non-empty is one component of the current set.
+
 Nulls and edges:
 - Emit qty: null rather than guessing when absent.
 - A set marked NOT USED, N/A, or similar is emitted with empty components
@@ -137,7 +152,7 @@ class ExtractionError(RuntimeError):
 
 
 DEFAULT_MODEL = "claude-sonnet-4-6"
-MAX_TOKENS = 8000
+MAX_TOKENS = 32000
 
 
 def _build_user_content(region: ScheduleRegion, layouts: list[PageLayout]) -> str:
@@ -203,14 +218,16 @@ def _call_model(
                     f"Re-emit correctly.",
         })
 
-    resp = client.messages.create(
+    # Streaming so MAX_TOKENS can exceed the 10-min sync cap on dense regions.
+    with client.messages.stream(
         model=model,
         max_tokens=MAX_TOKENS,
         system=system_blocks,
         tools=[EMIT_HARDWARE_SETS_TOOL],
         tool_choice={"type": "tool", "name": EMIT_HARDWARE_SETS_TOOL["name"]},
         messages=[{"role": "user", "content": user_blocks}],
-    )
+    ) as stream:
+        resp = stream.get_final_message()
 
     for block in resp.content:
         if block.type == "tool_use" and block.name == EMIT_HARDWARE_SETS_TOOL["name"]:
