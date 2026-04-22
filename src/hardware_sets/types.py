@@ -9,31 +9,37 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 
+BBox = tuple[float, float, float, float]  # (x0, top, x1, bottom) in PDF points
+
 
 @dataclass
 class NumberedLine:
-    number: int           # 1-indexed from top of page
-    text: str             # verbatim pdftotext -layout line
+    number: int                      # 1-indexed from top of page
+    text: str                        # verbatim pdftotext -layout line
+    bbox: BBox | None = None         # pdfplumber-derived; None if clustering failed
 
 
 @dataclass
 class PageLayout:
-    page_number: int      # 1-indexed
+    page_number: int                 # 1-indexed
     lines: list[NumberedLine]
+    page_width: float = 0.0          # PDF points; 0 means unknown
+    page_height: float = 0.0
 
 
 @dataclass
 class ScheduleRegion:
-    start_page: int       # 1-indexed, inclusive
-    end_page: int         # 1-indexed, inclusive
-    start_marker: str     # which START_PATTERNS name matched (for debug)
-    end_marker: str       # "END OF SECTION" | "new_section" | "eof"
+    start_page: int                  # 1-indexed, inclusive
+    end_page: int                    # 1-indexed, inclusive
+    start_marker: str
+    end_marker: str                  # "END OF SECTION" | "new_section" | "eof"
 
 
 @dataclass
 class SetLocation:
-    page: int             # 1-indexed
-    line_range: tuple[int, int]  # (first, last), 1-indexed, inclusive
+    page: int                        # 1-indexed
+    line_range: tuple[int, int]      # (first, last), 1-indexed, inclusive
+    bbox: BBox | None = None         # union of NumberedLine bboxes in line_range
 
 
 @dataclass
