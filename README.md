@@ -1,80 +1,123 @@
-# Hardware Sets — Division 08 Specbook Extractor
+# Fresco Coding Challenge — Hardware Sets
 
-Extracts every door-hardware set from a construction Division 08 (Openings)
-specbook PDF into structured JSON, including the page + line range where each
-set lives.
+Extract door-hardware sets from Division 08 specbook PDFs into structured JSON with per-set location data (page, line range, and pixel bounding box). Ships as:
 
-## Setup
+1. A Python CLI (`python -m hardware_sets ...`) — the original pipeline.
+2. A FastAPI service (`src/hardware_sets_api/`) — wraps the pipeline, streams typed SSE events.
+3. A Next.js frontend (`frontend/`) — drag-drop upload, live streaming, inline editing, PDF evidence pane with bbox highlights.
 
-Requires Python 3.12+, Poppler's `pdftotext`, and an Anthropic API key.
+## Live demo
 
-```bash
-# Poppler on macOS
-brew install poppler
-
-# Python deps (uses the repo's .venv)
-.venv/bin/pip install -e ".[dev]"
-
-export ANTHROPIC_API_KEY=sk-ant-...
-```
-
-## Run
-
-```bash
-.venv/bin/python -m hardware_sets path/to/specbook.pdf --out result.json
-```
-
-Flags:
-
-| Flag | Default | Purpose |
-|---|---|---|
-| `pdf_path` | required | PDF to extract from |
-| `--out` / `-o` | stdout | Where to write JSON |
-| `--model` | `claude-sonnet-4-6` | Anthropic model id |
-| `--no-score` | off | Skip vocabulary-match confidence scoring |
-| `--quiet` | off | Suppress progress logs |
-
-Exit codes: `0` success, `1` usage error / missing key, `2` no schedule
-region found (includes scanned-only PDFs), `3` unrecoverable API error.
-
-## Batch QA
-
-```bash
-.venv/bin/python scripts/run_samples.py
-```
-
-Runs the extractor against every PDF under `samples/`, writing one JSON per
-PDF to `out/<stem>.json` plus `out/_summary.txt`.
+- **Frontend (Vercel):** <!-- fill in after deploy -->
+- **API (Fly.io):** <!-- fill in after deploy -->
 
 ## Architecture
 
-Five-module pipeline under `src/hardware_sets/`:
+```
+PDF ─┬─→ filter.py    (pick schedule regions)
+     │
+     ├─→ layout.py    (pdftotext lines + pdfplumber bboxes)
+     │
+     ├─→ extract.py   (Claude Sonnet 4.6, tool use)
+     │
+     └─→ resolve.py   (vocab confidence scoring)
+                │
+                └─→ SSE events → Next.js UI
+```
 
-- `filter.py` — locates contiguous schedule region(s) within the PDF (spec §4.1)
-- `layout.py` — renders each page as a list of numbered lines via `pdftotext -layout` (§4.2)
-- `extract.py` — one prompt-cached Claude Sonnet 4.6 call per region, emitting structured sets through a tool schema (§4.3)
-- `resolve.py` — post-hoc vocabulary-match confidence scoring (§4.4). Never auto-corrects.
-- `cli.py` — argparse + pipeline + JSON output (§4.5)
+See `docs/superpowers/specs/` for the full designs.
 
-`types.py` and `vocab.py` are shared constants.
+## Run locally
 
-## Confidence scoring — what it means
+### Backend
 
-A `confidence` field below 1.0 means "this value didn't exactly match our
-built-in vocabulary." For finish codes that signal is reliable — BHMA codes
-and `USnn[DL]?` patterns are ANSI-standard. For manufacturer short codes it's
-weaker: each project uses its own legend (e.g., `IVE` vs `IVES`), so a
-confidence below 0.7 on `mfr` could mean "real LLM error" or "legitimate
-project-specific abbreviation we haven't seen yet." Review low-confidence
-mfr values rather than trusting the drop.
+Requires Python 3.12 and `poppler` (for `pdftotext`):
+
+```sh
+brew install poppler                        # macOS; apt-get install poppler-utils on Debian
+python -m venv .venv && source .venv/bin/activate
+pip install -e '.[api,dev]'
+export ANTHROPIC_API_KEY=sk-ant-...
+uvicorn hardware_sets_api.main:app --port 8000
+```
+
+### Frontend
+
+Requires Node 20+:
+
+```sh
+cd frontend
+cp .env.local.example .env.local            # NEXT_PUBLIC_API_URL defaults to http://localhost:8000
+npm install
+npm run dev
+```
+
+Open <http://localhost:3000>, drop any sample PDF (e.g. `samples/div_08_1.pdf`), and watch it stream.
+
+### CLI-only usage
+
+```sh
+python -m hardware_sets samples/div_08_1.pdf --out out/div_08_1.json
+```
+
+## Deploy
+
+### Backend (Fly.io)
+
+```sh
+fly launch --no-deploy --copy-config        # first time: reads fly.toml
+fly secrets set ANTHROPIC_API_KEY=sk-ant-...
+fly secrets set ALLOWED_ORIGINS=https://<your-vercel-app>.vercel.app
+fly deploy
+```
+
+### Frontend (Vercel)
+
+```sh
+cd frontend
+vercel --prod
+# Set NEXT_PUBLIC_API_URL=https://<your-fly-app>.fly.dev in Vercel env settings.
+```
 
 ## Tests
 
-```bash
-.venv/bin/pytest
+```sh
+pytest                                       # Python: filter patterns, resolve scoring, layout bbox clustering
+cd frontend && npm test -- --run             # TypeScript: corrections diff builder
+cd frontend && npm run typecheck             # tsc --noEmit
+cd frontend && npm run build                 # next build
 ```
 
-Two small suites: `tests/test_filter_patterns.py` covers start/end marker
-regex, `tests/test_resolve_scoring.py` covers confidence scoring. LLM
-behavior is validated by running `scripts/run_samples.py` and eyeballing the
-output, per spec §8.
+## Output schema
+
+Each hardware set emits:
+
+```json
+{
+  "set_number": "1.1",
+  "description": "RECEPTION",
+  "location": { "page": 40, "line_range": [12, 26], "bbox": [50, 100, 555, 240] },
+  "continued_on": [],
+  "is_not_used": false,
+  "components": [
+    {
+      "qty": 1,
+      "description": "HINGE",
+      "catalog_number": "...",
+      "mfr": "IVES",
+      "finish": "630",
+      "notes": null,
+      "confidence": { "mfr": 1.0, "finish": 1.0, "qty": 1.0 }
+    }
+  ],
+  "confidence": 0.95
+}
+```
+
+`bbox` is `(x0, top, x1, bottom)` in PDF points (top-left origin, increases downward). `null` when the pdfplumber cluster count disagreed with the pdftotext line count on that page — the UI degrades to "scroll to line, no highlight."
+
+## Known caveats
+
+- **mfr short codes** (e.g. `IVE`, `VON`) are project-local — if a specbook uses a code not in `vocab.py`, it flags as low confidence rather than an error. See `resolve.py` docstring.
+- **Scanned PDFs** are detected and rejected; OCR is out of scope for v1.
+- **Session PDFs** are held in memory for 10 minutes on the API server. A pod restart drops active sessions.
