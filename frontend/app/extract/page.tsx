@@ -7,6 +7,8 @@ import { StreamLog, type StreamLine } from "../components/StreamLog";
 import { streamExtract } from "@/lib/sse";
 import type { Correction, EditableField, HardwareSet, SseEvent } from "@/lib/types";
 import { SetCard } from "../components/SetCard";
+import { EvidencePane } from "../components/EvidencePane";
+import { EvidenceTextTab } from "../components/EvidenceTextTab";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
 
@@ -32,6 +34,7 @@ export default function ExtractPage() {
   const [corrections, setCorrections] = useState<Correction[]>([]);
   const [deletedSets, setDeletedSets] = useState<Set<string>>(new Set());
   const [applied, setApplied] = useState<Record<number, HardwareSet>>({});
+  const [tab, setTab] = useState<"pdf" | "text">("pdf");
   const startedRef = useRef(false);
 
   const appendLog = useCallback((text: string, kind: StreamLine["kind"] = "info") => {
@@ -219,13 +222,41 @@ export default function ExtractPage() {
           </div>
         </div>
 
-        {/* right: evidence pane lands in Task 18 */}
-        <aside className="border border-cyan-dim rounded-sm bg-paper2/40 p-4 min-h-[500px]">
-          <div className="text-[10px] tracking-[0.3em] uppercase text-ink-dim mb-3">
-            Evidence · {sessionId ? sessionId.slice(0, 8) : "…"} · {filename}
+        <aside className="flex flex-col border border-cyan-dim rounded-sm bg-paper2/40 min-h-[500px]">
+          <div className="flex items-center justify-between px-4 py-2 border-b border-cyan-dim">
+            <div className="text-[10px] tracking-[0.3em] uppercase text-ink-dim">
+              Evidence · {sessionId ? sessionId.slice(0, 8) : "…"} · {filename}
+            </div>
+            <div className="flex gap-1">
+              <button
+                onClick={() => setTab("pdf")}
+                className={`text-[10px] uppercase tracking-[0.2em] px-2 py-1 rounded-sm ${
+                  tab === "pdf" ? "bg-cyan text-paper" : "text-ink-dim hover:text-ink"
+                }`}
+              >
+                PDF
+              </button>
+              <button
+                onClick={() => setTab("text")}
+                className={`text-[10px] uppercase tracking-[0.2em] px-2 py-1 rounded-sm ${
+                  tab === "text" ? "bg-cyan text-paper" : "text-ink-dim hover:text-ink"
+                }`}
+              >
+                TEXT
+              </button>
+            </div>
           </div>
-          <div className="text-xs text-ink-dim font-mono">
-            PDF pane lands next.
+
+          <div className="flex-1 overflow-auto p-4">
+            {tab === "pdf" && sessionId ? (
+              <EvidencePane
+                pdfUrl={`${API_URL}/pdf/${sessionId}`}
+                location={sets[selected]?.location ?? null}
+                continued={sets[selected]?.continued_on ?? []}
+              />
+            ) : (
+              <EvidenceTextTab location={sets[selected]?.location ?? null} filename={filename} />
+            )}
           </div>
         </aside>
 
