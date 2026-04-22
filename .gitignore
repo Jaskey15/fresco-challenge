@@ -8,6 +8,8 @@ out/_summary.txt
 *.egg-info/
 dist/
 build/
+node_modules/
+*.tsbuildinfo
 .env.local
 .env
 .superpowers/
