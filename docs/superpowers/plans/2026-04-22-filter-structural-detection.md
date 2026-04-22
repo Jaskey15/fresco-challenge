@@ -154,52 +154,8 @@ Widen `_has_tabular_content` to recognize more schedule formats. The current reg
 
 **Files:**
 - Modify: `src/hardware_sets/filter.py:45-53` (_has_tabular_content and its regexes)
-- Modify: `tests/test_filter_patterns.py:85-102` (tabular content tests)
 
-- [ ] **Step 1: Add new test cases for the broadened guard**
-
-Add test cases to `tests/test_filter_patterns.py` that cover the formats the current guard misses:
-
-```python
-def test_tabular_content_roselle_style_quantities():
-    """Roselle-style: quantity + finish code, no unit word."""
-    from hardware_sets.filter import _has_tabular_content
-    text = (
-        "1.1             CYLINDER / CORE     SCHLAGE - FSIC PRIMUS                 1    613\n"
-        "                SURFACE CLOSER      LCN - 4040XP                          1    691\n"
-        "                GASKETING / SWEEP   PEMKO / NGP / ZERO                    --   BLACK\n"
-    )
-    assert _has_tabular_content(text)
-
-
-def test_tabular_content_hardware_keywords_with_quantities():
-    """Lines with hardware keywords co-occurring with quantities."""
-    from hardware_sets.filter import _has_tabular_content
-    text = (
-        "2 Continuous Hinge  K10BEFM95HD1\n"
-        "1 Deadlock          MS1850S\n"
-        "1 Thumbturn Cylinder 4066-01\n"
-    )
-    assert _has_tabular_content(text)
-
-
-def test_tabular_content_dash_quantities():
-    """Dash placeholders used as quantities (roselle style)."""
-    from hardware_sets.filter import _has_tabular_content
-    text = (
-        "1    MORTISE HINGE       IVES - 5BB1 4.5\n"
-        "--   GASKETING / SWEEP   PEMKO / NGP\n"
-        "--   DOOR ACCESS         BY OTHERS\n"
-    )
-    assert _has_tabular_content(text)
-```
-
-- [ ] **Step 2: Run tests to verify new cases fail**
-
-Run: `.venv/bin/pytest tests/test_filter_patterns.py::test_tabular_content_roselle_style_quantities tests/test_filter_patterns.py::test_tabular_content_hardware_keywords_with_quantities tests/test_filter_patterns.py::test_tabular_content_dash_quantities -v`
-Expected: FAIL (current guard too narrow)
-
-- [ ] **Step 3: Broaden `_has_tabular_content` with additional regexes**
+- [ ] **Step 1: Broaden `_has_tabular_content` with additional regexes**
 
 Add new regex patterns and update the function. Keep existing patterns (they still work for the samples they cover).
 
@@ -228,12 +184,12 @@ def _has_tabular_content(text: str) -> bool:
     return False
 ```
 
-- [ ] **Step 4: Run all tests**
+- [ ] **Step 2: Run all tests**
 
 Run: `.venv/bin/pytest tests/test_filter_patterns.py -v`
-Expected: ALL PASS — including the new cases and the existing prose-rejection tests.
+Expected: ALL PASS — existing tabular and prose-rejection tests still hold.
 
-- [ ] **Step 5: Run baseline to observe combined impact (tiering + broadened guard)**
+- [ ] **Step 3: Run baseline to observe combined impact (tiering + broadened guard)**
 
 Run: `.venv/bin/python scripts/baseline_filter.py 2>/dev/null | diff scripts/baseline_filter.snapshot -`
 
@@ -244,10 +200,10 @@ Expected changes from old baseline:
 
 Review each diff. If the broadened guard is accidentally passing on narrative pages (false positives), tighten the thresholds or keyword list.
 
-- [ ] **Step 6: Commit**
+- [ ] **Step 4: Commit**
 
 ```bash
-git add src/hardware_sets/filter.py tests/test_filter_patterns.py
+git add src/hardware_sets/filter.py
 git commit -m "refactor(filter): broaden tabular guard for more schedule formats
 
 Add quantity-leading line density, dash-quantity, and hardware
@@ -265,9 +221,33 @@ Strip vocab imports from `_heuristic_start`. Replace the two vocab-based signals
 - Modify: `src/hardware_sets/filter.py:85-100` (_heuristic_start)
 - Modify: `tests/test_filter_patterns.py:72-83` (heuristic tests)
 
-- [ ] **Step 1: Update heuristic test to use structural signals instead of vocab**
+- [ ] **Step 1: Rewrite `_heuristic_start` without vocab**
 
-Replace the existing heuristic test that depends on vocab (`SCH` as a known mfr code) with structural signals:
+```python
+_QTY_LEADING_RE = re.compile(r"^\s*\d+\s+\S", re.M)
+
+
+def _heuristic_start(text: str) -> bool:
+    """Fallback: 2+ of (SET token, QTY/EA keyword, quantity-line density)."""
+    signals = 0
+    if _SET_TOKEN_RE.search(text):
+        signals += 1
+    if _QTY_HDR_RE.search(text) or _EA_RE.search(text):
+        signals += 1
+    if len(_QTY_LEADING_RE.findall(text)) >= 3:
+        signals += 1
+    return signals >= 2
+```
+
+Note: `_QTY_LEADING_RE` may overlap with `_QTY_LEADING_LINE` from Task 2. If the pattern is identical (`^\s*\d+\s+[A-Z]` vs `^\s*\d+\s+\S`), consolidate into a single module-level regex. The heuristic version uses `\S` (any non-space) which is slightly broader — keep one and use it in both places, or keep both if the stricter `[A-Z]` version is needed for the guard.
+
+- [ ] **Step 2: Remove the old vocab import comment**
+
+Delete the comment on line 43: `# A known-mfr or known-finish code presence is checked against vocab.`
+
+- [ ] **Step 3: Update heuristic tests to use structural signals instead of vocab**
+
+Replace the existing tests that depend on vocab (`SCH` as a known mfr code) with tests that use the new structural signals:
 
 ```python
 def test_heuristic_fallback_fires_on_structural_signals():
@@ -293,47 +273,18 @@ def test_heuristic_does_not_fire_on_single_signal():
     assert not _heuristic_start("QTY  DESCRIPTION  MFR\nSome narrative text follows.")
 ```
 
-- [ ] **Step 2: Run tests to verify existing heuristic test fails (new test expects different behavior)**
-
-Run: `.venv/bin/pytest tests/test_filter_patterns.py -v`
-Expected: New structural tests may fail; old vocab-dependent test should still pass (haven't changed implementation yet). This step confirms which tests need the implementation change.
-
-- [ ] **Step 3: Rewrite `_heuristic_start` without vocab**
-
-```python
-_QTY_LEADING_RE = re.compile(r"^\s*\d+\s+\S", re.M)
-
-
-def _heuristic_start(text: str) -> bool:
-    """Fallback: 2+ of (SET token, QTY/EA keyword, quantity-line density)."""
-    signals = 0
-    if _SET_TOKEN_RE.search(text):
-        signals += 1
-    if _QTY_HDR_RE.search(text) or _EA_RE.search(text):
-        signals += 1
-    if len(_QTY_LEADING_RE.findall(text)) >= 3:
-        signals += 1
-    return signals >= 2
-```
-
-Note: `_QTY_LEADING_RE` may overlap with `_QTY_LEADING_LINE` from Task 2. If the pattern is identical (`^\s*\d+\s+[A-Z]` vs `^\s*\d+\s+\S`), consolidate into a single module-level regex. The heuristic version uses `\S` (any non-space) which is slightly broader — keep one and use it in both places, or keep both if the stricter `[A-Z]` version is needed for the guard.
-
-- [ ] **Step 4: Remove the old vocab import comment**
-
-Delete the comment on line 43: `# A known-mfr or known-finish code presence is checked against vocab.`
-
-- [ ] **Step 5: Run all tests**
+- [ ] **Step 4: Run all tests**
 
 Run: `.venv/bin/pytest tests/test_filter_patterns.py -v`
 Expected: ALL PASS.
 
-- [ ] **Step 6: Run baseline**
+- [ ] **Step 5: Run baseline**
 
 Run: `.venv/bin/python scripts/baseline_filter.py 2>/dev/null | diff scripts/baseline_filter.snapshot -`
 
 Key check: morris_bank. With the heuristic tightened (no vocab, structural-only), the false positive regions at p27-33 and p40 should either disappear or tighten. The actual schedule at p53 should still be caught (by `hardware_sets_colon` pattern, not heuristic).
 
-- [ ] **Step 7: Commit**
+- [ ] **Step 6: Commit**
 
 ```bash
 git add src/hardware_sets/filter.py tests/test_filter_patterns.py
