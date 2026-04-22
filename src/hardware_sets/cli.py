@@ -100,6 +100,7 @@ def main(argv: list[str]) -> int:
         ]
         try:
             sets = extract_mod.extract_sets(region, layouts, model=args.model)
+            sets = extract_mod.attach_bboxes(sets, layouts)
             llm_calls += 1
             log.info("[2/3] extract: region %d/%d -> %d set(s)", i, len(regions), len(sets))
             all_sets.extend(sets)

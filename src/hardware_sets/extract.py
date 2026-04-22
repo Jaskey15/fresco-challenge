@@ -272,6 +272,31 @@ def _dedup_sets(sets: list[HardwareSet]) -> list[HardwareSet]:
     return list(seen.values())
 
 
+def _union_bbox(layouts: list[PageLayout], page: int, line_range: tuple[int, int]) -> tuple | None:
+    """Union of bboxes for `line_range` on `page`. None if any line lacks a bbox."""
+    page_layout = next((l for l in layouts if l.page_number == page), None)
+    if not page_layout:
+        return None
+    first, last = line_range
+    selected = [nl for nl in page_layout.lines if first <= nl.number <= last and nl.bbox]
+    if not selected or len(selected) != (last - first + 1):
+        return None
+    x0 = min(nl.bbox[0] for nl in selected)
+    top = min(nl.bbox[1] for nl in selected)
+    x1 = max(nl.bbox[2] for nl in selected)
+    bottom = max(nl.bbox[3] for nl in selected)
+    return (float(x0), float(top), float(x1), float(bottom))
+
+
+def attach_bboxes(sets: list[HardwareSet], layouts: list[PageLayout]) -> list[HardwareSet]:
+    """Mutate `sets` in place, populating `SetLocation.bbox` on location and continued_on."""
+    for s in sets:
+        s.location.bbox = _union_bbox(layouts, s.location.page, s.location.line_range)
+        for cont in s.continued_on:
+            cont.bbox = _union_bbox(layouts, cont.page, cont.line_range)
+    return sets
+
+
 def extract_sets(
     region: ScheduleRegion,
     layouts: list[PageLayout],
