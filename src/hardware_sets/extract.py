@@ -221,6 +221,40 @@ def _call_model(
     raise ExtractionError("model did not call emit_hardware_sets")
 
 
+TOKEN_CHUNK_THRESHOLD = 80_000
+CHUNK_PAGES = 20
+CHUNK_OVERLAP = 2
+
+
+def _estimated_tokens(user_content: str) -> int:
+    # Cheap char-based estimate; Anthropic exposes real token counting but
+    # the char heuristic is precise enough at our scale (~4 chars/token).
+    return len(user_content) // 4
+
+
+def _chunk_layouts(layouts: list[PageLayout]) -> list[list[PageLayout]]:
+    """Break `layouts` into 20-page windows with 2-page overlap."""
+    if len(layouts) <= CHUNK_PAGES:
+        return [layouts]
+    chunks: list[list[PageLayout]] = []
+    step = CHUNK_PAGES - CHUNK_OVERLAP
+    for i in range(0, len(layouts), step):
+        chunks.append(layouts[i:i + CHUNK_PAGES])
+        if i + CHUNK_PAGES >= len(layouts):
+            break
+    return chunks
+
+
+def _dedup_sets(sets: list[HardwareSet]) -> list[HardwareSet]:
+    """Drop duplicates (same set_number + first_page) introduced by overlap."""
+    seen: dict[tuple[str, int], HardwareSet] = {}
+    for s in sets:
+        key = (s.set_number, s.location.page)
+        if key not in seen:
+            seen[key] = s
+    return list(seen.values())
+
+
 def extract_sets(
     region: ScheduleRegion,
     layouts: list[PageLayout],
@@ -228,18 +262,21 @@ def extract_sets(
     model: str = DEFAULT_MODEL,
     client: Anthropic | None = None,
 ) -> list[HardwareSet]:
-    """Extract every hardware set from `region` (see spec §4.3)."""
     if client is None:
         client = Anthropic()
 
-    user_content = _build_user_content(region, layouts)
+    combined = _build_user_content(region, layouts)
+    if _estimated_tokens(combined) <= TOKEN_CHUNK_THRESHOLD:
+        batches = [layouts]
+    else:
+        batches = _chunk_layouts(layouts)
 
-    try:
-        return _call_model(client, model, user_content)
-    except ExtractionError as e:
-        log.warning("extract_sets: first attempt failed (%s); retrying once", e)
+    collected: list[HardwareSet] = []
+    for batch in batches:
+        user_content = _build_user_content(region, batch)
         try:
-            return _call_model(client, model, user_content, retry_note=str(e))
-        except ExtractionError:
-            raise
-    # APIStatusError and other SDK errors bubble up to the caller (cli exits 3).
+            collected.extend(_call_model(client, model, user_content))
+        except ExtractionError as e:
+            log.warning("extract_sets: batch retry after %s", e)
+            collected.extend(_call_model(client, model, user_content, retry_note=str(e)))
+    return _dedup_sets(collected)
