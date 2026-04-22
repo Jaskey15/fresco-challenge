@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { BlueprintChrome } from "../components/BlueprintChrome";
 import { StreamLog, type StreamLine } from "../components/StreamLog";
 import { streamExtract } from "@/lib/sse";
+import { takePdf } from "@/lib/pdfHandoff";
 import { loadSnapshot, saveSnapshot } from "@/lib/storage";
 import type { Correction, EditableField, HardwareSet, SseEvent } from "@/lib/types";
 import { SetCard } from "../components/SetCard";
@@ -15,14 +16,7 @@ import { ErrorPanel } from "../components/ErrorPanel";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
 
-type PendingPdf = { name: string; hash: string; base64: string };
-
-function base64ToFile(b64: string, name: string): File {
-  const bin = atob(b64);
-  const arr = new Uint8Array(bin.length);
-  for (let i = 0; i < bin.length; i++) arr[i] = bin.charCodeAt(i);
-  return new File([arr], name, { type: "application/pdf" });
-}
+type PendingPdf = { name: string; hash: string };
 
 export default function ExtractPage() {
   const router = useRouter();
@@ -169,8 +163,16 @@ export default function ExtractPage() {
       return;
     }
     const pending = JSON.parse(raw) as PendingPdf;
-    setPdfHash(pending.hash);
     sessionStorage.removeItem("pending_pdf");
+
+    const file = takePdf(pending.hash);
+    if (!file) {
+      // Page was reloaded — the in-memory File is gone. Bounce back to landing.
+      router.replace("/");
+      return;
+    }
+
+    setPdfHash(pending.hash);
 
     // Restore prior edits for this exact PDF, if any
     const prior = loadSnapshot(pending.hash);
@@ -179,8 +181,6 @@ export default function ExtractPage() {
       setDeletedSets(new Set(prior.deletedSets));
       setApplied(prior.applied);
     }
-
-    const file = base64ToFile(pending.base64, pending.name);
 
     streamExtract(API_URL, file, handleEvent).catch((e) => {
       appendLog(String(e), "error");

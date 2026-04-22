@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { BlueprintChrome } from "./components/BlueprintChrome";
 import { DropZone } from "./components/DropZone";
 import { hashPdf } from "@/lib/hashPdf";
+import { stashPdf } from "@/lib/pdfHandoff";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
 
@@ -19,21 +20,10 @@ export default function Landing() {
       setError(null);
       try {
         const pdfHash = await hashPdf(file);
-
-        // Push the bytes directly to /extract — backend returns an SSE stream,
-        // so we kick off the request on the /extract page via POST + ReadableStream.
-        // Here we only stash the file in sessionStorage as a handoff, along with its hash.
-        const buffer = await file.arrayBuffer();
-        const base64 = btoa(
-          String.fromCharCode(...new Uint8Array(buffer)),
-        );
+        stashPdf(pdfHash, file);
         sessionStorage.setItem(
           "pending_pdf",
-          JSON.stringify({
-            name: file.name,
-            hash: pdfHash,
-            base64,
-          }),
+          JSON.stringify({ name: file.name, hash: pdfHash }),
         );
         router.push("/extract");
       } catch (e: unknown) {
