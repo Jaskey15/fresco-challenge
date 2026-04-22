@@ -62,6 +62,9 @@ to it. If the set spans a page break, emit `continued_on` entries for
 each additional page and its first/last lines on that page.
 """
 
+# Every optional-looking field is listed in `required` on purpose: the model
+# emits explicit nulls (qty, description, etc.) rather than omitting keys, so
+# downstream can distinguish "absent" from "missing". Do not slim this down.
 EMIT_HARDWARE_SETS_TOOL: dict = {
     "name": "emit_hardware_sets",
     "description": "Emit every hardware set visible in the provided pages.",
