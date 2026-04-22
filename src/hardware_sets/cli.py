@@ -14,7 +14,6 @@ from pypdf import PdfReader
 
 from hardware_sets import filter as filter_mod
 from hardware_sets import layout as layout_mod
-from hardware_sets import resolve as resolve_mod
 from hardware_sets import extract as extract_mod
 from hardware_sets.types import HardwareSet
 
@@ -26,7 +25,6 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     p.add_argument("pdf_path", type=Path, help="PDF file to extract from")
     p.add_argument("-o", "--out", type=Path, default=None, help="Output JSON path (default: stdout)")
     p.add_argument("--model", default=extract_mod.DEFAULT_MODEL, help="Anthropic model id")
-    p.add_argument("--no-score", action="store_true", help="Skip resolve.py confidence scoring")
     p.add_argument("--quiet", action="store_true", help="Suppress progress logs")
     return p.parse_args(argv)
 
@@ -65,7 +63,7 @@ def main(argv: list[str]) -> int:
 
     total_pages = _page_count(args.pdf_path)
 
-    log.info("[1/3] filter: scanning %d pages of %s", total_pages, args.pdf_path.name)
+    log.info("[1/2] filter: scanning %d pages of %s", total_pages, args.pdf_path.name)
     regions = filter_mod.find_schedule_regions(args.pdf_path)
     if not regions:
         log.warning("no schedule region found")
@@ -85,7 +83,7 @@ def main(argv: list[str]) -> int:
         )
         return 2
 
-    log.info("[1/3] filter: found %d region(s): %s",
+    log.info("[1/2] filter: found %d region(s): %s",
              len(regions), ", ".join(f"pgs {r.start_page}-{r.end_page}" for r in regions))
 
     all_sets: list[HardwareSet] = []
@@ -93,7 +91,7 @@ def main(argv: list[str]) -> int:
     llm_calls = 0
 
     for i, region in enumerate(regions, start=1):
-        log.info("[2/3] extract: region %d/%d pages %d-%d", i, len(regions), region.start_page, region.end_page)
+        log.info("[2/2] extract: region %d/%d pages %d-%d", i, len(regions), region.start_page, region.end_page)
         layouts = [
             layout_mod.extract_layout(args.pdf_path, p)
             for p in range(region.start_page, region.end_page + 1)
@@ -101,7 +99,7 @@ def main(argv: list[str]) -> int:
         try:
             sets = extract_mod.extract_sets(region, layouts, model=args.model)
             llm_calls += 1
-            log.info("[2/3] extract: region %d/%d -> %d set(s)", i, len(regions), len(sets))
+            log.info("[2/2] extract: region %d/%d -> %d set(s)", i, len(regions), len(sets))
             all_sets.extend(sets)
         except extract_mod.ExtractionError as e:
             warnings.append(f"region {region.start_page}-{region.end_page}: {e}")
@@ -109,10 +107,6 @@ def main(argv: list[str]) -> int:
         except Exception as e:  # network / API / anything else
             log.error("unrecoverable error calling model: %s", e)
             return 3
-
-    if not args.no_score:
-        log.info("[3/3] resolve: scoring %d set(s)", len(all_sets))
-        all_sets = resolve_mod.validate_and_score(all_sets)
 
     result = {
         "source_pdf": args.pdf_path.name,
