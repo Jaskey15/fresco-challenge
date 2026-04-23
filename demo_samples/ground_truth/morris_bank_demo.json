@@ -1,0 +1,253 @@
+[
+  {
+    "set_number": "101",
+    "description": "PAIR DOORS / VESTIBULE 103 TO/FROM EXTERIOR",
+    "is_not_used": false,
+    "location": { "page": 6, "line_range": [1, 40] },
+    "continued_on": [],
+    "components": [
+      {
+        "qty": 2,
+        "description": "CONTINUOUS HINGE",
+        "catalog_number": "K10BEFM95HD1",
+        "mfr": "PE",
+        "finish": null,
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "DEADLOCK",
+        "catalog_number": "MS1850S DOOR HEIGHT STRAIGHT BOLT",
+        "mfr": "AD",
+        "finish": "313",
+        "notes": "DOOR HEIGHT=96"
+      },
+      {
+        "qty": 1,
+        "description": "THUMBTURN CYLINDER",
+        "catalog_number": "4066-01",
+        "mfr": "AD",
+        "finish": "313",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "MORTISE CYLINDER",
+        "catalog_number": "70 7P 43 13-0512",
+        "mfr": "SA",
+        "finish": "10BE",
+        "notes": "SFIC CYLINDER HOUSING WITH DISPOSABLE CORE"
+      },
+      {
+        "qty": 1,
+        "description": "CONSTRUCTION CORE",
+        "catalog_number": "7190224",
+        "mfr": "BE",
+        "finish": null,
+        "notes": "SFIC CONSTRUCTION CORE"
+      },
+      {
+        "qty": 2,
+        "description": "PULL 35\" 2\" DOORS CTC OVERALL LENGTH",
+        "catalog_number": "RM3301",
+        "mfr": "RO",
+        "finish": "10BE",
+        "notes": "PUSH BAR DIMENSIONS SHALL BE COORDINATED WITH ALUMINUM DOOR PROVIDER & APPROVED BY THE DESIGN TEAM DURING SUBMITTAL PHASE"
+      },
+      {
+        "qty": 2,
+        "description": "PULL 30\" 2\" DOORS CTC OVERALL LENGTH",
+        "catalog_number": "RM3310",
+        "mfr": "RO",
+        "finish": "10BE",
+        "notes": "VERIFY DOOR THICKNESS"
+      },
+      {
+        "qty": 1,
+        "description": "CLOSER OB RH",
+        "catalog_number": "SRI 268",
+        "mfr": "SA",
+        "finish": "10BE",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "CLOSER OB LH",
+        "catalog_number": "SRI 268",
+        "mfr": "SA",
+        "finish": "10BE",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "SFIC",
+        "catalog_number": "33700006 N 26 DAKM",
+        "mfr": "MED1",
+        "finish": null,
+        "notes": "PRODUCT SHALL BE US10B (OR 10BE IF AVAILABLE) FINISH PER CATALOG SELECTIONS; END USER NEEDS TO CONFIRM MASTER KEY SYSTEM & KEYWAY PRIOR PROCUREMENT"
+      },
+      {
+        "qty": 1,
+        "description": "THRESHOLD 72\"",
+        "catalog_number": "2008-10BE-PK",
+        "mfr": "PE",
+        "finish": null,
+        "notes": null
+      }
+    ]
+  },
+  {
+    "set_number": "103",
+    "description": "PAIR DOORS / VESTIBULE 103 TO/FROM BANKING PERSONAL 106",
+    "is_not_used": false,
+    "location": { "page": 7, "line_range": [1, 40] },
+    "continued_on": [],
+    "components": [
+      {
+        "qty": 2,
+        "description": "CONTINUOUS HINGE",
+        "catalog_number": "K10BEFM95HD1",
+        "mfr": "PE",
+        "finish": null,
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "DEADLOCK",
+        "catalog_number": "MS1850S DOOR HEIGHT STRAIGHT BOLT",
+        "mfr": "AD",
+        "finish": "313",
+        "notes": "DOOR HEIGHT=96"
+      },
+      {
+        "qty": 1,
+        "description": "THUMBTURN CYLINDER",
+        "catalog_number": "4066-01",
+        "mfr": "AD",
+        "finish": "313",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "MORTISE CYLINDER",
+        "catalog_number": "70 7P 43 13-0512",
+        "mfr": "SA",
+        "finish": "10BE",
+        "notes": "SFIC CYLINDER HOUSING WITH DISPOSABLE CORE"
+      },
+      {
+        "qty": 1,
+        "description": "CONSTRUCTION CORE",
+        "catalog_number": "7190224",
+        "mfr": "BE",
+        "finish": null,
+        "notes": "SFIC CONSTRUCTION CORE"
+      },
+      {
+        "qty": 2,
+        "description": "PULL 35\" 2\" DOORS CTC OVERALL LENGTH",
+        "catalog_number": "RM3301",
+        "mfr": "RO",
+        "finish": "10BE",
+        "notes": "PUSH BAR DIMENSIONS SHALL BE COORDINATED WITH ALUMINUM DOOR PROVIDER & APPROVED BY THE DESIGN TEAM DURING SUBMITTAL PHASE"
+      },
+      {
+        "qty": 2,
+        "description": "PULL 30\" 2\" DOORS CTC OVERALL LENGTH",
+        "catalog_number": "RM3310",
+        "mfr": "RO",
+        "finish": "10BE",
+        "notes": "VERIFY DOOR THICKNESS"
+      },
+      {
+        "qty": 1,
+        "description": "CLOSER OB RH",
+        "catalog_number": "SRI 268",
+        "mfr": "SA",
+        "finish": "10BE",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "CLOSER OB LH",
+        "catalog_number": "SRI 268",
+        "mfr": "SA",
+        "finish": "10BE",
+        "notes": null
+      },
+      {
+        "qty": 2,
+        "description": "DOME STOP",
+        "catalog_number": "441",
+        "mfr": "RO",
+        "finish": "10BE",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "SFIC",
+        "catalog_number": "33700006 N 26 DAKM",
+        "mfr": "MED1",
+        "finish": null,
+        "notes": "PRODUCT SHALL BE US10B (OR 10BE IF AVAILABLE) FINISH PER CATALOG SELECTIONS; END USER NEEDS TO CONFIRM MASTER KEY SYSTEM & KEYWAY PRIOR PROCUREMENT"
+      }
+    ]
+  },
+  {
+    "set_number": "104",
+    "description": "SINGLE DOOR / BANKING PERSONAL 106 TO/FROM OFFICE 104",
+    "is_not_used": false,
+    "location": { "page": 8, "line_range": [1, 20] },
+    "continued_on": [],
+    "components": [
+      {
+        "qty": 4,
+        "description": "HINGES 4 1/2 x 4 1/2 NRP",
+        "catalog_number": "MPB79",
+        "mfr": "MC",
+        "finish": "10BE",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "LOCKSET 2 3/4\" BS",
+        "catalog_number": "70 10XG05 LL",
+        "mfr": "SA",
+        "finish": "10BE",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "CONSTRUCTION CORE",
+        "catalog_number": "7190224",
+        "mfr": "BE",
+        "finish": null,
+        "notes": "SFIC CONSTRUCTION CORE"
+      },
+      {
+        "qty": 1,
+        "description": "WALL STOP",
+        "catalog_number": "409",
+        "mfr": "RO",
+        "finish": "10BE",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "SFIC",
+        "catalog_number": "33700006 N 26 DAKM",
+        "mfr": "MED1",
+        "finish": null,
+        "notes": "PRODUCT SHALL BE US10B (OR 10BE IF AVAILABLE) FINISH PER CATALOG SELECTIONS; END USER NEEDS TO CONFIRM MASTER KEY SYSTEM & KEYWAY PRIOR PROCUREMENT"
+      },
+      {
+        "qty": 3,
+        "description": "DOOR SILENCER",
+        "catalog_number": "608-RKW",
+        "mfr": "RO",
+        "finish": "BLK",
+        "notes": null
+      }
+    ]
+  }
+]

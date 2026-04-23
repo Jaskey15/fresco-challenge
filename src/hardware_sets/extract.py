@@ -23,8 +23,9 @@ Pemko (PEM), Rockwood (ROC), Glynn-Johnson (GLY, GJ), Hager (HAG),
 Adams Rite (ADA), Trimco (TRI, BBW), ABH, Medeco (MED), Sentronic (SEN),
 Assa Abloy (ASS), Securitron (SCE), Blumcraft (BLU), C.R. Laurence (CRL),
 Knox (KNX), Rixson (RIX), Norton (NOR).
-When the PDF uses a shortcode, emit the shortcode as-is — never join
-alternatives with a slash.
+When the PDF uses a shortcode, emit the shortcode as-is.
+When the source lists multiple manufacturers separated by slashes
+(e.g. "PEM/NGP/ZERO"), preserve the full slash-delimited string.
 
 Known finish vocabulary:
 BHMA three-digit codes 600-695 (notably 613, 626, 630, 652, 689),

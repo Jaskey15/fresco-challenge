@@ -1,0 +1,645 @@
+[
+  {
+    "set_number": "HW 01",
+    "description": "INTERIOR SINGLE BEDROOM - CLASSROOM LOCK/LIGATURE RESISTANT - NO CLOSER - RESCUE HDW",
+    "is_not_used": false,
+    "location": { "page": 3, "line_range": [1, 15] },
+    "continued_on": [],
+    "components": [
+      {
+        "qty": 1,
+        "description": "CONTINUOUS HINGE-DOUBLE ACTING",
+        "catalog_number": "A508",
+        "mfr": "ABH",
+        "finish": "630",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "LIGATURE RES. MORTISE LOCK-CLASSRM",
+        "catalog_number": "MRX-A-05",
+        "mfr": "TOW",
+        "finish": "630",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "CYLINDER",
+        "catalog_number": "PER PROJECT",
+        "mfr": "TBD",
+        "finish": "630",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "DOOR STOP",
+        "catalog_number": "1841",
+        "mfr": "ABH",
+        "finish": "630",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "GASKETING",
+        "catalog_number": "ANTI-LIG 5050",
+        "mfr": "NGP",
+        "finish": "BLK",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "EMERGENCY RESCUE STOP",
+        "catalog_number": "A509",
+        "mfr": "ABH",
+        "finish": "630",
+        "notes": null
+      }
+    ]
+  },
+  {
+    "set_number": "HW 02",
+    "description": "INTERIOR SINGLE - OFFICE LOCKSET/LIGATURE RESISTANT - NO CLOSER - CONTINUOUS HINGE",
+    "is_not_used": false,
+    "location": { "page": 3, "line_range": [16, 28] },
+    "continued_on": [],
+    "components": [
+      {
+        "qty": 1,
+        "description": "CONTINUOUS HINGE",
+        "catalog_number": "AC500 HT SEC",
+        "mfr": "ABH",
+        "finish": "630",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "LIGATURE RES. CYL. LOCK-OFFICE",
+        "catalog_number": "CRX-A-81",
+        "mfr": "TOW",
+        "finish": "630",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "CYLINDER",
+        "catalog_number": "PER PROJECT",
+        "mfr": "TBD",
+        "finish": "630",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "DOOR STOP",
+        "catalog_number": "1841",
+        "mfr": "ABH",
+        "finish": "630",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "GASKETING",
+        "catalog_number": "ANTI-LIG 5050",
+        "mfr": "NGP",
+        "finish": "BLK",
+        "notes": null
+      }
+    ]
+  },
+  {
+    "set_number": "HW 02A",
+    "description": "INTERIOR SINGLE - OFFICE LOCK/LIGATURE RESISTANT - SURFACE CLOSER/TRACK-ARM - CONT HINGE",
+    "is_not_used": false,
+    "location": { "page": 3, "line_range": [29, 42] },
+    "continued_on": [],
+    "components": [
+      {
+        "qty": 1,
+        "description": "CONTINUOUS HINGE",
+        "catalog_number": "AC500 HT SEC",
+        "mfr": "ABH",
+        "finish": "630",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "LIGATURE RES. CYL. LOCK-OFFICE",
+        "catalog_number": "CRX-A-81",
+        "mfr": "TOW",
+        "finish": "630",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "CYLINDER",
+        "catalog_number": "PER PROJECT",
+        "mfr": "TBD",
+        "finish": "630",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "OH SURFACE CLOSER - TRACK ARM",
+        "catalog_number": "4210T/4510T",
+        "mfr": "LCN",
+        "finish": "689",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "DOOR STOP",
+        "catalog_number": "1841",
+        "mfr": "ABH",
+        "finish": "630",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "GASKETING",
+        "catalog_number": "ANTI-LIG 5050",
+        "mfr": "NGP",
+        "finish": "BLK",
+        "notes": null
+      }
+    ]
+  },
+  {
+    "set_number": "HW 03",
+    "description": "INTERIOR SINGLE - STOREROOM LOCK/LIGATURE RESISTANT - SURFACE CLOSER/TRACK-ARM - CONT HNG",
+    "is_not_used": false,
+    "location": { "page": 3, "line_range": [43, 56] },
+    "continued_on": [],
+    "components": [
+      {
+        "qty": 1,
+        "description": "CONTINUOUS HINGE",
+        "catalog_number": "AC500 HT SEC",
+        "mfr": "ABH",
+        "finish": "630",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "LIGATURE RES. CYL. LOCK-STORERM",
+        "catalog_number": "CRX-A-86",
+        "mfr": "TOW",
+        "finish": "630",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "CYLINDER",
+        "catalog_number": "PER PROJECT",
+        "mfr": "TBD",
+        "finish": "630",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "OH SURFACE CLOSER - TRACK ARM",
+        "catalog_number": "4040XPT TROX",
+        "mfr": "LCN",
+        "finish": "689",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "DOOR STOP",
+        "catalog_number": "1841",
+        "mfr": "ABH",
+        "finish": "630",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "GASKETING",
+        "catalog_number": "ANTI-LIG 5050",
+        "mfr": "NGP",
+        "finish": "BLK",
+        "notes": null
+      }
+    ]
+  },
+  {
+    "set_number": "HW 04",
+    "description": "INTERIOR SINGLE - STOREROOM LOCKSET/LIGATURE RESISTANT - SURFACE CLOSER - CONTINUOUS HNG",
+    "is_not_used": false,
+    "location": { "page": 4, "line_range": [1, 14] },
+    "continued_on": [],
+    "components": [
+      {
+        "qty": 1,
+        "description": "CONTINUOUS HINGE",
+        "catalog_number": "AC500 HT SEC",
+        "mfr": "ABH",
+        "finish": "630",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "LIGATURE RES. CYL. LOCK-STORERM",
+        "catalog_number": "CRX-A-86",
+        "mfr": "TOW",
+        "finish": "630",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "CYLINDER",
+        "catalog_number": "PER PROJECT",
+        "mfr": "TBD",
+        "finish": "630",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "OH SURFACE CLOSER",
+        "catalog_number": "4210T/4510T TBTRX",
+        "mfr": "LCN",
+        "finish": "689",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "DOOR STOP",
+        "catalog_number": "1841",
+        "mfr": "ABH",
+        "finish": "630",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "GASKETING",
+        "catalog_number": "ANTI-LIG 5050",
+        "mfr": "NGP",
+        "finish": "BLK",
+        "notes": null
+      }
+    ]
+  },
+  {
+    "set_number": "HW 04A",
+    "description": "INTERIOR SINGLE - STOREROOM LOCKSET/LIGATURE RESISTANT - SURFACE CLOSER - CONTINUOUS HNG",
+    "is_not_used": false,
+    "location": { "page": 4, "line_range": [15, 28] },
+    "continued_on": [],
+    "components": [
+      {
+        "qty": 1,
+        "description": "CONTINUOUS HINGE",
+        "catalog_number": "AC500 HT SEC",
+        "mfr": "ABH",
+        "finish": "630",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "LIGATURE RES. CYL. LOCK-STORERM",
+        "catalog_number": "CRX-A-86",
+        "mfr": "TOW",
+        "finish": "630",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "CYLINDER",
+        "catalog_number": "PER PROJECT",
+        "mfr": "TBD",
+        "finish": "630",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "OH SURFACE CLOSER",
+        "catalog_number": "4040XPT BUMP TORX",
+        "mfr": "LCN",
+        "finish": "689",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "DOOR STOP",
+        "catalog_number": "1841",
+        "mfr": "ABH",
+        "finish": "630",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "GASKETING",
+        "catalog_number": "ANTI-LIG 5050",
+        "mfr": "NGP",
+        "finish": "BLK",
+        "notes": null
+      }
+    ]
+  },
+  {
+    "set_number": "HW 05",
+    "description": "INTERIOR SINGLE - STOREROOM LOCKSET - SURFACE CLOSER - BUTT HINGES",
+    "is_not_used": false,
+    "location": { "page": 4, "line_range": [29, 42] },
+    "continued_on": [],
+    "components": [
+      {
+        "qty": null,
+        "description": "HINGE-HT",
+        "catalog_number": "CB51 HT",
+        "mfr": "PBB",
+        "finish": "630",
+        "notes": "AS REQ"
+      },
+      {
+        "qty": 1,
+        "description": "CYL. LOCK-STORERM",
+        "catalog_number": "CDC-86-S",
+        "mfr": "TOW",
+        "finish": "626",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "CYLINDER",
+        "catalog_number": "PER PROJECT",
+        "mfr": "TBD",
+        "finish": "626",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "OH SURFACE CLOSER",
+        "catalog_number": "4040XP/4040XP EDA",
+        "mfr": "LCN",
+        "finish": "689",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "DOOR STOP",
+        "catalog_number": "PER SPECIFICATION",
+        "mfr": null,
+        "finish": null,
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "GASKETING",
+        "catalog_number": "5050",
+        "mfr": "NGP",
+        "finish": "BLK",
+        "notes": null
+      }
+    ]
+  },
+  {
+    "set_number": "HW 05A",
+    "description": "INTERIOR SINGLE - STOREROOM LOCKSET - NO CLOSER - BUTT HINGES",
+    "is_not_used": false,
+    "location": { "page": 4, "line_range": [43, 54] },
+    "continued_on": [],
+    "components": [
+      {
+        "qty": null,
+        "description": "HINGE-HT",
+        "catalog_number": "CB51 HT",
+        "mfr": "PBB",
+        "finish": "630",
+        "notes": "AS REQ"
+      },
+      {
+        "qty": 1,
+        "description": "CYL. LOCK-STORERM",
+        "catalog_number": "CDC-86-S",
+        "mfr": "TOW",
+        "finish": "626",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "CYLINDER",
+        "catalog_number": "PER PROJECT",
+        "mfr": "TBD",
+        "finish": "626",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "DOOR STOP",
+        "catalog_number": "PER SPECIFICATION",
+        "mfr": null,
+        "finish": null,
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "GASKETING",
+        "catalog_number": "5050",
+        "mfr": "NGP",
+        "finish": "BLK",
+        "notes": null
+      }
+    ]
+  },
+  {
+    "set_number": "HW 06",
+    "description": "INTERIOR SINGLE - CARD READER - ELEC FAIL-SECURE LOCK - SURFACE CLOSER - BUTT HINGES",
+    "is_not_used": false,
+    "location": { "page": 5, "line_range": [1, 22] },
+    "continued_on": [],
+    "components": [
+      {
+        "qty": null,
+        "description": "HINGE-HT",
+        "catalog_number": "CB51 HT",
+        "mfr": "PBB",
+        "finish": "630",
+        "notes": "AS REQ"
+      },
+      {
+        "qty": 1,
+        "description": "HINGE-POWER TRANSFER",
+        "catalog_number": "CB51EL HT",
+        "mfr": "PBB",
+        "finish": "630",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "FAIL SECURE CYL. LOCK",
+        "catalog_number": "XCDC-86-S-RQE",
+        "mfr": "TOW",
+        "finish": "626",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "CYLINDER",
+        "catalog_number": "PER PROJECT",
+        "mfr": "TBD",
+        "finish": "626",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "OH SURFACE CLOSER",
+        "catalog_number": "4040XP/4040XP EDA",
+        "mfr": "LCN",
+        "finish": "689",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "DOOR STOP",
+        "catalog_number": "PER SPECIFICATION",
+        "mfr": null,
+        "finish": null,
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "GASKETING",
+        "catalog_number": "5050",
+        "mfr": "NGP",
+        "finish": "BLK",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "CARD READER",
+        "catalog_number": "BY DIVISION 28",
+        "mfr": null,
+        "finish": null,
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "DOOR POSITION SWITCH",
+        "catalog_number": "BY DIVISION 28",
+        "mfr": null,
+        "finish": null,
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "LOCK POWER SUPPLY",
+        "catalog_number": "BY DIVISION 28",
+        "mfr": null,
+        "finish": null,
+        "notes": null
+      }
+    ]
+  },
+  {
+    "set_number": "HW 06A",
+    "description": "MOVED TO EXTERIOR SET HW E11",
+    "is_not_used": true,
+    "location": { "page": 5, "line_range": [23, 24] },
+    "continued_on": [],
+    "components": []
+  },
+  {
+    "set_number": "HW 07",
+    "description": "INTERIOR SINGLE - INSTITUTIONAL PRIVACY/OCC IND - LIGATURE RESISTANT - SELF CLOSING CONT HINGE",
+    "is_not_used": false,
+    "location": { "page": 5, "line_range": [25, 42] },
+    "continued_on": [],
+    "components": [
+      {
+        "qty": 1,
+        "description": "SELF CLOSING CONTINUOUS HINGE",
+        "catalog_number": "A507SC HT",
+        "mfr": "ABH",
+        "finish": "628",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "LIGATURE RES MORT LOCK-INS.PRIVACY/ID",
+        "catalog_number": "MRX-A-26-O",
+        "mfr": "TOW",
+        "finish": "630",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "CYLINDER",
+        "catalog_number": "PER PROJECT",
+        "mfr": "TBD",
+        "finish": "630",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "DOOR STOP",
+        "catalog_number": "1841",
+        "mfr": "ABH",
+        "finish": "630",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "GASKETING",
+        "catalog_number": "ANTI-LIG 5050",
+        "mfr": "NGP",
+        "finish": "BLK",
+        "notes": null
+      }
+    ]
+  },
+  {
+    "set_number": "HW 07A",
+    "description": "INTERIOR SINGLE - STOREROOM PRIVACY W/ID&OVERRIDE - LIGATURE RESISTANT - SRCL - CONT HINGE",
+    "is_not_used": false,
+    "location": { "page": 5, "line_range": [43, 60] },
+    "continued_on": [],
+    "components": [
+      {
+        "qty": 1,
+        "description": "CONTINUOUS HINGE",
+        "catalog_number": "AC500 HT SEC",
+        "mfr": "ABH",
+        "finish": "630",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "LIG RES MORTISE LOCK-STRM PRIV W/ID",
+        "catalog_number": "MRX-A-15-O",
+        "mfr": "TOW",
+        "finish": "630",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "CYLINDER",
+        "catalog_number": "PER PROJECT",
+        "mfr": "TBD",
+        "finish": "630",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "OH SURFACE CLOSER",
+        "catalog_number": "4210T/4510T TBTRX",
+        "mfr": "LCN",
+        "finish": "689",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "DOOR STOP",
+        "catalog_number": "1841",
+        "mfr": "ABH",
+        "finish": "630",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "GASKETING",
+        "catalog_number": "ANTI-LIG 5050",
+        "mfr": "NGP",
+        "finish": "BLK",
+        "notes": null
+      }
+    ]
+  }
+]
