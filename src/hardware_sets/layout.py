@@ -13,6 +13,41 @@ from pathlib import Path
 from hardware_sets.types import NumberedLine, PageLayout
 
 
+def cluster_words_into_lines(
+    words: list[dict],
+    *,
+    y_tol: float = 3.0,
+) -> list[tuple[str, tuple[float, float, float, float]]]:
+    if not words:
+        return []
+
+    items = sorted(words, key=lambda w: (float(w["top"]), float(w["x0"])))
+
+    clusters: list[list[dict]] = []
+    for w in items:
+        placed = False
+        for c in clusters:
+            if abs(float(c[0]["top"]) - float(w["top"])) <= y_tol:
+                c.append(w)
+                placed = True
+                break
+        if not placed:
+            clusters.append([w])
+
+    result: list[tuple[str, tuple[float, float, float, float]]] = []
+    for c in clusters:
+        c.sort(key=lambda w: float(w["x0"]))
+        text = " ".join(w["text"] for w in c)
+        x0 = min(float(w["x0"]) for w in c)
+        top = min(float(w["top"]) for w in c)
+        x1 = max(float(w["x1"]) for w in c)
+        bottom = max(float(w["bottom"]) for w in c)
+        result.append((text, (x0, top, x1, bottom)))
+
+    result.sort(key=lambda r: r[1][1])
+    return result
+
+
 def extract_layout(pdf_path: Path, page_num: int) -> PageLayout:
     """Return a PageLayout for 1-indexed `page_num` of `pdf_path`."""
     result = subprocess.run(
