@@ -23,11 +23,8 @@ Input: specbook pages (section-list format or tabular schedule). Output per set:
 - **Every set needs location data** (page + line range or bbox). It's a graded success criterion.
 - Keep "NOT USED" / N/A sets — they still count.
 - Sets can span page breaks — don't drop continuations.
-- `samples/` and `out/` are gitignored — do not commit. `demo_samples/` IS committed (bundled into the deployed image for the public demo).
+- `samples/` is gitignored — do not commit. `demo_samples/` IS committed (bundled into the deployed image for the public demo).
 - `ANTHROPIC_API_KEY` is required at runtime; set via `.env.local` locally and `fly secrets` in prod.
-
-## Deliverables
-Repo + README, deployed link (Fly.io) + local run steps, 3–5 min Loom. Evaluated on: extraction accuracy, mfr/finish handling, code quality, explanation clarity.
 
 ## Lessons Learned
 _(empty — add `Problem → Rule` entries as they come up)_
