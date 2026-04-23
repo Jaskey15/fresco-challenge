@@ -7,7 +7,6 @@ human (or the LLM) can count lines in the rendered text and match
 
 from __future__ import annotations
 
-import subprocess
 from pathlib import Path
 
 from hardware_sets.types import NumberedLine, PageLayout
@@ -50,21 +49,32 @@ def cluster_words_into_lines(
 
 def extract_layout(pdf_path: Path, page_num: int) -> PageLayout:
     """Return a PageLayout for 1-indexed `page_num` of `pdf_path`."""
-    result = subprocess.run(
-        ["pdftotext", "-layout", "-f", str(page_num), "-l", str(page_num), str(pdf_path), "-"],
-        capture_output=True, text=True, check=False,
-    )
-    raw = result.stdout or ""
+    import pdfplumber
+
+    with pdfplumber.open(pdf_path) as pdf:
+        page = pdf.pages[page_num - 1]
+        page_width = float(page.width)
+        page_height = float(page.height)
+        words = page.extract_words(
+            keep_blank_chars=False, y_tolerance=3, x_tolerance=3,
+        )
+
+    clustered = cluster_words_into_lines(words, y_tol=3.0)
 
     lines: list[NumberedLine] = []
     counter = 1
-    for raw_line in raw.splitlines():
-        if not raw_line.strip():
+    for text, bbox in clustered:
+        if not text.strip():
             continue
-        lines.append(NumberedLine(number=counter, text=raw_line.rstrip()))
+        lines.append(NumberedLine(number=counter, text=text, bbox=bbox))
         counter += 1
 
-    return PageLayout(page_number=page_num, lines=lines)
+    return PageLayout(
+        page_number=page_num,
+        lines=lines,
+        page_width=page_width,
+        page_height=page_height,
+    )
 
 
 def render_for_prompt(layout: PageLayout) -> str:
