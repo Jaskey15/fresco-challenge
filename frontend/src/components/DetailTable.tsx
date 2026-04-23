@@ -23,9 +23,10 @@ interface EditableCellProps {
   value: string | number | null;
   isEdited: boolean;
   onCommit: (value: string) => void;
+  lowConfidence?: { score: number; reason: string | null } | null;
 }
 
-function EditableCell({ value, isEdited, onCommit }: EditableCellProps) {
+function EditableCell({ value, isEdited, onCommit, lowConfidence }: EditableCellProps) {
   const [editing, setEditing] = useState(false);
   const [draft, setDraft] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
@@ -71,10 +72,13 @@ function EditableCell({ value, isEdited, onCommit }: EditableCellProps) {
   return (
     <div
       onClick={startEdit}
+      title={lowConfidence?.reason ?? undefined}
       className={`cursor-pointer px-1.5 py-0.5 rounded min-h-[24px] ${
         isEdited
           ? "bg-amber-50 border border-amber-300"
-          : "hover:bg-gray-50"
+          : lowConfidence
+            ? "bg-yellow-50 border border-yellow-300"
+            : "hover:bg-gray-50"
       }`}
     >
       {displayValue || <span className="text-gray-300">—</span>}
@@ -98,7 +102,7 @@ export default function DetailTable({ set, edits, editCount, onCellEdit, onReset
       <div className="px-4 py-3 border-b border-gray-200 flex items-start justify-between">
         <div>
           <h2 className="text-base font-bold text-gray-900">
-            <span className="text-green-500 mr-1">●</span>
+            <span className={`mr-1 ${set.confidence < 0.5 ? "text-amber-400" : "text-green-500"}`}>●</span>
             Hardware Set {set.set_number}
           </h2>
           <p className="text-xs text-gray-400 mt-0.5">
@@ -145,6 +149,11 @@ export default function DetailTable({ set, edits, editCount, onCellEdit, onReset
                         value={getDisplayValue(compIdx, col.key, (comp[col.key] as string | number | null) ?? null)}
                         isEdited={isEdited(compIdx, col.key)}
                         onCommit={(val) => onCellEdit(compIdx, col.key, val)}
+                        lowConfidence={
+                          col.key !== "notes" && comp.confidence?.[col.key]?.score !== undefined && comp.confidence[col.key].score < 0.5
+                            ? comp.confidence[col.key]
+                            : null
+                        }
                       />
                     </td>
                   ))}
