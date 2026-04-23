@@ -13,3 +13,10 @@ node_modules/
 .env.local
 .env
 .superpowers/
+.claude/
+frontend/.playwright-cli/
+frontend/.vite/
+logs/
+demo_samples/extracted/
+demo_samples/extracted_sonnet/
+samples/
