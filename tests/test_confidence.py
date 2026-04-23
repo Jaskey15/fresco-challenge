@@ -217,3 +217,17 @@ def test_component_confidence_dict_populated():
 
 def test_review_threshold_boundary():
     assert REVIEW_THRESHOLD == 0.5
+
+
+import json
+from dataclasses import asdict
+
+
+def test_field_score_serializes_to_json():
+    sets = [_make_set("1", [
+        Component(qty=1, description="HINGE", catalog_number="A156-18S", mfr="SCH", finish="XYZ", notes=None),
+    ])]
+    score_confidence(sets)
+    result = json.loads(json.dumps(asdict(sets[0]), default=str))
+    finish_conf = result["components"][0]["confidence"]["finish"]
+    assert finish_conf == {"score": 0.5, "reason": "finish code not recognized"}
