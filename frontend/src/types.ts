@@ -23,7 +23,7 @@ export interface Component {
   mfr: string | null;
   finish: string | null;
   notes: string | null;
-  confidence?: Record<string, number>;
+  confidence?: Record<string, { score: number; reason: string | null }>;
 }
 
 export interface HardwareSet {
