@@ -9,9 +9,6 @@ RUN npm run build
 FROM python:3.12-slim
 WORKDIR /app
 
-# System dep: pdftotext (from poppler-utils)
-RUN apt-get update && apt-get install -y --no-install-recommends poppler-utils && rm -rf /var/lib/apt/lists/*
-
 # Python deps
 COPY pyproject.toml ./
 COPY src/ src/
