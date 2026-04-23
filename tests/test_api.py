@@ -44,7 +44,7 @@ def test_extract_sample_streams_sse(mock_pipeline, mock_session):
         },
     )[-1]
 
-    resp = client.post("/api/extract/sample/bridgeport")
+    resp = client.post("/api/extract/sample/sjc-div")
     assert resp.status_code == 200
     assert "text/event-stream" in resp.headers["content-type"]
 

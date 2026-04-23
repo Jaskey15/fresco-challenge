@@ -8,9 +8,9 @@ content — that is extract.py's job.
 from __future__ import annotations
 
 import re
-import subprocess
 from pathlib import Path
 
+import pdfplumber
 from pypdf import PdfReader
 
 from hardware_sets.types import ScheduleRegion
@@ -67,17 +67,13 @@ def _has_tabular_content(text: str) -> bool:
 
 
 def _page_text(pdf_path: Path, page: int) -> str:
-    """Return `pdftotext -layout` output for 1-indexed `page`."""
-    result = subprocess.run(
-        ["pdftotext", "-layout", "-f", str(page), "-l", str(page), str(pdf_path), "-"],
-        capture_output=True, text=True, check=False,
-    )
-    # pdftotext returns nonzero for weird PDFs but still writes stdout; tolerate.
-    return result.stdout or ""
+    with pdfplumber.open(pdf_path) as pdf:
+        return pdf.pages[page - 1].extract_text(layout=True) or ""
 
 
 def _page_count(pdf_path: Path) -> int:
-    return len(PdfReader(str(pdf_path)).pages)
+    with pdfplumber.open(pdf_path) as pdf:
+        return len(pdf.pages)
 
 
 def _current_section(text: str) -> str | None:

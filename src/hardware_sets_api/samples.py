@@ -19,9 +19,9 @@ class SampleSpec:
 
 
 SAMPLES: list[SampleSpec] = [
-    SampleSpec(id="bridgeport", name="Bridgeport Specs", label="List format", filename="bridgeport.pdf"),
-    SampleSpec(id="morris-bank", name="Morris Bank", label="Tabular schedule", filename="morris_bank.pdf"),
-    SampleSpec(id="roselle-library", name="Roselle Public Library", label="Mixed format", filename="roselle_library.pdf"),
+    SampleSpec(id="sjc-div", name="SJC Division 08", label="List format", filename="SJC_Div_demo.pdf"),
+    SampleSpec(id="morris-bank", name="Morris Bank", label="Tabular schedule", filename="morris_bank_demo.pdf"),
+    SampleSpec(id="roselle-library", name="Roselle Public Library", label="Mixed format", filename="roselle_demo.pdf"),
 ]
 
 SAMPLE_BY_ID: dict[str, SampleSpec] = {s.id: s for s in SAMPLES}
