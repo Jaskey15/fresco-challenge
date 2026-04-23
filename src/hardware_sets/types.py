@@ -14,12 +14,15 @@ from dataclasses import dataclass, field
 class NumberedLine:
     number: int           # 1-indexed from top of page
     text: str             # verbatim pdftotext -layout line
+    bbox: tuple[float, float, float, float] | None = None  # (x0, top, x1, bottom) in PDF points
 
 
 @dataclass
 class PageLayout:
     page_number: int      # 1-indexed
     lines: list[NumberedLine]
+    page_width: float = 0.0   # PDF page width in points
+    page_height: float = 0.0  # PDF page height in points
 
 
 @dataclass
@@ -34,6 +37,7 @@ class ScheduleRegion:
 class SetLocation:
     page: int             # 1-indexed
     line_range: tuple[int, int]  # (first, last), 1-indexed, inclusive
+    bbox: tuple[float, float, float, float] | None = None  # union of line bboxes
 
 
 @dataclass
