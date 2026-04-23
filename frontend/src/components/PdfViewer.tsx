@@ -46,16 +46,16 @@ export default function PdfViewer({
   const pdfUrl = `/api/pdf/${sessionId}`;
 
   return (
-    <div ref={containerRef} className="h-full overflow-y-auto bg-gray-100">
+    <div ref={containerRef} className="h-full overflow-y-auto bg-pdf-surround">
       <Document
         file={pdfUrl}
         loading={
-          <div className="flex items-center justify-center h-full text-sm text-gray-400">
+          <div className="flex items-center justify-center h-full text-sm text-dim">
             Loading PDF...
           </div>
         }
         error={
-          <div className="flex items-center justify-center h-full text-sm text-red-400 p-4 text-center">
+          <div className="flex items-center justify-center h-full text-sm text-error p-4 text-center">
             Session expired — please re-upload the PDF.
           </div>
         }
@@ -67,13 +67,13 @@ export default function PdfViewer({
 
           return (
             <div key={`${loc.page}-${i}`} className="mb-2">
-              <div className="text-[10px] text-gray-400 px-2 py-1 bg-gray-200/50">
+              <div className="text-[11px] text-dim font-heading px-2 py-1">
                 Page {loc.page}
                 {allLocations.length > 1 && (
-                  <span className="ml-1 text-gray-300">· {loc.label}</span>
+                  <span className="ml-2 bg-accent text-backdrop px-1.5 py-0.5 rounded text-[10px] font-semibold">{loc.label}</span>
                 )}
               </div>
-              <div className="relative">
+              <div className="relative shadow-[0_2px_12px_rgba(0,0,0,0.4)]">
                 <Page
                   pageNumber={loc.page}
                   width={containerWidth || undefined}
@@ -82,7 +82,7 @@ export default function PdfViewer({
                 />
                 {loc.bbox && layout && (
                   <div
-                    className="absolute pointer-events-none border-2 border-green-500/80 bg-green-500/10 rounded-sm"
+                    className="absolute pointer-events-none border-2 border-accent bg-[rgba(212,149,106,0.06)] rounded-sm"
                     style={{
                       left: loc.bbox[0] * scale,
                       top: loc.bbox[1] * scale,
