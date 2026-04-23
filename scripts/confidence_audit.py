@@ -48,14 +48,14 @@ def fields_match(extracted, truth):
     return e == t
 
 
-def run_extraction(pdf_path: Path) -> dict:
+def run_extraction(pdf_path: Path, model: str | None = None) -> dict:
     sys.path.insert(0, str(ROOT / "src"))
     from hardware_sets_api.pipeline import run_pipeline
 
     def progress(msg):
         print(f"  {msg['phase']}: {msg['message']}", file=sys.stderr)
 
-    return run_pipeline(pdf_path, on_progress=progress)
+    return run_pipeline(pdf_path, on_progress=progress, model=model)
 
 
 def load_json(path: Path) -> list[dict]:
@@ -256,6 +256,7 @@ def print_report(all_results, all_missing, all_extra):
 def main():
     parser = argparse.ArgumentParser(description="Audit confidence scoring against ground truth")
     parser.add_argument("--extract", action="store_true", help="Run extraction (costs API calls)")
+    parser.add_argument("--model", default=None, help="Anthropic model id (default: extractor default)")
     args = parser.parse_args()
 
     CACHE_DIR.mkdir(exist_ok=True)
@@ -278,7 +279,7 @@ def main():
                 print(f"SKIP {pdf_name}: PDF not found", file=sys.stderr)
                 continue
             print(f"Extracting {pdf_name}...", file=sys.stderr)
-            result = run_extraction(pdf_path)
+            result = run_extraction(pdf_path, model=args.model)
             cache_path.write_text(json.dumps(result, indent=2, default=str) + "\n")
             extracted_sets = result["hardware_sets"]
         else:

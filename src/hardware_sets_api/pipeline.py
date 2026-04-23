@@ -16,6 +16,8 @@ from hardware_sets.types import HardwareSet
 def run_pipeline(
     pdf_path: Path,
     on_progress: Callable[[dict], None],
+    *,
+    model: str | None = None,
 ) -> dict:
     total_pages = len(PdfReader(str(pdf_path)).pages)
     on_progress({"phase": "filter", "message": f"Scanning {total_pages} pages..."})
@@ -68,7 +70,8 @@ def run_pipeline(
             }
 
         try:
-            sets = extract_mod.extract_sets(region, layouts)
+            extract_kwargs = {"model": model} if model else {}
+            sets = extract_mod.extract_sets(region, layouts, **extract_kwargs)
             attach_bboxes(sets, layouts)
             llm_calls += 1
             all_sets.extend(sets)
