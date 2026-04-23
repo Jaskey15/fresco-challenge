@@ -93,7 +93,7 @@ export default function DetailTable({ set, edits, editCount, onCellEdit, onReset
   };
 
   return (
-    <div className="flex-[1.6] min-w-0 flex flex-col bg-white">
+    <div className="flex-1 min-w-0 flex flex-col bg-white">
       {/* Header */}
       <div className="px-4 py-3 border-b border-gray-200 flex items-start justify-between">
         <div>

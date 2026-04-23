@@ -1,11 +1,19 @@
 export interface NumberedLine {
   number: number;
   text: string;
+  bbox: [number, number, number, number];
+}
+
+export interface PageLayout {
+  lines: NumberedLine[];
+  page_width: number;
+  page_height: number;
 }
 
 export interface SetLocation {
   page: number;
   line_range: [number, number];
+  bbox: [number, number, number, number] | null;
 }
 
 export interface Component {
@@ -32,7 +40,8 @@ export interface HardwareSet {
 export interface ExtractionResult {
   source_pdf: string;
   hardware_sets: HardwareSet[];
-  page_layouts: Record<string, NumberedLine[]>;
+  page_layouts: Record<string, PageLayout>;
+  session_id: string;
   diagnostics: {
     pages_scanned: number;
     regions_found: number;
