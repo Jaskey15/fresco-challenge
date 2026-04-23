@@ -8,8 +8,9 @@ from queue import Queue
 from threading import Thread
 
 from fastapi import APIRouter, HTTPException, UploadFile
-from fastapi.responses import StreamingResponse
+from fastapi.responses import Response, StreamingResponse
 
+from hardware_sets_api import session
 from hardware_sets_api.pipeline import run_pipeline
 from hardware_sets_api.samples import SAMPLE_BY_ID, SAMPLES
 
@@ -21,7 +22,24 @@ def list_samples():
     return [{"id": s.id, "name": s.name, "label": s.label} for s in SAMPLES]
 
 
-def _stream_extraction(pdf_path: Path, cleanup: bool = False):
+@router.get("/pdf/{session_id}")
+def get_pdf(session_id: str):
+    result = session.get(session_id)
+    if result is None:
+        raise HTTPException(status_code=404, detail="Session expired or not found")
+    pdf_bytes, filename = result
+    return Response(
+        content=pdf_bytes,
+        media_type="application/pdf",
+        headers={"Content-Disposition": f'inline; filename="{filename}"'},
+    )
+
+
+def _stream_extraction(
+    pdf_path: Path,
+    cleanup: bool = False,
+    session_id: str | None = None,
+):
     queue: Queue = Queue()
 
     def on_progress(event: dict):
@@ -30,6 +48,8 @@ def _stream_extraction(pdf_path: Path, cleanup: bool = False):
     def run():
         try:
             result = run_pipeline(pdf_path, on_progress)
+            if session_id:
+                result["session_id"] = session_id
             queue.put(("result", result))
         except Exception as e:
             queue.put(("error", {"message": str(e)}))
@@ -56,11 +76,13 @@ async def extract_upload(file: UploadFile):
         raise HTTPException(status_code=400, detail="Only PDF files are accepted")
 
     content = await file.read()
+    session_id = session.put(content, file.filename or "upload.pdf")
+
     tmp = tempfile.NamedTemporaryFile(suffix=".pdf", delete=False)
     tmp.write(content)
     tmp.close()
 
-    return _stream_extraction(Path(tmp.name), cleanup=True)
+    return _stream_extraction(Path(tmp.name), cleanup=True, session_id=session_id)
 
 
 @router.post("/extract/sample/{sample_id}")
@@ -71,4 +93,7 @@ def extract_sample(sample_id: str):
     if not sample.path.is_file():
         raise HTTPException(status_code=500, detail=f"Sample file missing: {sample.filename}")
 
-    return _stream_extraction(sample.path, cleanup=False)
+    pdf_bytes = sample.path.read_bytes()
+    session_id = session.put(pdf_bytes, sample.filename)
+
+    return _stream_extraction(sample.path, cleanup=False, session_id=session_id)
