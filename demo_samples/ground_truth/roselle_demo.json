@@ -1,0 +1,663 @@
+[
+  {
+    "set_number": "1.1",
+    "description": "SLIDING AUTO / EXTR ENTR",
+    "is_not_used": false,
+    "location": {
+      "page": 1,
+      "line_range": [
+        5,
+        8
+      ]
+    },
+    "continued_on": [],
+    "components": [
+      {
+        "qty": 1,
+        "description": "CYLINDER / CORE",
+        "catalog_number": "FSIC PRIMUS",
+        "mfr": "SCH",
+        "finish": "613",
+        "notes": "COORDINATE W/ SLIDING AUTO ENTRANCE MFR."
+      }
+    ]
+  },
+  {
+    "set_number": "1.2",
+    "description": "CURTAINWALL / EXTR ENTR / SINGLE DOOR / CARD READER",
+    "is_not_used": false,
+    "location": {
+      "page": 1,
+      "line_range": [
+        9,
+        16
+      ]
+    },
+    "continued_on": [],
+    "components": [
+      {
+        "qty": 3,
+        "description": "MORTISE HINGE",
+        "catalog_number": "5BB1 4.5\" x 4.5\"",
+        "mfr": "IVE",
+        "finish": "613",
+        "notes": "FULL MORTISE, FIVE KNUCKLE BB HINGE"
+      },
+      {
+        "qty": 1,
+        "description": "MORTISE LOCKSET",
+        "catalog_number": "L9077, 18 LEVER, L ESCUTCHEON - FSIC PRIMUS",
+        "mfr": "SCH",
+        "finish": "613",
+        "notes": "CLASSROOM SECURITY W/ HOLDBACK FUNCTION"
+      },
+      {
+        "qty": 1,
+        "description": "ELECTRIC STRIKE",
+        "catalog_number": "6200 SERIES",
+        "mfr": "VON",
+        "finish": "613",
+        "notes": "COORDINATE W/ OWNER'S SECUIRTY VENDOR"
+      },
+      {
+        "qty": 1,
+        "description": "SURFACE CLOSER",
+        "catalog_number": "4040XP - EDA ARM - METAL COVER",
+        "mfr": "LCN",
+        "finish": "691",
+        "notes": "EXTRA DUTY ARM, METAL COVER"
+      },
+      {
+        "qty": null,
+        "description": "GASKETING / SWEEP",
+        "catalog_number": "WEATHER GASKETING & SWEEP",
+        "mfr": "PEM/NGP/ZERO",
+        "finish": "BLACK",
+        "notes": "THRESHOLD PROVIDED BY CURTAINWALL ENTRANCE MFR."
+      },
+      {
+        "qty": null,
+        "description": "DOOR ACCESS CONTROL DEVICES",
+        "catalog_number": "CARD READER / DPS / POWER SUPPLY / ETC (BY OTHERS)",
+        "mfr": null,
+        "finish": null,
+        "notes": "PREP/ROUGH-IN DOORS & FRAMES FOR DEVICES TO BE PROVIDED & INSTALLED BY OWNER'S SECURITY VENDOR; COORDINATE W/ CURTAINWALL ENTRANCE MFR."
+      }
+    ]
+  },
+  {
+    "set_number": "1.3",
+    "description": "CURTAINWALL / EXTR EGRESS / SINGLE DOOR",
+    "is_not_used": false,
+    "location": {
+      "page": 1,
+      "line_range": [
+        17,
+        24
+      ]
+    },
+    "continued_on": [],
+    "components": [
+      {
+        "qty": 2,
+        "description": "MORTISE HINGE",
+        "catalog_number": "5BB1 4.5\" x 4.5\"",
+        "mfr": "IVE",
+        "finish": "613",
+        "notes": "FULL MORTISE, FIVE KNUCKLE BB HINGE"
+      },
+      {
+        "qty": 1,
+        "description": "HW MORTISE HINGE",
+        "catalog_number": "5BB1HW 4.5\" x 4.5\"",
+        "mfr": "IVE",
+        "finish": "613",
+        "notes": null
+      },
+      {
+        "qty": 1,
+        "description": "PANIC HARDWARE",
+        "catalog_number": "35A MORTISE DEVICE, CONCEALED VERTICAL RODS, 18 LEVER, L ESCUTCHEON, HARDWIRED ALARM KIT W/ POWER SUPPLY - FSIC PRIMUS",
+        "mfr": "VON",
+        "finish": "613",
+        "notes": "PANIC / CLASSROOM FUNCTION"
+      },
+      {
+        "qty": 1,
+        "description": "SURFACE CLOSER",
+        "catalog_number": "4040XP - EDA ARM - METAL COVER",
+        "mfr": "LCN",
+        "finish": "691",
+        "notes": "EXTRA DUTY ARM, METAL COVER"
+      },
+      {
+        "qty": null,
+        "description": "GASKETING / SWEEP",
+        "catalog_number": "WEATHER GASKETING & SWEEP",
+        "mfr": "PEM/NGP/ZERO",
+        "finish": "BLACK",
+        "notes": "THRESHOLD PROVIDED BY CURTAINWALL ENTRANCE MFR.; COORDINATE W/ CURTAINWALL ENTRANCE MFR."
+      }
+    ]
+  },
+  {
+    "set_number": "1.4",
+    "description": "FIRE-RATED GL / INTR EGRESS / SINGLE DOOR",
+    "is_not_used": false,
+    "location": {
+      "page": 1,
+      "line_range": [
+        25,
+        31
+      ]
+    },
+    "continued_on": [],
+    "components": [
+      {
+        "qty": 3,
+        "description": "MORTISE HINGE",
+        "catalog_number": "5BB1 4.5\" x 4.5\"",
+        "mfr": "IVE",
+        "finish": "613",
+        "notes": "FULL MORTISE, FIVE KNUCKLE BB HINGE"
+      },
+      {
+        "qty": 1,
+        "description": "PANIC HARDWARE",
+        "catalog_number": "35A MORTISE DEVICE, CONCEALED VERTICAL RODS, 18 LEVER, L ESCUTCHEON",
+        "mfr": "VON",
+        "finish": "613",
+        "notes": "PANIC / PASSAGE FUNCTION"
+      },
+      {
+        "qty": 1,
+        "description": "SURFACE CLOSER",
+        "catalog_number": "4040XP - EDA ARM - METAL COVER",
+        "mfr": "LCN",
+        "finish": "691",
+        "notes": "EXTRA DUTY ARM, METAL COVER"
+      },
+      {
+        "qty": 1,
+        "description": "MAG. DOOR HOLDER",
+        "catalog_number": "SEM 7800 SERIES",
+        "mfr": "SEN",
+        "finish": "691",
+        "notes": "COORDINATE W/ FIRE ALARM SYSTEM"
+      },
+      {
+        "qty": null,
+        "description": "SILENCERS",
+        "catalog_number": "SILENCER SI6X",
+        "mfr": "IVE",
+        "finish": "BLACK",
+        "notes": "CONTRACTOR TO CONFIRM QUANTITIES; COORDINATE W/ FIRE-RATED GLASS ENTRANCE MFR."
+      }
+    ]
+  },
+  {
+    "set_number": "1.5",
+    "description": "CURTAINWALL / BALCONY / EXTR ENTR / SINGLE DOOR",
+    "is_not_used": false,
+    "location": {
+      "page": 1,
+      "line_range": [
+        32,
+        36
+      ]
+    },
+    "continued_on": [],
+    "components": [
+      {
+        "qty": 3,
+        "description": "MORTISE HINGE",
+        "catalog_number": "5BB1 4.5\" x 4.5\"",
+        "mfr": "IVE",
+        "finish": "613",
+        "notes": "FULL MORTISE, FIVE KNUCKLE BB HINGE"
+      },
+      {
+        "qty": 1,
+        "description": "MORTISE LOCKSET",
+        "catalog_number": "L9077, 18 LEVER, L ESCUTCHEON - FSIC PRIMUS",
+        "mfr": "SCH",
+        "finish": "613",
+        "notes": "CLASSROOM SECURITY W/ HOLDBACK FUNCTION"
+      },
+      {
+        "qty": 1,
+        "description": "SURFACE CLOSER",
+        "catalog_number": "4040XP - EDA ARM - METAL COVER",
+        "mfr": "LCN",
+        "finish": "691",
+        "notes": "EXTRA DUTY ARM, METAL COVER"
+      },
+      {
+        "qty": null,
+        "description": "GASKETING / SWEEP",
+        "catalog_number": "WEATHER GASKETING & SWEEP",
+        "mfr": "PEM/NGP/ZERO",
+        "finish": "BLACK",
+        "notes": "THRESHOLD PROVIDED BY CURTAINWALL ENTRANCE MFR.; COORDINATE W/ CURTAINWALL ENTRANCE MFR."
+      }
+    ]
+  },
+  {
+    "set_number": "2.1",
+    "description": "HM DOOR/FRM / EXTR ENTR / SINGLE DOOR / CARD READER",
+    "is_not_used": false,
+    "location": {
+      "page": 1,
+      "line_range": [
+        37,
+        44
+      ]
+    },
+    "continued_on": [],
+    "components": [
+      {
+        "qty": 3,
+        "description": "MORTISE HINGE",
+        "catalog_number": "5BB1 4.5\" x 4.5\"",
+        "mfr": "IVE",
+        "finish": "613",
+        "notes": "FULL MORTISE, FIVE KNUCKLE BB HINGE"
+      },
+      {
+        "qty": 1,
+        "description": "MORTISE LOCKSET",
+        "catalog_number": "L9070, 18 LEVER, L ESCUTCHEON - FSIC PRIMUS",
+        "mfr": "SCH",
+        "finish": "613",
+        "notes": "CLASSROOM FUNCTION"
+      },
+      {
+        "qty": 1,
+        "description": "ELECTRIC STRIKE",
+        "catalog_number": "6200 SERIES",
+        "mfr": "VON",
+        "finish": "613",
+        "notes": "COORDINATE W/ OWNER'S SECUIRTY VENDOR"
+      },
+      {
+        "qty": 1,
+        "description": "SURFACE CLOSER",
+        "catalog_number": "4040XP - EDA ARM - METAL COVER",
+        "mfr": "LCN",
+        "finish": "691",
+        "notes": "EXTRA DUTY ARM, METAL COVER"
+      },
+      {
+        "qty": null,
+        "description": "GASKETING / SWEEP",
+        "catalog_number": "WEATHER GASKETING & SWEEP",
+        "mfr": "PEM/NGP/ZERO",
+        "finish": "BLACK",
+        "notes": null
+      },
+      {
+        "qty": null,
+        "description": "THRESHOLD",
+        "catalog_number": "EXTR. THRESHOLD",
+        "mfr": "PEM/NGP/ZERO",
+        "finish": null,
+        "notes": null
+      },
+      {
+        "qty": null,
+        "description": "DOOR ACCESS CONTROL DEVICES",
+        "catalog_number": "CARD READER / DPS / POWER SUPPLY / ETC (BY OTHERS)",
+        "mfr": null,
+        "finish": null,
+        "notes": "PREP/ROUGH-IN DOORS & FRAMES FOR DEVICES TO BE PROVIDED & INSTALLED BY OWNER'S SECURITY VENDOR"
+      }
+    ]
+  },
+  {
+    "set_number": "2.2",
+    "description": "HM DOOR/FRM / EXTR ENTR / DBL DOORS / CARD READER",
+    "is_not_used": false,
+    "location": {
+      "page": 1,
+      "line_range": [
+        45,
+        54
+      ]
+    },
+    "continued_on": [],
+    "components": [
+      {
+        "qty": 5,
+        "description": "MORTISE HINGE",
+        "catalog_number": "5BB1 4.5\" x 4.5\"",
+        "mfr": "IVE",
+        "finish": "613",
+        "notes": "FULL MORTISE, FIVE KNUCKLE BB HINGE"
+      },
+      {
+        "qty": 1,
+        "description": "HW MORTISE HINGE",
+        "catalog_number": "5BB1HW 4.5\" x 4.5\"",
+        "mfr": "IVE",
+        "finish": "613",
+        "notes": "COORDINATE W/ OWNER'S SECUIRTY VENDOR"
+      },
+      {
+        "qty": 1,
+        "description": "MORTISE LOCKSET",
+        "catalog_number": "L9070, 18 LEVER, L ESCUTCHEON - FSIC PRIMUS",
+        "mfr": "SCH",
+        "finish": "613",
+        "notes": "CLASSROOM FUNCTION"
+      },
+      {
+        "qty": 1,
+        "description": "ELECTRIC STRIKE",
+        "catalog_number": "6200 SERIES",
+        "mfr": "VON",
+        "finish": "613",
+        "notes": "COORDINATE W/ OWNER'S SECUIRTY VENDOR"
+      },
+      {
+        "qty": 1,
+        "description": "SURFACE CLOSER",
+        "catalog_number": "4040XP - EDA ARM - METAL COVER",
+        "mfr": "LCN",
+        "finish": "691",
+        "notes": "EXTRA DUTY ARM, METAL COVER"
+      },
+      {
+        "qty": 2,
+        "description": "FLUSH BOLT",
+        "catalog_number": "FB45X",
+        "mfr": "IVE",
+        "finish": "613",
+        "notes": "TOP & BOTTOM"
+      },
+      {
+        "qty": null,
+        "description": "GASKETING / SWEEP",
+        "catalog_number": "WEATHER GASKETING & SWEEP",
+        "mfr": "PEM/NGP/ZERO",
+        "finish": "BLACK",
+        "notes": "THRESHOLD PROVIDED BY CURTAINWALL ENTRANCE MFR."
+      },
+      {
+        "qty": null,
+        "description": "THRESHOLD",
+        "catalog_number": "EXTR. THRESHOLD",
+        "mfr": "PEM/NGP/ZERO",
+        "finish": null,
+        "notes": null
+      },
+      {
+        "qty": null,
+        "description": "DOOR ACCESS CONTROL DEVICES",
+        "catalog_number": "CARD READER / DPS / POWER SUPPLY / ETC (BY OTHERS)",
+        "mfr": null,
+        "finish": null,
+        "notes": "PREP/ROUGH-IN DOORS & FRAMES FOR DEVICES TO BE PROVIDED & INSTALLED BY OWNER'S SECURITY VENDOR"
+      }
+    ]
+  },
+  {
+    "set_number": "2.3",
+    "description": "HM DOOR/FRM / EXTR EGRESS / SINGLE DOOR",
+    "is_not_used": false,
+    "location": {
+      "page": 1,
+      "line_range": [
+        55,
+        62
+      ]
+    },
+    "continued_on": [],
+    "components": [
+      {
+        "qty": 2,
+        "description": "MORTISE HINGE",
+        "catalog_number": "5BB1 4.5\" x 4.5\"",
+        "mfr": "IVE",
+        "finish": "613",
+        "notes": "FULL MORTISE, FIVE KNUCKLE BB HINGE"
+      },
+      {
+        "qty": 1,
+        "description": "HW MORTISE HINGE",
+        "catalog_number": "5BB1HW 4.5\" x 4.5\"",
+        "mfr": "IVE",
+        "finish": "613",
+        "notes": "COORDINATE W/ OWNER'S SECUIRTY VENDOR"
+      },
+      {
+        "qty": 1,
+        "description": "PANIC HARDWARE",
+        "catalog_number": "35A MORTISE DEVICE, CONCEALED VERTICAL RODS, 18 LEVER, L ESCUTCHEON, HARDWIRED ALARM KIT W/ POWER SUPPLY - FSIC PRIMUS",
+        "mfr": "VON",
+        "finish": "613",
+        "notes": "PANIC / CLASSROOM FUNCTION"
+      },
+      {
+        "qty": 1,
+        "description": "SURFACE CLOSER",
+        "catalog_number": "4040XP - EDA ARM - METAL COVER",
+        "mfr": "LCN",
+        "finish": "691",
+        "notes": "EXTRA DUTY ARM, METAL COVER"
+      },
+      {
+        "qty": null,
+        "description": "GASKETING / SWEEP",
+        "catalog_number": "WEATHER GASKETING & SWEEP",
+        "mfr": "PEM/NGP/ZERO",
+        "finish": "BLACK",
+        "notes": "THRESHOLD PROVIDED BY CURTAINWALL ENTRANCE MFR."
+      },
+      {
+        "qty": null,
+        "description": "THRESHOLD",
+        "catalog_number": "EXTR. THRESHOLD",
+        "mfr": "PEM/NGP/ZERO",
+        "finish": null,
+        "notes": null
+      }
+    ]
+  },
+  {
+    "set_number": "2.4",
+    "description": "HM DOOR/FRM / INTR EGRESS / SINGLE DOOR / CARD READER",
+    "is_not_used": false,
+    "location": {
+      "page": 1,
+      "line_range": [
+        63,
+        72
+      ]
+    },
+    "continued_on": [],
+    "components": [
+      {
+        "qty": 2,
+        "description": "MORTISE HINGE",
+        "catalog_number": "5BB1 4.5\" x 4.5\"",
+        "mfr": "IVE",
+        "finish": "613",
+        "notes": "FULL MORTISE, FIVE KNUCKLE BB HINGE"
+      },
+      {
+        "qty": 1,
+        "description": "HW MORTISE HINGE",
+        "catalog_number": "5BB1HW 4.5\" x 4.5\"",
+        "mfr": "IVE",
+        "finish": "613",
+        "notes": "COORDINATE W/ OWNER'S SECUIRTY VENDOR"
+      },
+      {
+        "qty": 1,
+        "description": "PANIC HARDWARE",
+        "catalog_number": "35A MORTISE DEVICE, CONCEALED VERTICAL RODS, QUIET ELECTRIC LATCH RETRACTION, 18 LEVER, L ESCUTCHEON, HARDWIRED ALARM KIT W/ POWER SUPPLY - FSIC PRIMUS",
+        "mfr": "VON",
+        "finish": "613",
+        "notes": "PANIC / CLASSROOM FUNCTION; COORDINATE W/ OWNER'S SECUIRTY VENDOR"
+      },
+      {
+        "qty": 1,
+        "description": "SURFACE CLOSER",
+        "catalog_number": "4040XP - EDA ARM - METAL COVER",
+        "mfr": "LCN",
+        "finish": "691",
+        "notes": "EXTRA DUTY ARM, METAL COVER"
+      },
+      {
+        "qty": null,
+        "description": "SILENCERS",
+        "catalog_number": "SILENCER SI6X",
+        "mfr": "IVE",
+        "finish": "BLACK",
+        "notes": "CONTRACTOR TO CONFIRM QUANTITIES"
+      },
+      {
+        "qty": null,
+        "description": "DOOR ACCESS CONTROL DEVICES",
+        "catalog_number": "CARD READER / DPS / POWER SUPPLY / ETC (BY OTHERS)",
+        "mfr": null,
+        "finish": null,
+        "notes": "PREP/ROUGH-IN DOORS & FRAMES FOR DEVICES TO BE PROVIDED & INSTALLED BY OWNER'S SECURITY VENDOR"
+      }
+    ]
+  },
+  {
+    "set_number": "3.1",
+    "description": "OFFICE / SINGLE DOOR",
+    "is_not_used": false,
+    "location": {
+      "page": 1,
+      "line_range": [
+        73,
+        79
+      ]
+    },
+    "continued_on": [],
+    "components": [
+      {
+        "qty": 3,
+        "description": "MORTISE HINGE",
+        "catalog_number": "5BB1 4.5\" x 4.5\"",
+        "mfr": "IVE",
+        "finish": "613",
+        "notes": "FULL MORTISE, FIVE KNUCKLE BB HINGE"
+      },
+      {
+        "qty": 1,
+        "description": "MORTISE LOCKSET",
+        "catalog_number": "L9056, 18 LEVER, A ROSE, 10-072 STRIKE, ADA THUMBTURN - FSIC PRIMUS",
+        "mfr": "SCH",
+        "finish": "613",
+        "notes": "OFFICE FUNCTION W/ AUTO UNLOCKING"
+      },
+      {
+        "qty": 1,
+        "description": "WALL STOP",
+        "catalog_number": "WS401/402CCV",
+        "mfr": "IVE",
+        "finish": "613",
+        "notes": "SEE PLANS FOR WALL CONSTRUCTION"
+      },
+      {
+        "qty": 1,
+        "description": "MORTISE AUTO. DOOR BOTTOM",
+        "catalog_number": "225S",
+        "mfr": "NGP",
+        "finish": "MILL ALUM / BLACK",
+        "notes": null
+      },
+      {
+        "qty": null,
+        "description": "SILENCERS",
+        "catalog_number": "SILENCER SI6X",
+        "mfr": "IVE",
+        "finish": "BLACK",
+        "notes": "CONTRACTOR TO CONFIRM QUANTITIES"
+      }
+    ]
+  },
+  {
+    "set_number": "3.2",
+    "description": "CONFERENCE / SINGLE DOOR / CARD READER",
+    "is_not_used": false,
+    "location": {
+      "page": 1,
+      "line_range": [
+        80,
+        90
+      ]
+    },
+    "continued_on": [],
+    "components": [
+      {
+        "qty": 2,
+        "description": "MORTISE HINGE",
+        "catalog_number": "5BB1 4.5\" x 4.5\"",
+        "mfr": "IVE",
+        "finish": "613",
+        "notes": "FULL MORTISE, FIVE KNUCKLE BB HINGE"
+      },
+      {
+        "qty": 1,
+        "description": "HW MORTISE HINGE",
+        "catalog_number": "5BB1HW 4.5\" x 4.5\"",
+        "mfr": "IVE",
+        "finish": "613",
+        "notes": "COORDINATE W/ OWNER'S SECUIRTY VENDOR"
+      },
+      {
+        "qty": 1,
+        "description": "MORTISE LOCKSET / ELEC. UNLOCKING",
+        "catalog_number": "L9092EU, 18 LEVER, A ROSE, 10-072 STRIKE - FSIC PRIMUS",
+        "mfr": "SCH",
+        "finish": "613",
+        "notes": "ELECTRIC UNLOCKING FUNCTION; COORDINATE W/ OWNER'S SECURITY VENDOR"
+      },
+      {
+        "qty": 1,
+        "description": "SURFACE CLOSER",
+        "catalog_number": "4040XP - HEDA ARM - METAL COVER",
+        "mfr": "LCN",
+        "finish": "691",
+        "notes": "EXTRA DUTY ARM W/ HOLD OPEN, METAL COVER"
+      },
+      {
+        "qty": 1,
+        "description": "WALL STOP",
+        "catalog_number": "WS401/402CCV",
+        "mfr": "IVE",
+        "finish": "613",
+        "notes": "SEE PLANS FOR WALL CONSTRUCTION"
+      },
+      {
+        "qty": 1,
+        "description": "MORTISE AUTO. DOOR BOTTOM",
+        "catalog_number": "225S",
+        "mfr": "NGP",
+        "finish": "MILL ALUM / BLACK",
+        "notes": null
+      },
+      {
+        "qty": null,
+        "description": "SILENCERS",
+        "catalog_number": "SILENCER SI6X",
+        "mfr": "IVE",
+        "finish": "BLACK",
+        "notes": "CONTRACTOR TO CONFIRM QUANTITIES"
+      },
+      {
+        "qty": null,
+        "description": "DOOR ACCESS CONTROL DEVICES",
+        "catalog_number": "CARD READER / DPS / POWER SUPPLY / ETC (BY OTHERS)",
+        "mfr": null,
+        "finish": null,
+        "notes": "PREP/ROUGH-IN DOORS & FRAMES FOR DEVICES TO BE PROVIDED & INSTALLED BY OWNER'S SECURITY VENDOR"
+      }
+    ]
+  }
+]
