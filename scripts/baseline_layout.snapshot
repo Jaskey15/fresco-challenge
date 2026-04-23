@@ -146,49 +146,24 @@ jc_ryan_2.pdf: 1 regions
       L17:                                           END OF SECTION
       L18: DOOR HARDWARE                                                                          08 71 00 - 46
       L19: Copyright 2025 arkaspecs
-morris_bank_08.pdf: 2 regions
-  region 0: pages 27-33
-    page 27: 37 lines
-      L01: MORRIS BANK                                                               SECTION 084113-5
-      L02: MACON, GA.                                    ALUMINUM-FRAMED ENTRANCES AND STOREFRONTS
-      L03: Azar+Walsh                                              ISSUED FOR CONSTRUCTION 01/26/2026
-      ...
-      L35:            replace components of aluminum-framed systems that do not comply with requirements or tha…
-      L36:            fail in materials or workmanship within specified warranty period.
-      L37: ALUMINUM-FRAMED ENTRANCES AND STOREFRONTS                                                         08…
-    page 30: 36 lines
-      L01: MORRIS BANK                                                               SECTION 084113-8
-      L02: MACON, GA.                                    ALUMINUM-FRAMED ENTRANCES AND STOREFRONTS
-      L03: Azar+Walsh                                              ISSUED FOR CONSTRUCTION 01/26/2026
-      ...
-      L34:            2.    Glazing Stops and Gaskets: Square, snap-on, extruded-aluminum stops and preformed
-      L35:                  gaskets. Coordinate door glazing thickness with storefront framed system glazing th…
-      L36: ALUMINUM-FRAMED ENTRANCES AND STOREFRONTS                                                     084113…
-    page 33: 31 lines
-      L01: MORRIS BANK                                                                SECTION 084113-11
-      L02: MACON, GA.                                     ALUMINUM-FRAMED ENTRANCES AND STOREFRONTS
-      L03: Azar+Walsh                                               ISSUED FOR CONSTRUCTION 01/26/2026
-      ...
-      L29:                  inches from the latch, measured to the leading door edge.
-      L30: END OF SECTION 084113
-      L31: ALUMINUM-FRAMED ENTRANCES AND STOREFRONTS                                                       0841…
-  region 1: pages 40-110
-    page 40: 40 lines
-      L01: MORRIS BANK                                                                   SECTION 087100-6
-      L02: MACON, GA.                                                                    DOOR HARDWARE
-      L03: Azar+Walsh                                                    ISSUED FOR CONTRUCTION 01/26/2026
-      ...
-      L38:        1.     Push/Pull Plates: Minimum .050 inch thick, size as indicated in hardware sets, with
-      L39:               beveled edges, secured with exposed screws unless otherwise indicated.
-      L40: DOOR HARDWARE                                                                                  08710…
-    page 75: 19 lines
-      L01: MORRIS BANK                                                                  SECTION 087100-41
+morris_bank_08.pdf: 1 regions
+  region 0: pages 53-110
+    page 53: 36 lines
+      L01: MORRIS BANK                                                                  SECTION 087100-19
       L02: MACON, GA.                                                                   DOOR HARDWARE
       L03: Azar+Walsh                                                   ISSUED FOR CONTRUCTION 01/26/2026
       ...
-      L17:      - End user needs to confirm master key system & keyway prior procurement
-      L18:    3 Door Silencer             608-RKW                                          BLK            RO
-      L19: DOOR HARDWARE                                                                               087100 -…
+      L34:              3. Aluminum Opening Hardware finish color shall be determined by the Architect at a lat…
+      L35:              er time
+      L36: DOOR HARDWARE                                                                               087100 -…
+    page 81: 18 lines
+      L01: MORRIS BANK                                                                  SECTION 087100-47
+      L02: MACON, GA.                                                                   DOOR HARDWARE
+      L03: Azar+Walsh                                                   ISSUED FOR CONTRUCTION 01/26/2026
+      ...
+      L16:      - End user needs to confirm master key system & keyway prior procurement
+      L17:    3 Door Silencer             608-RKW                                          BLK            RO
+      L18: DOOR HARDWARE                                                                               087100 -…
     page 110: 36 lines
       L01: MORRIS BANK                                                                 SECTION 087100-26
       L02: MACON, GA.                                                                  DOOR HARDWARE

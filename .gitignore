@@ -2,8 +2,7 @@
 __pycache__/
 *.pyc
 .pytest_cache/
-out/*
-!out/.gitkeep
+out/
 .DS_Store
 *.egg-info/
 dist/
@@ -21,3 +20,5 @@ logs/
 demo_samples/extracted/
 demo_samples/extracted_sonnet/
 samples/
+docs/
+scripts/

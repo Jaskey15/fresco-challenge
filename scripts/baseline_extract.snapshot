@@ -128,7 +128,7 @@
       1x SURFACE CLOSER W/ OH STOP | mfr=- | finish=693 | cat=-
       1x SEALS (FIRE) | mfr=- | finish=AL | cat=-
       1x DOOR BOTTOM (FIRE) | mfr=- | finish=AL | cat=-
-    15: Doors 124B 116B, 128B & 137 — 13 components
+    15: Doors 124B 116B, 128B & 137 — 12 components
       7x BB HINGE (HW) | mfr=- | finish=BBLK | cat=-
       1x ELECT HINGE | mfr=- | finish=BBLK | cat=-
       1x ELECT STOREROOM LEVER LOCKSET | mfr=- | finish=622 | cat=-
@@ -141,7 +141,6 @@
       1x ASTRAGAL | mfr=- | finish=AL | cat=-
       1x DOOR BOTTOM (THERMAL/ FIRE) | mfr=- | finish=AL | cat=-
       1x POWER SUPPLY | mfr=- | finish=- | cat=-
-      ?x PREP DOOR FOR WIRE TO ELECTRIC LOCKSET | mfr=- | finish=- | cat=-
     16: Door 107A & 107B — 8 components
       4x BB HINGE | mfr=- | finish=BBLK | cat=-
       1x ELECT STRIKE | mfr=- | finish=BLK | cat=-
@@ -320,233 +319,233 @@
 === roselle_public_library_08.pdf: 1 region(s) ===
   region 0: pages 15-17 | 33 sets | 0 not_used
     1.1: SLIDING AUTO / EXTR ENTR — 1 components
-      1x CYLINDER / CORE | mfr=SCH | finish=613 (OIL RUBBED BRONZE) | cat=FSIC PRIMUS
+      1x CYLINDER / CORE | mfr=SCH | finish=613 | cat=FSIC PRIMUS
     1.2: CURTAINWALL / EXTR ENTR / SINGLE DOOR / CARD READER — 6 components
-      3x MORTISE HINGE | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=5BB1 4.5" x 4.5"
-      1x MORTISE LOCKSET | mfr=SCH | finish=613 (OIL RUBBED BRONZE) | cat=L9077, 18 LEVEL, L ESCUTCHEON - FSIC PRIMUS
-      1x ELECTRIC STRIKE | mfr=VON | finish=613 (OIL RUBBED BRONZE) | cat=6200 SERIES
-      1x SURFACE CLOSER | mfr=LCN | finish=691 (LIGHT BRONZE) | cat=4040XP - EDA ARM - METAL COVER
+      3x MORTISE HINGE | mfr=IVE | finish=613 | cat=5BB1 4.5" x 4.5"
+      1x MORTISE LOCKSET | mfr=SCH | finish=613 | cat=L9077, 18 LEVEL, L ESCUTCHEON - FSIC PRIMUS
+      1x ELECTRIC STRIKE | mfr=VON | finish=613 | cat=6200 SERIES
+      1x SURFACE CLOSER | mfr=LCN | finish=691 | cat=4040XP - EDA ARM - METAL COVER
       ?x GASKETING / SWEEP | mfr=PEM | finish=BLACK | cat=WEATHER GASKETING & SWEEP
       ?x DOOR ACCESS CONTROL DEVICES | mfr=- | finish=- | cat=CARD READER / DPS / POWER SUPPLY / ETC (BY OTHERS)
     1.3: CURTAINWALL / EXTR EGRESS / SINGLE DOOR — 5 components
-      2x MORTISE HINGE | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=5BB1 4.5" x 4.5"
-      1x HW MORTISE HINGE | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=5BB1HW 4.5" x 4.5"
-      1x PANIC HARDWARE | mfr=VON | finish=613 (OIL RUBBED BRONZE) | cat=35A MORTISE DEVICE, CONCEALED VERTICAL RODS, 18 LEVER, L ESCUTCHEON, HARDWIRED ALARM KIT W/ POWER SUPPLY - FSIC PRIMUS
-      1x SURFACE CLOSER | mfr=LCN | finish=691 (LIGHT BRONZE) | cat=4040XP - EDA ARM - METAL COVER
+      2x MORTISE HINGE | mfr=IVE | finish=613 | cat=5BB1 4.5" x 4.5"
+      1x HW MORTISE HINGE | mfr=IVE | finish=613 | cat=5BB1HW 4.5" x 4.5"
+      1x PANIC HARDWARE | mfr=VON | finish=613 | cat=35A MORTISE DEVICE, CONCEALED VERTICAL RODS, 18 LEVER, L ESCUTCHEON, HARDWIRED ALARM KIT W/ POWER SUPPLY - FSIC PRIMUS
+      1x SURFACE CLOSER | mfr=LCN | finish=691 | cat=4040XP - EDA ARM - METAL COVER
       ?x GASKETING / SWEEP | mfr=PEM | finish=BLACK | cat=WEATHER GASKETING & SWEEP
     1.4: FIRE-RATED GL / INTR EGRESS / SINGLE DOOR — 5 components
-      3x MORTISE HINGE | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=5BB1 4.5" x 4.5"
-      1x PANIC HARDWARE | mfr=VON | finish=613 (OIL RUBBED BRONZE) | cat=35A MORTISE DEVICE, CONCEALED VERTICAL RODS, 18 LEVER, L ESCUTCHEON
-      1x SURFACE CLOSER | mfr=LCN | finish=691 (LIGHT BRONZE) | cat=4040XP - EDA ARM - METAL COVER
-      1x MAG. DOOR HOLDER | mfr=SEN | finish=691 (LIGHT BRONZE) | cat=SEM 7800 SERIES
+      3x MORTISE HINGE | mfr=IVE | finish=613 | cat=5BB1 4.5" x 4.5"
+      1x PANIC HARDWARE | mfr=VON | finish=613 | cat=35A MORTISE DEVICE, CONCEALED VERTICAL RODS, 18 LEVER, L ESCUTCHEON
+      1x SURFACE CLOSER | mfr=LCN | finish=691 | cat=4040XP - EDA ARM - METAL COVER
+      1x MAG. DOOR HOLDER | mfr=SEN | finish=691 | cat=SEM 7800 SERIES
       ?x SILENCERS | mfr=IVE | finish=BLACK | cat=SILENCER SI6X
     1.5: CURTAINWALL / BALCONY / EXTR ENTR / SINGLE DOOR — 4 components
-      3x MORTISE HINGE | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=5BB1 4.5" x 4.5"
-      1x MORTISE LOCKSET | mfr=SCH | finish=613 (OIL RUBBED BRONZE) | cat=L9077, 18 LEVEL, L ESCUTCHEON - FSIC PRIMUS
-      1x SURFACE CLOSER | mfr=LCN | finish=691 (LIGHT BRONZE) | cat=4040XP - EDA ARM - METAL COVER
+      3x MORTISE HINGE | mfr=IVE | finish=613 | cat=5BB1 4.5" x 4.5"
+      1x MORTISE LOCKSET | mfr=SCH | finish=613 | cat=L9077, 18 LEVEL, L ESCUTCHEON - FSIC PRIMUS
+      1x SURFACE CLOSER | mfr=LCN | finish=691 | cat=4040XP - EDA ARM - METAL COVER
       ?x GASKETING / SWEEP | mfr=PEM | finish=BLACK | cat=WEATHER GASKETING & SWEEP
     2.1: HM DOOR/FRM / EXTR ENTR / SINGLE DOOR / CARD READER — 7 components
-      3x MORTISE HINGE | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=5BB1 4.5" x 4.5"
-      1x MORTISE LOCKSET | mfr=SCH | finish=613 (OIL RUBBED BRONZE) | cat=L9070, 18 LEVEL, L ESCUTCHEON - FSIC PRIMUS
-      1x ELECTRIC STRIKE | mfr=VON | finish=613 (OIL RUBBED BRONZE) | cat=6200 SERIES
-      1x SURFACE CLOSER | mfr=LCN | finish=691 (LIGHT BRONZE) | cat=4040XP - EDA ARM - METAL COVER
+      3x MORTISE HINGE | mfr=IVE | finish=613 | cat=5BB1 4.5" x 4.5"
+      1x MORTISE LOCKSET | mfr=SCH | finish=613 | cat=L9070, 18 LEVEL, L ESCUTCHEON - FSIC PRIMUS
+      1x ELECTRIC STRIKE | mfr=VON | finish=613 | cat=6200 SERIES
+      1x SURFACE CLOSER | mfr=LCN | finish=691 | cat=4040XP - EDA ARM - METAL COVER
       ?x GASKETING / SWEEP | mfr=PEM | finish=BLACK | cat=WEATHER GASKETING & SWEEP
       ?x THRESHOLD | mfr=PEM | finish=- | cat=EXTR. THRESHOLD
       ?x DOOR ACCESS CONTROL DEVICES | mfr=- | finish=- | cat=CARD READER / DPS / POWER SUPPLY / ETC (BY OTHERS)
     2.2: HM DOOR/FRM / EXTR ENTR / DBL DOORS / CARD READER — 9 components
-      5x MORTISE HINGE | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=5BB1 4.5" x 4.5"
-      1x HW MORTISE HINGE | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=5BB1HW 4.5" x 4.5"
-      1x MORTISE LOCKSET | mfr=SCH | finish=613 (OIL RUBBED BRONZE) | cat=L9070, 18 LEVEL, L ESCUTCHEON - FSIC PRIMUS
-      1x ELECTRIC STRIKE | mfr=VON | finish=613 (OIL RUBBED BRONZE) | cat=6200 SERIES
-      1x SURFACE CLOSER | mfr=LCN | finish=691 (LIGHT BRONZE) | cat=4040XP - EDA ARM - METAL COVER
-      2x FLUSH BOLT | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=FB45X
+      5x MORTISE HINGE | mfr=IVE | finish=613 | cat=5BB1 4.5" x 4.5"
+      1x HW MORTISE HINGE | mfr=IVE | finish=613 | cat=5BB1HW 4.5" x 4.5"
+      1x MORTISE LOCKSET | mfr=SCH | finish=613 | cat=L9070, 18 LEVEL, L ESCUTCHEON - FSIC PRIMUS
+      1x ELECTRIC STRIKE | mfr=VON | finish=613 | cat=6200 SERIES
+      1x SURFACE CLOSER | mfr=LCN | finish=691 | cat=4040XP - EDA ARM - METAL COVER
+      2x FLUSH BOLT | mfr=IVE | finish=613 | cat=FB45X
       ?x GASKETING / SWEEP | mfr=PEM | finish=BLACK | cat=WEATHER GASKETING & SWEEP
       ?x THRESHOLD | mfr=PEM | finish=- | cat=EXTR. THRESHOLD
       ?x DOOR ACCESS CONTROL DEVICES | mfr=- | finish=- | cat=CARD READER / DPS / POWER SUPPLY / ETC (BY OTHERS)
     2.3: HM DOOR/FRM / EXTR EGRESS / SINGLE DOOR — 6 components
-      2x MORTISE HINGE | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=5BB1 4.5" x 4.5"
-      1x HW MORTISE HINGE | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=5BB1HW 4.5" x 4.5"
-      1x PANIC HARDWARE | mfr=VON | finish=613 (OIL RUBBED BRONZE) | cat=35A MORTISE DEVICE, CONCEALED VERTICAL RODS, 18 LEVER, L ESCUTCHEON, HARDWIRED ALARM KIT W/ POWER SUPPLY - FSIC PRIMUS
-      1x SURFACE CLOSER | mfr=LCN | finish=691 (LIGHT BRONZE) | cat=4040XP - EDA ARM - METAL COVER
+      2x MORTISE HINGE | mfr=IVE | finish=613 | cat=5BB1 4.5" x 4.5"
+      1x HW MORTISE HINGE | mfr=IVE | finish=613 | cat=5BB1HW 4.5" x 4.5"
+      1x PANIC HARDWARE | mfr=VON | finish=613 | cat=35A MORTISE DEVICE, CONCEALED VERTICAL RODS, 18 LEVER, L ESCUTCHEON, HARDWIRED ALARM KIT W/ POWER SUPPLY - FSIC PRIMUS
+      1x SURFACE CLOSER | mfr=LCN | finish=691 | cat=4040XP - EDA ARM - METAL COVER
       ?x GASKETING / SWEEP | mfr=PEM | finish=BLACK | cat=WEATHER GASKETING & SWEEP
       ?x THRESHOLD | mfr=PEM | finish=- | cat=EXTR. THRESHOLD
     2.4: HM DOOR/FRM / INTR EGRESS / SINGLE DOOR / CARD READER — 6 components
-      2x MORTISE HINGE | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=5BB1 4.5" x 4.5"
-      1x HW MORTISE HINGE | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=5BB1HW 4.5" x 4.5"
-      1x PANIC HARDWARE | mfr=VON | finish=613 (OIL RUBBED BRONZE) | cat=35A MORTISE DEVICE, CONCEALED VERTICAL RODS, QUIET ELECTRIC LATCH RETRACTION, 18 LEVER, L ESCUTCHEON, HARDWIRED ALARM KIT W/ POWER SUPPLY - FSIC PRIMUS
-      1x SURFACE CLOSER | mfr=LCN | finish=691 (LIGHT BRONZE) | cat=4040XP - EDA ARM - METAL COVER
+      2x MORTISE HINGE | mfr=IVE | finish=613 | cat=5BB1 4.5" x 4.5"
+      1x HW MORTISE HINGE | mfr=IVE | finish=613 | cat=5BB1HW 4.5" x 4.5"
+      1x PANIC HARDWARE | mfr=VON | finish=613 | cat=35A MORTISE DEVICE, CONCEALED VERTICAL RODS, QUIET ELECTRIC LATCH RETRACTION, 18 LEVER, L ESCUTCHEON, HARDWIRED ALARM KIT W/ POWER SUPPLY - FSIC PRIMUS
+      1x SURFACE CLOSER | mfr=LCN | finish=691 | cat=4040XP - EDA ARM - METAL COVER
       ?x SILENCERS | mfr=IVE | finish=BLACK | cat=SILENCER SI6X
       ?x DOOR ACCESS CONTROL DEVICES | mfr=- | finish=- | cat=CARD READER / DPS / POWER SUPPLY / ETC (BY OTHERS)
     3.1: OFFICE / SINGLE DOOR — 5 components
-      3x MORTISE HINGE | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=5BB1 4.5" x 4.5"
-      1x MORTISE LOCKSET | mfr=SCH | finish=613 (OIL RUBBED BRONZE) | cat=L9056, 18 LEVER, A ROSE, 10-072 STRIKE, ADA THUMBTURN - FSIC PRIMUS
-      1x WALL STOP | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=WS401/402CCV
+      3x MORTISE HINGE | mfr=IVE | finish=613 | cat=5BB1 4.5" x 4.5"
+      1x MORTISE LOCKSET | mfr=SCH | finish=613 | cat=L9056, 18 LEVER, A ROSE, 10-072 STRIKE, ADA THUMBTURN - FSIC PRIMUS
+      1x WALL STOP | mfr=IVE | finish=613 | cat=WS401/402CCV
       1x MORTISE AUTO. DOOR BOTTOM | mfr=NGP | finish=MILL ALUM / BLACK | cat=225S
       ?x SILENCERS | mfr=IVE | finish=BLACK | cat=SILENCER SI6X
     3.2: CONFERENCE / SINGLE DOOR / CARD READER — 8 components
-      2x MORTISE HINGE | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=5BB1 4.5" x 4.5"
-      1x HW MORTISE HINGE | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=5BB1HW 4.5" x 4.5"
-      1x MORTISE LOCKSET / ELEC. UNLOCKING | mfr=SCH | finish=613 (OIL RUBBED BRONZE) | cat=L9092EU, 18 LEVER, A ROSE, 10-072 STRIKE - FSIC PRIMUS
-      1x SURFACE CLOSER | mfr=LCN | finish=691 (LIGHT BRONZE) | cat=4040XP - HEDA ARM - METAL COVER
-      1x WALL STOP | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=WS401/402CCV
+      2x MORTISE HINGE | mfr=IVE | finish=613 | cat=5BB1 4.5" x 4.5"
+      1x HW MORTISE HINGE | mfr=IVE | finish=613 | cat=5BB1HW 4.5" x 4.5"
+      1x MORTISE LOCKSET / ELEC. UNLOCKING | mfr=SCH | finish=613 | cat=L9092EU, 18 LEVER, A ROSE, 10-072 STRIKE - FSIC PRIMUS
+      1x SURFACE CLOSER | mfr=LCN | finish=691 | cat=4040XP - HEDA ARM - METAL COVER
+      1x WALL STOP | mfr=IVE | finish=613 | cat=WS401/402CCV
       1x MORTISE AUTO. DOOR BOTTOM | mfr=NGP | finish=MILL ALUM / BLACK | cat=225S
       ?x SILENCERS | mfr=IVE | finish=BLACK | cat=SILENCER SI6X
       ?x DOOR ACCESS CONTROL DEVICES | mfr=- | finish=- | cat=CARD READER / DPS / POWER SUPPLY / ETC (BY OTHERS)
     3.3: WORKROOM / SINGLE DOOR / CARD READER — 7 components
-      2x MORTISE HINGE | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=5BB1 4.5" x 4.5"
-      1x HW MORTISE HINGE | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=5BB1HW 4.5" x 4.5"
-      1x MORTISE LOCKSET / ELEC. UNLOCKING | mfr=SCH | finish=613 (OIL RUBBED BRONZE) | cat=L9092EU, 18 LEVER, A ROSE, 10-072 STRIKE - FSIC PRIMUS
-      1x SURFACE CLOSER | mfr=LCN | finish=691 (LIGHT BRONZE) | cat=4040XP - HEDA ARM - METAL COVER
-      1x WALL STOP | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=WS401/402CCV
+      2x MORTISE HINGE | mfr=IVE | finish=613 | cat=5BB1 4.5" x 4.5"
+      1x HW MORTISE HINGE | mfr=IVE | finish=613 | cat=5BB1HW 4.5" x 4.5"
+      1x MORTISE LOCKSET / ELEC. UNLOCKING | mfr=SCH | finish=613 | cat=L9092EU, 18 LEVER, A ROSE, 10-072 STRIKE - FSIC PRIMUS
+      1x SURFACE CLOSER | mfr=LCN | finish=691 | cat=4040XP - HEDA ARM - METAL COVER
+      1x WALL STOP | mfr=IVE | finish=613 | cat=WS401/402CCV
       ?x SILENCERS | mfr=IVE | finish=BLACK | cat=SILENCER SI6X
       ?x DOOR ACCESS CONTROL DEVICES | mfr=- | finish=- | cat=CARD READER / DPS / POWER SUPPLY / ETC (BY OTHERS)
     3.4: WORKROOM W/ AUTO-OP / SINGLE DOOR / CARD READER — 7 components
-      2x MORTISE HINGE | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=5BB1 4.5" x 4.5"
-      1x HW MORTISE HINGE | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=5BB1HW 4.5" x 4.5"
-      1x MORTISE LOCKSET / ELEC. UNLOCKING | mfr=SCH | finish=613 (OIL RUBBED BRONZE) | cat=L9092EU, 18 LEVER, A ROSE, 10-072 STRIKE - FSIC PRIMUS
-      1x AUTO OPERATOR | mfr=ASS | finish=691 (LIGHT BRONZE) | cat=SW100
-      1x FLOOR STOP | mfr=ROC | finish=613 (OIL RUBBED BRONZE) | cat=446
+      2x MORTISE HINGE | mfr=IVE | finish=613 | cat=5BB1 4.5" x 4.5"
+      1x HW MORTISE HINGE | mfr=IVE | finish=613 | cat=5BB1HW 4.5" x 4.5"
+      1x MORTISE LOCKSET / ELEC. UNLOCKING | mfr=SCH | finish=613 | cat=L9092EU, 18 LEVER, A ROSE, 10-072 STRIKE - FSIC PRIMUS
+      1x AUTO OPERATOR | mfr=ASS | finish=691 | cat=SW100
+      1x FLOOR STOP | mfr=ROC | finish=613 | cat=446
       ?x SILENCERS | mfr=IVE | finish=BLACK | cat=SILENCER SI6X
       ?x DOOR ACCESS CONTROL DEVICES | mfr=- | finish=- | cat=CARD READER / DPS / POWER SUPPLY / ETC (BY OTHERS)
     3.5: RECEIVING W/ AUTO-OP / DBL DOORS / CARD READER — 10 components
-      5x MORTISE HINGE | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=5BB1 4.5" x 4.5"
-      1x HW MORTISE HINGE | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=5BB1HW 4.5" x 4.5"
-      1x MORTISE LOCKSET / ELEC. UNLOCKING | mfr=SCH | finish=613 (OIL RUBBED BRONZE) | cat=L9092EU, 18 LEVER, A ROSE, 10-072 STRIKE - FSIC PRIMUS
-      1x AUTO OPERATOR | mfr=ASS | finish=691 (LIGHT BRONZE) | cat=SW100
-      2x FLUSH BOLT | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=FB45X
-      1x FLOOR STOP | mfr=ROC | finish=613 (OIL RUBBED BRONZE) | cat=446
-      1x WALL STOP | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=WS401/402CCV
-      4x PROTECTION PLATE | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=8400 KICK PLATE
+      5x MORTISE HINGE | mfr=IVE | finish=613 | cat=5BB1 4.5" x 4.5"
+      1x HW MORTISE HINGE | mfr=IVE | finish=613 | cat=5BB1HW 4.5" x 4.5"
+      1x MORTISE LOCKSET / ELEC. UNLOCKING | mfr=SCH | finish=613 | cat=L9092EU, 18 LEVER, A ROSE, 10-072 STRIKE - FSIC PRIMUS
+      1x AUTO OPERATOR | mfr=ASS | finish=691 | cat=SW100
+      2x FLUSH BOLT | mfr=IVE | finish=613 | cat=FB45X
+      1x FLOOR STOP | mfr=ROC | finish=613 | cat=446
+      1x WALL STOP | mfr=IVE | finish=613 | cat=WS401/402CCV
+      4x PROTECTION PLATE | mfr=IVE | finish=613 | cat=8400 KICK PLATE
       ?x SILENCERS | mfr=IVE | finish=BLACK | cat=SILENCER SI6X
       ?x DOOR ACCESS CONTROL DEVICES | mfr=- | finish=- | cat=CARD READER / DPS / POWER SUPPLY / ETC (BY OTHERS)
     4.1: STORAGE / SINGLE DOOR — 5 components
-      3x MORTISE HINGE | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=5BB1 4.5" x 4.5"
-      1x MORTISE LOCKSET | mfr=SCH | finish=613 (OIL RUBBED BRONZE) | cat=L9081, 18 LEVER, A ROSE, 10-072 STRIKE - FSIC PRIMUS
-      1x SURFACE CLOSER | mfr=LCN | finish=691 (LIGHT BRONZE) | cat=4040XP - HEDA ARM - METAL COVER
-      1x WALL STOP | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=WS401/402CCV
+      3x MORTISE HINGE | mfr=IVE | finish=613 | cat=5BB1 4.5" x 4.5"
+      1x MORTISE LOCKSET | mfr=SCH | finish=613 | cat=L9081, 18 LEVER, A ROSE, 10-072 STRIKE - FSIC PRIMUS
+      1x SURFACE CLOSER | mfr=LCN | finish=691 | cat=4040XP - HEDA ARM - METAL COVER
+      1x WALL STOP | mfr=IVE | finish=613 | cat=WS401/402CCV
       ?x SILENCERS | mfr=IVE | finish=BLACK | cat=SILENCER SI6X
     4.2: JANITOR / SINGLE DOOR — 6 components
-      3x MORTISE HINGE | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=5BB1 4.5" x 4.5"
-      1x MORTISE LOCKSET | mfr=SCH | finish=613 (OIL RUBBED BRONZE) | cat=L9081, 818 LEVER (MILLED TACTILE WARNING), A ROSE, 10-072 STRIKE - FSIC PRIMUS
-      1x SURFACE CLOSER | mfr=LCN | finish=691 (LIGHT BRONZE) | cat=4040XP - HEDA ARM - METAL COVER
-      1x WALL STOP | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=WS401/402CCV
-      1x PROTECTION PLATE | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=8400 MOP PLATE
+      3x MORTISE HINGE | mfr=IVE | finish=613 | cat=5BB1 4.5" x 4.5"
+      1x MORTISE LOCKSET | mfr=SCH | finish=613 | cat=L9081, 818 LEVER (MILLED TACTILE WARNING), A ROSE, 10-072 STRIKE - FSIC PRIMUS
+      1x SURFACE CLOSER | mfr=LCN | finish=691 | cat=4040XP - HEDA ARM - METAL COVER
+      1x WALL STOP | mfr=IVE | finish=613 | cat=WS401/402CCV
+      1x PROTECTION PLATE | mfr=IVE | finish=613 | cat=8400 MOP PLATE
       ?x SILENCERS | mfr=IVE | finish=BLACK | cat=SILENCER SI6X
     4.3: UTILITIES / SINGLE DOOR — 5 components
-      3x MORTISE HINGE | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=5BB1 4.5" x 4.5"
-      1x MORTISE LOCKSET | mfr=SCH | finish=613 (OIL RUBBED BRONZE) | cat=L9081, 818 LEVER (MILLED TACTILE WARNING), A ROSE, 10-072 STRIKE - FSIC PRIMUS
-      1x SURFACE CLOSER | mfr=LCN | finish=691 (LIGHT BRONZE) | cat=4040XP - HEDA ARM - METAL COVER
-      2x PROTECTION PLATE | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=8400 KICK & MOP PLATE
+      3x MORTISE HINGE | mfr=IVE | finish=613 | cat=5BB1 4.5" x 4.5"
+      1x MORTISE LOCKSET | mfr=SCH | finish=613 | cat=L9081, 818 LEVER (MILLED TACTILE WARNING), A ROSE, 10-072 STRIKE - FSIC PRIMUS
+      1x SURFACE CLOSER | mfr=LCN | finish=691 | cat=4040XP - HEDA ARM - METAL COVER
+      2x PROTECTION PLATE | mfr=IVE | finish=613 | cat=8400 KICK & MOP PLATE
       ?x SILENCERS | mfr=IVE | finish=BLACK | cat=SILENCER SI6X
     4.4: SINGLE DOOR / CARD READER — 7 components
-      2x MORTISE HINGE | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=5BB1 4.5" x 4.5"
-      1x HW MORTISE HINGE | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=5BB1HW 4.5" x 4.5"
-      1x MORTISE LOCKSET / ELEC. UNLOCKING | mfr=SCH | finish=613 (OIL RUBBED BRONZE) | cat=L9092EU, 818 LEVER (MILLED TACTILE WARNING), A ROSE, 10-072 STRIKE - FSIC PRIMUS
-      1x SURFACE CLOSER | mfr=LCN | finish=691 (LIGHT BRONZE) | cat=4040XP - HEDA ARM - METAL COVER
-      1x WALL STOP | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=WS401/402CCV
+      2x MORTISE HINGE | mfr=IVE | finish=613 | cat=5BB1 4.5" x 4.5"
+      1x HW MORTISE HINGE | mfr=IVE | finish=613 | cat=5BB1HW 4.5" x 4.5"
+      1x MORTISE LOCKSET / ELEC. UNLOCKING | mfr=SCH | finish=613 | cat=L9092EU, 818 LEVER (MILLED TACTILE WARNING), A ROSE, 10-072 STRIKE - FSIC PRIMUS
+      1x SURFACE CLOSER | mfr=LCN | finish=691 | cat=4040XP - HEDA ARM - METAL COVER
+      1x WALL STOP | mfr=IVE | finish=613 | cat=WS401/402CCV
       ?x SILENCERS | mfr=IVE | finish=BLACK | cat=SILENCER SI6X
       ?x DOOR ACCESS CONTROL DEVICES | mfr=- | finish=- | cat=CARD READER / DPS / POWER SUPPLY / ETC (BY OTHERS)
     4.5: SINGLE DOOR / DBL DOORS / CARD READER — 9 components
-      5x MORTISE HINGE | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=5BB1 4.5" x 4.5"
-      1x HW MORTISE HINGE | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=5BB1HW 4.5" x 4.5"
-      1x MORTISE LOCKSET / ELEC. UNLOCKING | mfr=SCH | finish=613 (OIL RUBBED BRONZE) | cat=L9092EU, 18 LEVER, A ROSE, 10-072 STRIKE - FSIC PRIMUS
-      1x SURFACE CLOSER | mfr=LCN | finish=691 (LIGHT BRONZE) | cat=4040XP - HEDA ARM - METAL COVER
-      2x FLUSH BOLT | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=FB45X
-      2x FLOOR STOP | mfr=ROC | finish=613 (OIL RUBBED BRONZE) | cat=446
-      4x PROTECTION PLATE | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=8400 KICK PLATE
+      5x MORTISE HINGE | mfr=IVE | finish=613 | cat=5BB1 4.5" x 4.5"
+      1x HW MORTISE HINGE | mfr=IVE | finish=613 | cat=5BB1HW 4.5" x 4.5"
+      1x MORTISE LOCKSET / ELEC. UNLOCKING | mfr=SCH | finish=613 | cat=L9092EU, 18 LEVER, A ROSE, 10-072 STRIKE - FSIC PRIMUS
+      1x SURFACE CLOSER | mfr=LCN | finish=691 | cat=4040XP - HEDA ARM - METAL COVER
+      2x FLUSH BOLT | mfr=IVE | finish=613 | cat=FB45X
+      2x FLOOR STOP | mfr=ROC | finish=613 | cat=446
+      4x PROTECTION PLATE | mfr=IVE | finish=613 | cat=8400 KICK PLATE
       ?x SILENCERS | mfr=IVE | finish=BLACK | cat=SILENCER SI6X
       ?x DOOR ACCESS CONTROL DEVICES | mfr=- | finish=- | cat=CARD READER / DPS / POWER SUPPLY / ETC (BY OTHERS)
     4.6: SINGLE DOOR / DBL DOORS / CARD READER — 9 components
-      5x MORTISE HINGE | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=5BB1 4.5" x 4.5"
-      1x HW MORTISE HINGE | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=5BB1HW 4.5" x 4.5"
-      1x MORTISE LOCKSET / ELEC. UNLOCKING | mfr=SCH | finish=613 (OIL RUBBED BRONZE) | cat=L9092EU, 818 LEVER (MILLED TACTILE WARNING), A ROSE, 10-072 STRIKE - FSIC PRIMUS
-      1x SURFACE CLOSER | mfr=LCN | finish=691 (LIGHT BRONZE) | cat=4040XP - HEDA ARM - METAL COVER
-      2x FLUSH BOLT | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=FB45X
-      2x FLOOR STOP | mfr=ROC | finish=613 (OIL RUBBED BRONZE) | cat=446
-      4x PROTECTION PLATE | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=8400 KICK PLATE
+      5x MORTISE HINGE | mfr=IVE | finish=613 | cat=5BB1 4.5" x 4.5"
+      1x HW MORTISE HINGE | mfr=IVE | finish=613 | cat=5BB1HW 4.5" x 4.5"
+      1x MORTISE LOCKSET / ELEC. UNLOCKING | mfr=SCH | finish=613 | cat=L9092EU, 818 LEVER (MILLED TACTILE WARNING), A ROSE, 10-072 STRIKE - FSIC PRIMUS
+      1x SURFACE CLOSER | mfr=LCN | finish=691 | cat=4040XP - HEDA ARM - METAL COVER
+      2x FLUSH BOLT | mfr=IVE | finish=613 | cat=FB45X
+      2x FLOOR STOP | mfr=ROC | finish=613 | cat=446
+      4x PROTECTION PLATE | mfr=IVE | finish=613 | cat=8400 KICK PLATE
       ?x SILENCERS | mfr=IVE | finish=BLACK | cat=SILENCER SI6X
       ?x DOOR ACCESS CONTROL DEVICES | mfr=- | finish=- | cat=CARD READER / DPS / POWER SUPPLY / ETC (BY OTHERS)
     4.7: STORAGE / DBL DOORS — 7 components
-      6x MORTISE HINGE | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=5BB1 4.5" x 4.5"
-      1x MORTISE LOCKSET | mfr=SCH | finish=613 (OIL RUBBED BRONZE) | cat=L9081, 18 LEVER, A ROSE, 10-072 STRIKE - FSIC PRIMUS
-      1x SURFACE CLOSER | mfr=LCN | finish=691 (LIGHT BRONZE) | cat=4040XP - HEDA ARM - METAL COVER
-      2x FLUSH BOLT | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=FB45X
-      2x FLOOR STOP | mfr=ROC | finish=613 (OIL RUBBED BRONZE) | cat=446
-      4x PROTECTION PLATE | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=8400 KICK PLATE
+      6x MORTISE HINGE | mfr=IVE | finish=613 | cat=5BB1 4.5" x 4.5"
+      1x MORTISE LOCKSET | mfr=SCH | finish=613 | cat=L9081, 18 LEVER, A ROSE, 10-072 STRIKE - FSIC PRIMUS
+      1x SURFACE CLOSER | mfr=LCN | finish=691 | cat=4040XP - HEDA ARM - METAL COVER
+      2x FLUSH BOLT | mfr=IVE | finish=613 | cat=FB45X
+      2x FLOOR STOP | mfr=ROC | finish=613 | cat=446
+      4x PROTECTION PLATE | mfr=IVE | finish=613 | cat=8400 KICK PLATE
       ?x SILENCERS | mfr=IVE | finish=BLACK | cat=SILENCER SI6X
     5.1: STUDY ROOM / SINGLE DOOR / CARD READER — 6 components
-      2x MORTISE HINGE | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=5BB1 4.5" x 4.5"
-      1x HW MORTISE HINGE | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=5BB1HW 4.5" x 4.5"
-      1x MORTISE LOCKSET / ELEC. UNLOCKING | mfr=SCH | finish=613 (OIL RUBBED BRONZE) | cat=L9092EU, 18 LEVER, A ROSE, 10-072 STRIKE - FSIC PRIMUS
-      1x WALL STOP | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=WS401/402CCV
+      2x MORTISE HINGE | mfr=IVE | finish=613 | cat=5BB1 4.5" x 4.5"
+      1x HW MORTISE HINGE | mfr=IVE | finish=613 | cat=5BB1HW 4.5" x 4.5"
+      1x MORTISE LOCKSET / ELEC. UNLOCKING | mfr=SCH | finish=613 | cat=L9092EU, 18 LEVER, A ROSE, 10-072 STRIKE - FSIC PRIMUS
+      1x WALL STOP | mfr=IVE | finish=613 | cat=WS401/402CCV
       ?x SILENCERS | mfr=IVE | finish=BLACK | cat=SILENCER SI6X
       ?x DOOR ACCESS CONTROL DEVICES | mfr=- | finish=- | cat=CARD READER / DPS / POWER SUPPLY / ETC (BY OTHERS)
     6.1: STUDY ROOM / DEMOUNTABLE GL ENTRANCE / SINGLE DOOR / CARD READER — 7 components
-      2x PIVOT HINGE | mfr=ALUR | finish=613 (OIL RUBBED BRONZE) | cat=3/4" OFFSET PIVOT HINGES
-      1x GLASS PATCH / MORTISE LOCKSET | mfr=ALUR | finish=613 (OIL RUBBED BRONZE) | cat=ND70 GLASS PATCH CYLINDRICAL LOCKSET, 19L LEVER
-      1x CYLINDER / CORE | mfr=SCH | finish=613 (OIL RUBBED BRONZE) | cat=FSIC PRIMUS
-      1x ELECTRIC STRIKE | mfr=- | finish=613 (OIL RUBBED BRONZE) | cat=TRINE 3000 SERIES
-      1x OH CLOSER | mfr=ALUR | finish=613 (OIL RUBBED BRONZE) | cat=CONCEALED OVERHEAD CLOSER W/ 90DEG. H.O.
-      1x FLOOR STOP | mfr=ROC | finish=613 (OIL RUBBED BRONZE) | cat=446
+      2x PIVOT HINGE | mfr=ALUR | finish=613 | cat=3/4" OFFSET PIVOT HINGES
+      1x GLASS PATCH / MORTISE LOCKSET | mfr=ALUR | finish=613 | cat=ND70 GLASS PATCH CYLINDRICAL LOCKSET, 19L LEVER
+      1x CYLINDER / CORE | mfr=SCH | finish=613 | cat=FSIC PRIMUS
+      1x ELECTRIC STRIKE | mfr=- | finish=613 | cat=TRINE 3000 SERIES
+      1x OH CLOSER | mfr=ALUR | finish=613 | cat=CONCEALED OVERHEAD CLOSER W/ 90DEG. H.O.
+      1x FLOOR STOP | mfr=ROC | finish=613 | cat=446
       ?x DOOR ACCESS CTRL | mfr=- | finish=- | cat=CARD READER / DPS / POWER SUPPLY / ETC (BY OTHERS)
     6.2: TEEN / DEMOUNTABLE GL ENTRANCE / SINGLE DOOR — 5 components
-      2x PIVOT HINGE | mfr=ALUR | finish=613 (OIL RUBBED BRONZE) | cat=3/4" OFFSET PIVOT HINGES
-      1x GLASS PATCH / MORTISE LOCKSET | mfr=ALUR | finish=613 (OIL RUBBED BRONZE) | cat=ND70 GLASS PATCH CYLINDRICAL LOCKSET, 19L LEVER
-      1x CYLINDER / CORE | mfr=SCH | finish=613 (OIL RUBBED BRONZE) | cat=FSIC PRIMUS
-      1x OH CLOSER | mfr=ALUR | finish=613 (OIL RUBBED BRONZE) | cat=CONCEALED OVERHEAD CLOSER W/ 90DEG. H.O.
-      1x FLOOR STOP | mfr=ROC | finish=613 (OIL RUBBED BRONZE) | cat=446
+      2x PIVOT HINGE | mfr=ALUR | finish=613 | cat=3/4" OFFSET PIVOT HINGES
+      1x GLASS PATCH / MORTISE LOCKSET | mfr=ALUR | finish=613 | cat=ND70 GLASS PATCH CYLINDRICAL LOCKSET, 19L LEVER
+      1x CYLINDER / CORE | mfr=SCH | finish=613 | cat=FSIC PRIMUS
+      1x OH CLOSER | mfr=ALUR | finish=613 | cat=CONCEALED OVERHEAD CLOSER W/ 90DEG. H.O.
+      1x FLOOR STOP | mfr=ROC | finish=613 | cat=446
     7.1: MAKERSPACE / ALL-GLASS ENTRANCE / SINGLE DOOR — 4 components
-      2x PIVOT HINGE | mfr=CRL | finish=613 (OIL RUBBED BRONZE) | cat=CLEAR VIEW PIVOT HINGE
-      1x HANDLE SET | mfr=BLU | finish=613 (OIL RUBBED BRONZE) | cat=GLASS-MOUNT HANDLES DB100 W/ KEYED CYLINDER - FSIC PRIMUS
-      1x OH CLOSER | mfr=CRL | finish=613 (OIL RUBBED BRONZE) | cat=CONCEALED OVERHEAD CLOSER
-      1x FLOOR STOP | mfr=ROC | finish=613 (OIL RUBBED BRONZE) | cat=446
+      2x PIVOT HINGE | mfr=CRL | finish=613 | cat=CLEAR VIEW PIVOT HINGE
+      1x HANDLE SET | mfr=BLU | finish=613 | cat=GLASS-MOUNT HANDLES DB100 W/ KEYED CYLINDER - FSIC PRIMUS
+      1x OH CLOSER | mfr=CRL | finish=613 | cat=CONCEALED OVERHEAD CLOSER
+      1x FLOOR STOP | mfr=ROC | finish=613 | cat=446
     7.2: PROGRAM RM / ALL-GLASS ENTRANCE / DBL DOORS — 4 components
-      4x PIVOT HINGE | mfr=CRL | finish=613 (OIL RUBBED BRONZE) | cat=CLEAR VIEW PIVOT HINGE
-      2x HANDLE SET | mfr=BLU | finish=613 (OIL RUBBED BRONZE) | cat=GLASS-MOUNT HANDLES DB100 W/ KEYED CYLINDER - FSIC PRIMUS
-      2x OH CLOSER | mfr=CRL | finish=613 (OIL RUBBED BRONZE) | cat=CONCEALED OVERHEAD CLOSER
-      2x FLOOR STOP | mfr=ROC | finish=613 (OIL RUBBED BRONZE) | cat=446
+      4x PIVOT HINGE | mfr=CRL | finish=613 | cat=CLEAR VIEW PIVOT HINGE
+      2x HANDLE SET | mfr=BLU | finish=613 | cat=GLASS-MOUNT HANDLES DB100 W/ KEYED CYLINDER - FSIC PRIMUS
+      2x OH CLOSER | mfr=CRL | finish=613 | cat=CONCEALED OVERHEAD CLOSER
+      2x FLOOR STOP | mfr=ROC | finish=613 | cat=446
     7.3: STUDY ROOM / ALL-GLASS ENTRANCE / SINGLE DOOR / CARD READER — 6 components
-      2x PIVOT HINGE | mfr=CRL | finish=613 (OIL RUBBED BRONZE) | cat=CLEAR VIEW PIVOT HINGE
-      1x HANDLE SET | mfr=BLU | finish=613 (OIL RUBBED BRONZE) | cat=GLASS-MOUNT HANDLES DB100 W/ KEYED CYLINDER - FSIC PRIMUS
-      1x OH CLOSER | mfr=CRL | finish=613 (OIL RUBBED BRONZE) | cat=CONCEALED OVERHEAD CLOSER
-      1x ELECTRIC STRIKE | mfr=VON | finish=613 (OIL RUBBED BRONZE) | cat=6200 SERIES
-      1x FLOOR STOP | mfr=ROC | finish=613 (OIL RUBBED BRONZE) | cat=446
+      2x PIVOT HINGE | mfr=CRL | finish=613 | cat=CLEAR VIEW PIVOT HINGE
+      1x HANDLE SET | mfr=BLU | finish=613 | cat=GLASS-MOUNT HANDLES DB100 W/ KEYED CYLINDER - FSIC PRIMUS
+      1x OH CLOSER | mfr=CRL | finish=613 | cat=CONCEALED OVERHEAD CLOSER
+      1x ELECTRIC STRIKE | mfr=VON | finish=613 | cat=6200 SERIES
+      1x FLOOR STOP | mfr=ROC | finish=613 | cat=446
       ?x DOOR ACCESS CONTROL DEVICES | mfr=- | finish=- | cat=CARD READER / DPS / POWER SUPPLY / ETC (BY OTHERS)
     7.4: YOUTH ENTR / ALL-GLASS ENTRANCE / DBL DOORS — 4 components
-      4x PIVOT HINGE | mfr=CRL | finish=613 (OIL RUBBED BRONZE) | cat=CLEAR VIEW PIVOT HINGE
-      2x HANDLE SET | mfr=CRL | finish=613 (OIL RUBBED BRONZE) | cat=GLASS-MOUNT FULL-HEIGHT LADDER PULLS
-      2x FLOOR OPERATOR IN-GROUND | mfr=ASS | finish=691 (LIGHT BRONZE) | cat=SW200i-IG IN-GROUND SWING DOOR OPERATOR W/ WAVE TO OPEN ACUATORS
-      2x FLOOR STOP | mfr=ROC | finish=613 (OIL RUBBED BRONZE) | cat=446
+      4x PIVOT HINGE | mfr=CRL | finish=613 | cat=CLEAR VIEW PIVOT HINGE
+      2x HANDLE SET | mfr=CRL | finish=613 | cat=GLASS-MOUNT FULL-HEIGHT LADDER PULLS
+      2x FLOOR OPERATOR IN-GROUND | mfr=ASS | finish=691 | cat=SW200i-IG IN-GROUND SWING DOOR OPERATOR W/ WAVE TO OPEN ACUATORS
+      2x FLOOR STOP | mfr=ROC | finish=613 | cat=446
     7.5: MTG / EGRESS / ALL-GLASS ENTRANCE / SINGLE DOOR — 4 components
-      2x PIVOT HINGE | mfr=CRL | finish=613 (OIL RUBBED BRONZE) | cat=CLEAR VIEW PIVOT HINGE
-      1x PANIC HARDWARE | mfr=BLU | finish=613 (OIL RUBBED BRONZE) | cat=GLASS-MOUNT PANIC DEVICE PA100 W/ KEYED CYLINDER - FSIC PRIMUS
-      1x OH CLOSER | mfr=CRL | finish=613 (OIL RUBBED BRONZE) | cat=CONCEALED OVERHEAD CLOSER
-      1x FLOOR STOP | mfr=ROC | finish=613 (OIL RUBBED BRONZE) | cat=446
+      2x PIVOT HINGE | mfr=CRL | finish=613 | cat=CLEAR VIEW PIVOT HINGE
+      1x PANIC HARDWARE | mfr=BLU | finish=613 | cat=GLASS-MOUNT PANIC DEVICE PA100 W/ KEYED CYLINDER - FSIC PRIMUS
+      1x OH CLOSER | mfr=CRL | finish=613 | cat=CONCEALED OVERHEAD CLOSER
+      1x FLOOR STOP | mfr=ROC | finish=613 | cat=446
     7.6: MTG / EGRESS / ALL-GLASS ENTRANCE / DBL DOORS — 4 components
-      4x PIVOT HINGE | mfr=CRL | finish=613 (OIL RUBBED BRONZE) | cat=CLEAR VIEW PIVOT HINGE
-      2x PANIC HARDWARE | mfr=BLU | finish=613 (OIL RUBBED BRONZE) | cat=GLASS-MOUNT PANIC DEVICE PA100 W/ KEYED CYLINDER - FSIC PRIMUS
-      2x OH CLOSER | mfr=CRL | finish=613 (OIL RUBBED BRONZE) | cat=CONCEALED OVERHEAD CLOSER
-      2x FLOOR STOP | mfr=ROC | finish=613 (OIL RUBBED BRONZE) | cat=446
+      4x PIVOT HINGE | mfr=CRL | finish=613 | cat=CLEAR VIEW PIVOT HINGE
+      2x PANIC HARDWARE | mfr=BLU | finish=613 | cat=GLASS-MOUNT PANIC DEVICE PA100 W/ KEYED CYLINDER - FSIC PRIMUS
+      2x OH CLOSER | mfr=CRL | finish=613 | cat=CONCEALED OVERHEAD CLOSER
+      2x FLOOR STOP | mfr=ROC | finish=613 | cat=446
     8.1: SINGLE-USER RESTROOM / SINGLE DOOR — 8 components
-      3x MORTISE HINGE | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=5BB1 4.5" x 4.5"
-      1x MORTISE LOCKSET | mfr=SCH | finish=613 (OIL RUBBED BRONZE) | cat=L9444, 18 LEVER, L ESCUTCHEON, 10-072 STRIKE
+      3x MORTISE HINGE | mfr=IVE | finish=613 | cat=5BB1 4.5" x 4.5"
+      1x MORTISE LOCKSET | mfr=SCH | finish=613 | cat=L9444, 18 LEVER, L ESCUTCHEON, 10-072 STRIKE
       1x DEADBOLT MONITOR | mfr=SCH | finish=- | cat=DEADBOLT MONITOR
-      1x AUTO OPERATOR | mfr=ASS | finish=691 (LIGHT BRONZE) | cat=SW100 W/ WAVE TO OPEN ACUATORS
-      1x ELECTRIC STRIKE | mfr=VON | finish=613 (OIL RUBBED BRONZE) | cat=6200 SERIES
-      1x WALL STOP | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=WS401/402CCV
-      2x PROTECTION PLATE | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=8400 KICK & MOP PLATE
+      1x AUTO OPERATOR | mfr=ASS | finish=691 | cat=SW100 W/ WAVE TO OPEN ACUATORS
+      1x ELECTRIC STRIKE | mfr=VON | finish=613 | cat=6200 SERIES
+      1x WALL STOP | mfr=IVE | finish=613 | cat=WS401/402CCV
+      2x PROTECTION PLATE | mfr=IVE | finish=613 | cat=8400 KICK & MOP PLATE
       ?x SILENCERS | mfr=IVE | finish=BLACK | cat=SILENCER SI6X
     8.2: MULTI-USER RESTROOM / SINGLE DOOR — 6 components
-      3x MORTISE HINGE | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=5BB1 4.5" x 4.5"
-      2x OFFSET PULL | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=9264-72-56-FLAT TIP
-      1x AUTO OPERATOR | mfr=ASS | finish=691 (LIGHT BRONZE) | cat=SW100 W/ WAVE TO OPEN ACUATORS
-      1x WALL STOP | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=WS401/402CCV
-      2x PROTECTION PLATE | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=8400 KICK & MOP PLATE
+      3x MORTISE HINGE | mfr=IVE | finish=613 | cat=5BB1 4.5" x 4.5"
+      2x OFFSET PULL | mfr=IVE | finish=613 | cat=9264-72-56-FLAT TIP
+      1x AUTO OPERATOR | mfr=ASS | finish=691 | cat=SW100 W/ WAVE TO OPEN ACUATORS
+      1x WALL STOP | mfr=IVE | finish=613 | cat=WS401/402CCV
+      2x PROTECTION PLATE | mfr=IVE | finish=613 | cat=8400 KICK & MOP PLATE
       ?x SILENCERS | mfr=IVE | finish=BLACK | cat=SILENCER SI6X
     8.3: WELLNESS / SINGLE DOOR — 4 components
-      3x MORTISE HINGE | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=5BB1 4.5" x 4.5"
-      1x MORTISE LOCKSET | mfr=SCH | finish=613 (OIL RUBBED BRONZE) | cat=L9444, 18 LEVER, L ESCUTCHEON, 10-072 STRIKE
-      1x WALL STOP | mfr=IVE | finish=613 (OIL RUBBED BRONZE) | cat=WS401/402CCV
+      3x MORTISE HINGE | mfr=IVE | finish=613 | cat=5BB1 4.5" x 4.5"
+      1x MORTISE LOCKSET | mfr=SCH | finish=613 | cat=L9444, 18 LEVER, L ESCUTCHEON, 10-072 STRIKE
+      1x WALL STOP | mfr=IVE | finish=613 | cat=WS401/402CCV
       ?x SILENCERS | mfr=IVE | finish=BLACK | cat=SILENCER SI6X
 
 === 81-85_bridgeport.pdf: 1 region(s) ===
@@ -563,8 +562,8 @@
       1x Continuous Hinge | mfr=- | finish=C28 | cat=112XY-83" C28 EPT @ 42" Top Down
       1x Continuous Hinge | mfr=- | finish=C28 | cat=112XY-83" C28
       1x Accessory | mfr=- | finish=689 | cat=EPT-10-689
-      1x Electrified Exit Device | mfr=- | finish=626/630 | cat=RX-MEL-24-R-C 630 718C 626 LHR 4' LENGTH CON 965 x 2147 Door
-      1x Exit Device | mfr=- | finish=630 | cat=24-R L 630 RHR 4' LENGTH 965 x 2147 Door
+      1x Electrified Exit Device | mfr=- | finish=626/630 | cat=RX-MEL-24-R-C 630 718C 626 LHR 4' LENGTH CON 965 x 2134 Door
+      1x Exit Device | mfr=- | finish=630 | cat=24-R L 630 RHR 4' LENGTH 965 x 2134 Door
       1x Cylinder | mfr=- | finish=626 | cat=951 626 1 1/4" G 6-Pin Open
       1x Removable Mullion | mfr=- | finish=689 | cat=KR-4023 689 84 17/32"
       1x Cylinder | mfr=- | finish=626 | cat=985 626 1 1/4" G 6-Pin Open
@@ -707,7 +706,7 @@
       3x Weatherstripping | mfr=- | finish=CA | cat=W-2050S-CA x 36"
       6x Jamb Weatherstripping | mfr=- | finish=CA | cat=W-50S-CAx84" Opening
       3x Threshold | mfr=- | finish=- | cat=CT-65 x 38"
-    17: 1 Single door 113, EXIT VESTIBULE 112 FROM STAIR D 113 - LHR / Multiple stair corridor doors (Items #21-#66) — 6 components
+    17: 1 Single door 113, EXIT VESTIBULE 112 FROM STAIR D 113 - LHR / (multiple stair corridor doors P249-P649, A712, A714, C713, C715, A812-A2712, A813-A2713, A2812, A2813, C813-C1613, C814-C1614, C1713, C1714) — 6 components
       204x Standard Hinge | mfr=- | finish=C26D | cat=TA786 4 1/2" x 4" C26D
       68x Exit Device | mfr=- | finish=626/626 | cat=F-25-R-L-BE 626 510L-BE LAT 626 LHR 914 x 2134 Door
       68x Surface Closer | mfr=- | finish=689 | cat=SC81A Rw/ PA 689
@@ -1066,7 +1065,7 @@
       2x Wall Door Stop | mfr=- | finish=C26D | cat=S120 C26D
       2x Kick Plate | mfr=- | finish=C32D | cat=8400 C32D 8" x 36 1/2"
       6x Door Silencer | mfr=- | finish=GRY | cat=SR64 GRY
-    53: Multiple parking to bicycle parking doors (Items #134-#149) — 9 components
+    53: 1 Single door 146, PARKING TO BICYCLE PARKING 146 - RH / (multiple parking to bicycle parking doors P244-P644, P245-P645, P251-P651) — 9 components
       48x Standard Hinge | mfr=- | finish=C26D | cat=TA714 4 1/2" x 4" C26D
       16x Lockset | mfr=- | finish=626/626 | cat=W581 P6 LAT/LAT 626/626 G
       16x Electric Strike | mfr=- | finish=630 | cat=6400- 24VDC-630
@@ -1076,21 +1075,21 @@
       16x Wall Door Stop | mfr=- | finish=C26D | cat=S120 C26D
       16x Gasketing | mfr=- | finish=- | cat=W-22AL 1/965 x 2/2134
       16x Kick Plate | mfr=- | finish=C32D | cat=8400 C32D 8" x 36 1/2"
-    54: Multiple corridor to BF suite doors (Items #150-#161) — 6 components
+    54: BF Suite corridor doors (multiple floors/towers) — 6 components
       210x Standard Hinge | mfr=- | finish=C26D | cat=TA714 4 1/2" x 4" C26D
       70x Electronic Locking Device | mfr=- | finish=626 | cat=SALTO Suite Entry Levers By Others
       70x Surface Closer | mfr=- | finish=689 | cat=161BFxTPN 689
       140x Door Viewer | mfr=- | finish=26D | cat=U698B26D
       70x Gasketing | mfr=- | finish=- | cat=W-22AL 1/965 x 2/2134
       70x Threshold | mfr=- | finish=- | cat=CT-65 x 38"
-    55: Multiple corridor to suite doors (Items #162-#200) — 6 components
+    55: Suite corridor doors (multiple floors/towers) — 6 components
       1449x Standard Hinge | mfr=- | finish=C26D | cat=TA714 4 1/2" x 4" C26D
       483x Electronic Locking Device | mfr=- | finish=626 | cat=SALTO Suite Entry Levers By Others
       483x Surface Closer | mfr=- | finish=689 | cat=161BFxTPN 689
       483x Door Viewer | mfr=- | finish=26D | cat=U698B26D
       483x Gasketing | mfr=- | finish=- | cat=W-22AL 1/965 x 2/2134
       483x Threshold | mfr=- | finish=- | cat=CT-65 x 38"
-    56: Multiple corridor from stair F doors (Items #201-#205) — 9 components
+    56: Stair F corridor doors P231-P631 — 9 components
       15x Standard Hinge | mfr=- | finish=C26D | cat=TA786 4 1/2" x 4" C26D
       5x Exit Device | mfr=- | finish=626/622 | cat=25-R-L-NL 622 510L-NL LAT 626 RHR 965 x 2134 Door
       5x Cylinder | mfr=- | finish=626 | cat=985 626 1 1/4" G 6-Pin Open
@@ -1100,7 +1099,7 @@
       5x Wall Door Stop | mfr=- | finish=C26D | cat=S120 C26D
       5x Gasketing | mfr=- | finish=- | cat=W-22AL 1/965 x 2/2134
       5x Kick Plate | mfr=- | finish=C32D | cat=8400 C32D 8" x 36 1/2"
-    57: Multiple vestibule from parking doors (Items #206-#215) — 9 components
+    57: Vestibule from parking doors P232-P632, P239A-P639A — 9 components
       30x Standard Hinge | mfr=- | finish=C26D | cat=TA786 4 1/2" x 4" C26D
       10x Exit Device | mfr=- | finish=626/626 | cat=F-25-R-L-BE 626 510L-BE LAT 626 LHR 965 x 2134 Door
       10x Electric Strike | mfr=- | finish=630 | cat=6300- 24VDC-630
@@ -1110,7 +1109,7 @@
       10x Gasketing | mfr=- | finish=- | cat=W-22AL 1/965 x 2/2134
       10x Kick Plate | mfr=- | finish=C32D | cat=8400 C32D 8" x 36 1/2"
       10x Weatherstripping | mfr=- | finish=CA | cat=W-24S-CA x 38"
-    58: Multiple stair F from vestibule doors (Items #216-#220) — 9 components
+    58: Stair F from vestibule doors P232A-P632A — 9 components
       15x Standard Hinge | mfr=- | finish=C26D | cat=TA786 4 1/2" x 4" C26D
       5x Exit Device | mfr=- | finish=626/626 | cat=F-25-R-L-BE 626 510L-BE LAT 626 RHR 965 x 2134 Door
       5x Electric Strike | mfr=- | finish=630 | cat=6300- 24VDC-630
@@ -1120,14 +1119,14 @@
       5x Gasketing | mfr=- | finish=- | cat=W-22AL 1/965 x 2/2134
       5x Kick Plate | mfr=- | finish=C32D | cat=8400 C32D 8" x 36 1/2"
       5x Weatherstripping | mfr=- | finish=CA | cat=W-24S-CA x 38"
-    59: Multiple corridor to waste room doors (Items #221-#278) — 6 components
+    59: Corridor to waste room doors (multiple floors/towers) — 6 components
       174x Standard Hinge | mfr=- | finish=C26D | cat=TA714 4 1/2" x 4" C26D
       58x Latchset | mfr=- | finish=626/626 | cat=W101 LAT/LAT 626/626
       58x Surface Closer | mfr=- | finish=689 | cat=SC81A Rw/ PA 689
       58x Wall Door Stop | mfr=- | finish=C26D | cat=S120 C26D
       58x Gasketing | mfr=- | finish=- | cat=W-22AL 1/965 x 2/2134
       58x Kick Plate | mfr=- | finish=C32D | cat=8400 C32D 8" x 36 1/2"
-    60: Multiple corridor from electrical room pair doors (Items #279-#336) — 7 components
+    60: Corridor from electrical room pair doors (multiple floors/towers) — 7 components
       348x Standard Hinge | mfr=- | finish=C26D | cat=TA714 4 1/2" x 4" C26D
       58x Lockset | mfr=- | finish=626/626 | cat=T581 P6 LAT/LAT 626/626 G 23981152
       58x Flush Bolt | mfr=- | finish=C32D | cat=FB31P-12-MD C32D
@@ -1135,14 +1134,14 @@
       116x Surface Closer | mfr=- | finish=689 | cat=SC61A Rw/ PA 689
       58x Coordinator | mfr=- | finish=C26D | cat=COR72 C26D
       58x Gasketing | mfr=- | finish=- | cat=W-22AL 1/1930 x 2/2134
-    61: Multiple stair corridor doors (Items #337-#346) — 6 components
+    61: Stair E and Stair B corridor doors P235-P635, P236-P626 — 6 components
       30x Standard Hinge | mfr=- | finish=C26D | cat=TA786 4 1/2" x 4" C26D
       10x Exit Device | mfr=- | finish=626/626 | cat=F-25-R-L-BE 626 510L-BE LAT 626 LHR 914 x 2134 Door
       10x Surface Closer | mfr=- | finish=689 | cat=SC81A Rw/ PA 689
       10x Wall Door Stop | mfr=- | finish=C26D | cat=S120 C26D
       10x Kick Plate | mfr=- | finish=C32D | cat=8400 C32D 8x34
       30x Door Silencer | mfr=- | finish=GRY | cat=SR64 GRY
-    62: Multiple vestibule from corridor doors (Items #347-#351) — 10 components
+    62: Vestibule from corridor doors P239-P629 — 10 components
       15x Standard Hinge | mfr=- | finish=C26D | cat=TA786 5" x 4 1/2" C26D
       5x Exit Device | mfr=- | finish=626/622 | cat=25-R-L-NL 622 510L-NL LAT 626 LHR 965 x 2134 Door
       5x Cylinder | mfr=- | finish=626 | cat=985 626 1 1/4" G 6-Pin Open
@@ -1153,21 +1152,21 @@
       10x Mounting Box | mfr=- | finish=628 | cat=9530-18 628
       5x Gasketing | mfr=- | finish=- | cat=W-22AL 1/965 x 2/2134
       5x Kick Plate | mfr=- | finish=C32D | cat=8400 C32D 8" x 36 1/2"
-    63: Multiple stair from vestibule/corridor doors (Items #352-#386) — 6 components
+    63: Stair A and Stair C from vestibule/corridor doors (multiple floors/towers) — 6 components
       105x Standard Hinge | mfr=- | finish=C26D | cat=TA786 4 1/2" x 4" C26D
       35x Exit Device | mfr=- | finish=626/626 | cat=F-25-R-L-BE 626 510L-BE LAT 626 RHR 914 x 2134 Door
       35x Surface Closer | mfr=- | finish=689 | cat=SC81A Rw/ PA 689
       35x Wall Door Stop | mfr=- | finish=C26D | cat=S120 C26D
       35x Kick Plate | mfr=- | finish=C32D | cat=8400 C32D 8x34
       105x Door Silencer | mfr=- | finish=GRY | cat=SR64 GRY
-    64: Multiple corridor to storage/lockers doors (Items #387-#396) — 6 components
+    64: Corridor to storage/lockers doors P241-P641, P248-P648 — 6 components
       30x Standard Hinge | mfr=- | finish=C26D | cat=TA714 4 1/2" x 4" C26D
       10x Lockset | mfr=- | finish=626/626 | cat=W581 P6 LAT/LAT 626/626 G
       10x Surface Closer | mfr=- | finish=689 | cat=SC81A Rw/ PA 689
       10x Wall Door Stop | mfr=- | finish=C26D | cat=S120 C26D
       10x Gasketing | mfr=- | finish=- | cat=W-22AL 1/965 x 2/2134
       10x Kick Plate | mfr=- | finish=C32D | cat=8400 C32D 8" x 36 1/2"
-    65: Multiple vestibule to corridor doors (Items #397-#401) — 12 components
+    65: Vestibule to corridor doors P243-P643 — 12 components
       15x Standard Hinge | mfr=- | finish=C26D | cat=TA786 5" x 4 1/2" C26D
       5x Lockset | mfr=- | finish=626/626 | cat=MA581 P LTG/LTG 626/626 g RH
       5x Cylinder | mfr=- | finish=626 | cat=985 626 1 1/4" G 6-Pin Open
@@ -1180,7 +1179,7 @@
       5x Gasketing | mfr=- | finish=- | cat=W-22AL 1/965 x 2/2134
       5x Kick Plate | mfr=- | finish=C32D | cat=8400 C32D 8" x 36 1/2"
       5x Schematic | mfr=- | finish=- | cat=Opening Schematic By Others
-    66: Multiple parking to vestibule doors (Items #402-#406) — 9 components
+    66: Parking to vestibule doors P243A-P643A — 9 components
       15x Standard Hinge | mfr=- | finish=C26D | cat=TA786 5" x 4 1/2" C26D
       5x Latchset | mfr=- | finish=626/626 | cat=MA101 LTG/LTG 626/626 LH
       5x Electric Strike | mfr=- | finish=630 | cat=6400- 24VDC-630
@@ -1190,21 +1189,21 @@
       5x Gasketing | mfr=- | finish=- | cat=W-22AL 1/965 x 2/2134
       5x Kick Plate | mfr=- | finish=C32D | cat=8400 C32D 8" x 36 1/2"
       5x Weatherstripping | mfr=- | finish=CA | cat=W-24S-CA x 38"
-    67: Multiple stair D from vestibule doors (Items #407-#411) — 6 components
+    67: Stair D from vestibule doors P249A-P649A — 6 components
       15x Standard Hinge | mfr=- | finish=C26D | cat=TA786 4 1/2" x 4" C26D
       5x Exit Device | mfr=- | finish=626/626 | cat=F-25-R-L-BE 626 510L-BE LAT 626 RHR 914 x 2134 Door
       5x Surface Closer | mfr=- | finish=689 | cat=SC71A Rw/ PA 689
       5x Overhead Door Stop | mfr=- | finish=C26D | cat=104S C26D
       5x Gasketing | mfr=- | finish=- | cat=W-22AL 1/965 x 2/2134
       5x Kick Plate | mfr=- | finish=C32D | cat=8400 C32D 8x34
-    68: Multiple vestibule from parking doors (Items #412-#416) — 6 components
+    68: Vestibule from parking doors P250-P650 — 6 components
       15x Standard Hinge | mfr=- | finish=C26D | cat=TA786 4 1/2" x 4" C26D
       5x Exit Device | mfr=- | finish=626/626 | cat=F-25-R-L-BE 626 510L-BE LAT 626 RHR 914 x 2134 Door
       5x Surface Closer | mfr=- | finish=689 | cat=SC71A Rw/ PA 689
       5x Overhead Door Stop | mfr=- | finish=C26D | cat=104S C26D
       5x Gasketing | mfr=- | finish=- | cat=W-22AL 1/965 x 2/2134
       5x Kick Plate | mfr=- | finish=C32D | cat=8400 C32D 8x34
-    69: Multiple vestibule from parking doors (Items #417-#421) — 10 components
+    69: Vestibule from parking doors P252-P652 — 10 components
       15x Standard Hinge | mfr=- | finish=C26D | cat=TA786 4 1/2" x 4" C26D
       5x Exit Device | mfr=- | finish=626/626 | cat=F-25-R-L-BE 626 510L-BE LAT 626 RHR 965 x 2134 Door
       5x Electric Strike | mfr=- | finish=630 | cat=6300- 24VDC-630
@@ -1215,7 +1214,7 @@
       5x Gasketing | mfr=- | finish=- | cat=W-22AL 1/965 x 2/2134
       5x Kick Plate | mfr=- | finish=C32D | cat=8400 C32D 8" x 36 1/2"
       5x Threshold | mfr=- | finish=- | cat=CT-65 x 38"
-    70: Multiple corridor from vestibule doors (Items #422-#426) — 6 components
+    70: Corridor from vestibule doors P252A-P652A — 6 components
       15x Standard Hinge | mfr=- | finish=C26D | cat=TA786 4 1/2" x 4" C26D
       5x Exit Device | mfr=- | finish=626/626 | cat=F-25-R-L-BE 626 510L-BE LAT 626 RHR 965 x 2134 Door
       5x Surface Closer | mfr=- | finish=689 | cat=SC71A Rw/ PA 689
@@ -1539,7 +1538,14 @@
     HW 13: Moved to Exterior Set HW E18 [NOT USED] — 0 components
     HW 14: Moved to Exterior Set HW E15 [NOT USED] — 0 components
     HW 14A: Moved to Exterior Set HW E17 [NOT USED] — 0 components
-    HW 14B: NOT USED / Interior Pair - Ligature Resistant Push/Pulls - Automatic Operator- Continuous Hinge — 7 components
+    HW 14B: NOT USED / Exterior Single - Ligature Resistant Push/Pulls - Auto Operator - Continuous Hinge / Interior Pair - Ligature Resistant Push/Pulls - Automatic Operator - Continuous Hinge — 14 components
+      2x Continuous Hinge | mfr=ABH | finish=630 | cat=AC500 HT SEC
+      2x Ligature Res. Push/Pull Set | mfr=TOW | finish=630 | cat=MRX-A-72
+      2x Overhead Surface Auto Operator | mfr=BSM | finish=628 | cat=SW200i 115VAC
+      ?x Wave Sense Actuator | mfr=BEA | finish=--- | cat=MS31 / MS41
+      2x Door Stop | mfr=--- | finish=--- | cat=Per Specification
+      1x Gasketing | mfr=NGP | finish=BLK | cat=ANTI-LIG 5050
+      1x Threshold | mfr=PEM | finish=719 | cat=To Suit Sill Condition
       2x Continuous Hinge | mfr=ABH | finish=630 | cat=AC500 HT SEC
       2x Ligature Res. Push/Pull Set | mfr=TOW | finish=630 | cat=MRX-A-72
       2x Overhead Surface Auto Operator | mfr=BSM | finish=628 | cat=SW200i 115VAC
@@ -1563,7 +1569,7 @@
       1x REX Motion Sensor | mfr=--- | finish=--- | cat=By Division 28
       1x Lock Power Supply | mfr=--- | finish=--- | cat=By Division 28
       1x Push to Exit Button | mfr=--- | finish=--- | cat=By Division 28
-    HW 15A: Interior Single - Ligature Restant Push/Pulls - Magnetic Lock - Automatic Operator — 10 components
+    HW 15A: Interior Single - Ligature Resistant Push/Pulls - Magnetic Lock - Automatic Operator — 10 components
       1x Swing Clear Continuous Hinge | mfr=ABH | finish=630 | cat=A511 HT SEC (Not NYS OMH approved)
       1x Ligature Res. Push/Pull Set | mfr=TOW | finish=630 | cat=MRX-A-72
       1x Mag Lock | mfr=SDC | finish=628 | cat=1511
@@ -1599,8 +1605,10 @@
       2x Card Reader | mfr=--- | finish=--- | cat=By Division 28
       2x Door Position Switch | mfr=--- | finish=--- | cat=By Division 28
       1x Lock Power Supply | mfr=--- | finish=--- | cat=By Division 28
-    HW 20: Interior Automated Sliding Door — 0 components
-    HW 21: Exterior Automated Sliding Door - Card Reader — 0 components
+    HW 20: Interior Automated Sliding Door — 1 components
+      ?x Hardware by Slider Dr. MFG | mfr=- | finish=- | cat=-
+    HW 21: Exterior Automated Sliding Door - Card Reader — 1 components
+      ?x Hardware by Slider Dr. MFG | mfr=- | finish=- | cat=-
     HW 22: Interior Single - Institutional Privacy Lock/Occupancy Indicator - OHC Closer - Rescue — 8 components
       1x Continuous Hinge-Double Acting | mfr=ABH | finish=628 | cat=A507
       1x Ligature Res. Cyl. Lock-Ins.Privay/I.D. | mfr=TOW | finish=630 | cat=MRX-A-26-O
@@ -1864,7 +1872,17 @@
       1x Door Position Switch | mfr=--- | finish=--- | cat=By Division 28
       1x Card Reader | mfr=--- | finish=--- | cat=By Division 28
       1x Lock Power Supply | mfr=--- | finish=--- | cat=By Division 28
-    HW E01: NOT USED / Exterior Single 2xCR Delayed Egress Exit Device Fail Secure Trim Surface Closer-SCUSH — 14 components
+    HW E01: NOT USED / Exterior Single 2xCR Delayed Egress Exit Device Fail Secure Trim Surface Closer-SCUSH — 24 components
+      ?x Hinge | mfr=PBB | finish=630 | cat=4C51 NRP
+      1x Hinge-Power Transfer | mfr=PBB | finish=630 | cat=4C51EL
+      1x Rim Device-LNL QEL | mfr=TOW | finish=630 | cat=RX-ELR-ED1100/EF1100 x ED309R-D
+      1x Cylinder | mfr=TBD | finish=626 | cat=Per project
+      1x OH Surface Closer-SCUSH | mfr=LCN | finish=689 | cat=4040XP SCUSH
+      1x Overhead Rain Drip | mfr=NGP | finish=628 | cat=16A (As Req)
+      1x Door Sweep | mfr=NGP | finish=628 | cat=C627
+      1x Weatherstrip | mfr=NGP | finish=719 | cat=700Nx700EN
+      1x Threshold | mfr=PEM | finish=719 | cat=To Suit Sill Condition
+      1x Door Position Switch | mfr=SDC | finish=--- | cat=MC-4 (Or as Req)
       ?x Hinge | mfr=PBB | finish=630 | cat=4C51 NRP
       1x Hinge-Power Transfer | mfr=PBB | finish=630 | cat=4C51EL
       1x Delayed Egress Rim Device/Fail Secure | mfr=TOW | finish=630 | cat=ED1100/EF110-DE x KES909ER2-S
@@ -2087,7 +2105,8 @@
       1x REX Motion Sensor | mfr=--- | finish=--- | cat=By Division 28
       1x Lock Power Supply | mfr=--- | finish=--- | cat=By Division 28
       1x Push to Exit Button | mfr=--- | finish=--- | cat=By Division 28
-    HW E18: Exterior Automated Sliding Gate — 0 components
+    HW E18: Exterior Automated Sliding Gate — 1 components
+      ?x Hardware by Rollup Dr. MFG | mfr=- | finish=- | cat=-
     HW E19: Not Used / Exterior Single - Classroom Lockset - Surface Closer — 12 components
       1x Continuous Hinge | mfr=ABH | finish=630 | cat=AC500 HT
       1x Cyl. Lock-Classrm | mfr=TOW | finish=626 | cat=CDC-84-S
@@ -2149,14 +2168,14 @@
 === jc_ryan_2.pdf: 1 region(s) ===
   region 0: pages 24-46 | 38 sets | 0 not_used
     EX-1.0: Balanced Door Assembly Opening — 4 components
-      ?x Hanging Device | mfr=By Balanced Door Manufacturer | finish=- | cat=-
-      ?x Panic Hardware Device (Blumcraft Style) | mfr=By Balanced Door Manufacturer | finish=- | cat=-
-      ?x Gasketing, threshold, sweep, astragal | mfr=By Balanced Door Manufacturer | finish=- | cat=-
-      1x Electric Strike | mfr=By Balanced Door Manufacturer | finish=- | cat=-
+      ?x Hanging Device | mfr=- | finish=- | cat=-
+      ?x Panic Hardware Device (Blumcraft Style) | mfr=- | finish=- | cat=-
+      ?x Gasketing, threshold, sweep, astragal | mfr=- | finish=- | cat=-
+      1x Electric Strike | mfr=- | finish=- | cat=-
     EX-2.0: Terrace Door Assembly — 3 components
-      ?x Hanging Device | mfr=By Door Manufacturer | finish=- | cat=-
-      ?x Panic Hardware Device | mfr=By Door Manufacturer | finish=- | cat=-
-      ?x Gasketing, threshold, sweep, astragal | mfr=By Door Manufacturer | finish=- | cat=-
+      ?x Hanging Device | mfr=- | finish=- | cat=-
+      ?x Panic Hardware Device | mfr=- | finish=- | cat=-
+      ?x Gasketing, threshold, sweep, astragal | mfr=- | finish=- | cat=-
     EX-3.0: Single Opening – Exterior Stair Fan — 7 components
       1x Continuous Hinge | mfr=Pemko | finish=- | cat=FMHD1
       1x Storeroom Lock | mfr=Sargent | finish=- | cat=8204 LNL
@@ -2211,12 +2230,12 @@
       1x Threshold | mfr=Pemko | finish=- | cat=151A
       1x Door/Frame Harness | mfr=- | finish=- | cat=-
     3.0: Single Opening – Access Controlled, Stairwell, Fire Rated Aluminum Assembly — 7 components
-      ?x Hinge, Full Mortise | mfr=By Fire Rated Door Manufacturer | finish=- | cat=-
-      1x Electric Power Transfer | mfr=By Fire Rated Door Manufacturer | finish=- | cat=-
+      ?x Hinge, Full Mortise | mfr=- | finish=- | cat=-
+      1x Electric Power Transfer | mfr=- | finish=- | cat=-
       1x Fail Safe Rim Exit Device with integrated request to exit switch | mfr=Sargent | finish=- | cat=[12] 55 PE8875 ETMI
-      1x Door Closer x Regular Arm mounted on pull side of door | mfr=By Fire Rated Door Manufacturer | finish=- | cat=-
-      1x Gasketing | mfr=By Fire Rated Door Manufacturer | finish=- | cat=-
-      1x Door/Frame Harness | mfr=By Fire Rated Door Manufacturer | finish=- | cat=-
+      1x Door Closer x Regular Arm mounted on pull side of door | mfr=- | finish=- | cat=-
+      1x Gasketing | mfr=- | finish=- | cat=-
+      1x Door/Frame Harness | mfr=- | finish=- | cat=-
       1x Stop | mfr=Rockwood | finish=- | cat=RM860
     4.0: Fail Secure exit device Pair - (Switchgear) — 9 components
       ?x Hinge, Full Mortise | mfr=McKinney | finish=- | cat=T4A3786
@@ -2364,8 +2383,7 @@
       1x Kick Plate | mfr=Rockwood | finish=- | cat=K1050 x 10" High x CSK x 4BE
       1x Stop | mfr=Rockwood | finish=- | cat=RM860 / 446 / 9-ADJ Series Per Conditions
       1x Gasketing | mfr=Pemko | finish=- | cat=S44BL
-    15.0: Con-Ed Opening — 1 components
-      ?x All hardware by door manufacturer | mfr=By Door Manufacturer | finish=- | cat=-
+    15.0: Con-Ed Opening — 0 components
     16.0: Single Opening – Temporary Opening — 4 components
       ?x Hinge, Full Mortise | mfr=McKinney | finish=- | cat=TA2714
       1x Classroom Lock | mfr=Sargent | finish=- | cat=8237 LNMI
@@ -2391,9 +2409,9 @@
       1x Locking Ladder Pull | mfr=Rockwood | finish=- | cat=LP3301 DBU
       1x Stop | mfr=Rockwood | finish=- | cat=RM860 / 446 / 9-ADJ Series Per Conditions
     19.0: Single Opening – Office — 4 components
-      ?x Hanging Device | mfr=By Door Manufacturer | finish=- | cat=-
-      1x Office Lock | mfr=By Door Manufacturer | finish=- | cat=-
-      1x Closer | mfr=By Door Manufacturer | finish=- | cat=-
+      ?x Hanging Device | mfr=- | finish=- | cat=-
+      1x Office Lock | mfr=- | finish=- | cat=-
+      1x Closer | mfr=- | finish=- | cat=-
       1x Stop | mfr=Rockwood | finish=- | cat=RM860 / 446 / 9-ADJ Series Per Conditions
     20.0: Single Opening – Stairwell, Passage — 7 components
       ?x Hinge, Full Mortise | mfr=McKinney | finish=- | cat=T4A3786
@@ -2457,10 +2475,9 @@
       1x Gasketing | mfr=Pemko | finish=- | cat=S88BL
       1x Astragal | mfr=Pemko | finish=- | cat=178SA
 
-=== morris_bank_08.pdf: 2 region(s) ===
-  region 0: pages 27-33 | 0 sets | 0 not_used
-  region 1: pages 40-110 | 49 sets | 0 not_used
-    101: 1 Pair Doors #101 – Vestibule 103 to/from Exterior, 105° RHRA — 11 components
+=== morris_bank_08.pdf: 1 region(s) ===
+  region 0: pages 53-110 | 49 sets | 0 not_used
+    #101: 1 Pair Doors #101 – Vestibule 103 to/from Exterior, 105° RHRA — 11 components
       2x Continuous Hinge | mfr=PE | finish=- | cat=K10BEFM95HD1
       1x Deadlock | mfr=AD | finish=313 | cat=MS1850S Door Height Straight Bolt
       1x Thumbturn Cylinder | mfr=AD | finish=313 | cat=4066-01
@@ -2472,7 +2489,7 @@
       1x Closer | mfr=SA | finish=10BE | cat=SRI 268 OB
       1x SFIC | mfr=MED1 | finish=- | cat=33700006 N 26 DAKM
       1x Threshold | mfr=PE | finish=- | cat=2008-10BE-PK 72" MSES25SS
-    102: 1 Single Door #102 – Vestibule 103 to/from Stair #01, 105° LHR — 10 components
+    #102: 1 Single Door #102 – Vestibule 103 to/from Stair #01 102, 105° LHR — 10 components
       4x Hinges | mfr=MC | finish=10BE | cat=MPB79 4 1/2 x 4 1/2 NRP
       1x Exit Device | mfr=SA | finish=10BE | cat=LC PE8806 F WEMD
       1x Rim Cylinder | mfr=SA | finish=10BE | cat=70 7P 34
@@ -2483,7 +2500,7 @@
       1x SFIC | mfr=MED1 | finish=- | cat=33700006 N 26 DAKM
       1x Power Supply | mfr=SA | finish=- | cat=LSP-12-24
       1x Smoke Seal | mfr=PE | finish=- | cat=S88 BL 21'
-    103: 1 Pair Doors #103 – Vestibule 103 to/from Banking Personal 106, 105° RHRA — 11 components
+    #103: 1 Pair Doors #103 – Vestibule 103 to/from Banking Personal 106, 105° RHRA — 11 components
       2x Continuous Hinge | mfr=PE | finish=- | cat=K10BEFM95HD1
       1x Deadlock | mfr=AD | finish=313 | cat=MS1850S Door Height Straight Bolt
       1x Thumbturn Cylinder | mfr=AD | finish=313 | cat=4066-01
@@ -2495,21 +2512,21 @@
       1x Closer | mfr=SA | finish=10BE | cat=SRI 268 OB
       2x Dome Stop | mfr=RO | finish=10BE | cat=441
       1x SFIC | mfr=MED1 | finish=- | cat=33700006 N 26 DAKM
-    104: 1 Single Door #104 – Banking Personal 106 to/from Office 104, 105° RH — 6 components
+    #104: 1 Single Door #104 – Banking Personal 106 to/from Office 104, 105° RH — 6 components
       4x Hinges | mfr=MC | finish=10BE | cat=MPB79 4 1/2 x 4 1/2 NRP
       1x Lockset | mfr=SA | finish=10BE | cat=70 10XG05 LL 2 3/4" BS
       1x Construction Core | mfr=BE | finish=- | cat=7190224
       1x Wall Stop | mfr=RO | finish=10BE | cat=409
       1x SFIC | mfr=MED1 | finish=- | cat=33700006 N 26 DAKM
       3x Door Silencer | mfr=RO | finish=BLK | cat=608-RKW
-    105: 1 Single Door #105 – Banking Personal 106 to/from Office 105, 105° RH — 6 components
+    #105: 1 Single Door #105 – Banking Personal 106 to/from Office 105, 105° RH — 6 components
       4x Hinges | mfr=MC | finish=10BE | cat=MPB79 4 1/2 x 4 1/2 NRP
       1x Lockset | mfr=SA | finish=10BE | cat=70 10XG05 LL 2 3/4" BS
       1x Construction Core | mfr=BE | finish=- | cat=7190224
       1x Wall Stop | mfr=RO | finish=10BE | cat=409
       1x SFIC | mfr=MED1 | finish=- | cat=33700006 N 26 DAKM
       3x Door Silencer | mfr=RO | finish=BLK | cat=608-RKW
-    106: 1 Single Door #106 – Banking Personal 106 to/from Exterior, 105° LHR — 12 components
+    #106: 1 Single Door #106 – Banking Personal 106 to/from Exterior, 105° LHR — 12 components
       1x Continuous Hinge | mfr=PE | finish=- | cat=K10BEFM95HD1
       1x Exit Device | mfr=SA | finish=10BE | cat=31 PE8804 F LESS TRIM
       1x Rim Cylinder | mfr=SA | finish=10BE | cat=70 7P 34
@@ -2522,28 +2539,28 @@
       1x SFIC | mfr=MED1 | finish=- | cat=33700006 N 26 DAKM
       1x Power Supply | mfr=SA | finish=- | cat=LSP-12-24
       1x Threshold | mfr=PE | finish=- | cat=2008-10BE-PK 36" MSES25SS
-    107: 1 Single Door #107 – Banking Personal 106 to/from Office 107, 105° LH — 6 components
+    #107: 1 Single Door #107 – Banking Personal 106 to/from Office 107, 105° LH — 6 components
       4x Hinges | mfr=MC | finish=10BE | cat=MPB79 4 1/2 x 4 1/2 NRP
       1x Lockset | mfr=SA | finish=10BE | cat=70 10XG05 LL 2 3/4" BS
       1x Construction Core | mfr=BE | finish=- | cat=7190224
       1x Wall Stop | mfr=RO | finish=10BE | cat=409
       1x SFIC | mfr=MED1 | finish=- | cat=33700006 N 26 DAKM
       3x Door Silencer | mfr=RO | finish=BLK | cat=608-RKW
-    108: 1 Single Door #108 – Banking Personal 106 to/from Office 108, 105° RH — 6 components
+    #108: 1 Single Door #108 – Banking Personal 106 to/from Office 108, 105° RH — 6 components
       4x Hinges | mfr=MC | finish=10BE | cat=MPB79 4 1/2 x 4 1/2 NRP
       1x Lockset | mfr=SA | finish=10BE | cat=70 10XG05 LL 2 3/4" BS
       1x Construction Core | mfr=BE | finish=- | cat=7190224
       1x Wall Stop | mfr=RO | finish=10BE | cat=409
       1x SFIC | mfr=MED1 | finish=- | cat=33700006 N 26 DAKM
       3x Door Silencer | mfr=RO | finish=BLK | cat=608-RKW
-    109: 1 Single Door #109 – Banking Personal 106 to/from Office 109, 105° RH — 6 components
+    #109: 1 Single Door #109 – Banking Personal 106 to/from Office 109, 105° RH — 6 components
       4x Hinges | mfr=MC | finish=10BE | cat=MPB79 4 1/2 x 4 1/2 NRP
       1x Lockset | mfr=SA | finish=10BE | cat=70 10XG05 LL 2 3/4" BS
       1x Construction Core | mfr=BE | finish=- | cat=7190224
       1x Wall Stop | mfr=RO | finish=10BE | cat=409
       1x SFIC | mfr=MED1 | finish=- | cat=33700006 N 26 DAKM
       3x Door Silencer | mfr=RO | finish=BLK | cat=608-RKW
-    111: 1 Single Door #111 – Teller 112 to/from Cash RM 111, 105° LH — 10 components
+    #111: 1 Single Door #111 – Teller 112 to/from Cash RM 111, 105° LH — 10 components
       4x Hinges | mfr=MC | finish=10BE | cat=MPB79 4 1/2 x 4 1/2 NRP
       1x Lockset | mfr=SA | finish=10BE | cat=70 10XG37 LL 2 3/4" BS
       1x Construction Core | mfr=BE | finish=- | cat=7190224
@@ -2554,7 +2571,7 @@
       1x SFIC | mfr=MED1 | finish=- | cat=33700006 N 26 DAKM
       1x Power Supply | mfr=SA | finish=- | cat=LSP-12-24
       3x Door Silencer | mfr=RO | finish=BLK | cat=608-RKW
-    112: 1 Single Door #112 – Banking Personal 106 to/from Teller 112, 105° RH — 10 components
+    #112: 1 Single Door #112 – Banking Personal 106 to/from Teller 112, 105° RH — 10 components
       4x Hinges | mfr=MC | finish=10BE | cat=MPB79 4 1/2 x 4 1/2 NRP
       1x Lockset | mfr=SA | finish=10BE | cat=70 10XG04 LL 2 3/4" BS
       1x Construction Core | mfr=BE | finish=- | cat=7190224
@@ -2565,7 +2582,7 @@
       1x SFIC | mfr=MED1 | finish=- | cat=33700006 N 26 DAKM
       1x Power Supply | mfr=SA | finish=- | cat=LSP-12-24
       3x Door Silencer | mfr=RO | finish=BLK | cat=608-RKW
-    113: 1 Single Door #113 – Corridor 114 to/from Women 113, 105° RH — 8 components
+    #113: 1 Single Door #113 – Corridor 114 to/from Women 113, 105° RH — 8 components
       4x Hinges | mfr=MC | finish=10BE | cat=MPB79 4 1/2 x 4 1/2 NRP
       1x Deadbolt | mfr=SA | finish=10BE | cat=468 V21
       1x Keypad Lock | mfr=SA | finish=10BE | cat=70 KP10XG77 LL 2 3/4" BS
@@ -2574,7 +2591,7 @@
       1x Wall Stop | mfr=RO | finish=10BE | cat=409
       1x SFIC | mfr=MED1 | finish=- | cat=33700006 N 26 DAKM
       3x Door Silencer | mfr=RO | finish=BLK | cat=608-RKW
-    115: 1 Single Door #115 – Corridor 114 to/from Men 115, 105° LH — 8 components
+    #115: 1 Single Door #115 – Corridor 114 to/from Men 115, 105° LH — 8 components
       4x Hinges | mfr=MC | finish=10BE | cat=MPB79 4 1/2 x 4 1/2 NRP
       1x Deadbolt | mfr=SA | finish=10BE | cat=468 V21
       1x Keypad Lock | mfr=SA | finish=10BE | cat=70 KP10XG77 LL 2 3/4" BS
@@ -2583,7 +2600,7 @@
       1x Wall Stop | mfr=RO | finish=10BE | cat=409
       1x SFIC | mfr=MED1 | finish=- | cat=33700006 N 26 DAKM
       3x Door Silencer | mfr=RO | finish=BLK | cat=608-RKW
-    116: 1 Single Door #116 – Elevator Equip 116 to/from Exterior, 105° LHR — 11 components
+    #116: 1 Single Door #116 – Elevator Equip 116 to/from Exterior, 105° LHR — 11 components
       1x Continuous Hinge | mfr=PE | finish=- | cat=10BEFM95HD1
       1x Lockset | mfr=SA | finish=10BE | cat=70 10XG04 LL 2 3/4" BS
       1x Construction Core | mfr=BE | finish=- | cat=7190224
@@ -2595,7 +2612,7 @@
       1x Weatherstrip | mfr=PE | finish=- | cat=290-10BE-PK 1 x 48" 2 x 96"
       1x Threshold | mfr=PE | finish=- | cat=2008-10BE-PK 48" MSES25SS
       3x Door Silencer | mfr=RO | finish=BLK | cat=608-RKW
-    117: 1 Single Door #117 – Corridor 114 to/from Electrical 117, 105° LHR — 10 components
+    #117: 1 Single Door #117 – Corridor 114 to/from Electrical 117, 105° LHR — 10 components
       4x Hinges | mfr=MC | finish=10BE | cat=MPB79 4 1/2 x 4 1/2 NRP
       1x Lockset | mfr=SA | finish=10BE | cat=70 10XG04 LL 2 3/4" BS
       1x Construction Core | mfr=BE | finish=- | cat=7190224
@@ -2606,14 +2623,14 @@
       1x SFIC | mfr=MED1 | finish=- | cat=33700006 N 26 DAKM
       1x Power Supply | mfr=SA | finish=- | cat=LSP-12-24
       1x Smoke Seal | mfr=PE | finish=- | cat=S88 BL 21'
-    118: 1 Single Door #118 – Banking Personal 106 to/from Storage 118, 105° RH — 6 components
+    #118: 1 Single Door #118 – Banking Personal 106 to/from Storage 118, 105° RH — 6 components
       4x Hinges | mfr=MC | finish=10BE | cat=MPB79 4 1/2 x 4 1/2 NRP
       1x Lockset | mfr=SA | finish=10BE | cat=70 10XG37 LL 2 3/4" BS
       1x Construction Core | mfr=BE | finish=- | cat=7190224
       1x Wall Stop | mfr=RO | finish=10BE | cat=409
       1x SFIC | mfr=MED1 | finish=- | cat=33700006 N 26 DAKM
       3x Door Silencer | mfr=RO | finish=BLK | cat=608-RKW
-    119: 1 Single Door #119 – Stair #2 119 to/from Exterior, 105° LHR — 13 components
+    #119: 1 Single Door #119 – Stair #2 119 to/from Exterior, 105° LHR — 13 components
       1x Continuous Hinge | mfr=PE | finish=- | cat=10BEFM95HD1
       1x Exit Device | mfr=SA | finish=10BE | cat=LC PE8806 F WEMD
       1x Rim Cylinder | mfr=SA | finish=10BE | cat=70 7P 34
@@ -2627,41 +2644,41 @@
       1x Raindrip | mfr=PE | finish=- | cat=346-10BE 40"
       1x Weatherstrip | mfr=PE | finish=- | cat=18061-10BE-NB 36"
       1x Threshold | mfr=PE | finish=- | cat=2008-10BE-PK 36" MSES25SS
-    201: 1 Single Door #201 – Stair #01 201 to/from Vestibule 202, 105° LHR — 5 components
+    #201: 1 Single Door #201 – Stair #01 201 to/from Vestibule 202, 105° LHR — 5 components
       4x Hinges | mfr=MC | finish=10BE | cat=MPB79 4 1/2 x 4 1/2 NRP
       1x Passage Set | mfr=SA | finish=10BE | cat=10XU15 LMD 2 3/4" BS
       1x Closer | mfr=SA | finish=10BE | cat=351 CPS TB
       1x Wall Stop | mfr=RO | finish=10BE | cat=409
       1x Smoke Seal | mfr=PE | finish=- | cat=S88 BL 21'
-    203: 1 Single Door #203 – Open Space 206 to/from Office 203, 105° LH — 6 components
+    #203: 1 Single Door #203 – Open Space 206 to/from Office 203, 105° LH — 6 components
       4x Hinges | mfr=MC | finish=10BE | cat=MPB79 4 1/2 x 4 1/2 NRP
       1x Lockset | mfr=SA | finish=10BE | cat=70 10XG05 LL 2 3/4" BS
       1x Construction Core | mfr=BE | finish=- | cat=7190224
       1x Wall Stop | mfr=RO | finish=10BE | cat=409
       1x SFIC | mfr=MED1 | finish=- | cat=33700006 N 26 DAKM
       3x Door Silencer | mfr=RO | finish=BLK | cat=608-RKW
-    205: 1 Pair Doors #205 – Vestibule 204 to/from Board RM 205, 105° RHRA — 6 components
+    #205: 1 Pair Doors #205 – Vestibule 204 to/from Board RM 205, 105° RHRA — 6 components
       8x Hinges | mfr=MC | finish=10BE | cat=MPB79 4 1/2 x 4 1/2 NRP
       2x Straight Pull | mfr=RO | finish=10BE | cat=RM3101 30" 1 3/4" DOORS CTC OVERALL LENGTH TYPE 12XHD FASTENING
       2x Cast Plate | mfr=RO | finish=10BE | cat=RM5596B 3 1/2 x 15 1 3/4" DOORS
       1x Closer | mfr=SA | finish=10BE | cat=268 HB
       1x Closer | mfr=SA | finish=10BE | cat=268 HB
       2x Door Silencer | mfr=RO | finish=BLK | cat=608-RKW
-    207: 1 Single Door #207 – Open Space 206 to/from Office 207, 105° RH — 6 components
+    #207: 1 Single Door #207 – Open Space 206 to/from Office 207, 105° RH — 6 components
       4x Hinges | mfr=MC | finish=10BE | cat=MPB79 4 1/2 x 4 1/2 NRP
       1x Lockset | mfr=SA | finish=10BE | cat=70 10XG05 LL 2 3/4" BS
       1x Construction Core | mfr=BE | finish=- | cat=7190224
       1x Wall Stop | mfr=RO | finish=10BE | cat=409
       1x SFIC | mfr=MED1 | finish=- | cat=33700006 N 26 DAKM
       3x Door Silencer | mfr=RO | finish=BLK | cat=608-RKW
-    208: 1 Single Door #208 – Open Space 206 to/from Office 208, 105° RH — 6 components
+    #208: 1 Single Door #208 – Open Space 206 to/from Office 208, 105° RH — 6 components
       4x Hinges | mfr=MC | finish=10BE | cat=MPB79 4 1/2 x 4 1/2 NRP
       1x Lockset | mfr=SA | finish=10BE | cat=70 10XG05 LL 2 3/4" BS
       1x Construction Core | mfr=BE | finish=- | cat=7190224
       1x Wall Stop | mfr=RO | finish=10BE | cat=409
       1x SFIC | mfr=MED1 | finish=- | cat=33700006 N 26 DAKM
       3x Door Silencer | mfr=RO | finish=BLK | cat=608-RKW
-    210: 1 Single Door #210 – Corridor 213 to/from Janitor 210, 105° RHR — 7 components
+    #210: 1 Single Door #210 – Corridor 213 to/from Janitor 210, 105° RHR — 7 components
       4x Hinges | mfr=MC | finish=10BE | cat=MPB79 4 1/2 x 4 1/2 NRP
       1x Lockset | mfr=SA | finish=10BE | cat=70 10XG04 LL 2 3/4" BS
       1x Construction Core | mfr=BE | finish=- | cat=7190224
@@ -2669,58 +2686,58 @@
       1x Wall Stop | mfr=RO | finish=10BE | cat=409
       1x SFIC | mfr=MED1 | finish=- | cat=33700006 N 26 DAKM
       3x Door Silencer | mfr=RO | finish=BLK | cat=608-RKW
-    211: 1 Single Door #211 – Corridor 213 to/from Break RM 211, 105° LH — 5 components
+    #211: 1 Single Door #211 – Corridor 213 to/from Break RM 211, 105° LH — 5 components
       4x Hinges | mfr=MC | finish=10BE | cat=MPB79 4 1/2 x 4 1/2 NRP
       1x Passage Set | mfr=SA | finish=10BE | cat=10XU15 LMD 2 3/4" BS
       1x Closer | mfr=SA | finish=EB | cat=1131 HU
       1x Wall Stop | mfr=RO | finish=10BE | cat=409
       3x Door Silencer | mfr=RO | finish=BLK | cat=608-RKW
-    212: 1 Single Door #212 – Corridor 213 to/from Stair #02 212, 105° LHR — 5 components
+    #212: 1 Single Door #212 – Corridor 213 to/from Stair #02 212, 105° LHR — 5 components
       4x Hinges | mfr=MC | finish=10BE | cat=MPB79 4 1/2 x 4 1/2 NRP
       1x Passage Set | mfr=SA | finish=10BE | cat=10XU15 LMD 2 3/4" BS
       1x Closer | mfr=SA | finish=10BE | cat=351 CPS TB
       1x Wall Stop | mfr=RO | finish=10BE | cat=409
       1x Smoke Seal | mfr=PE | finish=- | cat=S88 BL 21'
-    214: 1 Single Door #214 – Corridor 213 to/from Men 214, 105° LH — 6 components
+    #214: 1 Single Door #214 – Corridor 213 to/from Men 214, 105° LH — 6 components
       4x Hinges | mfr=MC | finish=10BE | cat=MPB79 4 1/2 x 4 1/2 NRP
       1x Deadbolt | mfr=SA | finish=10BE | cat=468 V21
       1x Passage Set | mfr=SA | finish=10BE | cat=10XU15 LMD 2 3/4" BS
       1x Closer | mfr=SA | finish=EB | cat=1131 RU
       1x Wall Stop | mfr=RO | finish=10BE | cat=409
       3x Door Silencer | mfr=RO | finish=BLK | cat=608-RKW
-    215: 1 Single Door #215 – Corridor 213 to/from Women 215, 105° RH — 6 components
+    #215: 1 Single Door #215 – Corridor 213 to/from Women 215, 105° RH — 6 components
       4x Hinges | mfr=MC | finish=10BE | cat=MPB79 4 1/2 x 4 1/2 NRP
       1x Deadbolt | mfr=SA | finish=10BE | cat=468 V21
       1x Passage Set | mfr=SA | finish=10BE | cat=10XU15 LMD 2 3/4" BS
       1x Closer | mfr=SA | finish=EB | cat=1131 RU
       1x Wall Stop | mfr=RO | finish=10BE | cat=409
       3x Door Silencer | mfr=RO | finish=BLK | cat=608-RKW
-    216: 1 Single Door #216 – Open Space 206 to/from Storage 216, 105° RH — 6 components
+    #216: 1 Single Door #216 – Open Space 206 to/from Storage 216, 105° RH — 6 components
       4x Hinges | mfr=MC | finish=10BE | cat=MPB79 4 1/2 x 4 1/2 NRP
       1x Lockset | mfr=SA | finish=10BE | cat=70 10XG37 LL 2 3/4" BS
       1x Construction Core | mfr=BE | finish=- | cat=7190224
       1x Wall Stop | mfr=RO | finish=10BE | cat=409
       1x SFIC | mfr=MED1 | finish=- | cat=33700006 N 26 DAKM
       3x Door Silencer | mfr=RO | finish=BLK | cat=608-RKW
-    217: 1 Single Door #217 – Open Space 206 to/from Office 217, 105° LH — 6 components
+    #217: 1 Single Door #217 – Open Space 206 to/from Office 217, 105° LH — 6 components
       4x Hinges | mfr=MC | finish=10BE | cat=MPB79 4 1/2 x 4 1/2 NRP
       1x Lockset | mfr=SA | finish=10BE | cat=70 10XG05 LL 2 3/4" BS
       1x Construction Core | mfr=BE | finish=- | cat=7190224
       1x Wall Stop | mfr=RO | finish=10BE | cat=409
       1x SFIC | mfr=MED1 | finish=- | cat=33700006 N 26 DAKM
       3x Door Silencer | mfr=RO | finish=BLK | cat=608-RKW
-    218: 1 Single Door #218 – Open Space 206 to/from Office 218, 105° LH — 6 components
+    #218: 1 Single Door #218 – Open Space 206 to/from Office 218, 105° LH — 6 components
       4x Hinges | mfr=MC | finish=10BE | cat=MPB79 4 1/2 x 4 1/2 NRP
       1x Lockset | mfr=SA | finish=10BE | cat=70 10XG05 LL 2 3/4" BS
       1x Construction Core | mfr=BE | finish=- | cat=7190224
       1x Wall Stop | mfr=RO | finish=10BE | cat=409
       1x SFIC | mfr=MED1 | finish=- | cat=33700006 N 26 DAKM
       3x Door Silencer | mfr=RO | finish=BLK | cat=608-RKW
-    MISC: 1 Other Door #MISC – NH — 3 components
+    #MISC: 1 Other Door #MISC – NH — 3 components
       1x Key Cabinet | mfr=VA01 | finish=- | cat=KEYCAB
       2x Control Key | mfr=BE | finish=- | cat=7147449
       10x Operating Key | mfr=BE | finish=- | cat=7148872
-    101.68: Doors: 101 — 10 components
+    #101.68: Doors: 101 — 10 components
       2x Continuous Hinge | mfr=PE | finish=- | cat=K10BEFM95HD1
       1x Deadlock | mfr=AD | finish=313 | cat=MS1850S Door Height Straight Bolt
       1x Thumbturn Cylinder | mfr=AD | finish=313 | cat=4066-01
@@ -2731,7 +2748,7 @@
       2x Closer | mfr=SA | finish=10BE | cat=SRI 268 OB
       1x SFIC | mfr=MED1 | finish=- | cat=33700006 N 26 DAKM
       1x Threshold | mfr=PE | finish=- | cat=2008-10BE-PK 72" MSES25SS
-    103.68: Doors: 103 — 10 components
+    #103.68: Doors: 103 — 10 components
       2x Continuous Hinge | mfr=PE | finish=- | cat=K10BEFM95HD1
       1x Deadlock | mfr=AD | finish=313 | cat=MS1850S Door Height Straight Bolt
       1x Thumbturn Cylinder | mfr=AD | finish=313 | cat=4066-01
@@ -2742,7 +2759,7 @@
       2x Closer | mfr=SA | finish=10BE | cat=SRI 268 OB
       2x Dome Stop | mfr=RO | finish=10BE | cat=441
       1x SFIC | mfr=MED1 | finish=- | cat=33700006 N 26 DAKM
-    106.38: Doors: 106 — 12 components
+    #106.38: Doors: 106 — 12 components
       1x Continuous Hinge | mfr=PE | finish=- | cat=K10BEFM95HD1
       1x Exit Device | mfr=SA | finish=10BE | cat=31 PE8804 F LESS TRIM
       1x Rim Cylinder | mfr=SA | finish=10BE | cat=70 7P 34
@@ -2755,7 +2772,7 @@
       1x SFIC | mfr=MED1 | finish=- | cat=33700006 N 26 DAKM
       1x Power Supply | mfr=SA | finish=- | cat=LSP-12-24
       1x Threshold | mfr=PE | finish=- | cat=2008-10BE-PK 36" MSES25SS
-    119.38: Doors: 119 — 10 components
+    #119.38: Doors: 119 — 10 components
       1x Continuous Hinge | mfr=PE | finish=- | cat=10BEFM95HD1
       1x Exit Device | mfr=SA | finish=10BE | cat=LC PE8806 F WEMD
       1x Rim Cylinder | mfr=SA | finish=10BE | cat=70 7P 34
@@ -2766,20 +2783,20 @@
       1x Raindrip | mfr=PE | finish=- | cat=346-10BE 40"
       1x Weatherstrip | mfr=PE | finish=- | cat=18061-10BE-NB 36"
       1x Threshold | mfr=PE | finish=- | cat=2008-10BE-PK 36" MSES25SS
-    205.68: Doors: 205 — 5 components
+    #205.68: Doors: 205 — 5 components
       8x Hinges | mfr=MC | finish=10BE | cat=MPB79 4 1/2 x 4 1/2 NRP
       2x Straight Pull | mfr=RO | finish=10BE | cat=RM3101 30" 1 3/4" DOORS CTC OVERALL LENGTH TYPE 12XHD FASTENING
       2x Cast Plate | mfr=RO | finish=10BE | cat=RM5596B 3 1/2 x 15 1 3/4" DOORS
       2x Closer | mfr=SA | finish=10BE | cat=268 HB
       2x Door Silencer | mfr=RO | finish=BLK | cat=608-RKW
-    CR38: Doors: 118, 216 — 6 components
+    #CR38: Doors: 118, 216 — 6 components
       4x Hinges | mfr=MC | finish=10BE | cat=MPB79 4 1/2 x 4 1/2 NRP
       1x Lockset | mfr=SA | finish=10BE | cat=70 10XG37 LL 2 3/4" BS
       1x Construction Core | mfr=BE | finish=- | cat=7190224
       1x Wall Stop | mfr=RO | finish=10BE | cat=409
       1x SFIC | mfr=MED1 | finish=- | cat=33700006 N 26 DAKM
       3x Door Silencer | mfr=RO | finish=BLK | cat=608-RKW
-    CR38CLHO: Doors: 111 — 7 components
+    #CR38CLHO: Doors: 111 — 7 components
       4x Hinges | mfr=MC | finish=10BE | cat=MPB79 4 1/2 x 4 1/2 NRP
       1x Lockset | mfr=SA | finish=10BE | cat=70 10XG37 LL 2 3/4" BS
       1x Construction Core | mfr=BE | finish=- | cat=7190224
@@ -2787,24 +2804,24 @@
       1x Wall Stop | mfr=RO | finish=10BE | cat=409
       1x SFIC | mfr=MED1 | finish=- | cat=33700006 N 26 DAKM
       3x Door Silencer | mfr=RO | finish=BLK | cat=608-RKW
-    MISC: Doors: MISC — 3 components
+    #MISC: Doors: MISC — 3 components
       1x Key Cabinet | mfr=VA01 | finish=- | cat=KEYCAB
       2x Control Key | mfr=BE | finish=- | cat=7147449
       10x Operating Key | mfr=BE | finish=- | cat=7148872
-    OF38: Doors: 104, 105, 107, 108, 109, 203, 207, 208, 217, 218 — 6 components
+    #OF38: Doors: 104, 105, 107, 108, 109, 203, 207, 208, 217, 218 — 6 components
       4x Hinges | mfr=MC | finish=10BE | cat=MPB79 4 1/2 x 4 1/2 NRP
       1x Lockset | mfr=SA | finish=10BE | cat=70 10XG05 LL 2 3/4" BS
       1x Construction Core | mfr=BE | finish=- | cat=7190224
       1x Wall Stop | mfr=RO | finish=10BE | cat=409
       1x SFIC | mfr=MED1 | finish=- | cat=33700006 N 26 DAKM
       3x Door Silencer | mfr=RO | finish=BLK | cat=608-RKW
-    211.3080: Doors: 211 — 5 components
+    #211.3080: Doors: 211 — 5 components
       4x Hinges | mfr=MC | finish=10BE | cat=MPB79 4 1/2 x 4 1/2 NRP
       1x Passage Set | mfr=SA | finish=10BE | cat=10XU15 LMD 2 3/4" BS
       1x Closer | mfr=SA | finish=EB | cat=1131 HU
       1x Wall Stop | mfr=RO | finish=10BE | cat=409
       3x Door Silencer | mfr=RO | finish=BLK | cat=608-RKW
-    PR38ICCL: Doors: 113, 115 — 8 components
+    #PR38ICCL: Doors: 113, 115 — 8 components
       4x Hinges | mfr=MC | finish=10BE | cat=MPB79 4 1/2 x 4 1/2 NRP
       1x Deadbolt | mfr=SA | finish=10BE | cat=468 V21
       1x Keypad Lock | mfr=SA | finish=10BE | cat=70 KP10XG77 LL 2 3/4" BS
@@ -2813,14 +2830,14 @@
       1x Wall Stop | mfr=RO | finish=10BE | cat=409
       1x SFIC | mfr=MED1 | finish=- | cat=33700006 N 26 DAKM
       3x Door Silencer | mfr=RO | finish=BLK | cat=608-RKW
-    PR38INCL: Doors: 214, 215 — 6 components
+    #PR38INCL: Doors: 214, 215 — 6 components
       4x Hinges | mfr=MC | finish=10BE | cat=MPB79 4 1/2 x 4 1/2 NRP
       1x Deadbolt | mfr=SA | finish=10BE | cat=468 V21
       1x Passage Set | mfr=SA | finish=10BE | cat=10XU15 LMD 2 3/4" BS
       1x Closer | mfr=SA | finish=EB | cat=1131 RU
       1x Wall Stop | mfr=RO | finish=10BE | cat=409
       3x Door Silencer | mfr=RO | finish=BLK | cat=608-RKW
-    SR38: Doors: 210 — 7 components
+    #SR38: Doors: 210 — 7 components
       4x Hinges | mfr=MC | finish=10BE | cat=MPB79 4 1/2 x 4 1/2 NRP
       1x Lockset | mfr=SA | finish=10BE | cat=70 10XG04 LL 2 3/4" BS
       1x Construction Core | mfr=BE | finish=- | cat=7190224
@@ -2828,7 +2845,7 @@
       1x Wall Stop | mfr=RO | finish=10BE | cat=409
       1x SFIC | mfr=MED1 | finish=- | cat=33700006 N 26 DAKM
       3x Door Silencer | mfr=RO | finish=BLK | cat=608-RKW
-    SR38CL: Doors: 117 — 7 components
+    #SR38CL: Doors: 117 — 7 components
       4x Hinges | mfr=MC | finish=10BE | cat=MPB79 4 1/2 x 4 1/2 NRP
       1x Lockset | mfr=SA | finish=10BE | cat=70 10XG04 LL 2 3/4" BS
       1x Construction Core | mfr=BE | finish=- | cat=7190224
@@ -2836,7 +2853,7 @@
       1x Wall Stop | mfr=RO | finish=10BE | cat=409
       1x SFIC | mfr=MED1 | finish=- | cat=33700006 N 26 DAKM
       3x Door Silencer | mfr=RO | finish=BLK | cat=608-RKW
-    SR38CLCA: Doors: 112 — 10 components
+    #SR38CLCA: Doors: 112 — 10 components
       4x Hinges | mfr=MC | finish=10BE | cat=MPB79 4 1/2 x 4 1/2 NRP
       1x Lockset | mfr=SA | finish=10BE | cat=70 10XG04 LL 2 3/4" BS
       1x Construction Core | mfr=BE | finish=- | cat=7190224
@@ -2847,13 +2864,13 @@
       1x SFIC | mfr=MED1 | finish=- | cat=33700006 N 26 DAKM
       1x Power Supply | mfr=SA | finish=- | cat=LSP-12-24
       3x Door Silencer | mfr=RO | finish=BLK | cat=608-RKW
-    SW38RPA: Doors: 201, 212 — 5 components
+    #SW38RPA: Doors: 201, 212 — 5 components
       4x Hinges | mfr=MC | finish=10BE | cat=MPB79 4 1/2 x 4 1/2 NRP
       1x Passage Set | mfr=SA | finish=10BE | cat=10XU15 LMD 2 3/4" BS
       1x Closer | mfr=SA | finish=10BE | cat=351 CPS TB
       1x Wall Stop | mfr=RO | finish=10BE | cat=409
       1x Smoke Seal | mfr=PE | finish=- | cat=S88 BL 21'
-    SW38RXCA: Doors: 102 — 10 components
+    #SW38RXCA: Doors: 102 — 10 components
       4x Hinges | mfr=MC | finish=10BE | cat=MPB79 4 1/2 x 4 1/2 NRP
       1x Exit Device | mfr=SA | finish=10BE | cat=LC PE8806 F WEMD
       1x Rim Cylinder | mfr=SA | finish=10BE | cat=70 7P 34
@@ -2864,7 +2881,7 @@
       1x SFIC | mfr=MED1 | finish=- | cat=33700006 N 26 DAKM
       1x Power Supply | mfr=SA | finish=- | cat=LSP-12-24
       1x Smoke Seal | mfr=PE | finish=- | cat=S88 BL 21'
-    XSR48CL: Doors: 116 — 11 components
+    #XSR48CL: Doors: 116 — 11 components
       1x Continuous Hinge | mfr=PE | finish=- | cat=10BEFM95HD1
       1x Lockset | mfr=SA | finish=10BE | cat=70 10XG04 LL 2 3/4" BS
       1x Construction Core | mfr=BE | finish=- | cat=7190224
@@ -2929,15 +2946,15 @@
     D1: (no description) — 6 components
       1x Slider Pocket Frame Complete System | mfr=- | finish=- | cat=-
       1x Option #1 – lockable and door can be FULLY recessed into wall pocket (Non-ADA) | mfr=- | finish=625 | cat=CL400 Magnetic
-      2x Price option #2 also: 8" Flush Pulls (doors will not go fully in pocket with locking device, Non-ADA) | mfr=TR | finish=622 | cat=1110-8
-      1x Price option #2 also: Concealed Edge Pull | mfr=TR | finish=625 | cat=1063
-      1x Price option #2 also: Sliding Door Privacy Function Thumbturn | mfr=- | finish=625 | cat=2001ADAP-5 x 7200ADA
+      2x Price option #2: 8" Flush Pulls (doors will not go fully in pocket with locking device, Non-ADA) | mfr=TR | finish=622 | cat=1110-8
+      1x Price option #2: Concealed Edge Pull | mfr=TR | finish=625 | cat=1063
+      1x Price option #2: Sliding Door Privacy Function Thumbturn | mfr=- | finish=625 | cat=2001ADAP-5 x 7200ADA
       1x Cylinder | mfr=SC | finish=625 | cat=20-____ series
     E1: (no description) — 0 components
     01: (no description) — 6 components
       1x OFFSET Hung In-Floor Closer Device | mfr=FHC | finish=622 | cat=F900 OFFSET series single acting non-hold open
       3x Structural Side Intermediate Pivots | mfr=RIX | finish=622 | cat=ML19
-      2x Back-to-Back Pulls | mfr=TR | finish=622 | cat=AP423-__-60" x #E-MOUNT
+      2x Back-to-Back Pulls | mfr=TR | finish=622 | cat=AP423-__-60"
       1x Floor Stop | mfr=TR | finish=622 | cat=7281
       1x Bottom of doors to be greater than 10" Clear, Unobstructed and Smooth Surface | mfr=- | finish=- | cat=-
       1x Painted Full Height Astragal | mfr=- | finish=- | cat=-
@@ -2989,7 +3006,7 @@
     04: (no description) — 14 components
       ?x Hinges | mfr=IV | finish=622 | cat=5BB1 (size & quantity per 08 71 00)
       1x Power Transfer Hinge | mfr=IV | finish=622 | cat=5BB1 x 6-wire (size per 08 71 00)
-      1x ANSI Grade 1 Mortise Body Electrified Lockset with Lever | mfr=FR | finish=IXBSB | cat=BASE Lever #6210SM x PVD #IXBSB x M507EU-RX x L/C in PVD #IXBSB
+      1x ANSI Grade 1 Mortise Body Electrified Lockset with Lever | mfr=FR | finish=BSP | cat=BASE Lever #6210SM x PVD #IXBSB x M507EU-RX x L/C in PVD #IXBSB
       1x Cylinders (Rim or Mortise) | mfr=SC | finish=622 | cat=20-057 or 20-061
       1x Permanent Core | mfr=SC | finish=622 | cat=20-030
       1x Closer | mfr=LC | finish=693 | cat=4050A x REG
@@ -3003,7 +3020,7 @@
       1x Coordination task for security and/or electrical design and additional non-Division 08 Section scope | mfr=- | finish=- | cat=-
     04.1: (no description) — 10 components
       ?x Hinges | mfr=IV | finish=622 | cat=5BB1 (size & quantity per 08 71 00)
-      1x ANSI Grade 1 Mortise Body Storeroom-Type Lockset with Lever | mfr=FR | finish=IXBSB | cat=BASE Lever #6210SM x PVD #IXBSB x M507 x L/C in PVD #IXBSB
+      1x ANSI Grade 1 Mortise Body Storeroom-Type Lockset with Lever | mfr=FR | finish=BSP | cat=BASE Lever #6210SM x PVD #IXBSB x M507 x L/C in PVD #IXBSB
       1x Cylinders (Rim or Mortise) | mfr=SC | finish=622 | cat=20-057 or 20-061
       1x Permanent Core | mfr=SC | finish=622 | cat=20-030
       1x Surface Closer | mfr=LC | finish=693 | cat=4050A parallel arm
@@ -3014,7 +3031,7 @@
       1x Overhead Rain | mfr=NGP | finish=- | cat=17DKB x FFW
     04.2: (no description) — 8 components
       ?x Hinges | mfr=IV | finish=622 | cat=5BB1 (size & quantity per 08 71 00)
-      1x ANSI Grade 1 Mortise Body Storeroom-Type Lockset with Lever | mfr=FR | finish=IXBSB | cat=BASE Lever #6210SM x PVD #IXBSB x M507 x L/C in PVD #IXBSB
+      1x ANSI Grade 1 Mortise Body Storeroom-Type Lockset with Lever | mfr=FR | finish=BSP | cat=BASE Lever #6210SM x PVD #IXBSB x M507 x L/C in PVD #IXBSB
       1x Cylinders (Rim or Mortise) | mfr=SC | finish=622 | cat=20-057 or 20-061
       1x Permanent Core | mfr=SC | finish=622 | cat=20-030
       1x Closer x Stop Arm | mfr=LC | finish=693 | cat=4050A x CUSH
@@ -3034,7 +3051,7 @@
     04.4: (no description) — 13 components
       ?x Hinges | mfr=IV | finish=622 | cat=5BB1HW (size & quantity per 08 71 00)
       1x Power Transfer Hinge | mfr=IV | finish=622 | cat=5BB1HW x 6-wire (size per 08 71 00)
-      1x ANSI Grade 1 Mortise Body Electrified Lockset with Lever | mfr=FR | finish=IXBSB | cat=BASE Lever #6210SM x PVD #IXBSB x M507EU-RX x L/C in PVD #IXBSB
+      1x ANSI Grade 1 Mortise Body Electrified Lockset with Lever | mfr=FR | finish=BSP | cat=BASE Lever #6210SM x PVD #IXBSB x M507EU-RX x L/C in PVD #IXBSB
       1x Cylinders (Rim or Mortise) | mfr=SC | finish=622 | cat=20-057 or 20-061
       1x Permanent Core | mfr=SC | finish=622 | cat=20-030
       1x Closer x Stop Arm | mfr=LC | finish=693 | cat=4050A x CUSH
@@ -3046,9 +3063,9 @@
       1x Power Supply | mfr=SC | finish=- | cat=PS902
       1x Coordination task for security and/or electrical design and additional non-Division 08 Section scope | mfr=- | finish=- | cat=-
     04.5: (no description) — 14 components
-      ?x Swing Clear Hinge | mfr=IV | finish=622 | cat=5BB1HWSC 5 inch or 5BB1HWBSC 5 inch (as required per opening bevel, quantity per 08 7100)
+      ?x Swing Clear Hinge | mfr=IV | finish=622 | cat=5BB1HWSC 5 inch or 5BB1HWBSC 5 inch
       1x Electrified Power Transfer | mfr=AD | finish=Dark | cat=4612-1-SC
-      1x ANSI Grade 1 Mortise Body Electrified Lockset with Lever | mfr=FR | finish=IXBSB | cat=BASE Lever #6210SM x PVD #IXBSB x M507EU-RX x L/C in PVD #IXBSB
+      1x ANSI Grade 1 Mortise Body Electrified Lockset with Lever | mfr=FR | finish=BSP | cat=BASE Lever #6210SM x PVD #IXBSB x M507EU-RX x L/C in PVD #IXBSB
       1x Cylinders (Rim or Mortise) | mfr=SC | finish=622 | cat=20-057 or 20-061
       1x Permanent Core | mfr=SC | finish=622 | cat=20-030
       1x Closer | mfr=LC | finish=693 | cat=4050A x REG
@@ -3063,7 +3080,7 @@
     05: see gate details on architectural drawings — 13 components
       1x Hydraulic Closers / Hinges Set | mfr=LO | finish=BLACK | cat=Mammoth 180 Hydraulic Closers/Hinges Set
       1x Lock Guard (inside) | mfr=- | finish=- | cat=9912.001R
-      1x ANSI Grade 1 Mortise Body Storeroom-Type Lockset with Lever | mfr=FR | finish=IXBSB | cat=BASE Lever #6210SM x PVD #IXBSB x M507 x L/C in PVD #IXBSB
+      1x ANSI Grade 1 Mortise Body Storeroom-Type Lockset with Lever | mfr=FR | finish=BSP | cat=BASE Lever #6210SM x PVD #IXBSB x M507 x L/C in PVD #IXBSB
       1x Electric Strike | mfr=HE | finish=BLACK | cat=1600
       1x Electric Strike Power Supply | mfr=SC | finish=- | cat=PS902
       1x I/C Cylinders (Rim or Mortise) | mfr=SC | finish=622 | cat=20-057 or 20-061
@@ -3077,7 +3094,7 @@
     05.1: see gate details on architectural drawings — 8 components
       1x Hydraulic Closers / Hinges Set | mfr=LO | finish=BLACK | cat=Mammoth 180 Hydraulic Closers/Hinges Set
       1x Lock Guard (inside) | mfr=- | finish=- | cat=9912.001R
-      1x ANSI Grade 1 Mortise Body Storeroom-Type Lockset with Lever | mfr=FR | finish=IXBSB | cat=BASE Lever #6210SM x PVD #IXBSB x M507 x L/C in PVD #IXBSB
+      1x ANSI Grade 1 Mortise Body Storeroom-Type Lockset with Lever | mfr=FR | finish=BSP | cat=BASE Lever #6210SM x PVD #IXBSB x M507 x L/C in PVD #IXBSB
       1x I/C Cylinders (Rim or Mortise) | mfr=SC | finish=622 | cat=20-057 or 20-061
       1x Permanent Core | mfr=SC | finish=622 | cat=20-030
       1x Floor Stop | mfr=TR | finish=622 | cat=1214
@@ -3085,7 +3102,7 @@
       1x Painted Full Height Astragal | mfr=- | finish=- | cat=-
     05.2: see gate details on architectural drawings — 5 components
       1x Hydraulic Closers / Hinges Set | mfr=LO | finish=BLACK | cat=Mammoth 180 Hydraulic Closers/Hinges Set
-      1x ANSI Grade 1 Mortise Body Passage Latchset x Lever | mfr=FR | finish=IXBSB | cat=BASE Lever #6210SM x PVD #IXBSB x M501 x L/C in PVD #IXBSB
+      1x ANSI Grade 1 Mortise Body Passage Latchset x Lever | mfr=FR | finish=BSP | cat=BASE Lever #6210SM x PVD #IXBSB x M501 x L/C in PVD #IXBSB
       1x Floor Stop | mfr=TR | finish=622 | cat=1214-5 (5" high)
       1x Bottom of doors 10" Clear, Unobstructed and Smooth Surface | mfr=- | finish=- | cat=-
       1x Painted Full Height Astragal | mfr=- | finish=- | cat=-
@@ -3183,7 +3200,7 @@
       1x Surface Door Position Switch (Alarm Contacts) | mfr=SC | finish=- | cat=7766 single pole, double throw
       1x Coordination task for security and/or electrical design and additional non-Division 08 Section scope | mfr=- | finish=- | cat=-
     10: (no description) — 14 components
-      1x Continuous Hinge Electrified Wire Transfer | mfr=SE | finish=BL | cat=SL11-HD (120 inch or length as required for door height) x #ATW
+      1x Continuous Hinge Electrified Wire Transfer | mfr=SE | finish=BL | cat=SL11-HD x #ATW
       1x Alternate Power Transfer | mfr=SN | finish=613 | cat=CEPT-10B
       1x Rim Exit/Panic Device x Key Override | mfr=VO | finish=622 | cat=QELX RX 33A-OP x 388
       1x Offset Pull | mfr=TR | finish=622 | cat=AP423-J-72"
@@ -3198,7 +3215,7 @@
       1x QEL Power Supply | mfr=SC | finish=- | cat=PS904 4 RL with 900-BB
       1x Coordination task for security and/or electrical design and additional non-Division 08 Section scope | mfr=- | finish=- | cat=-
     10.1: (no description) — 9 components
-      1x Continuous Hinge | mfr=SE | finish=BL | cat=SL11-HD (120 inch or length as required for door height)
+      1x Continuous Hinge | mfr=SE | finish=BL | cat=SL11-HD
       1x Rim Exit/Panic Device x Key Override | mfr=VO | finish=622 | cat=AX 33A-L x 360L x Longitude Lever
       1x I/C Cylinders (Rim or Mortise) | mfr=SC | finish=622 | cat=20-057 or 20-061
       1x Permanent Core | mfr=SC | finish=622 | cat=23-030
@@ -3208,7 +3225,7 @@
       1x Door Bottom Sweep | mfr=NGP | finish=- | cat=202NDKB
       1x Terrace and/or roof Threshold | mfr=NGP | finish=- | cat=430E x RCE
     11: (no description) — 11 components
-      2x Continuous Hinge | mfr=SE | finish=BL | cat=SL11-HD (120 inch or length as required for door height)
+      2x Continuous Hinge | mfr=SE | finish=BL | cat=SL11-HD
       1x Concealed Vertical Cable Exit/Panic Device x Key Override | mfr=VO | finish=622 | cat=AX CD 3349A x 388 x LBL
       1x Concealed Vertical Cable Exit/Panic Device | mfr=VO | finish=622 | cat=AX CD 3349EO x LBL
       2x Offset Pull | mfr=TR | finish=622 | cat=AP423-J-72"
@@ -3220,7 +3237,7 @@
       2x Door Bottom Sweep | mfr=NGP | finish=- | cat=202NDKB
       1x Terrace and/or roof Threshold | mfr=NGP | finish=- | cat=430E x RCE
     12: (no description) — 12 components
-      2x Continuous Hinge | mfr=SE | finish=BL | cat=SL11-HD (120 inch or length as required for door height)
+      2x Continuous Hinge | mfr=SE | finish=BL | cat=SL11-HD
       4x Back-to-Back Offset Pull | mfr=TR | finish=622 | cat=AP423-___-60"
       1x Pair Doors Complete Locking, Deadbolt System | mfr=AD | finish=335 | cat=MS1850S x 4015 x 4016 x 4085 x Exterior Key x 4089 exit indicator
       2x I/C Cylinders (Rim or Mortise) | mfr=SC | finish=622 | cat=20-057 or 20-061
@@ -3234,7 +3251,7 @@
       1x Overhead Rain Drip | mfr=NGP | finish=- | cat=17DKB x FFW
     13: (no description) — 10 components
       ?x Hinge | mfr=IV | finish=622 | cat=5BB1HW (size & quantity per 08 71 00)
-      1x ANSI Grade 1 Mortise Body Classroom-Type Lockset with Lever | mfr=FR | finish=IXBSB | cat=BASE Lever #6210SM x M505 x L/C in PVD #IXBSB
+      1x ANSI Grade 1 Mortise Body Classroom-Type Lockset with Lever | mfr=FR | finish=BSP | cat=BASE Lever #6210SM x M505 x L/C in PVD #IXBSB
       1x I/C Cylinders (Rim or Mortise) | mfr=SC | finish=622 | cat=20-057 or 20-061
       1x Permanent Core | mfr=SC | finish=622 | cat=20-030
       1x Closer | mfr=LC | finish=693 | cat=4050A x REG
@@ -3245,17 +3262,17 @@
       1x Threshold | mfr=PEM | finish=- | cat=2727Ax270A or 2550A
     13.1: (no description) — 4 components
       3x Spring Hinges x Stop | mfr=WA | finish=625 | cat=K51M-450-B4 x Stops (size & quantity per 08 71 00)
-      1x Privacy Latch Body with Lever (privacy x occupancy indicator - exterior side lever left unlocked when room is vacant) | mfr=FR | finish=IXBSB | cat=BASE Lever #6210SM x PVD #IXBSB x M523 x ADA thumbturn H41 x EMTI emergency cointurn/slot override and occupancy indicator
+      1x Privacy Latch Body with Lever (privacy x occupancy indicator - exterior side lever left unlocked when room is vacant) | mfr=FR | finish=BSP | cat=BASE Lever #6210SM x PVD #IXBSB x M523 x ADA thumbturn H41 x EMTI emergency cointurn/slot override and occupancy indicator
       1x I/C Cylinders (Rim or Mortise) | mfr=SC | finish=622 | cat=20-057 or 20-061
       1x Permanent Core | mfr=SC | finish=622 | cat=20-030
     13.2: (no description) — 4 components
       3x Spring Hinges x Stop | mfr=WA | finish=625 | cat=K51M-450-B4 x Stops (size & quantity per 08 71 00)
-      1x Privacy Latch Body with Lever (privacy x occupancy indicator - exterior side lever left unlocked when room is vacant) | mfr=FR | finish=IXBSB | cat=BASE Lever #6210SM x PVD #IXBSB x M523 x ADA thumbturn H41 x EMTI emergency cointurn/slot override and occupancy indicator
+      1x Privacy Latch Body with Lever (privacy x occupancy indicator - exterior side lever left unlocked when room is vacant) | mfr=FR | finish=BSP | cat=BASE Lever #6210SM x PVD #IXBSB x M523 x ADA thumbturn H41 x EMTI emergency cointurn/slot override and occupancy indicator
       1x I/C Cylinders (Rim or Mortise) | mfr=SC | finish=622 | cat=20-057 or 20-061
       1x Permanent Core | mfr=SC | finish=622 | cat=20-030
     14: (no description) — 10 components
       ?x Hinge | mfr=IV | finish=622 | cat=5BB1HW (size & quantity per 08 71 00)
-      1x Privacy Latch Body with Lever (privacy x occupancy indicator - exterior side lever left unlocked when room is vacant) | mfr=FR | finish=IXBSB | cat=BASE Lever #6210SM x PVD #IXBSB x M523 x ADA thumbturn H41 x EMTI emergency cointurn/slot override and occupancy indicator
+      1x Privacy Latch Body with Lever (privacy x occupancy indicator - exterior side lever left unlocked when room is vacant) | mfr=FR | finish=BSP | cat=BASE Lever #6210SM x PVD #IXBSB x M523 x ADA thumbturn H41 x EMTI emergency cointurn/slot override and occupancy indicator
       1x I/C Cylinders (Rim or Mortise) | mfr=SC | finish=622 | cat=20-057 or 20-061
       1x Permanent Core | mfr=SC | finish=622 | cat=20-030
       1x Closer | mfr=LC | finish=693 | cat=4050A x REG
@@ -3266,7 +3283,7 @@
       1x Threshold | mfr=PEM | finish=- | cat=2727Ax270A or 2550A
     15: (no description) — 9 components
       ?x Hinge | mfr=IV | finish=622 | cat=5BB1 (size & quantity per 08 71 00)
-      1x ANSI Grade 1 Mortise Body Storeroom-Type Lockset with Lever | mfr=FR | finish=IXBSB | cat=BASE Lever #6210SM x PVD #IXBSB x M507 x L/C in PVD #IXBSB
+      1x ANSI Grade 1 Mortise Body Storeroom-Type Lockset with Lever | mfr=FR | finish=BSP | cat=BASE Lever #6210SM x PVD #IXBSB x M507 x L/C in PVD #IXBSB
       1x I/C Cylinders (Rim or Mortise) | mfr=SC | finish=622 | cat=20-057 or 20-061
       1x Permanent Core | mfr=SC | finish=622 | cat=23-030
       1x Closer | mfr=LC | finish=693 | cat=4050A x REG
@@ -3276,7 +3293,7 @@
       1x Aluminum Threshold | mfr=NGP | finish=- | cat=513DBK
     15.1: (no description) — 9 components
       ?x Hinge | mfr=IV | finish=622 | cat=5BB1 (size & quantity per 08 71 00)
-      1x ANSI Grade 1 Mortise Body Storeroom-Type Lockset with Lever | mfr=FR | finish=IXBSB | cat=BASE Lever #6210SM x PVD #IXBSB x M507 x L/C in PVD #IXBSB
+      1x ANSI Grade 1 Mortise Body Storeroom-Type Lockset with Lever | mfr=FR | finish=BSP | cat=BASE Lever #6210SM x PVD #IXBSB x M507 x L/C in PVD #IXBSB
       1x I/C Cylinders (Rim or Mortise) | mfr=SC | finish=622 | cat=20-057 or 20-061
       1x Permanent Core | mfr=SC | finish=622 | cat=23-030
       1x Closer x Stop Arm | mfr=LC | finish=693 | cat=4050A x CUSH
@@ -3286,7 +3303,7 @@
       1x Aluminum Threshold | mfr=NGP | finish=- | cat=513DBK
     15.2: (no description) — 10 components
       ?x Hinge | mfr=IV | finish=622 | cat=5BB1HW (size & quantity per 08 71 00)
-      1x ANSI Grade 1 Mortise Body Storeroom-Type Lockset with Lever | mfr=FR | finish=IXBSB | cat=BASE Lever #6210SM x PVD #IXBSB x M507 x L/C in PVD #IXBSB
+      1x ANSI Grade 1 Mortise Body Storeroom-Type Lockset with Lever | mfr=FR | finish=BSP | cat=BASE Lever #6210SM x PVD #IXBSB x M507 x L/C in PVD #IXBSB
       1x I/C Cylinders (Rim or Mortise) | mfr=SC | finish=622 | cat=20-057 or 20-061
       1x Permanent Core | mfr=SC | finish=622 | cat=23-030
       1x Closer x Stop Arm | mfr=LC | finish=693 | cat=4050A x CUSH
@@ -3296,9 +3313,9 @@
       1x Door Bottom | mfr=NGP | finish=- | cat=202NDKB
       1x Threshold – update at next print – final to be selected | mfr=NGP | finish=- | cat=430 x RCE
     15.3: (no description) — 4 components
-      3x Fasteners Gate Hinges (ABH manufacturer has a duplicate of this hinge that could be welded, fasteners preferred) | mfr=ABH | finish=- | cat=A561WT Hinge (with Spring) – 6"X6"- Up to 130 Degree Swing x SP-6449 - Fasteners
-      3x Gate Hinges (ABH manufacturer has a duplicate of this hinge that could be fastened with screws) | mfr=ABH | finish=- | cat=A561WT Hinge (with Spring) – 6"X6"- Up to 130 Degree Swing x SP-6450 - Welded
-      1x ANSI Grade 1 Mortise Body Passage Latchset x Lever | mfr=FR | finish=IXBSB | cat=BASE Lever #6210SM x PVD #IXBSB x M501 x L/C in PVD #IXBSB
+      3x Fasteners Gate Hinges (ABH manufacturer has a duplicate of this hinge that could be welded, fasteners preferred) | mfr=ABH | finish=- | cat=A561WT Hinge (with Spring) – 6"X6"- Up to 130 Degree Swing x SP-6449
+      3x Gate Hinges (ABH manufacturer has a duplicate of this hinge that could be fastened with screws) | mfr=ABH | finish=- | cat=A561WT Hinge (with Spring) – 6"X6"- Up to 130 Degree Swing x SP-6450
+      1x ANSI Grade 1 Mortise Body Passage Latchset x Lever | mfr=FR | finish=BSP | cat=BASE Lever #6210SM x PVD #IXBSB x M501 x L/C in PVD #IXBSB
       1x Overhead Stop | mfr=RX | finish=622 | cat=10 series (size -336 or as required by door width)
     16: Western series 600 multi-slide — 3 components
       2x Back-to-Back Pulls | mfr=TR | finish=622 | cat=AP753 x 54"
@@ -3327,7 +3344,7 @@
       1x Door Bottom | mfr=NGP | finish=- | cat=202NDKB
       1x Threshold | mfr=NGP | finish=- | cat=413
     19: (no description) — 13 components
-      ?x Continuous Hinge Electrified Wire Transfer | mfr=SE | finish=BL | cat=SL11-HD (120 inch or length as required for door height) x #ATW
+      ?x Continuous Hinge Electrified Wire Transfer | mfr=SE | finish=BL | cat=SL11-HD x #ATW
       1x Storeroom-Type Lockset Electrified Fail-Safe Lever (passage without power) | mfr=SC | finish=622 | cat=L9095T EL x Longitude Lever x A Rose
       2x Cylinders (Rim or Mortise) | mfr=SC | finish=622 | cat=20-057 or 20-061
       2x Permanent Core | mfr=SC | finish=622 | cat=20-030
@@ -3376,7 +3393,7 @@
       1x Exit/Panic Device Cylinder-Dog Feature Primus I/C Cylinders (Rim or Mortise) | mfr=SC | finish=622 | cat=20-057 or 20-061
       1x Permanent Core | mfr=SC | finish=622 | cat=20-030
     25: (no description) — 10 components
-      2x Continuous Hinge | mfr=SE | finish=BL | cat=SL11-HD (120 inch or length as required for door height)
+      2x Continuous Hinge | mfr=SE | finish=BL | cat=SL11-HD
       4x Back-to-Back Offset Pulls | mfr=TR | finish=622 | cat=AP423-___-60"
       1x Pair Doors Complete Locking, Deadbolt System | mfr=AD | finish=335 | cat=MS1850S x 4015 x 4016 x 4085 x Exterior Key x 4089 exit indicator
       2x I/C Cylinders (Rim or Mortise) | mfr=SC | finish=622 | cat=20-057 or 20-061
@@ -3387,7 +3404,7 @@
       1x Terrace Threshold | mfr=NGP | finish=- | cat=430 x RCE
       1x Overhead Rain Drip | mfr=NGP | finish=- | cat=17DKB x FFW
     26: (no description) — 10 components
-      2x Continuous Hinge | mfr=SE | finish=BL | cat=SL11-HD (120 inch or length as required for door height)
+      2x Continuous Hinge | mfr=SE | finish=BL | cat=SL11-HD
       4x Back-to-Back Offset Pulls | mfr=TR | finish=622 | cat=AP423-___-60"
       1x Pair Doors Complete Locking, Deadbolt System | mfr=AD | finish=335 | cat=MS1850S x 4015 x 4016 x 4085 x Exterior Key x 4089 exit indicator
       2x I/C Cylinders (Rim or Mortise) | mfr=SC | finish=622 | cat=20-057 or 20-061
@@ -3469,7 +3486,7 @@
     101: (no description) — 14 components
       ?x Hinges | mfr=IV | finish=622 | cat=5BB1HW (size & quantity per 08 71 00)
       1x Power Transfer Hinge | mfr=IV | finish=622 | cat=5BB1HW x 6-wire (size per 08 71 00)
-      1x ANSI Grade 1 Mortise Body Electrified Lockset with Lever | mfr=FR | finish=IXBSB | cat=BASE Lever #6210SM x PVD #IXBSB x M507EU-RX x L/C in PVD #IXBSB
+      1x ANSI Grade 1 Mortise Body Electrified Lockset with Lever | mfr=FR | finish=BSP | cat=BASE Lever #6210SM x PVD #IXBSB x M507EU-RX x L/C in PVD #IXBSB
       1x Cylinders (Rim or Mortise) | mfr=SC | finish=622 | cat=20-057 or 20-061
       1x Permanent Core | mfr=SC | finish=622 | cat=20-030
       1x Surface Closer | mfr=LC | finish=693 | cat=4050A x REG
@@ -3484,7 +3501,7 @@
     101.1: (no description) — 13 components
       ?x Hinges | mfr=IV | finish=622 | cat=5BB1 (size & quantity per 08 71 00)
       1x Power Transfer Hinge | mfr=IV | finish=622 | cat=5BB1 x 6-wire (size per 08 71 00)
-      1x ANSI Grade 1 Mortise Body Electrified Lockset with Lever | mfr=FR | finish=IXBSB | cat=BASE Lever #6210SM x PVD #IXBSB x M507EU-RX x L/C in PVD #IXBSB
+      1x ANSI Grade 1 Mortise Body Electrified Lockset with Lever | mfr=FR | finish=BSP | cat=BASE Lever #6210SM x PVD #IXBSB x M507EU-RX x L/C in PVD #IXBSB
       1x Cylinders (Rim or Mortise) | mfr=SC | finish=622 | cat=20-057 or 20-061
       1x Permanent Core | mfr=SC | finish=622 | cat=20-030
       1x Floor Stop | mfr=TR | finish=622 | cat=7280
@@ -3497,7 +3514,7 @@
       1x Coordination task for security and/or electrical design and additional non-Division 08 Section scope | mfr=- | finish=- | cat=-
     101.2: (no description) — 9 components
       ?x Hinges | mfr=IV | finish=622 | cat=5BB1HW (size & quantity per 08 71 00)
-      1x Privacy Latch Body with Lever (privacy x occupancy indicator - exterior side lever left unlocked when room is vacant) | mfr=FR | finish=IXBSB | cat=BASE Lever #6210SM x PVD #IXBSB x M523 x ADA thumbturn H41 x EMTI emergency cointurn/slot override and occupancy indicator
+      1x Privacy Latch Body with Lever (privacy x occupancy indicator - exterior side lever left unlocked when room is vacant) | mfr=FR | finish=BSP | cat=BASE Lever #6210SM x PVD #IXBSB x M523 x ADA thumbturn H41 x EMTI emergency cointurn/slot override and occupancy indicator
       1x Cylinders (Rim or Mortise) | mfr=SC | finish=622 | cat=20-057 or 20-061
       1x Permanent Core | mfr=SC | finish=622 | cat=20-030
       1x Closer | mfr=LC | finish=689 | cat=4050A x REG
@@ -3507,7 +3524,7 @@
       1x Threshold (sound dampening) | mfr=NGP | finish=- | cat=410DB
     101.3: (no description) — 5 components
       ?x Hinges | mfr=IV | finish=622 | cat=5BB1HW (size & quantity per 08 71 00)
-      1x ANSI Grade 1 Mortise Body Passage Latchset x Lever | mfr=FR | finish=IXBSB | cat=BASE Lever #6210SM x PVD #IXBSB x M501 x L/C in PVD #IXBSB
+      1x ANSI Grade 1 Mortise Body Passage Latchset x Lever | mfr=FR | finish=BSP | cat=BASE Lever #6210SM x PVD #IXBSB x M501 x L/C in PVD #IXBSB
       1x Surface Closer | mfr=LC | finish=693 | cat=4050A x REG
       1x Floor Stop | mfr=TR | finish=622 | cat=7280
       1x Seals | mfr=NGP | finish=- | cat=5050B
@@ -3543,10 +3560,10 @@
       1x Power Supply | mfr=SC | finish=- | cat=PS902 x 900FA
       1x FLS (Fire/Life Safety) Connectivity Task | mfr=- | finish=- | cat=-
       1x Coordination task for security and/or electrical design and additional non-Division 08 Section scope | mfr=- | finish=- | cat=-
-    103: See specification Section 081713 Integrated Door Assemblies — 0 components
-    104: See specification Section 081713 Integrated Door Assemblies — 0 components
+    103: (no description) — 0 components
+    104: (no description) — 0 components
     105: (no description) — 11 components
-      1x Continuous Hinge Electrified Wire Transfer | mfr=SE | finish=BL | cat=SL11-HD (120 inch or length as required for door height) x #ATW
+      1x Continuous Hinge Electrified Wire Transfer | mfr=SE | finish=BL | cat=SL11-HD x #ATW
       1x Alternate Power Transfer | mfr=SN | finish=613 | cat=CEPT-10B
       1x Rim Exit/Panic Device x Key Override | mfr=VO | finish=622 | cat=QELX RX 33A-OP x 388
       1x Offset Pull | mfr=TR | finish=622 | cat=AP423-J-72"
@@ -3558,9 +3575,9 @@
       1x QEL Power Supply | mfr=SC | finish=- | cat=PS904 4 RL with 900-BB
       1x Coordination task for security and/or electrical design and additional non-Division 08 Section scope | mfr=- | finish=- | cat=-
     106: verify wide stile for 5" wide lockset — 11 components
-      1x Continuous Hinge Electrified Wire Transfer | mfr=SE | finish=BL | cat=SL11-HD (120 inch or length as required for door height) x #ATW
+      1x Continuous Hinge Electrified Wire Transfer | mfr=SE | finish=BL | cat=SL11-HD x #ATW
       1x Alt. Power Transfer | mfr=SN | finish=613 | cat=CEPT-10B
-      1x ANSI Grade 1 Mortise Body Electrified Lockset with Lever | mfr=FR | finish=IXBSB | cat=BASE Lever #6210SM x PVD #IXBSB x M507EU-RX x L/C in PVD #IXBSB
+      1x ANSI Grade 1 Mortise Body Electrified Lockset with Lever | mfr=FR | finish=BSP | cat=BASE Lever #6210SM x PVD #IXBSB x M507EU-RX x L/C in PVD #IXBSB
       1x I/C Cylinders (Rim or Mortise) | mfr=SC | finish=622 | cat=20-057 or 20-061
       1x Permanent Core | mfr=SC | finish=622 | cat=23-030
       1x Surface Closer | mfr=LC | finish=693 | cat=4050A REG
@@ -3579,7 +3596,7 @@
       1x Concealed Overhead Stop | mfr=RX | finish=622 | cat=1ADJ (size -336 or as required by door width)
     108: (no description) — 7 components
       ?x Hinge | mfr=IV | finish=622 | cat=5BB1HW (size & quantity per 08 71 00)
-      1x ANSI Grade 1 Mortise Body Passage-Type Latchset with Lever | mfr=FR | finish=IXBSB | cat=BASE Lever #6210SM x PVD #IXBSB x M501 x L/C in PVD #IXBSB
+      1x ANSI Grade 1 Mortise Body Passage-Type Latchset with Lever | mfr=FR | finish=BSP | cat=BASE Lever #6210SM x PVD #IXBSB x M501 x L/C in PVD #IXBSB
       1x Surface Closer | mfr=LC | finish=693 | cat=4050A x REG
       1x Door Stop | mfr=TR | finish=622 | cat=1214
       1x Seals | mfr=NGP | finish=- | cat=5050B
@@ -3587,7 +3604,7 @@
       1x Threshold | mfr=NGP | finish=- | cat=513HD-DKB
     109: (no description) — 8 components
       ?x Hinge | mfr=IV | finish=622 | cat=5BB1 (size & quantity per 08 71 00)
-      1x ANSI Grade 1 Mortise Body Storeroom-Type Lockset with Lever | mfr=FR | finish=IXBSB | cat=BASE Lever #6210SM x PVD #IXBSB x M507 x L/C in PVD #IXBSB
+      1x ANSI Grade 1 Mortise Body Storeroom-Type Lockset with Lever | mfr=FR | finish=BSP | cat=BASE Lever #6210SM x PVD #IXBSB x M507 x L/C in PVD #IXBSB
       1x I/C Cylinders (Rim or Mortise) | mfr=SC | finish=622 | cat=20-057 or 20-061
       1x Permanent Core | mfr=SC | finish=622 | cat=23-030
       1x Closer x Stop Arm | mfr=LC | finish=693 | cat=4050A
@@ -3596,7 +3613,7 @@
       1x Threshold (sound dampening) | mfr=NGP | finish=- | cat=410DB
     110: (no description) — 7 components
       ?x Hinges | mfr=IV | finish=622 | cat=5BB1HW (size & quantity per 08 71 00)
-      1x Privacy Latch Body with Lever (privacy x occupancy indicator - exterior side lever left unlocked when room is vacant) | mfr=FR | finish=IXBSB | cat=BASE Lever #6210SM x PVD #IXBSB x M523 x ADA thumbturn H41 x EMTI emergency cointurn/slot override and occupancy indicator
+      1x Privacy Latch Body with Lever (privacy x occupancy indicator - exterior side lever left unlocked when room is vacant) | mfr=FR | finish=BSP | cat=BASE Lever #6210SM x PVD #IXBSB x M523 x ADA thumbturn H41 x EMTI emergency cointurn/slot override and occupancy indicator
       1x I/C Cylinders (Rim or Mortise) | mfr=SC | finish=622 | cat=20-057 or 20-061
       1x Permanent Core | mfr=SC | finish=622 | cat=23-030
       1x Surface Closer | mfr=LC | finish=693 | cat=4050A x REG
@@ -3604,7 +3621,7 @@
       1x Seals | mfr=NGP | finish=- | cat=5050B
     111: (no description) — 6 components
       3x Invisible Hinges x RAL 9005 Matte Deep Black (107) | mfr=SI | finish=630 | cat=TE 527 3D or size as required for EZ Jamb concealed applications
-      1x ANSI Grade 1 Mortise Body Storeroom-Type Lockset with Lever | mfr=FR | finish=IXBSB | cat=BASE Lever #6210SM x M507 x L/C in PVD #IXBSB
+      1x ANSI Grade 1 Mortise Body Storeroom-Type Lockset with Lever | mfr=FR | finish=BSP | cat=BASE Lever #6210SM x M507 x L/C in PVD #IXBSB
       1x Cylinders (Rim or Mortise) | mfr=SC | finish=622 | cat=20-057 or 20-061
       1x Permanent Core | mfr=SC | finish=622 | cat=20-030
       1x Closer x Stop Arm | mfr=LC | finish=693 | cat=4050A x CUSH
