@@ -41,6 +41,12 @@ class SetLocation:
 
 
 @dataclass
+class FieldScore:
+    score: float
+    reason: str | None = None
+
+
+@dataclass
 class Component:
     qty: int | None
     description: str | None
@@ -48,7 +54,7 @@ class Component:
     mfr: str | None
     finish: str | None
     notes: str | None
-    confidence: dict[str, float] = field(default_factory=dict)
+    confidence: dict[str, FieldScore] = field(default_factory=dict)
 
 
 @dataclass
