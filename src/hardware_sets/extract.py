@@ -311,3 +311,27 @@ def extract_sets(
     except ExtractionError as e:
         log.warning("extract_sets: retry after %s", e)
         return _call_model(client, model, user_content, retry_note=str(e))
+
+
+def _union_bbox(
+    layouts: list[PageLayout], page: int, line_range: tuple[int, int],
+) -> tuple[float, float, float, float] | None:
+    page_layout = next((lay for lay in layouts if lay.page_number == page), None)
+    if not page_layout:
+        return None
+    first, last = line_range
+    selected = [nl for nl in page_layout.lines if first <= nl.number <= last and nl.bbox]
+    if not selected or len(selected) != (last - first + 1):
+        return None
+    x0 = min(nl.bbox[0] for nl in selected)
+    top = min(nl.bbox[1] for nl in selected)
+    x1 = max(nl.bbox[2] for nl in selected)
+    bottom = max(nl.bbox[3] for nl in selected)
+    return (float(x0), float(top), float(x1), float(bottom))
+
+
+def attach_bboxes(sets: list[HardwareSet], layouts: list[PageLayout]) -> None:
+    for s in sets:
+        s.location.bbox = _union_bbox(layouts, s.location.page, s.location.line_range)
+        for cont in s.continued_on:
+            cont.bbox = _union_bbox(layouts, cont.page, cont.line_range)
