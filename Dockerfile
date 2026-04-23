@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends poppler-utils &
 # Python deps
 COPY pyproject.toml ./
 COPY src/ src/
-RUN pip install --no-cache-dir .
+RUN pip install --no-cache-dir -e .
 
 # Demo samples
 COPY demo_samples/ demo_samples/
