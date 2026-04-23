@@ -1,80 +1,95 @@
 # Hardware Sets — Division 08 Specbook Extractor
 
 Extracts every door-hardware set from a construction Division 08 (Openings)
-specbook PDF into structured JSON, including the page + line range where each
-set lives.
+specbook PDF into structured JSON, including the page and bounding box where
+each set lives.
+
+**Live demo:** https://fresco-challenge.fly.dev
+
+## Stack
+
+- **Extractor:** Python 3.12, pdfplumber, Anthropic SDK
+- **API:** FastAPI + uvicorn
+- **Frontend:** React 19, TypeScript, Vite, Tailwind v4
+- **Deploy:** Docker (multi-stage) → Fly.io
+
+## How It Works
+
+The pipeline runs in three sequential stages:
+
+**Filter (`filter.py`)** scans every page with regex patterns to identify the
+contiguous pages containing the hardware schedule — skipping architectural
+drawings, structural specs, and boilerplate. It handles section-list and
+tabular formats, multi-page sets, and `NOT USED` sets.
+
+**Layout (`layout.py`)** renders each schedule page as a numbered list of
+lines with bounding boxes using pdfplumber. Line numbers give Claude a stable
+addressing scheme to cite set locations (`line_range: [4, 12]`), and bboxes
+let the frontend draw overlays directly on the rendered PDF.
+
+**Extract (`extract.py`)** sends the numbered text to Claude via forced tool
+use — a strict JSON schema that guarantees structured output and explicit
+`null`s for missing fields. Returns `HardwareSet` objects with `set_number`,
+`description`, `components[]`, and `line_range`, which the pipeline resolves
+to pixel-level bboxes.
+
+## Design Decisions
+
+**pdfplumber over pdftotext** — The original implementation used
+`pdftotext -layout` (Poppler), which produces readable text but discards
+geometry. Switching to pdfplumber preserves word-level `(x0, top, x1,
+bottom)` coordinates, making bboxes a first-class output rather than a
+post-hoc approximation.
+
+**Mfr vs. finish resolution** — Short codes like `PE` (Pemko or Painted
+Enamel) and `NO` (Norton or "No") are ambiguous in isolation. The pipeline
+passes full column context to Claude — surrounding values like `MK`, `LCN`,
+`SCH` identify a manufacturer column; `US26D`, `630`, `BSP` identify a finish
+column — so the model resolves codes from context, not per-cell guessing.
+
+**Sonnet over Haiku** — Haiku is ~8x cheaper but produces more column
+misattribution errors on ambiguous codes, particularly in tabular schedules
+with inconsistent layouts. Sonnet's accuracy on structure-heavy extraction
+justifies the cost.
 
 ## Setup
 
-Requires Python 3.12+, Poppler's `pdftotext`, and an Anthropic API key.
+Requires Python 3.12+ and an Anthropic API key.
 
 ```bash
-# Poppler on macOS
-brew install poppler
-
-# Python deps (uses the repo's .venv)
-.venv/bin/pip install -e ".[dev]"
-
+pip install -e ".[dev]"
 export ANTHROPIC_API_KEY=sk-ant-...
 ```
 
-## Run
+### CLI
 
 ```bash
-.venv/bin/python -m hardware_sets path/to/specbook.pdf --out result.json
+python -m hardware_sets path/to/specbook.pdf --out result.json
 ```
 
-Flags:
-
-| Flag | Default | Purpose |
-|---|---|---|
-| `pdf_path` | required | PDF to extract from |
-| `--out` / `-o` | stdout | Where to write JSON |
-| `--model` | `claude-sonnet-4-6` | Anthropic model id |
-| `--no-score` | off | Skip vocabulary-match confidence scoring |
-| `--quiet` | off | Suppress progress logs |
-
-Exit codes: `0` success, `1` usage error / missing key, `2` no schedule
-region found (includes scanned-only PDFs), `3` unrecoverable API error.
-
-## Batch QA
+### Local dev (API + frontend)
 
 ```bash
-.venv/bin/python scripts/run_samples.py
+# API
+uvicorn hardware_sets_api.app:app --reload
+
+# Frontend (separate terminal)
+cd frontend && npm install && npm run dev
 ```
 
-Runs the extractor against every PDF under `samples/`, writing one JSON per
-PDF to `out/<stem>.json` plus `out/_summary.txt`.
+### Docker
 
-## Architecture
-
-Five-module pipeline under `src/hardware_sets/`:
-
-- `filter.py` — locates contiguous schedule region(s) within the PDF (spec §4.1)
-- `layout.py` — renders each page as a list of numbered lines via `pdftotext -layout` (§4.2)
-- `extract.py` — one prompt-cached Claude Sonnet 4.6 call per region, emitting structured sets through a tool schema (§4.3)
-- `resolve.py` — post-hoc vocabulary-match confidence scoring (§4.4). Never auto-corrects.
-- `cli.py` — argparse + pipeline + JSON output (§4.5)
-
-`types.py` and `vocab.py` are shared constants.
-
-## Confidence scoring — what it means
-
-A `confidence` field below 1.0 means "this value didn't exactly match our
-built-in vocabulary." For finish codes that signal is reliable — BHMA codes
-and `USnn[DL]?` patterns are ANSI-standard. For manufacturer short codes it's
-weaker: each project uses its own legend (e.g., `IVE` vs `IVES`), so a
-confidence below 0.7 on `mfr` could mean "real LLM error" or "legitimate
-project-specific abbreviation we haven't seen yet." Review low-confidence
-mfr values rather than trusting the drop.
+```bash
+docker build -t hardware-sets .
+docker run -p 8000:8000 -e ANTHROPIC_API_KEY=sk-ant-... hardware-sets
+```
 
 ## Tests
 
 ```bash
-.venv/bin/pytest
+pytest
 ```
 
-Two small suites: `tests/test_filter_patterns.py` covers start/end marker
-regex, `tests/test_resolve_scoring.py` covers confidence scoring. LLM
-behavior is validated by running `scripts/run_samples.py` and eyeballing the
-output, per spec §8.
+Covers filter pattern matching, layout line clustering, bbox attachment, and
+API behavior. End-to-end extraction accuracy is validated against ground truth
+in `demo_samples/ground_truth/`.

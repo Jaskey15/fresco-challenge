@@ -23,7 +23,6 @@ export interface Component {
   mfr: string | null;
   finish: string | null;
   notes: string | null;
-  confidence?: Record<string, number>;
 }
 
 export interface HardwareSet {
@@ -33,7 +32,6 @@ export interface HardwareSet {
   components: Component[];
   continued_on: SetLocation[];
   is_not_used: boolean;
-  confidence: number;
   notes: string | null;
 }
 

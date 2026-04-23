@@ -48,7 +48,6 @@ class Component:
     mfr: str | None
     finish: str | None
     notes: str | None
-    confidence: dict[str, float] = field(default_factory=dict)
 
 
 @dataclass
@@ -59,5 +58,4 @@ class HardwareSet:
     components: list[Component] = field(default_factory=list)
     continued_on: list[SetLocation] = field(default_factory=list)
     is_not_used: bool = False
-    confidence: float = 1.0
     notes: str | None = None
