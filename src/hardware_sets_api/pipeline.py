@@ -9,6 +9,7 @@ from pypdf import PdfReader
 from hardware_sets import filter as filter_mod
 from hardware_sets import layout as layout_mod
 from hardware_sets import extract as extract_mod
+from hardware_sets.extract import attach_bboxes
 from hardware_sets.types import HardwareSet
 
 
@@ -41,7 +42,7 @@ def run_pipeline(
     })
 
     all_sets: list[HardwareSet] = []
-    all_layouts: dict[str, list[dict]] = {}
+    all_layouts: dict[str, dict] = {}
     warnings: list[str] = []
     llm_calls = 0
 
@@ -57,13 +58,18 @@ def run_pipeline(
         ]
 
         for lay in layouts:
-            all_layouts[str(lay.page_number)] = [
-                {"number": line.number, "text": line.text}
-                for line in lay.lines
-            ]
+            all_layouts[str(lay.page_number)] = {
+                "lines": [
+                    {"number": line.number, "text": line.text, "bbox": line.bbox}
+                    for line in lay.lines
+                ],
+                "page_width": lay.page_width,
+                "page_height": lay.page_height,
+            }
 
         try:
             sets = extract_mod.extract_sets(region, layouts)
+            attach_bboxes(sets, layouts)
             llm_calls += 1
             all_sets.extend(sets)
         except extract_mod.ExtractionError as e:
