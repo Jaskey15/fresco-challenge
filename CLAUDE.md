@@ -5,7 +5,17 @@ Interview challenge for Fresco (construction-tech startup). Extract **hardware s
 Input: specbook pages (section-list format or tabular schedule). Output per set: `set_number`, `description`, `location`, `components[] {qty, description, catalog_number, mfr, finish, notes}`.
 
 ## Stack
-Python 3.12, `pdfplumber` + `pypdf`, `anthropic` SDK, `pytest`. Run: `python -m hardware_sets ...`.
+- **Extractor:** Python 3.12, `pdfplumber` + `pypdf`, `anthropic` SDK, `pytest`. Package: `src/hardware_sets/` (CLI).
+- **API:** FastAPI + uvicorn. Package: `src/hardware_sets_api/` — wraps the extractor, serves `frontend/dist/` as static in prod.
+- **Frontend:** React 19 + TypeScript + Vite + Tailwind v4 in `frontend/`.
+- **Deploy:** Single-service Docker (multi-stage: Node build → Python runtime with poppler) → Fly.io app `fresco-challenge` (region `iad`). Config in `Dockerfile` + `fly.toml`.
+
+## Run
+- CLI: `.venv/bin/python -m hardware_sets <pdf> --out result.json`
+- API dev: `.venv/bin/uvicorn hardware_sets_api.app:app --reload`
+- Frontend dev: `cd frontend && npm run dev`
+- Tests: `.venv/bin/pytest`
+- Deploy: `fly deploy`
 
 ## Critical Rules
 - **mfr vs. finish is column-level, not value-level.** Codes are ambiguous (PE = Pemko or Painted Enamel; NO = Norton or "No"). Resolve from the surrounding column (MK/LCN/SCH → mfr; US26D/630/BSP → finish), never per-cell.
@@ -13,10 +23,11 @@ Python 3.12, `pdfplumber` + `pypdf`, `anthropic` SDK, `pytest`. Run: `python -m 
 - **Every set needs location data** (page + line range or bbox). It's a graded success criterion.
 - Keep "NOT USED" / N/A sets — they still count.
 - Sets can span page breaks — don't drop continuations.
-- Don't commit anything under `samples/` or `out/`.
+- `samples/` and `out/` are gitignored — do not commit. `demo_samples/` IS committed (bundled into the deployed image for the public demo).
+- `ANTHROPIC_API_KEY` is required at runtime; set via `.env.local` locally and `fly secrets` in prod.
 
 ## Deliverables
-Repo + README, deployed link or local run steps, 3–5 min Loom. Evaluated on: extraction accuracy, mfr/finish handling, code quality, explanation clarity.
+Repo + README, deployed link (Fly.io) + local run steps, 3–5 min Loom. Evaluated on: extraction accuracy, mfr/finish handling, code quality, explanation clarity.
 
 ## Lessons Learned
 _(empty — add `Problem → Rule` entries as they come up)_
