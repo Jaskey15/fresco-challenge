@@ -48,35 +48,35 @@
       },
       {
         "qty": 2,
-        "description": "PULL",
-        "catalog_number": "RM3301 35\" 2\" DOORS CTC OVERALL LENGTH",
+        "description": "PULL 35\" 2\" DOORS CTC OVERALL LENGTH",
+        "catalog_number": "RM3301",
         "mfr": "RO",
         "finish": "10BE",
         "notes": "PUSH BAR DIMENSIONS SHALL BE COORDINATED WITH ALUMINUM DOOR PROVIDER & APPROVED BY THE DESIGN TEAM DURING SUBMITTAL PHASE"
       },
       {
         "qty": 2,
-        "description": "PULL",
-        "catalog_number": "RM3310 30\" 2\" DOORS CTC OVERALL LENGTH",
+        "description": "PULL 30\" 2\" DOORS CTC OVERALL LENGTH",
+        "catalog_number": "RM3310",
         "mfr": "RO",
         "finish": "10BE",
         "notes": "VERIFY DOOR THICKNESS"
       },
       {
         "qty": 1,
-        "description": "CLOSER",
-        "catalog_number": "SRI 268 OB",
+        "description": "CLOSER OB RH",
+        "catalog_number": "SRI 268",
         "mfr": "SA",
         "finish": "10BE",
-        "notes": "RH"
+        "notes": null
       },
       {
         "qty": 1,
-        "description": "CLOSER",
-        "catalog_number": "SRI 268 OB",
+        "description": "CLOSER OB LH",
+        "catalog_number": "SRI 268",
         "mfr": "SA",
         "finish": "10BE",
-        "notes": "LH"
+        "notes": null
       },
       {
         "qty": 1,
@@ -88,8 +88,8 @@
       },
       {
         "qty": 1,
-        "description": "THRESHOLD",
-        "catalog_number": "2008-10BE-PK 72\" MSES25SS",
+        "description": "THRESHOLD 72\"",
+        "catalog_number": "2008-10BE-PK",
         "mfr": "PE",
         "finish": null,
         "notes": null
@@ -145,35 +145,35 @@
       },
       {
         "qty": 2,
-        "description": "PULL",
-        "catalog_number": "RM3301 35\" 2\" DOORS CTC OVERALL LENGTH",
+        "description": "PULL 35\" 2\" DOORS CTC OVERALL LENGTH",
+        "catalog_number": "RM3301",
         "mfr": "RO",
         "finish": "10BE",
         "notes": "PUSH BAR DIMENSIONS SHALL BE COORDINATED WITH ALUMINUM DOOR PROVIDER & APPROVED BY THE DESIGN TEAM DURING SUBMITTAL PHASE"
       },
       {
         "qty": 2,
-        "description": "PULL",
-        "catalog_number": "RM3310 30\" 2\" DOORS CTC OVERALL LENGTH",
+        "description": "PULL 30\" 2\" DOORS CTC OVERALL LENGTH",
+        "catalog_number": "RM3310",
         "mfr": "RO",
         "finish": "10BE",
         "notes": "VERIFY DOOR THICKNESS"
       },
       {
         "qty": 1,
-        "description": "CLOSER",
-        "catalog_number": "SRI 268 OB",
+        "description": "CLOSER OB RH",
+        "catalog_number": "SRI 268",
         "mfr": "SA",
         "finish": "10BE",
-        "notes": "RH"
+        "notes": null
       },
       {
         "qty": 1,
-        "description": "CLOSER",
-        "catalog_number": "SRI 268 OB",
+        "description": "CLOSER OB LH",
+        "catalog_number": "SRI 268",
         "mfr": "SA",
         "finish": "10BE",
-        "notes": "LH"
+        "notes": null
       },
       {
         "qty": 2,
@@ -202,16 +202,16 @@
     "components": [
       {
         "qty": 4,
-        "description": "HINGES",
-        "catalog_number": "MPB79 4 1/2 x 4 1/2 NRP",
+        "description": "HINGES 4 1/2 x 4 1/2 NRP",
+        "catalog_number": "MPB79",
         "mfr": "MC",
         "finish": "10BE",
         "notes": null
       },
       {
         "qty": 1,
-        "description": "LOCKSET",
-        "catalog_number": "70 10XG05 LL 2 3/4\" BS",
+        "description": "LOCKSET 2 3/4\" BS",
+        "catalog_number": "70 10XG05 LL",
         "mfr": "SA",
         "finish": "10BE",
         "notes": null

@@ -139,7 +139,7 @@
       {
         "qty": 1,
         "description": "OH SURFACE CLOSER - TRACK ARM",
-        "catalog_number": "4210T/4510T TRX MOUNT ON PUBLIC SIDE",
+        "catalog_number": "4210T/4510T",
         "mfr": "LCN",
         "finish": "689",
         "notes": null
@@ -253,7 +253,7 @@
       {
         "qty": 1,
         "description": "OH SURFACE CLOSER",
-        "catalog_number": "4210T/4510T TBTRX MOUNT PUBLIC SIDE",
+        "catalog_number": "4210T/4510T TBTRX",
         "mfr": "LCN",
         "finish": "689",
         "notes": null
@@ -465,7 +465,7 @@
       {
         "qty": 1,
         "description": "FAIL SECURE CYL. LOCK",
-        "catalog_number": "XCDC-86-S-RQE FAIL SECURE 24VDC",
+        "catalog_number": "XCDC-86-S-RQE",
         "mfr": "TOW",
         "finish": "626",
         "notes": null
@@ -603,7 +603,7 @@
       {
         "qty": 1,
         "description": "LIG RES MORTISE LOCK-STRM PRIV W/ID",
-        "catalog_number": "MRX-A-15-O (STORERM PRVY W/ID ORD)",
+        "catalog_number": "MRX-A-15-O",
         "mfr": "TOW",
         "finish": "630",
         "notes": null
@@ -619,7 +619,7 @@
       {
         "qty": 1,
         "description": "OH SURFACE CLOSER",
-        "catalog_number": "4210T/4510T TBTRX MOUNT ON PUBLIC SIDE",
+        "catalog_number": "4210T/4510T TBTRX",
         "mfr": "LCN",
         "finish": "689",
         "notes": null
