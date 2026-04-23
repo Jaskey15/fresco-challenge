@@ -1,8 +1,7 @@
-// frontend/src/components/ResultsView.tsx
 import { useState } from "react";
 import type { ExtractionResult } from "../types";
-import SetSidebar from "./SetSidebar";
-import SourcePanel from "./SourcePanel";
+import PdfViewer from "./PdfViewer";
+import SetGrid from "./SetGrid";
 import DetailTable from "./DetailTable";
 import JsonViewer from "./JsonViewer";
 
@@ -13,8 +12,9 @@ interface Props {
 
 export default function ResultsView({ result, onReset }: Props) {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
-  const [edits, setEdits] = useState<Record<number, Record<number, Record<string, string>>>>({});
+  const [edits, setEdits] = useState<
+    Record<number, Record<number, Record<string, string>>>
+  >({});
   const [showJson, setShowJson] = useState(false);
 
   const sets = result.hardware_sets;
@@ -66,7 +66,9 @@ export default function ResultsView({ result, onReset }: Props) {
       diagnostics: result.diagnostics,
     };
 
-    const blob = new Blob([JSON.stringify(output, null, 2)], { type: "application/json" });
+    const blob = new Blob([JSON.stringify(output, null, 2)], {
+      type: "application/json",
+    });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
@@ -79,7 +81,6 @@ export default function ResultsView({ result, onReset }: Props) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center p-8">
         <div className="text-center">
-          <div className="text-4xl mb-4">🔍</div>
           <h2 className="text-xl font-semibold text-gray-900 mb-2">
             No Hardware Sets Found
           </h2>
@@ -106,13 +107,13 @@ export default function ResultsView({ result, onReset }: Props) {
             onClick={onReset}
             className="text-xs text-gray-400 hover:text-gray-600"
           >
-            ← Back
+            &larr; Back
           </button>
           <span className="text-sm font-semibold text-gray-800">
             {result.source_pdf}
           </span>
           <span className="text-xs text-green-600 font-medium">
-            ✓ {sets.length} sets extracted
+            {sets.length} sets extracted
           </span>
         </div>
         <div className="flex items-center gap-2">
@@ -130,27 +131,35 @@ export default function ResultsView({ result, onReset }: Props) {
             onClick={handleDownload}
             className="text-xs px-2 py-1 rounded border border-gray-200 text-gray-500 hover:border-gray-300"
           >
-            ⬇ Download JSON
+            Download JSON
           </button>
           <span className="text-xs text-gray-400 ml-2">
-            {result.diagnostics.pages_with_sets} pages ·{" "}
+            {result.diagnostics.pages_with_sets} pages &middot;{" "}
             {result.diagnostics.llm_calls} LLM call
             {result.diagnostics.llm_calls !== 1 ? "s" : ""}
           </span>
         </div>
       </div>
 
-      {/* Three-panel layout */}
+      {/* Two-panel layout */}
       <div className="flex-1 flex min-h-0">
-        <SetSidebar
-          sets={sets}
-          activeIndex={activeIndex}
-          onSelect={setActiveIndex}
-          collapsed={sidebarCollapsed}
-          onToggleCollapse={() => setSidebarCollapsed((c) => !c)}
-        />
-        <SourcePanel set={activeSet} pageLayouts={result.page_layouts} />
-        <div className="flex-[1.6] min-w-0 flex flex-col">
+        {/* Left: PDF Viewer (~35%) */}
+        <div className="w-[35%] min-w-[280px] border-r border-gray-200">
+          <PdfViewer
+            sessionId={result.session_id}
+            location={activeSet.location}
+            continuedOn={activeSet.continued_on}
+            pageLayouts={result.page_layouts}
+          />
+        </div>
+
+        {/* Right: SetGrid + DetailTable (~65%) */}
+        <div className="flex-1 min-w-0 flex flex-col">
+          <SetGrid
+            sets={sets}
+            activeIndex={activeIndex}
+            onSelect={setActiveIndex}
+          />
           <DetailTable
             set={activeSet}
             edits={edits[activeIndex] ?? {}}
