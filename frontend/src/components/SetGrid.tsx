@@ -50,6 +50,9 @@ export default function SetGrid({ sets, activeIndex, onSelect }: Props) {
             }`}
             title={set.description || set.set_number}
           >
+            {set.confidence < 0.5 && index !== activeIndex && (
+              <span className="inline-block w-1.5 h-1.5 rounded-full bg-amber-400 mr-1 align-middle" />
+            )}
             {set.set_number}
           </button>
         ))}
