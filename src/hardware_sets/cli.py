@@ -15,6 +15,7 @@ from pypdf import PdfReader
 from hardware_sets import filter as filter_mod
 from hardware_sets import layout as layout_mod
 from hardware_sets import extract as extract_mod
+from hardware_sets.confidence import score_confidence
 from hardware_sets.extract import attach_bboxes
 from hardware_sets.types import HardwareSet
 
@@ -109,6 +110,8 @@ def main(argv: list[str]) -> int:
         except Exception as e:  # network / API / anything else
             log.error("unrecoverable error calling model: %s", e)
             return 3
+
+    score_confidence(all_sets)
 
     result = {
         "source_pdf": args.pdf_path.name,

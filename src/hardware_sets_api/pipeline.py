@@ -9,6 +9,7 @@ from pypdf import PdfReader
 from hardware_sets import filter as filter_mod
 from hardware_sets import layout as layout_mod
 from hardware_sets import extract as extract_mod
+from hardware_sets.confidence import score_confidence
 from hardware_sets.extract import attach_bboxes
 from hardware_sets.types import HardwareSet
 
@@ -74,6 +75,8 @@ def run_pipeline(
             all_sets.extend(sets)
         except extract_mod.ExtractionError as e:
             warnings.append(f"region {region.start_page}-{region.end_page}: {e}")
+
+    score_confidence(all_sets)
 
     return {
         "source_pdf": pdf_path.name,
