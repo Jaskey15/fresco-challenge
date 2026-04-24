@@ -12,7 +12,7 @@ Input: specbook pages (section-list format or tabular schedule). Output per set:
 
 ## Run
 - CLI: `.venv/bin/python -m hardware_sets <pdf> --out result.json`
-- API dev: `.venv/bin/uvicorn hardware_sets_api.app:app --reload`
+- API dev: `export $(grep -v '^#' .env.local | xargs) && .venv/bin/uvicorn hardware_sets_api.app:app --reload`
 - Frontend dev: `cd frontend && npm run dev`
 - Tests: `.venv/bin/pytest`
 - Deploy: `fly deploy`

@@ -6,6 +6,8 @@ each set lives.
 
 **Live demo:** https://fresco-challenge.fly.dev
 
+![Hardware Sets Extractor — PDF with bounding box overlays and extracted component table](screenshot.png)
+
 ## Stack
 
 - **Extractor:** Python 3.12, pdfplumber, Anthropic SDK
@@ -50,7 +52,28 @@ column — so the model resolves codes from context, not per-cell guessing.
 **Sonnet over Haiku** — Haiku is ~8x cheaper but produces more column
 misattribution errors on ambiguous codes, particularly in tabular schedules
 with inconsistent layouts. Sonnet's accuracy on structure-heavy extraction
-justifies the cost.
+justifies the cost (see Accuracy below).
+
+## Accuracy
+
+Evaluated against manually verified ground truth across 3 demo specbooks
+covering both tabular schedules and section-list formats (26 sets, 157
+components, 780 fields):
+
+| Model | Field-level accuracy | Qty | Description | Catalog # | Mfr | Finish |
+|---|---|---|---|---|---|---|
+| **Sonnet 4.6** | **97.1%** (757/780) | 100% | 96.8% | 93.6% | 97.4% | 97.4% |
+| Haiku 4.5 | 82.9% (647/780) | 100% | 49.4% | 78.8% | 94.2% | 92.3% |
+
+Sonnet's 14-point advantage concentrates in the hardest parts of the problem:
+description boundary parsing, catalog number completeness, and mfr/finish
+column disambiguation. Haiku's remaining errors include prepending quantity
+units into descriptions, truncating catalog suffixes, and swapping mfr/finish
+codes — exactly the ambiguous-code resolution the challenge calls out.
+
+Sonnet's 23 residual errors fall into two categories: an OCR-like misread
+(`LEVER` → `LEVEL` in a tabular layout, 4 errors) and struck-through content
+that pdfplumber cannot detect (14 errors cascading across two sets).
 
 ## Setup
 
@@ -92,4 +115,9 @@ pytest
 
 Covers filter pattern matching, layout line clustering, bbox attachment, and
 API behavior. End-to-end extraction accuracy is validated against ground truth
-in `demo_samples/ground_truth/`.
+in `demo_samples/ground_truth/`:
+
+```bash
+# Re-run accuracy audit (uses cached extractions by default; --extract for fresh)
+python scripts/confidence_audit.py
+```
