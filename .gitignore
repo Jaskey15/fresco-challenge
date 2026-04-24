@@ -21,4 +21,5 @@ demo_samples/extracted/
 demo_samples/extracted_sonnet/
 samples/
 docs/
-scripts/
+scripts/*
+!scripts/accuracy_audit.py

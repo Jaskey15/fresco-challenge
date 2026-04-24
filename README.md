@@ -119,5 +119,5 @@ in `demo_samples/ground_truth/`:
 
 ```bash
 # Re-run accuracy audit (uses cached extractions by default; --extract for fresh)
-python scripts/confidence_audit.py
+python scripts/accuracy_audit.py
 ```
