@@ -167,6 +167,90 @@ export default function ResultsView({ result, onReset }: Props) {
     URL.revokeObjectURL(url);
   };
 
+  const handleDownloadCSV = () => {
+    const exportSets = sets.map((set, setIdx) => {
+      const working = workingData[setIdx];
+      if (!working) return set;
+      return {
+        ...set,
+        components: working.map(({ _sourceIndex, ...comp }) => comp),
+      };
+    });
+
+    const headers = [
+      "set_number",
+      "set_description",
+      "set_notes",
+      "is_not_used",
+      "page",
+      "qty",
+      "description",
+      "catalog_number",
+      "mfr",
+      "finish",
+      "notes",
+    ];
+
+    const escapeCSV = (val: unknown): string => {
+      if (val === null || val === undefined) return "";
+      const str = String(val);
+      if (str.includes(",") || str.includes('"') || str.includes("\n"))
+        return `"${str.replace(/"/g, '""')}"`;
+      return str;
+    };
+
+    const rows = [headers.join(",")];
+    for (const set of exportSets) {
+      if (set.components.length === 0) {
+        rows.push(
+          [
+            set.set_number,
+            set.description,
+            set.notes,
+            set.is_not_used,
+            set.location.page,
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+          ]
+            .map(escapeCSV)
+            .join(",")
+        );
+      } else {
+        for (const comp of set.components) {
+          rows.push(
+            [
+              set.set_number,
+              set.description,
+              set.notes,
+              set.is_not_used,
+              set.location.page,
+              comp.qty,
+              comp.description,
+              comp.catalog_number,
+              comp.mfr,
+              comp.finish,
+              comp.notes,
+            ]
+              .map(escapeCSV)
+              .join(",")
+          );
+        }
+      }
+    }
+
+    const blob = new Blob([rows.join("\n")], { type: "text/csv" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = result.source_pdf.replace(/\.pdf$/i, "_hardware_sets.csv");
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
   if (sets.length === 0) {
     return (
       <div className="min-h-screen bg-backdrop flex items-center justify-center p-8">
@@ -217,6 +301,12 @@ export default function ResultsView({ result, onReset }: Props) {
               {diffBadgeParts.join(" · ")}
             </span>
           )}
+          <button
+            onClick={handleDownloadCSV}
+            className="text-xs px-3 py-1.5 rounded bg-accent text-backdrop font-heading font-semibold hover:bg-accent/90 transition-colors"
+          >
+            Download CSV
+          </button>
           <button
             onClick={handleDownload}
             className="text-xs px-3 py-1.5 rounded bg-accent text-backdrop font-heading font-semibold hover:bg-accent/90 transition-colors"
