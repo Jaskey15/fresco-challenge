@@ -178,57 +178,65 @@ export default function DetailTable({
             This set is marked as NOT USED
           </div>
         ) : (
-          <table className="w-full text-sm border-collapse">
-            <thead>
-              <tr className="border-b border-border">
-                {COLUMNS.map((col) => (
-                  <th
-                    key={col.key}
-                    className="text-left px-3 py-2 text-[10px] font-heading font-semibold text-accent uppercase tracking-widest"
-                  >
-                    {col.label}
-                  </th>
-                ))}
-                <th className="w-8" />
-              </tr>
-            </thead>
-            <tbody>
-              {components.map((comp, compIdx) =>
-                confirmingIndex === compIdx ? (
-                  <tr key={compIdx} className="border-b border-surface">
-                    <ConfirmStrip
-                      label={getComponentLabel(comp)}
-                      onConfirm={() => {
-                        onDelete(compIdx);
-                        setConfirmingIndex(null);
-                      }}
-                      onCancel={() => setConfirmingIndex(null)}
-                    />
-                  </tr>
-                ) : (
-                  <tr key={compIdx} className="group border-b border-surface">
-                    {COLUMNS.map((col) => (
-                      <td key={col.key} className={`px-2 py-1.5 ${COL_STYLES[col.key] ?? ""}`}>
-                        <EditableCell
-                          value={(comp[col.key] as string | number | null) ?? null}
-                          isEdited={isEdited(comp, col.key)}
-                          onCommit={(val) => onCellEdit(compIdx, col.key, val)}
-                        />
+          <>
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b border-border">
+                  {COLUMNS.map((col) => (
+                    <th
+                      key={col.key}
+                      className="text-left px-3 py-2 text-[10px] font-heading font-semibold text-accent uppercase tracking-widest"
+                    >
+                      {col.label}
+                    </th>
+                  ))}
+                  <th className="w-8" />
+                </tr>
+              </thead>
+              <tbody>
+                {components.map((comp, compIdx) =>
+                  confirmingIndex === compIdx ? (
+                    <tr key={compIdx} className="border-b border-surface">
+                      <ConfirmStrip
+                        label={getComponentLabel(comp)}
+                        onConfirm={() => {
+                          onDelete(compIdx);
+                          setConfirmingIndex(null);
+                        }}
+                        onCancel={() => setConfirmingIndex(null)}
+                      />
+                    </tr>
+                  ) : (
+                    <tr key={compIdx} className="group border-b border-surface">
+                      {COLUMNS.map((col) => (
+                        <td key={col.key} className={`px-2 py-1.5 ${COL_STYLES[col.key] ?? ""}`}>
+                          <EditableCell
+                            value={(comp[col.key] as string | number | null) ?? null}
+                            isEdited={isEdited(comp, col.key)}
+                            onCommit={(val) => onCellEdit(compIdx, col.key, val)}
+                          />
+                        </td>
+                      ))}
+                      <td className="px-1 py-1.5 w-8">
+                        <button
+                          onClick={() => setConfirmingIndex(compIdx)}
+                          className="w-6 h-6 flex items-center justify-center rounded text-dim opacity-0 group-hover:opacity-100 hover:!bg-error-subtle hover:!text-error transition-all text-sm"
+                        >
+                          ×
+                        </button>
                       </td>
-                    ))}
-                    <td className="px-1 py-1.5 w-8">
-                      <button
-                        onClick={() => setConfirmingIndex(compIdx)}
-                        className="w-6 h-6 flex items-center justify-center rounded text-dim opacity-0 group-hover:opacity-100 hover:!bg-error-subtle hover:!text-error transition-all text-sm"
-                      >
-                        ×
-                      </button>
-                    </td>
-                  </tr>
-                ),
-              )}
-            </tbody>
-          </table>
+                    </tr>
+                  ),
+                )}
+              </tbody>
+            </table>
+            <button
+              onClick={onAdd}
+              className="w-full mt-1 py-2 flex items-center justify-center gap-1.5 text-[11px] font-heading text-dim border border-dashed border-border rounded hover:text-accent hover:border-accent/50 transition-colors"
+            >
+              <span className="text-sm">+</span> Add component
+            </button>
+          </>
         )}
       </div>
 
