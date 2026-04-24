@@ -13,6 +13,7 @@
   --color-muted: #71717a;
   --color-dim: #52525b;
   --color-error: #ef4444;
+  --color-error-subtle: rgba(239, 68, 68, 0.1);
   --font-heading: "JetBrains Mono", monospace;
   --font-body: "DM Sans", sans-serif;
 }
