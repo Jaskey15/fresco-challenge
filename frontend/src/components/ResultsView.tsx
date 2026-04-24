@@ -127,6 +127,7 @@ export default function ResultsView({ result, onReset }: Props) {
         <div className="w-[35%] min-w-[280px] border-r border-border">
           <PdfViewer
             sessionId={result.session_id}
+            setNumber={activeSet.set_number}
             location={activeSet.location}
             continuedOn={activeSet.continued_on}
             pageLayouts={result.page_layouts}

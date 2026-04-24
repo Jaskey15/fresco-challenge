@@ -6,6 +6,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjs.vers
 
 interface Props {
   sessionId: string;
+  setNumber: string;
   location: SetLocation;
   continuedOn: SetLocation[];
   pageLayouts: Record<string, PageLayout>;
@@ -13,6 +14,7 @@ interface Props {
 
 export default function PdfViewer({
   sessionId,
+  setNumber,
   location,
   continuedOn,
   pageLayouts,
@@ -82,14 +84,21 @@ export default function PdfViewer({
                 />
                 {loc.bbox && layout && (
                   <div
-                    className="absolute pointer-events-none border-2 border-accent bg-[rgba(212,149,106,0.06)] rounded-sm"
+                    className="absolute pointer-events-none"
                     style={{
                       left: loc.bbox[0] * scale,
                       top: loc.bbox[1] * scale,
                       width: (loc.bbox[2] - loc.bbox[0]) * scale,
                       height: (loc.bbox[3] - loc.bbox[1]) * scale,
                     }}
-                  />
+                  >
+                    <span
+                      className="absolute bottom-full left-0 mb-0.5 bg-accent text-backdrop text-[10px] font-heading font-bold px-1.5 py-0.5 rounded-sm whitespace-nowrap"
+                    >
+                      {setNumber}
+                    </span>
+                    <div className="w-full h-full border-2 border-accent bg-[rgba(212,149,106,0.06)] rounded-sm" />
+                  </div>
                 )}
               </div>
             </div>
