@@ -240,22 +240,6 @@ export default function DetailTable({
         )}
       </div>
 
-      {/* Bottom bar */}
-      <div className="px-4 py-2 border-t border-border flex items-center justify-between bg-surface">
-        <span className="text-[10px] text-dim">
-          Click any cell to edit · Tab to advance · Esc to cancel · Hover row for actions
-        </span>
-        <div className="flex items-center gap-2">
-          {editCount > 0 && (
-            <button
-              onClick={onReset}
-              className="text-[10px] px-3 py-1 border border-border rounded text-muted hover:bg-elevated transition-colors"
-            >
-              Reset
-            </button>
-          )}
-        </div>
-      </div>
     </div>
   );
 }
