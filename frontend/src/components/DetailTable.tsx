@@ -19,6 +19,15 @@ const COLUMNS: Array<{ key: keyof Component; label: string }> = [
   { key: "notes", label: "NOTES" },
 ];
 
+const COL_STYLES: Record<string, string> = {
+  qty: "text-muted",
+  description: "text-primary text-[13px]",
+  catalog_number: "font-heading text-secondary",
+  mfr: "text-muted",
+  finish: "text-muted",
+  notes: "text-muted text-xs",
+};
+
 interface EditableCellProps {
   value: string | number | null;
   isEdited: boolean;
@@ -63,7 +72,7 @@ function EditableCell({ value, isEdited, onCommit }: EditableCellProps) {
             setEditing(false);
           }
         }}
-        className="w-full px-1.5 py-0.5 text-sm border-2 border-blue-500 rounded outline-none bg-white shadow-[0_0_0_3px_rgba(59,130,246,0.1)]"
+        className="w-full px-1.5 py-0.5 text-sm border-2 border-accent rounded outline-none bg-elevated text-primary shadow-[0_0_0_3px_rgba(212,149,106,0.1)]"
       />
     );
   }
@@ -73,11 +82,11 @@ function EditableCell({ value, isEdited, onCommit }: EditableCellProps) {
       onClick={startEdit}
       className={`cursor-pointer px-1.5 py-0.5 rounded min-h-[24px] ${
         isEdited
-          ? "bg-amber-50 border border-amber-300"
-          : "hover:bg-gray-50"
+          ? "bg-accent-subtle border border-accent/30"
+          : "hover:bg-surface"
       }`}
     >
-      {displayValue || <span className="text-gray-300">—</span>}
+      {displayValue || <span className="text-dim">—</span>}
     </div>
   );
 }
@@ -93,15 +102,15 @@ export default function DetailTable({ set, edits, editCount, onCellEdit, onReset
   };
 
   return (
-    <div className="flex-1 min-w-0 flex flex-col bg-white">
+    <div className="flex-1 min-w-0 flex flex-col bg-backdrop">
       {/* Header */}
-      <div className="px-4 py-3 border-b border-gray-200 flex items-start justify-between">
+      <div className="px-4 py-3 border-b border-border flex items-start justify-between">
         <div>
-          <h2 className="text-base font-bold text-gray-900">
-            <span className="text-green-500 mr-1">●</span>
+          <h2 className="text-[17px] font-heading font-bold text-primary tracking-[0.02em]">
+            <span className="inline-block w-2 h-2 bg-accent rounded-[2px] shadow-[0_0_6px_rgba(212,149,106,0.3)] mr-2 align-middle" />
             Hardware Set {set.set_number}
           </h2>
-          <p className="text-xs text-gray-400 mt-0.5">
+          <p className="text-[13px] text-muted mt-0.5">
             {set.description && <span>{set.description} · </span>}
             {set.components.length} components · Page {set.location.page}, Lines{" "}
             {set.location.line_range[0]}–{set.location.line_range[1]}
@@ -109,7 +118,7 @@ export default function DetailTable({ set, edits, editCount, onCellEdit, onReset
         </div>
         <div className="flex items-center gap-2">
           {editCount > 0 && (
-            <span className="text-[10px] px-2 py-1 bg-amber-50 border border-amber-300 rounded text-amber-700">
+            <span className="text-[10px] px-2 py-1 bg-accent-subtle border border-accent/30 rounded text-accent font-heading">
               {editCount} edited
             </span>
           )}
@@ -119,17 +128,17 @@ export default function DetailTable({ set, edits, editCount, onCellEdit, onReset
       {/* Table */}
       <div className="flex-1 overflow-auto px-4 py-2">
         {set.is_not_used ? (
-          <div className="flex items-center justify-center h-full text-gray-400 text-sm">
+          <div className="flex items-center justify-center h-full text-muted text-sm">
             This set is marked as NOT USED
           </div>
         ) : (
           <table className="w-full text-sm border-collapse">
             <thead>
-              <tr className="border-b-2 border-gray-200">
+              <tr className="border-b border-border">
                 {COLUMNS.map((col) => (
                   <th
                     key={col.key}
-                    className="text-left px-3 py-2 text-[10px] font-semibold text-gray-400 uppercase tracking-wider"
+                    className="text-left px-3 py-2 text-[10px] font-heading font-semibold text-accent uppercase tracking-widest"
                   >
                     {col.label}
                   </th>
@@ -138,9 +147,9 @@ export default function DetailTable({ set, edits, editCount, onCellEdit, onReset
             </thead>
             <tbody>
               {set.components.map((comp, compIdx) => (
-                <tr key={compIdx} className="border-b border-gray-100">
+                <tr key={compIdx} className="border-b border-surface">
                   {COLUMNS.map((col) => (
-                    <td key={col.key} className="px-2 py-1.5">
+                    <td key={col.key} className={`px-2 py-1.5 ${COL_STYLES[col.key] ?? ""}`}>
                       <EditableCell
                         value={getDisplayValue(compIdx, col.key, (comp[col.key] as string | number | null) ?? null)}
                         isEdited={isEdited(compIdx, col.key)}
@@ -156,15 +165,15 @@ export default function DetailTable({ set, edits, editCount, onCellEdit, onReset
       </div>
 
       {/* Bottom bar */}
-      <div className="px-4 py-2 border-t border-gray-100 flex items-center justify-between bg-gray-50">
-        <span className="text-[10px] text-gray-400">
+      <div className="px-4 py-2 border-t border-border flex items-center justify-between bg-surface">
+        <span className="text-[10px] text-dim">
           Click any cell to edit · Tab to advance · Esc to cancel
         </span>
         <div className="flex items-center gap-2">
           {editCount > 0 && (
             <button
               onClick={onReset}
-              className="text-[10px] px-3 py-1 border border-gray-300 rounded text-gray-500 hover:bg-gray-100"
+              className="text-[10px] px-3 py-1 border border-border rounded text-muted hover:bg-elevated transition-colors"
             >
               Reset
             </button>

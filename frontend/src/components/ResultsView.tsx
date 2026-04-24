@@ -3,7 +3,6 @@ import type { ExtractionResult } from "../types";
 import PdfViewer from "./PdfViewer";
 import SetGrid from "./SetGrid";
 import DetailTable from "./DetailTable";
-import JsonViewer from "./JsonViewer";
 
 interface Props {
   result: ExtractionResult;
@@ -15,8 +14,6 @@ export default function ResultsView({ result, onReset }: Props) {
   const [edits, setEdits] = useState<
     Record<number, Record<number, Record<string, string>>>
   >({});
-  const [showJson, setShowJson] = useState(false);
-
   const sets = result.hardware_sets;
   const activeSet = sets[activeIndex];
 
@@ -79,17 +76,17 @@ export default function ResultsView({ result, onReset }: Props) {
 
   if (sets.length === 0) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-8">
+      <div className="min-h-screen bg-backdrop flex items-center justify-center p-8">
         <div className="text-center">
-          <h2 className="text-xl font-semibold text-gray-900 mb-2">
+          <h2 className="text-xl font-heading font-semibold text-primary mb-2">
             No Hardware Sets Found
           </h2>
-          <p className="text-gray-500 text-sm mb-6">
+          <p className="text-muted text-sm mb-6">
             The document was scanned but no hardware sets were detected.
           </p>
           <button
             onClick={onReset}
-            className="px-4 py-2 bg-gray-900 text-white rounded-lg text-sm hover:bg-gray-800"
+            className="px-4 py-2 bg-accent text-backdrop rounded-lg text-sm font-heading hover:bg-accent/90 transition-colors"
           >
             Try Another Document
           </button>
@@ -99,54 +96,38 @@ export default function ResultsView({ result, onReset }: Props) {
   }
 
   return (
-    <div className="h-screen flex flex-col bg-gray-50">
+    <div className="h-screen flex flex-col bg-backdrop">
       {/* Top bar */}
-      <div className="h-12 px-4 border-b border-gray-200 bg-white flex items-center justify-between shrink-0">
+      <div className="h-12 px-4 border-b border-border bg-surface flex items-center justify-between shrink-0">
         <div className="flex items-center gap-3">
           <button
             onClick={onReset}
-            className="text-xs text-gray-400 hover:text-gray-600"
+            className="text-xs text-dim hover:text-muted transition-colors"
           >
             &larr; Back
           </button>
-          <span className="text-sm font-semibold text-gray-800">
+          <span className="text-sm font-heading font-semibold text-primary">
             {result.source_pdf}
           </span>
-          <span className="text-xs text-green-600 font-medium">
-            {sets.length} sets extracted
+          <span className="text-[11px] font-heading text-accent bg-accent-subtle px-2 py-0.5 rounded">
+            {sets.length} sets &middot; {result.diagnostics.pages_with_sets} pages
           </span>
         </div>
-        <div className="flex items-center gap-2">
-          <button
-            onClick={() => setShowJson((s) => !s)}
-            className={`text-xs px-2 py-1 rounded border ${
-              showJson
-                ? "bg-blue-50 border-blue-300 text-blue-700"
-                : "border-gray-200 text-gray-500 hover:border-gray-300"
-            }`}
-          >
-            {showJson ? "Hide JSON" : "Show JSON"}
-          </button>
-          <button
-            onClick={handleDownload}
-            className="text-xs px-2 py-1 rounded border border-gray-200 text-gray-500 hover:border-gray-300"
-          >
-            Download JSON
-          </button>
-          <span className="text-xs text-gray-400 ml-2">
-            {result.diagnostics.pages_with_sets} pages &middot;{" "}
-            {result.diagnostics.llm_calls} LLM call
-            {result.diagnostics.llm_calls !== 1 ? "s" : ""}
-          </span>
-        </div>
+        <button
+          onClick={handleDownload}
+          className="text-xs px-3 py-1.5 rounded bg-accent text-backdrop font-heading font-semibold hover:bg-accent/90 transition-colors"
+        >
+          Download JSON
+        </button>
       </div>
 
       {/* Two-panel layout */}
       <div className="flex-1 flex min-h-0">
         {/* Left: PDF Viewer (~35%) */}
-        <div className="w-[35%] min-w-[280px] border-r border-gray-200">
+        <div className="w-[35%] min-w-[280px] border-r border-border">
           <PdfViewer
             sessionId={result.session_id}
+            setNumber={activeSet.set_number}
             location={activeSet.location}
             continuedOn={activeSet.continued_on}
             pageLayouts={result.page_layouts}
@@ -167,9 +148,7 @@ export default function ResultsView({ result, onReset }: Props) {
             onCellEdit={handleCellEdit}
             onReset={handleReset}
           />
-          {showJson && (
-            <JsonViewer set={activeSet} edits={edits[activeIndex] ?? {}} />
-          )}
+
         </div>
       </div>
     </div>
