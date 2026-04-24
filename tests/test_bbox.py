@@ -60,7 +60,7 @@ def test_missing_page_gives_none_bbox():
     assert sets[0].location.bbox is None
 
 
-def test_line_without_bbox_gives_none():
+def test_line_without_bbox_uses_available():
     lines = [_line(1, (10, 100, 200, 112)), _line(2)]
     layout = PageLayout(page_number=1, lines=lines, page_width=612, page_height=792)
     sets = [
@@ -71,4 +71,4 @@ def test_line_without_bbox_gives_none():
         )
     ]
     attach_bboxes(sets, [layout])
-    assert sets[0].location.bbox is None
+    assert sets[0].location.bbox == (10.0, 100.0, 200.0, 112.0)

@@ -1,14 +1,10 @@
-"""Invariant handling in `_coerce_sets`.
-
-Option 2 policy: auto-fix what's fixable, log the rest as warnings,
-never raise for semantic violations. Structural/schema errors still raise.
-"""
+"""Invariant handling in `_coerce_sets`."""
 
 import logging
 
 import pytest
 
-from hardware_sets.extract import _coerce_sets, ExtractionError
+from hardware_sets.extract import _coerce_sets
 
 
 COMPONENT_KEYS = ("qty", "description", "catalog_number", "mfr", "finish", "notes")
@@ -93,24 +89,10 @@ def test_blank_set_number_is_kept_and_warned(caplog):
     assert any("set_number" in r.getMessage() for r in caplog.records)
 
 
-def test_duplicate_set_numbers_are_kept_and_warned_once(caplog):
-    with caplog.at_level(logging.WARNING):
-        result = _coerce([
-            _set_payload(set_number="1"),
-            _set_payload(set_number="1", page=2),
-        ])
-    assert [s.set_number for s in result] == ["1", "1"]
-    dup_logs = [r for r in caplog.records if "duplicate" in r.getMessage().lower()]
-    assert len(dup_logs) == 1, [r.getMessage() for r in caplog.records]
-
-
-# --- structural errors still raise ---------------------------------------
-
-
 def test_missing_location_still_raises(caplog):
     bad = _set_payload()
     del bad["location"]
-    with pytest.raises(ExtractionError):
+    with pytest.raises(KeyError):
         _coerce([bad])
 
 

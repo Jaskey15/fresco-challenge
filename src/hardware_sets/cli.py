@@ -1,4 +1,4 @@
-"""Command-line entry point (spec §4.5)."""
+"""Command-line entry point"""
 
 from __future__ import annotations
 
@@ -102,11 +102,8 @@ def main(argv: list[str]) -> int:
             llm_calls += 1
             log.info("[2/2] extract: region %d/%d -> %d set(s)", i, len(regions), len(sets))
             all_sets.extend(sets)
-        except extract_mod.ExtractionError as e:
-            warnings.append(f"region {region.start_page}-{region.end_page}: {e}")
-            log.warning("extract failed for region %d-%d: %s", region.start_page, region.end_page, e)
-        except Exception as e:  # network / API / anything else
-            log.error("unrecoverable error calling model: %s", e)
+        except Exception as e:
+            log.error("extract failed for region %d-%d: %s", region.start_page, region.end_page, e)
             return 3
 
     result = {

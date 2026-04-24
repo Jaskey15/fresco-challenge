@@ -74,7 +74,7 @@ def run_pipeline(
             attach_bboxes(sets, layouts)
             llm_calls += 1
             all_sets.extend(sets)
-        except extract_mod.ExtractionError as e:
+        except Exception as e:
             warnings.append(f"region {region.start_page}-{region.end_page}: {e}")
 
     return {

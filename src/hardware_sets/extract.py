@@ -1,12 +1,7 @@
-"""LLM-driven structured extraction of hardware sets.
-
-See spec §4.3. System prompt is cached via `cache_control: ephemeral`
-so the vocabulary block is paid for once per run, not per region.
-"""
+"""LLM-driven structured extraction of hardware sets."""
 
 from __future__ import annotations
 
-# The system prompt is cached. Keep it stable — any tweak busts the cache.
 SYSTEM_PROMPT = """\
 You extract door hardware sets from construction specification books.
 
@@ -150,10 +145,6 @@ from hardware_sets.types import (
 log = logging.getLogger(__name__)
 
 
-class ExtractionError(RuntimeError):
-    """LLM returned something we couldn't parse even after a retry."""
-
-
 DEFAULT_MODEL = "claude-sonnet-4-6"
 MAX_TOKENS = 64000
 
@@ -180,82 +171,66 @@ def _normalize_line_range(
 
 
 def _coerce_sets(tool_input: dict) -> list[HardwareSet]:
-    """Convert tool-use JSON into HardwareSets, auto-fixing fixable invariant
-    violations and logging the rest. Structural/schema errors become
-    ExtractionError so the caller's retry path triggers."""
-    try:
-        raw_sets = tool_input.get("sets", [])
-        out: list[HardwareSet] = []
-        for s in raw_sets:
-            set_number = s["set_number"]
-            page = s["location"]["page"]
-            ctx = f"set {set_number!r} (page {page})"
+    """Convert tool-use JSON into typed HardwareSets."""
+    raw_sets = tool_input.get("sets", [])
+    out: list[HardwareSet] = []
+    for s in raw_sets:
+        set_number = s["set_number"]
+        page = s["location"]["page"]
+        ctx = f"set {set_number!r} (page {page})"
 
-            loc = SetLocation(
-                page=page,
-                line_range=_normalize_line_range(s["location"]["line_range"], context=ctx),
+        loc = SetLocation(
+            page=page,
+            line_range=_normalize_line_range(s["location"]["line_range"], context=ctx),
+        )
+        cont = [
+            SetLocation(
+                page=c["page"],
+                line_range=_normalize_line_range(
+                    c["line_range"], context=f"{ctx} continued_on[{i}]"
+                ),
             )
-            cont = [
-                SetLocation(
-                    page=c["page"],
-                    line_range=_normalize_line_range(
-                        c["line_range"], context=f"{ctx} continued_on[{i}]"
-                    ),
-                )
-                for i, c in enumerate(s.get("continued_on", []))
-            ]
-            components = [
-                Component(
-                    qty=c.get("qty"),
-                    description=c.get("description"),
-                    catalog_number=c.get("catalog_number"),
-                    mfr=c.get("mfr"),
-                    finish=c.get("finish"),
-                    notes=c.get("notes"),
-                )
-                for c in s.get("components", [])
-            ]
-            is_not_used = bool(s.get("is_not_used", False))
-
-            if is_not_used and components:
-                log.warning(
-                    "%s: is_not_used=true but %d components present; keeping both as emitted",
-                    ctx, len(components),
-                )
-            if not set_number.strip():
-                log.warning("%s: empty set_number; keeping as emitted", ctx)
-
-            out.append(
-                HardwareSet(
-                    set_number=set_number,
-                    description=s.get("description"),
-                    location=loc,
-                    continued_on=cont,
-                    is_not_used=is_not_used,
-                    components=components,
-                )
+            for i, c in enumerate(s.get("continued_on", []))
+        ]
+        components = [
+            Component(
+                qty=c.get("qty"),
+                description=c.get("description"),
+                catalog_number=c.get("catalog_number"),
+                mfr=c.get("mfr"),
+                finish=c.get("finish"),
+                notes=c.get("notes"),
             )
-    except (KeyError, TypeError, ValueError) as e:
-        raise ExtractionError(f"tool_use payload malformed: {e}") from e
+            for c in s.get("components", [])
+        ]
+        is_not_used = bool(s.get("is_not_used", False))
 
-    _warn_duplicate_set_numbers(out)
+        if is_not_used and components:
+            log.warning(
+                "%s: is_not_used=true but %d components present; keeping both as emitted",
+                ctx, len(components),
+            )
+        if not set_number.strip():
+            log.warning("%s: empty set_number; keeping as emitted", ctx)
+
+        out.append(
+            HardwareSet(
+                set_number=set_number,
+                description=s.get("description"),
+                location=loc,
+                continued_on=cont,
+                is_not_used=is_not_used,
+                components=components,
+            )
+        )
+
     return out
-
-
-def _warn_duplicate_set_numbers(sets: list[HardwareSet]) -> None:
-    seen: dict[str, int] = {}
-    for s in sets:
-        seen[s.set_number] = seen.get(s.set_number, 0) + 1
-    for number, count in seen.items():
-        if count > 1:
-            log.warning("duplicate set_number %r appears %d times", number, count)
 
 
 def _call_model(
     client: Anthropic,
     model: str,
     user_content: str,
-    retry_note: str | None = None,
 ) -> list[HardwareSet]:
     system_blocks = [
         {
@@ -264,15 +239,7 @@ def _call_model(
             "cache_control": {"type": "ephemeral"},
         }
     ]
-    user_blocks: list[dict] = [{"type": "text", "text": user_content}]
-    if retry_note:
-        user_blocks.append({
-            "type": "text",
-            "text": f"\nNOTE: your previous response failed validation: {retry_note}. "
-                    f"Re-emit correctly.",
-        })
 
-    # Streaming so MAX_TOKENS can exceed the 10-min sync cap on dense regions.
     with client.messages.stream(
         model=model,
         max_tokens=MAX_TOKENS,
@@ -280,7 +247,7 @@ def _call_model(
         system=system_blocks,
         tools=[EMIT_HARDWARE_SETS_TOOL],
         tool_choice={"type": "tool", "name": EMIT_HARDWARE_SETS_TOOL["name"]},
-        messages=[{"role": "user", "content": user_blocks}],
+        messages=[{"role": "user", "content": [{"type": "text", "text": user_content}]}],
     ) as stream:
         resp = stream.get_final_message()
 
@@ -293,7 +260,7 @@ def _call_model(
     for block in resp.content:
         if block.type == "tool_use" and block.name == EMIT_HARDWARE_SETS_TOOL["name"]:
             return _coerce_sets(block.input)
-    raise ExtractionError("model did not call emit_hardware_sets")
+    raise RuntimeError("model did not call emit_hardware_sets")
 
 
 def extract_sets(
@@ -307,22 +274,18 @@ def extract_sets(
         client = Anthropic()
 
     user_content = _build_user_content(region, layouts)
-    try:
-        return _call_model(client, model, user_content)
-    except ExtractionError as e:
-        log.warning("extract_sets: retry after %s", e)
-        return _call_model(client, model, user_content, retry_note=str(e))
+    return _call_model(client, model, user_content)
 
 
 def _union_bbox(
-    layouts: list[PageLayout], page: int, line_range: tuple[int, int],
+    by_page: dict[int, PageLayout], page: int, line_range: tuple[int, int],
 ) -> tuple[float, float, float, float] | None:
-    page_layout = next((lay for lay in layouts if lay.page_number == page), None)
+    page_layout = by_page.get(page)
     if not page_layout:
         return None
     first, last = line_range
     selected = [nl for nl in page_layout.lines if first <= nl.number <= last and nl.bbox]
-    if not selected or len(selected) != (last - first + 1):
+    if not selected:
         return None
     x0 = min(nl.bbox[0] for nl in selected)
     top = min(nl.bbox[1] for nl in selected)
@@ -332,7 +295,8 @@ def _union_bbox(
 
 
 def attach_bboxes(sets: list[HardwareSet], layouts: list[PageLayout]) -> None:
+    by_page = {lay.page_number: lay for lay in layouts}
     for s in sets:
-        s.location.bbox = _union_bbox(layouts, s.location.page, s.location.line_range)
+        s.location.bbox = _union_bbox(by_page, s.location.page, s.location.line_range)
         for cont in s.continued_on:
-            cont.bbox = _union_bbox(layouts, cont.page, cont.line_range)
+            cont.bbox = _union_bbox(by_page, cont.page, cont.line_range)

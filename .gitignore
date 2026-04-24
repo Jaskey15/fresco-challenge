@@ -14,6 +14,7 @@ node_modules/
 .superpowers/
 .claude/
 uv.lock
+.playwright-cli/
 frontend/.playwright-cli/
 frontend/.vite/
 logs/
