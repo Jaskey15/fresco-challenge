@@ -77,24 +77,32 @@ that pdfplumber cannot detect (14 errors cascading across two sets).
 
 ## Setup
 
-Requires Python 3.12+ and an Anthropic API key.
+Requires Python 3.12+ and Node 18+.
 
 ```bash
+python -m venv .venv
+source .venv/bin/activate
 pip install -e ".[dev]"
-export ANTHROPIC_API_KEY=sk-ant-...
+```
+
+Create `.env.local` with your Anthropic API key (this file is gitignored):
+
+```bash
+ANTHROPIC_API_KEY=sk-ant-...
 ```
 
 ### CLI
 
 ```bash
+export $(grep -v '^#' .env.local | xargs)
 python -m hardware_sets path/to/specbook.pdf --out result.json
 ```
 
 ### Local dev (API + frontend)
 
 ```bash
-# API
-uvicorn hardware_sets_api.app:app --reload
+# API (loads key from .env.local)
+export $(grep -v '^#' .env.local | xargs) && uvicorn hardware_sets_api.app:app --reload
 
 # Frontend (separate terminal)
 cd frontend && npm install && npm run dev
