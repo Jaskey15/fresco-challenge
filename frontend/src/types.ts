@@ -25,6 +25,10 @@ export interface Component {
   notes: string | null;
 }
 
+export interface WorkingComponent extends Component {
+  _sourceIndex: number | null;
+}
+
 export interface HardwareSet {
   set_number: string;
   description: string | null;
