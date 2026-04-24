@@ -93,10 +93,9 @@ def main(argv: list[str]) -> int:
 
     for i, region in enumerate(regions, start=1):
         log.info("[2/2] extract: region %d/%d pages %d-%d", i, len(regions), region.start_page, region.end_page)
-        layouts = [
-            layout_mod.extract_layout(args.pdf_path, p)
-            for p in range(region.start_page, region.end_page + 1)
-        ]
+        layouts = layout_mod.extract_layout(
+            args.pdf_path, range(region.start_page, region.end_page + 1),
+        )
         try:
             sets = extract_mod.extract_sets(region, layouts, model=args.model)
             attach_bboxes(sets, layouts)

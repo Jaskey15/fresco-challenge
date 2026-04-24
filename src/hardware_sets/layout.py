@@ -1,6 +1,6 @@
 """Render one PDF page into a list of numbered lines for the LLM.
 
-See spec §4.2. Blank lines are dropped; `L##` stays contiguous so a
+Blank lines are dropped; `L##` stays contiguous so a
 human (or the LLM) can count lines in the rendered text and match
 `location.line_range` back to the source PDF.
 """
@@ -8,6 +8,9 @@ human (or the LLM) can count lines in the rendered text and match
 from __future__ import annotations
 
 from pathlib import Path
+from typing import Iterable
+
+import pdfplumber
 
 from hardware_sets.types import NumberedLine, PageLayout
 
@@ -47,34 +50,30 @@ def cluster_words_into_lines(
     return result
 
 
-def extract_layout(pdf_path: Path, page_num: int) -> PageLayout:
-    """Return a PageLayout for 1-indexed `page_num` of `pdf_path`."""
-    import pdfplumber
-
-    with pdfplumber.open(pdf_path) as pdf:
-        page = pdf.pages[page_num - 1]
-        page_width = float(page.width)
-        page_height = float(page.height)
-        words = page.extract_words(
-            keep_blank_chars=False, y_tolerance=3, x_tolerance=3,
-        )
-
+def _layout_from_page(page: pdfplumber.pdf.Page, page_num: int) -> PageLayout:
+    """Build a PageLayout from an already-open pdfplumber page."""
+    words = page.extract_words(
+        keep_blank_chars=False, y_tolerance=3, x_tolerance=3,
+    )
     clustered = cluster_words_into_lines(words, y_tol=3.0)
-
-    lines: list[NumberedLine] = []
-    counter = 1
-    for text, bbox in clustered:
-        if not text.strip():
-            continue
-        lines.append(NumberedLine(number=counter, text=text, bbox=bbox))
-        counter += 1
-
+    lines = [
+        NumberedLine(number=i, text=text, bbox=bbox)
+        for i, (text, bbox) in enumerate(clustered, 1)
+        if text.strip()
+    ]
     return PageLayout(
         page_number=page_num,
         lines=lines,
-        page_width=page_width,
-        page_height=page_height,
+        page_width=float(page.width),
+        page_height=float(page.height),
     )
+
+
+def extract_layout(pdf_path: Path, pages: Iterable[int]) -> list[PageLayout]:
+    """Return PageLayouts for multiple 1-indexed pages, opening the PDF once."""
+    with pdfplumber.open(pdf_path) as pdf:
+        return [_layout_from_page(pdf.pages[p - 1], p) for p in pages]
+
 
 
 def render_for_prompt(layout: PageLayout) -> str:

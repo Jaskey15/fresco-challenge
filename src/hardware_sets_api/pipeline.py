@@ -54,10 +54,9 @@ def run_pipeline(
             "message": f"Extracting sets from region {i}/{len(regions)}...",
         })
 
-        layouts = [
-            layout_mod.extract_layout(pdf_path, p)
-            for p in range(region.start_page, region.end_page + 1)
-        ]
+        layouts = layout_mod.extract_layout(
+            pdf_path, range(region.start_page, region.end_page + 1),
+        )
 
         for lay in layouts:
             all_layouts[str(lay.page_number)] = {

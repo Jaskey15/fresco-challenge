@@ -36,7 +36,7 @@ def _fake_set():
 def test_run_pipeline_emits_progress_and_result(mock_reader, mock_filter, mock_layout, mock_extract, mock_attach):
     mock_reader.return_value.pages = [None] * 5  # 5 pages
     mock_filter.find_schedule_regions.return_value = [_fake_region()]
-    mock_layout.extract_layout.side_effect = lambda path, p: _fake_layout(p)
+    mock_layout.extract_layout.side_effect = lambda path, pages: [_fake_layout(p) for p in pages]
     mock_extract.extract_sets.return_value = [_fake_set()]
 
     progress_events = []
