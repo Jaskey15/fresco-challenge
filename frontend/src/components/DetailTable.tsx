@@ -94,6 +94,42 @@ function EditableCell({ value, isEdited, onCommit }: EditableCellProps) {
   );
 }
 
+function getComponentLabel(comp: WorkingComponent): string {
+  if (comp.description) return comp.description;
+  if (comp.catalog_number) return comp.catalog_number;
+  return "this component";
+}
+
+interface ConfirmStripProps {
+  label: string;
+  onConfirm: () => void;
+  onCancel: () => void;
+}
+
+function ConfirmStrip({ label, onConfirm, onCancel }: ConfirmStripProps) {
+  return (
+    <td colSpan={COLUMNS.length + 1} className="p-0">
+      <div className="flex items-center gap-2 px-3 py-2 bg-error-subtle border border-error/20 rounded mx-1 my-0.5">
+        <span className="text-[12px] text-primary flex-1">
+          Remove &ldquo;{label}&rdquo;?
+        </span>
+        <button
+          onClick={onConfirm}
+          className="text-[10px] px-3 py-1 bg-error text-white rounded font-heading font-medium hover:bg-error/90 transition-colors"
+        >
+          Remove
+        </button>
+        <button
+          onClick={onCancel}
+          className="text-[10px] px-3 py-1 border border-border rounded text-muted font-heading hover:bg-elevated transition-colors"
+        >
+          Cancel
+        </button>
+      </div>
+    </td>
+  );
+}
+
 export default function DetailTable({
   set,
   components,
@@ -103,6 +139,8 @@ export default function DetailTable({
   onAdd,
   onReset,
 }: Props) {
+  const [confirmingIndex, setConfirmingIndex] = useState<number | null>(null);
+
   const isEdited = (comp: WorkingComponent, field: keyof Component) => {
     if (comp._sourceIndex === null) return true;
     const orig = set.components[comp._sourceIndex];
@@ -155,27 +193,40 @@ export default function DetailTable({
               </tr>
             </thead>
             <tbody>
-              {components.map((comp, compIdx) => (
-                <tr key={compIdx} className="group border-b border-surface">
-                  {COLUMNS.map((col) => (
-                    <td key={col.key} className={`px-2 py-1.5 ${COL_STYLES[col.key] ?? ""}`}>
-                      <EditableCell
-                        value={(comp[col.key] as string | number | null) ?? null}
-                        isEdited={isEdited(comp, col.key)}
-                        onCommit={(val) => onCellEdit(compIdx, col.key, val)}
-                      />
+              {components.map((comp, compIdx) =>
+                confirmingIndex === compIdx ? (
+                  <tr key={compIdx} className="border-b border-surface">
+                    <ConfirmStrip
+                      label={getComponentLabel(comp)}
+                      onConfirm={() => {
+                        onDelete(compIdx);
+                        setConfirmingIndex(null);
+                      }}
+                      onCancel={() => setConfirmingIndex(null)}
+                    />
+                  </tr>
+                ) : (
+                  <tr key={compIdx} className="group border-b border-surface">
+                    {COLUMNS.map((col) => (
+                      <td key={col.key} className={`px-2 py-1.5 ${COL_STYLES[col.key] ?? ""}`}>
+                        <EditableCell
+                          value={(comp[col.key] as string | number | null) ?? null}
+                          isEdited={isEdited(comp, col.key)}
+                          onCommit={(val) => onCellEdit(compIdx, col.key, val)}
+                        />
+                      </td>
+                    ))}
+                    <td className="px-1 py-1.5 w-8">
+                      <button
+                        onClick={() => setConfirmingIndex(compIdx)}
+                        className="w-6 h-6 flex items-center justify-center rounded text-dim opacity-0 group-hover:opacity-100 hover:!bg-error-subtle hover:!text-error transition-all text-sm"
+                      >
+                        ×
+                      </button>
                     </td>
-                  ))}
-                  <td className="px-1 py-1.5 w-8">
-                    <button
-                      onClick={() => onDelete(compIdx)}
-                      className="w-6 h-6 flex items-center justify-center rounded text-dim opacity-0 group-hover:opacity-100 hover:!bg-error-subtle hover:!text-error transition-all text-sm"
-                    >
-                      ×
-                    </button>
-                  </td>
-                </tr>
-              ))}
+                  </tr>
+                ),
+              )}
             </tbody>
           </table>
         )}
