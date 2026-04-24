@@ -95,13 +95,13 @@ def test_current_section():
     assert _current_section("hello world") is None
 
 
-def test_heuristic_fallback_fires_on_structural_signals():
-    text = "SET 1\n\nQTY  DESCRIPTION\n 1  Hinge\n 2  Closer\n 1  Lockset"
+def test_heuristic_fallback_fires_on_all_three_signals():
+    text = "SET 1\n\nQTY  DESCRIPTION\n1 Hinge\n2 Closer\n1 Lockset\n3 Strike\n1 Bolt"
     assert _heuristic_start(text)
 
 
-def test_heuristic_fires_on_set_and_qty_lines():
-    text = "SET 1\n1 Hinge\n2 Closer\n1 Lockset\n3 Strike\n1 Bolt\n2 Stop\n1 Sweep\n1 Threshold"
+def test_heuristic_fires_on_set_qty_keyword_and_density():
+    text = "SET 1\n1 EA Hinge\n2 Closer\n1 Lockset\n3 Strike\n1 Bolt\n2 Stop\n1 Sweep\n1 Threshold"
     assert _heuristic_start(text)
 
 
