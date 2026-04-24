@@ -1,5 +1,5 @@
-import { useState } from "react";
-import type { ExtractionResult } from "../types";
+import { useState, useCallback, useMemo } from "react";
+import type { ExtractionResult, Component, WorkingComponent } from "../types";
 import PdfViewer from "./PdfViewer";
 import SetGrid from "./SetGrid";
 import DetailTable from "./DetailTable";
@@ -9,57 +9,150 @@ interface Props {
   onReset: () => void;
 }
 
+function cloneComponents(components: Component[]): WorkingComponent[] {
+  return components.map((c, i) => ({
+    ...c,
+    _sourceIndex: i,
+  }));
+}
+
+function makeEmptyComponent(): WorkingComponent {
+  return {
+    qty: null,
+    description: null,
+    catalog_number: null,
+    mfr: null,
+    finish: null,
+    notes: null,
+    _sourceIndex: null,
+  };
+}
+
+interface DiffSummary {
+  edited: number;
+  added: number;
+  removed: number;
+}
+
+function computeSetDiff(
+  original: Component[],
+  working: WorkingComponent[],
+): DiffSummary {
+  const FIELDS: (keyof Component)[] = [
+    "qty", "description", "catalog_number", "mfr", "finish", "notes",
+  ];
+
+  let edited = 0;
+  let added = 0;
+  const seenOriginalIndices = new Set<number>();
+
+  for (const wc of working) {
+    if (wc._sourceIndex === null) {
+      added++;
+    } else {
+      seenOriginalIndices.add(wc._sourceIndex);
+      const orig = original[wc._sourceIndex];
+      const changed = FIELDS.some(
+        (f) => String(wc[f] ?? "") !== String(orig[f] ?? ""),
+      );
+      if (changed) edited++;
+    }
+  }
+
+  const removed = original.length - seenOriginalIndices.size;
+  return { edited, added, removed };
+}
+
 export default function ResultsView({ result, onReset }: Props) {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [edits, setEdits] = useState<
-    Record<number, Record<number, Record<string, string>>>
+  const [workingData, setWorkingData] = useState<
+    Record<number, WorkingComponent[]>
   >({});
+
   const sets = result.hardware_sets;
   const activeSet = sets[activeIndex];
 
-  const editCount = Object.values(edits[activeIndex] ?? {}).reduce(
-    (sum, fields) => sum + Object.keys(fields).length,
-    0,
+  const activeComponents: WorkingComponent[] =
+    workingData[activeIndex] ?? cloneComponents(activeSet.components);
+
+  const handleCellEdit = useCallback(
+    (compIndex: number, field: string, value: string) => {
+      setWorkingData((prev) => {
+        const working = prev[activeIndex]
+          ? prev[activeIndex].map((c) => ({ ...c }))
+          : cloneComponents(sets[activeIndex].components);
+        working[compIndex] = { ...working[compIndex], [field]: value };
+        return { ...prev, [activeIndex]: working };
+      });
+    },
+    [activeIndex, sets],
   );
 
-  const handleCellEdit = (compIndex: number, field: string, value: string) => {
-    setEdits((prev) => ({
-      ...prev,
-      [activeIndex]: {
-        ...prev[activeIndex],
-        [compIndex]: {
-          ...(prev[activeIndex]?.[compIndex] ?? {}),
-          [field]: value,
-        },
-      },
-    }));
-  };
+  const handleDelete = useCallback(
+    (compIndex: number) => {
+      setWorkingData((prev) => {
+        const working = prev[activeIndex]
+          ? [...prev[activeIndex]]
+          : cloneComponents(sets[activeIndex].components);
+        working.splice(compIndex, 1);
+        return { ...prev, [activeIndex]: working };
+      });
+    },
+    [activeIndex, sets],
+  );
 
-  const handleReset = () => {
-    setEdits((prev) => {
+  const handleAdd = useCallback(() => {
+    setWorkingData((prev) => {
+      const working = prev[activeIndex]
+        ? [...prev[activeIndex]]
+        : cloneComponents(sets[activeIndex].components);
+      working.push(makeEmptyComponent());
+      return { ...prev, [activeIndex]: working };
+    });
+  }, [activeIndex, sets]);
+
+  const handleEditReset = useCallback(() => {
+    setWorkingData((prev) => {
       const next = { ...prev };
       delete next[activeIndex];
       return next;
     });
-  };
+  }, [activeIndex]);
+
+  const activeSetDiff = useMemo((): DiffSummary => {
+    const working = workingData[activeIndex];
+    if (!working) return { edited: 0, added: 0, removed: 0 };
+    return computeSetDiff(sets[activeIndex].components, working);
+  }, [workingData, activeIndex, sets]);
+
+  const totalDiff = useMemo((): DiffSummary => {
+    let edited = 0, added = 0, removed = 0;
+    for (const setIdx of Object.keys(workingData).map(Number)) {
+      const diff = computeSetDiff(sets[setIdx].components, workingData[setIdx]);
+      edited += diff.edited;
+      added += diff.added;
+      removed += diff.removed;
+    }
+    return { edited, added, removed };
+  }, [workingData, sets]);
+
+  const totalChanges = totalDiff.edited + totalDiff.added + totalDiff.removed;
+  const activeChanges =
+    activeSetDiff.edited + activeSetDiff.added + activeSetDiff.removed;
 
   const handleDownload = () => {
-    const editedSets = result.hardware_sets.map((set, setIdx) => {
-      const setEdits = edits[setIdx];
-      if (!setEdits) return set;
+    const exportSets = sets.map((set, setIdx) => {
+      const working = workingData[setIdx];
+      if (!working) return set;
       return {
         ...set,
-        components: set.components.map((comp, compIdx) => {
-          const compEdits = setEdits[compIdx];
-          if (!compEdits) return comp;
-          return { ...comp, ...compEdits };
-        }),
+        components: working.map(({ _sourceIndex, ...comp }) => comp),
       };
     });
 
     const output = {
       source_pdf: result.source_pdf,
-      hardware_sets: editedSets,
+      hardware_sets: exportSets,
       diagnostics: result.diagnostics,
     };
 
@@ -95,6 +188,11 @@ export default function ResultsView({ result, onReset }: Props) {
     );
   }
 
+  const diffBadgeParts: string[] = [];
+  if (totalDiff.edited > 0) diffBadgeParts.push(`${totalDiff.edited} edited`);
+  if (totalDiff.added > 0) diffBadgeParts.push(`${totalDiff.added} added`);
+  if (totalDiff.removed > 0) diffBadgeParts.push(`${totalDiff.removed} removed`);
+
   return (
     <div className="h-screen flex flex-col bg-backdrop">
       {/* Top bar */}
@@ -113,12 +211,19 @@ export default function ResultsView({ result, onReset }: Props) {
             {sets.length} sets &middot; {result.diagnostics.pages_with_sets} pages
           </span>
         </div>
-        <button
-          onClick={handleDownload}
-          className="text-xs px-3 py-1.5 rounded bg-accent text-backdrop font-heading font-semibold hover:bg-accent/90 transition-colors"
-        >
-          Download JSON
-        </button>
+        <div className="flex items-center gap-2">
+          {totalChanges > 0 && (
+            <span className="text-[10px] px-2 py-1 bg-accent-subtle border border-accent/30 rounded text-accent font-heading">
+              {diffBadgeParts.join(" · ")}
+            </span>
+          )}
+          <button
+            onClick={handleDownload}
+            className="text-xs px-3 py-1.5 rounded bg-accent text-backdrop font-heading font-semibold hover:bg-accent/90 transition-colors"
+          >
+            Download JSON
+          </button>
+        </div>
       </div>
 
       {/* Two-panel layout */}
@@ -143,12 +248,13 @@ export default function ResultsView({ result, onReset }: Props) {
           />
           <DetailTable
             set={activeSet}
-            edits={edits[activeIndex] ?? {}}
-            editCount={editCount}
+            components={activeComponents}
+            editCount={activeChanges}
             onCellEdit={handleCellEdit}
-            onReset={handleReset}
+            onDelete={handleDelete}
+            onAdd={handleAdd}
+            onReset={handleEditReset}
           />
-
         </div>
       </div>
     </div>
