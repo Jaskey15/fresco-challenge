@@ -25,6 +25,7 @@ Input: specbook pages (section-list format or tabular schedule). Output per set:
 - Sets can span page breaks — don't drop continuations.
 - `samples/` is gitignored — do not commit. `demo_samples/` IS committed (bundled into the deployed image for the public demo).
 - `ANTHROPIC_API_KEY` is required at runtime; set via `.env.local` locally and `fly secrets` in prod.
+- **PDFs can be native-text, scanned, or vector-outlined** (text converted to curves). Detect by checking pdfplumber char count — zero chars means OCR preprocessing is needed. Use `ocrmypdf --skip-text` to add a text layer, then run the normal pipeline. One codepath, not two.
 
 ## Lessons Learned
-_(empty — add `Problem → Rule` entries as they come up)_
+- `little_rock.pdf` had zero extractable text (vector-outlined) → added OCR detection/preprocessing. Problem: no PDF metadata distinguishes the three types. Rule: always check char count, never assume text exists.
