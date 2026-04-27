@@ -57,7 +57,7 @@ def run_pipeline(
         for i, region in enumerate(regions, start=1):
             on_progress({
                 "phase": "extract",
-                "message": f"Extracting sets from region {i}/{len(regions)}...",
+                "message": "Extracting sets...",
             })
 
             layouts = layout_mod.extract_layout(
