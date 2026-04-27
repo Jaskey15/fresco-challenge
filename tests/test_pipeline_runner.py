@@ -1,4 +1,5 @@
 """Tests for the API pipeline runner."""
+from contextlib import contextmanager
 from pathlib import Path
 from unittest.mock import MagicMock, patch
 
@@ -28,12 +29,21 @@ def _fake_set():
     )
 
 
+def _passthrough_ensure_text(path):
+    @contextmanager
+    def _cm(p):
+        yield p
+    return _cm(path)
+
+
+@patch("hardware_sets_api.pipeline.ensure_text", side_effect=_passthrough_ensure_text)
+@patch("hardware_sets_api.pipeline.needs_ocr", return_value=False)
 @patch("hardware_sets_api.pipeline.attach_bboxes")
 @patch("hardware_sets_api.pipeline.extract_mod")
 @patch("hardware_sets_api.pipeline.layout_mod")
 @patch("hardware_sets_api.pipeline.filter_mod")
 @patch("hardware_sets_api.pipeline.PdfReader")
-def test_run_pipeline_emits_progress_and_result(mock_reader, mock_filter, mock_layout, mock_extract, mock_attach):
+def test_run_pipeline_emits_progress_and_result(mock_reader, mock_filter, mock_layout, mock_extract, mock_attach, mock_needs_ocr, mock_ensure_text):
     mock_reader.return_value.pages = [None] * 5  # 5 pages
     mock_filter.find_schedule_regions.return_value = [_fake_region()]
     mock_layout.extract_layout.side_effect = lambda path, pages: [_fake_layout(p) for p in pages]
@@ -51,9 +61,11 @@ def test_run_pipeline_emits_progress_and_result(mock_reader, mock_filter, mock_l
     assert result["page_layouts"]["3"]["lines"][0]["text"] == "HARDWARE GROUP NO. 1"
 
 
+@patch("hardware_sets_api.pipeline.ensure_text", side_effect=_passthrough_ensure_text)
+@patch("hardware_sets_api.pipeline.needs_ocr", return_value=False)
 @patch("hardware_sets_api.pipeline.filter_mod")
 @patch("hardware_sets_api.pipeline.PdfReader")
-def test_run_pipeline_no_regions(mock_reader, mock_filter):
+def test_run_pipeline_no_regions(mock_reader, mock_filter, mock_needs_ocr, mock_ensure_text):
     mock_reader.return_value.pages = [None] * 3
     mock_filter.find_schedule_regions.return_value = []
 
