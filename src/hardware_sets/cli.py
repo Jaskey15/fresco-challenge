@@ -63,10 +63,11 @@ def main(argv: list[str]) -> int:
         print("error: ANTHROPIC_API_KEY is not set", file=sys.stderr)
         return 1
 
-    if needs_ocr(args.pdf_path):
+    ocr_needed = needs_ocr(args.pdf_path)
+    if ocr_needed:
         log.info("[0/2] ocr: no text detected, running OCR...")
 
-    with ensure_text(args.pdf_path) as effective_path:
+    with ensure_text(args.pdf_path, ocr_needed=ocr_needed) as effective_path:
         total_pages = _page_count(effective_path)
 
         log.info("[1/2] filter: scanning %d pages of %s", total_pages, args.pdf_path.name)

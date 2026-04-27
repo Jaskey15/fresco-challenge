@@ -30,7 +30,7 @@ def _fake_set():
 
 
 @contextmanager
-def _passthrough_ensure_text(path):
+def _passthrough_ensure_text(path, **kwargs):
     yield path
 
 

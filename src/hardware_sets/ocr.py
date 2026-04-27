@@ -11,12 +11,16 @@ import pdfplumber
 
 def needs_ocr(pdf_path: Path) -> bool:
     with pdfplumber.open(pdf_path) as pdf:
+        if not pdf.pages:
+            return False
         return len(pdf.pages[0].chars) == 0
 
 
 @contextmanager
-def ensure_text(pdf_path: Path) -> Iterator[Path]:
-    if not needs_ocr(pdf_path):
+def ensure_text(pdf_path: Path, *, ocr_needed: bool | None = None) -> Iterator[Path]:
+    if ocr_needed is None:
+        ocr_needed = needs_ocr(pdf_path)
+    if not ocr_needed:
         yield pdf_path
         return
 

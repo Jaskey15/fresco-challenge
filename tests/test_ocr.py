@@ -22,6 +22,12 @@ def test_needs_ocr_returns_true_when_no_chars():
         assert needs_ocr(Path("outlined.pdf")) is True
 
 
+def test_needs_ocr_returns_false_for_empty_pdf():
+    with patch("hardware_sets.ocr.pdfplumber.open") as mock_open:
+        mock_open.return_value.__enter__.return_value.pages = []
+        assert needs_ocr(Path("empty.pdf")) is False
+
+
 
 def test_ensure_text_passthrough_when_text_exists():
     with patch("hardware_sets.ocr.needs_ocr", return_value=False):
