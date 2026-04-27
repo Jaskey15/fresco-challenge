@@ -16,6 +16,7 @@ from hardware_sets import filter as filter_mod
 from hardware_sets import layout as layout_mod
 from hardware_sets import extract as extract_mod
 from hardware_sets.extract import attach_bboxes
+from hardware_sets.ocr import needs_ocr, ensure_text
 from hardware_sets.types import HardwareSet
 
 log = logging.getLogger("hardware_sets")
@@ -62,63 +63,68 @@ def main(argv: list[str]) -> int:
         print("error: ANTHROPIC_API_KEY is not set", file=sys.stderr)
         return 1
 
-    total_pages = _page_count(args.pdf_path)
+    ocr_needed = needs_ocr(args.pdf_path)
+    if ocr_needed:
+        log.info("[0/2] ocr: no text detected, running OCR...")
 
-    log.info("[1/2] filter: scanning %d pages of %s", total_pages, args.pdf_path.name)
-    regions = filter_mod.find_schedule_regions(args.pdf_path)
-    if not regions:
-        log.warning("no schedule region found")
-        _emit(
-            {
-                "source_pdf": args.pdf_path.name,
-                "hardware_sets": [],
-                "diagnostics": {
-                    "pages_scanned": total_pages,
-                    "regions_found": 0,
-                    "pages_with_sets": 0,
-                    "llm_calls": 0,
-                    "warnings": ["no_schedule_found"],
+    with ensure_text(args.pdf_path, ocr_needed=ocr_needed) as effective_path:
+        total_pages = _page_count(effective_path)
+
+        log.info("[1/2] filter: scanning %d pages of %s", total_pages, args.pdf_path.name)
+        regions = filter_mod.find_schedule_regions(effective_path)
+        if not regions:
+            log.warning("no schedule region found")
+            _emit(
+                {
+                    "source_pdf": args.pdf_path.name,
+                    "hardware_sets": [],
+                    "diagnostics": {
+                        "pages_scanned": total_pages,
+                        "regions_found": 0,
+                        "pages_with_sets": 0,
+                        "llm_calls": 0,
+                        "warnings": ["no_schedule_found"],
+                    },
                 },
+                args.out,
+            )
+            return 2
+
+        log.info("[1/2] filter: found %d region(s): %s",
+                 len(regions), ", ".join(f"pgs {r.start_page}-{r.end_page}" for r in regions))
+
+        all_sets: list[HardwareSet] = []
+        warnings: list[str] = []
+        llm_calls = 0
+
+        for i, region in enumerate(regions, start=1):
+            log.info("[2/2] extract: region %d/%d pages %d-%d", i, len(regions), region.start_page, region.end_page)
+            layouts = layout_mod.extract_layout(
+                effective_path, range(region.start_page, region.end_page + 1),
+            )
+            try:
+                sets = extract_mod.extract_sets(region, layouts, model=args.model)
+                attach_bboxes(sets, layouts)
+                llm_calls += 1
+                log.info("[2/2] extract: region %d/%d -> %d set(s)", i, len(regions), len(sets))
+                all_sets.extend(sets)
+            except Exception as e:
+                log.error("extract failed for region %d-%d: %s", region.start_page, region.end_page, e)
+                return 3
+
+        result = {
+            "source_pdf": args.pdf_path.name,
+            "hardware_sets": [asdict(s) for s in all_sets],
+            "diagnostics": {
+                "pages_scanned": total_pages,
+                "regions_found": len(regions),
+                "pages_with_sets": sum(r.end_page - r.start_page + 1 for r in regions),
+                "llm_calls": llm_calls,
+                "warnings": warnings,
             },
-            args.out,
-        )
-        return 2
-
-    log.info("[1/2] filter: found %d region(s): %s",
-             len(regions), ", ".join(f"pgs {r.start_page}-{r.end_page}" for r in regions))
-
-    all_sets: list[HardwareSet] = []
-    warnings: list[str] = []
-    llm_calls = 0
-
-    for i, region in enumerate(regions, start=1):
-        log.info("[2/2] extract: region %d/%d pages %d-%d", i, len(regions), region.start_page, region.end_page)
-        layouts = layout_mod.extract_layout(
-            args.pdf_path, range(region.start_page, region.end_page + 1),
-        )
-        try:
-            sets = extract_mod.extract_sets(region, layouts, model=args.model)
-            attach_bboxes(sets, layouts)
-            llm_calls += 1
-            log.info("[2/2] extract: region %d/%d -> %d set(s)", i, len(regions), len(sets))
-            all_sets.extend(sets)
-        except Exception as e:
-            log.error("extract failed for region %d-%d: %s", region.start_page, region.end_page, e)
-            return 3
-
-    result = {
-        "source_pdf": args.pdf_path.name,
-        "hardware_sets": [asdict(s) for s in all_sets],
-        "diagnostics": {
-            "pages_scanned": total_pages,
-            "regions_found": len(regions),
-            "pages_with_sets": sum(r.end_page - r.start_page + 1 for r in regions),
-            "llm_calls": llm_calls,
-            "warnings": warnings,
-        },
-    }
-    _emit(result, args.out)
-    return 0
+        }
+        _emit(result, args.out)
+        return 0
 
 
 def main_entry() -> None:
