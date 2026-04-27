@@ -29,11 +29,9 @@ def _fake_set():
     )
 
 
+@contextmanager
 def _passthrough_ensure_text(path):
-    @contextmanager
-    def _cm(p):
-        yield p
-    return _cm(path)
+    yield path
 
 
 @patch("hardware_sets_api.pipeline.ensure_text", side_effect=_passthrough_ensure_text)
