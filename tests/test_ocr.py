@@ -1,7 +1,9 @@
 from pathlib import Path
 from unittest.mock import MagicMock, patch
 
-from hardware_sets.ocr import needs_ocr
+import pytest
+
+from hardware_sets.ocr import ensure_text, needs_ocr
 
 
 def test_needs_ocr_returns_false_for_native_pdf():
@@ -19,10 +21,6 @@ def test_needs_ocr_returns_true_when_no_chars():
         mock_open.return_value.__enter__.return_value.pages = [mock_page]
         assert needs_ocr(Path("outlined.pdf")) is True
 
-
-import tempfile
-import pytest
-from hardware_sets.ocr import ensure_text
 
 
 def test_ensure_text_passthrough_when_text_exists():
