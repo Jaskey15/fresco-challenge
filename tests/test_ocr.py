@@ -28,7 +28,6 @@ def test_needs_ocr_returns_false_for_empty_pdf():
         assert needs_ocr(Path("empty.pdf")) is False
 
 
-
 def test_ensure_text_passthrough_when_text_exists():
     with patch("hardware_sets.ocr.needs_ocr", return_value=False):
         original = Path("native.pdf")
