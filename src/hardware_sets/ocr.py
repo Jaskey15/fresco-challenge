@@ -30,7 +30,7 @@ def ensure_text(pdf_path: Path, *, ocr_needed: bool | None = None) -> Iterator[P
     tmp_path = Path(tmp.name)
     try:
         result = subprocess.run(
-            ["ocrmypdf", "--skip-text", str(pdf_path), str(tmp_path)],
+            ["ocrmypdf", "--skip-text", "-O", "0", "--fast-web-view", "0", str(pdf_path), str(tmp_path)],
             capture_output=True,
             text=True,
         )
