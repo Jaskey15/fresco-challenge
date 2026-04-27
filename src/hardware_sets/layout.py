@@ -1,4 +1,4 @@
-"""Render one PDF page into a list of numbered lines for the LLM.
+"""Render PDF pages into a list of numbered lines for the LLM.
 
 Blank lines are dropped; `L##` stays contiguous so a
 human (or the LLM) can count lines in the rendered text and match
