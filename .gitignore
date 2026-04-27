@@ -21,6 +21,15 @@ logs/
 demo_samples/extracted/
 demo_samples/extracted_sonnet/
 samples/
-docs/
+docs/*
+!docs/2026-04-27-ocr-investigation.md
+!docs/superpowers/
+docs/superpowers/*
+!docs/superpowers/specs/
+!docs/superpowers/plans/
+docs/superpowers/specs/*
+!docs/superpowers/specs/2026-04-27-ocr-preprocessing-design.md
+docs/superpowers/plans/*
+!docs/superpowers/plans/2026-04-27-ocr-preprocessing.md
 scripts/*
 !scripts/accuracy_audit.py
