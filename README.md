@@ -17,7 +17,33 @@ each set lives.
 
 ## How It Works
 
-The pipeline runs in three sequential stages:
+```mermaid
+graph LR
+    A[PDF Upload] --> B{OCR Check}
+    B -->|Native text| D[Filter]
+    B -->|Scanned / CID| C[ocrmypdf]
+    C --> D
+    D --> E[Layout]
+    E --> F[Extract via Claude]
+    F --> G[Structured JSON]
+```
+
+| PDF Type | Detected By | Handling |
+|---|---|---|
+| Native / digital text | Readable characters on page | Direct extraction via pdfplumber |
+| Scanned (image-only) | Zero extractable characters | `ocrmypdf --skip-text` |
+| Vector-outlined (no fonts) | Zero extractable characters | `ocrmypdf --skip-text` |
+| CID-encoded fonts | `(cid:XX)` patterns in text | `ocrmypdf --force-ocr` |
+| Mixed (e.g. native cover + scanned schedule) | Per-page scan | Automatic — native pages preserved, others OCR'd |
+
+The pipeline runs in four sequential stages:
+
+**OCR (`ocr.py`)** scans every page to detect PDFs that need preprocessing —
+scanned documents, vector-outlined text, or CID-encoded fonts. Mixed documents
+(e.g. a native-text cover with scanned schedule pages) are handled
+automatically. `ocrmypdf --skip-text` adds a text layer to image-only pages
+without touching native text; `--force-ocr` replaces broken CID layers
+entirely.
 
 **Filter (`filter.py`)** scans every page with regex patterns to identify the
 contiguous pages containing the hardware schedule — skipping architectural
