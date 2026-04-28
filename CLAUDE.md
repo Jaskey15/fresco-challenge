@@ -25,7 +25,8 @@ Input: specbook pages (section-list format or tabular schedule). Output per set:
 - Sets can span page breaks — don't drop continuations.
 - `samples/` is gitignored — do not commit. `demo_samples/` IS committed (bundled into the deployed image for the public demo).
 - `ANTHROPIC_API_KEY` is required at runtime; set via `.env.local` locally and `fly secrets` in prod.
-- **PDFs can be native-text, scanned, or vector-outlined** (text converted to curves). Detect by checking pdfplumber char count — zero chars means OCR preprocessing is needed. Use `ocrmypdf --skip-text` to add a text layer, then run the normal pipeline. One codepath, not two.
+- **PDFs can be native-text, scanned, vector-outlined, or CID-encoded.** `needs_ocr()` returns a reason string: `"no_text"` (zero chars → `--skip-text`), `"cid_encoded"` (chars exist but extract as `(cid:XX)` gibberish → `--force-ocr`), or `None` (readable). One codepath, not two.
 
 ## Lessons Learned
 - `little_rock.pdf` had zero extractable text (vector-outlined) → added OCR detection/preprocessing. Problem: no PDF metadata distinguishes the three types. Rule: always check char count, never assume text exists.
+- `lyons_township.pdf` had chars but CID-encoded fonts — pdfplumber extracted `(cid:XX)` gibberish. Problem: `needs_ocr()` only checked char count > 0, so it passed through. Rule: also check extracted text for `(cid:` patterns; use `--force-ocr` (not `--skip-text`) since the broken text layer exists.
