@@ -9,28 +9,44 @@ from typing import Iterator
 import pdfplumber
 
 
-def needs_ocr(pdf_path: Path) -> bool:
-    """Check first page only — assumes uniform PDF type (all native or all outlined)."""
+def needs_ocr(pdf_path: Path) -> str | None:
+    """Return an OCR reason string, or None if the PDF has readable text.
+
+    Checks first page only — assumes uniform PDF type.
+    Returns:
+        ``"no_text"``      — no extractable characters (vector-outlined / scanned)
+        ``"cid_encoded"``  — chars exist but fonts use unresolvable CID encoding
+        ``None``           — text is readable
+    """
     with pdfplumber.open(pdf_path) as pdf:
         if not pdf.pages:
-            return False
-        return len(pdf.pages[0].chars) == 0
+            return None
+        page = pdf.pages[0]
+        if len(page.chars) == 0:
+            return "no_text"
+        text = page.extract_text() or ""
+        if "(cid:" in text:
+            return "cid_encoded"
+        return None
 
 
 @contextmanager
-def ensure_text(pdf_path: Path, *, ocr_needed: bool | None = None) -> Iterator[Path]:
+def ensure_text(pdf_path: Path, *, ocr_needed: str | None = None) -> Iterator[Path]:
     if ocr_needed is None:
         ocr_needed = needs_ocr(pdf_path)
     if not ocr_needed:
         yield pdf_path
         return
 
+    force = ocr_needed == "cid_encoded"
+    ocr_flag = "--force-ocr" if force else "--skip-text"
+
     tmp = tempfile.NamedTemporaryFile(suffix=".pdf", delete=False)
     tmp.close()
     tmp_path = Path(tmp.name)
     try:
         result = subprocess.run(
-            ["ocrmypdf", "--skip-text", "-O", "0", "--fast-web-view", "0", str(pdf_path), str(tmp_path)],
+            ["ocrmypdf", ocr_flag, "-O", "0", "--fast-web-view", "0", str(pdf_path), str(tmp_path)],
             capture_output=True,
             text=True,
         )

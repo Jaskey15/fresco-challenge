@@ -65,7 +65,8 @@ def main(argv: list[str]) -> int:
 
     ocr_needed = needs_ocr(args.pdf_path)
     if ocr_needed:
-        log.info("[0/2] ocr: no text detected, running OCR...")
+        reason = "unreadable CID-encoded fonts" if ocr_needed == "cid_encoded" else "no text detected"
+        log.info("[0/2] ocr: %s, running OCR...", reason)
 
     with ensure_text(args.pdf_path, ocr_needed=ocr_needed) as effective_path:
         total_pages = _page_count(effective_path)

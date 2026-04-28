@@ -22,7 +22,8 @@ def run_pipeline(
 ) -> dict:
     ocr_needed = needs_ocr(pdf_path)
     if ocr_needed:
-        on_progress({"phase": "ocr", "message": "Document has no extractable text, running OCR..."})
+        reason = "unreadable font encoding" if ocr_needed == "cid_encoded" else "no extractable text"
+        on_progress({"phase": "ocr", "message": f"Document has {reason}, running OCR..."})
 
     with ensure_text(pdf_path, ocr_needed=ocr_needed) as effective_path:
         total_pages = len(PdfReader(str(effective_path)).pages)
