@@ -23,11 +23,10 @@ def needs_ocr(pdf_path: Path) -> str | None:
             return None
         has_no_text = False
         for page in pdf.pages:
-            if len(page.chars) == 0:
+            if not page.chars:
                 has_no_text = True
                 continue
-            text = page.extract_text() or ""
-            if "(cid:" in text:
+            if any("(cid:" in c.get("text", "") for c in page.chars):
                 return "cid_encoded"
         return "no_text" if has_no_text else None
 
