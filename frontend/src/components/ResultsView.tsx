@@ -317,6 +317,23 @@ export default function ResultsView({ result, onReset }: Props) {
         </div>
       </div>
 
+      {/* Warnings banner */}
+      {result.diagnostics.warnings.length > 0 && (
+        <div className="px-4 py-2 bg-warning-subtle border-b border-warning/20 flex items-start gap-2 shrink-0">
+          <span className="text-warning text-xs font-heading font-semibold whitespace-nowrap pt-0.5">
+            Warning
+          </span>
+          <div className="text-xs text-warning/80">
+            {result.diagnostics.warnings.map((w, i) => (
+              <span key={i}>
+                {i > 0 && " · "}
+                {w}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* Two-panel layout */}
       <div className="flex-1 flex min-h-0">
         {/* Left: PDF Viewer (~35%) */}

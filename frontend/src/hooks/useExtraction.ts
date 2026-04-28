@@ -62,12 +62,17 @@ async function streamSSE(
     }
 
     for (const ev of events) {
-      if (ev.event === "progress") {
-        onProgress(JSON.parse(ev.data));
-      } else if (ev.event === "result") {
-        onResult(JSON.parse(ev.data));
-      } else if (ev.event === "error") {
-        onError(JSON.parse(ev.data).message);
+      try {
+        if (ev.event === "progress") {
+          onProgress(JSON.parse(ev.data));
+        } else if (ev.event === "result") {
+          onResult(JSON.parse(ev.data));
+        } else if (ev.event === "error") {
+          onError(JSON.parse(ev.data).message);
+        }
+      } catch {
+        onError("Received malformed response from server");
+        return;
       }
     }
   }

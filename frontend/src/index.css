@@ -12,6 +12,8 @@
   --color-secondary: #a1a1aa;
   --color-muted: #71717a;
   --color-dim: #52525b;
+  --color-warning: #f59e0b;
+  --color-warning-subtle: rgba(245, 158, 11, 0.1);
   --color-error: #ef4444;
   --color-error-subtle: rgba(239, 68, 68, 0.1);
   --font-heading: "JetBrains Mono", monospace;

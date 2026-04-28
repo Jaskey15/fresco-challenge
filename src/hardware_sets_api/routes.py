@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import asyncio
 import json
+import logging
 import tempfile
 from pathlib import Path
 from queue import Queue
@@ -13,6 +14,8 @@ from fastapi.responses import Response, StreamingResponse
 from hardware_sets_api import session
 from hardware_sets_api.pipeline import run_pipeline
 from hardware_sets_api.samples import SAMPLE_BY_ID, SAMPLES
+
+log = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/api")
 
@@ -52,6 +55,7 @@ def _stream_extraction(
                 result["session_id"] = session_id
             queue.put(("result", result))
         except Exception as e:
+            log.exception("Pipeline failed for %s", pdf_path.name)
             queue.put(("error", {"message": str(e)}))
         finally:
             if cleanup:
