@@ -72,8 +72,9 @@ export default function ResultsView({ result, onReset }: Props) {
   const sets = result.hardware_sets;
   const activeSet = sets[activeIndex];
 
-  const activeComponents: WorkingComponent[] =
-    workingData[activeIndex] ?? cloneComponents(activeSet.components);
+  const activeComponents: WorkingComponent[] = activeSet
+    ? (workingData[activeIndex] ?? cloneComponents(activeSet.components))
+    : [];
 
   const handleCellEdit = useCallback(
     (compIndex: number, field: string, value: string) => {
