@@ -12,7 +12,7 @@ import pdfplumber
 def needs_ocr(pdf_path: Path) -> str | None:
     """Return an OCR reason string, or None if the PDF has readable text.
 
-    Checks first page only — assumes uniform PDF type.
+    Scans all pages to handle mixed documents (e.g. native cover + scanned schedule).
     Returns:
         ``"no_text"``      — no extractable characters (vector-outlined / scanned)
         ``"cid_encoded"``  — chars exist but fonts use unresolvable CID encoding
@@ -21,13 +21,15 @@ def needs_ocr(pdf_path: Path) -> str | None:
     with pdfplumber.open(pdf_path) as pdf:
         if not pdf.pages:
             return None
-        page = pdf.pages[0]
-        if len(page.chars) == 0:
-            return "no_text"
-        text = page.extract_text() or ""
-        if "(cid:" in text:
-            return "cid_encoded"
-        return None
+        has_no_text = False
+        for page in pdf.pages:
+            if len(page.chars) == 0:
+                has_no_text = True
+                continue
+            text = page.extract_text() or ""
+            if "(cid:" in text:
+                return "cid_encoded"
+        return "no_text" if has_no_text else None
 
 
 @contextmanager
@@ -46,7 +48,7 @@ def ensure_text(pdf_path: Path, *, ocr_needed: str | None = None) -> Iterator[Pa
     tmp_path = Path(tmp.name)
     try:
         result = subprocess.run(
-            ["ocrmypdf", ocr_flag, "-O", "0", "--fast-web-view", "0", "-j", "2", str(pdf_path), str(tmp_path)],
+            ["ocrmypdf", ocr_flag, "-O", "0", "--fast-web-view", "0", "-j", "4", str(pdf_path), str(tmp_path)],
             capture_output=True,
             text=True,
         )

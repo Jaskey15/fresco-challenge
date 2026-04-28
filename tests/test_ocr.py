@@ -32,6 +32,40 @@ def test_needs_ocr_returns_cid_encoded_for_cid_fonts():
         assert needs_ocr(Path("cid.pdf")) == "cid_encoded"
 
 
+def test_needs_ocr_mixed_native_and_scanned_pages():
+    with patch("hardware_sets.ocr.pdfplumber.open") as mock_open:
+        native_page = MagicMock()
+        native_page.chars = [{"text": "A"}]
+        native_page.extract_text.return_value = "Hello"
+        scanned_page = MagicMock()
+        scanned_page.chars = []
+        mock_open.return_value.__enter__.return_value.pages = [native_page, scanned_page]
+        assert needs_ocr(Path("mixed.pdf")) == "no_text"
+
+
+def test_needs_ocr_mixed_native_and_cid_pages():
+    with patch("hardware_sets.ocr.pdfplumber.open") as mock_open:
+        native_page = MagicMock()
+        native_page.chars = [{"text": "A"}]
+        native_page.extract_text.return_value = "Hello"
+        cid_page = MagicMock()
+        cid_page.chars = [{"text": "(cid:43)"}]
+        cid_page.extract_text.return_value = "(cid:43)(cid:68)"
+        mock_open.return_value.__enter__.return_value.pages = [native_page, cid_page]
+        assert needs_ocr(Path("mixed_cid.pdf")) == "cid_encoded"
+
+
+def test_needs_ocr_cid_takes_priority_over_no_text():
+    with patch("hardware_sets.ocr.pdfplumber.open") as mock_open:
+        scanned_page = MagicMock()
+        scanned_page.chars = []
+        cid_page = MagicMock()
+        cid_page.chars = [{"text": "(cid:43)"}]
+        cid_page.extract_text.return_value = "(cid:43)"
+        mock_open.return_value.__enter__.return_value.pages = [scanned_page, cid_page]
+        assert needs_ocr(Path("mixed_both.pdf")) == "cid_encoded"
+
+
 def test_needs_ocr_returns_none_for_empty_pdf():
     with patch("hardware_sets.ocr.pdfplumber.open") as mock_open:
         mock_open.return_value.__enter__.return_value.pages = []
