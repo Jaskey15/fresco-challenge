@@ -22,8 +22,7 @@ def run_pipeline(
 ) -> dict:
     ocr_needed = needs_ocr(pdf_path)
     if ocr_needed:
-        reason = "unreadable font encoding" if ocr_needed == "cid_encoded" else "no extractable text"
-        on_progress({"phase": "ocr", "message": f"Document has {reason}, running OCR..."})
+        on_progress({"phase": "ocr", "message": "Reading document..."})
 
     with ensure_text(pdf_path, ocr_needed=ocr_needed) as effective_path:
         total_pages = len(PdfReader(str(effective_path)).pages)
@@ -31,7 +30,7 @@ def run_pipeline(
 
         regions = filter_mod.find_schedule_regions(effective_path)
         if not regions:
-            on_progress({"phase": "filter", "message": "No schedule regions found"})
+            on_progress({"phase": "filter", "message": "No hardware schedules found"})
             return {
                 "source_pdf": pdf_path.name,
                 "hardware_sets": [],
@@ -47,7 +46,7 @@ def run_pipeline(
 
         on_progress({
             "phase": "filter",
-            "message": f"Found {len(regions)} region(s)",
+            "message": f"Found {len(regions)} section(s)",
         })
 
         all_sets: list[HardwareSet] = []
@@ -58,7 +57,7 @@ def run_pipeline(
         for i, region in enumerate(regions, start=1):
             on_progress({
                 "phase": "extract",
-                "message": "Extracting sets...",
+                "message": "Extracting hardware sets...",
             })
 
             layouts = layout_mod.extract_layout(
