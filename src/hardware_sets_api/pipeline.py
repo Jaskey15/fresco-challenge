@@ -20,9 +20,8 @@ def run_pipeline(
     *,
     model: str | None = None,
 ) -> dict:
+    on_progress({"phase": "filter", "message": "Reading document..."})
     ocr_needed = needs_ocr(pdf_path)
-    if ocr_needed:
-        on_progress({"phase": "ocr", "message": "Reading document..."})
 
     with ensure_text(pdf_path, ocr_needed=ocr_needed) as effective_path:
         total_pages = len(PdfReader(str(effective_path)).pages)
