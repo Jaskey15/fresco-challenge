@@ -4,7 +4,7 @@ Extracts every door-hardware set from a construction Division 08 (Openings)
 specbook PDF into structured JSON, including the page and bounding box where
 each set lives.
 
-**Live demo:** https://fresco-challenge.fly.dev
+**Live demo:** https://specbook-extractor.fly.dev
 
 ![Hardware Sets Extractor — PDF with bounding box overlays and extracted component table](screenshot.png)
 

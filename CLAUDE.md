@@ -8,7 +8,7 @@ Input: specbook pages (section-list format or tabular schedule). Output per set:
 - **Extractor:** Python 3.12, `pdfplumber` + `pypdf`, `anthropic` SDK, `pytest`. Package: `src/hardware_sets/` (CLI).
 - **API:** FastAPI + uvicorn. Package: `src/hardware_sets_api/` — wraps the extractor, serves `frontend/dist/` as static in prod.
 - **Frontend:** React 19 + TypeScript + Vite + Tailwind v4 in `frontend/`.
-- **Deploy:** Single-service Docker (multi-stage: Node build → Python runtime with poppler) → Fly.io app `fresco-challenge` (region `iad`). Config in `Dockerfile` + `fly.toml`.
+- **Deploy:** Single-service Docker (multi-stage: Node build → Python runtime with poppler) → Fly.io app `specbook-extractor` (region `iad`). Config in `Dockerfile` + `fly.toml`.
 
 ## Run
 - CLI: `.venv/bin/python -m hardware_sets <pdf> --out result.json`
