@@ -26,7 +26,8 @@ export default function PdfViewer({
     const el = containerRef.current;
     if (!el) return;
     const observer = new ResizeObserver((entries) => {
-      setContainerWidth(entries[0].contentRect.width);
+      const w = Math.floor(entries[0].contentRect.width);
+      setContainerWidth((prev) => (Math.abs(prev - w) > 1 ? w : prev));
     });
     observer.observe(el);
     return () => observer.disconnect();
@@ -48,7 +49,7 @@ export default function PdfViewer({
   const pdfUrl = `/api/pdf/${sessionId}`;
 
   return (
-    <div ref={containerRef} className="h-full overflow-y-auto bg-pdf-surround">
+    <div ref={containerRef} className="h-full overflow-y-auto bg-pdf-surround" style={{ scrollbarGutter: "stable" }}>
       <Document
         file={pdfUrl}
         loading={
